@@ -3,8 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import sdUI from 'sudong-npm-test'
-import '../node_modules/sudong-npm-test/packages/theme-default/lib/index.css'
+import sdUI from '../packages/index'
+import '../packages/theme-default/lib/index.min.css'
 
 Vue.use(sdUI)
 
