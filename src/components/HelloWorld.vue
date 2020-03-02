@@ -1,5 +1,9 @@
+
 <template>
-    <sd-header></sd-header>
+    <div>
+        <sd-header title="身份信息" type="point"></sd-header>
+        <div>1111</div>
+    </div>
 </template>
 
 <script>
