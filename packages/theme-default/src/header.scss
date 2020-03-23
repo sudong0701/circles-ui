@@ -3,7 +3,7 @@
   top: 0; left: 0;
   width: 100%;
   border-bottom:  0.02rem solid #f2f2f2;
-  z-index: 99;
+  z-index: 49;
   .sd-header-left{
     position: absolute;
     left: 0; top: 0;
@@ -26,7 +26,7 @@
   }
   .sd-header-right{
     position: absolute;
-    right: 0.6em; top: 0;
+    right: 0.3rem; top: 0;
     height: 100%;
     .sd-header-rightImg{
       font-size: 0.44rem;
