@@ -43,6 +43,7 @@
              * @return
              */
             goBack(){
+
                 this.$emit('click-left')
             },
             /**

@@ -3,18 +3,19 @@
  * Date: 20/2/28
  */
 import sdHeader from './header/index.js';
+import {sdDialog, dialog} from './dialog/index.js';
+
 
 const components = [
-    sdHeader
+    sdHeader,
+    sdDialog
 ]
 
 const install = function(Vue) {
     if (install.installed) return
     components.map((component) => {Vue.component(component.name, component)})
-    //MetaInfo.install(Vue)
-    //Vue.prototype.$loading = WLoadingBar
+    Vue.prototype.$dialog = dialog
 }
-
 if (typeof window !== 'undefined' && window.Vue) {
     install(window.Vue)
 }
@@ -80,5 +81,6 @@ icon()
 
 export default {
     install,
-    sdHeader
+    sdHeader,
+    sdDialog
 }

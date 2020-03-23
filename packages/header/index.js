@@ -1,5 +1,6 @@
 /**
  * @author sudong.duan
+ * description: 头部组件
  * Date: 20/2/28
  */
 import Header from './src/header.vue';
