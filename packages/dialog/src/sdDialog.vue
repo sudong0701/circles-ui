@@ -2,7 +2,7 @@
     <!--组件形式调用-->
     <div class="sdDialog">
             <div class="sdDialog-alert">
-                <transition name="animation-dialog" >
+                <transition name="animation-fade" >
                     <div class="sdDialog-alert-box" v-if="type === 'alert' && isShow" :style="isRound ? 'border-radius: 0.24rem;' : '' ">
                         <slot>
                             <p class="sdDialog-content">
@@ -15,7 +15,7 @@
             </div>
 
         <div class="sdDialog-confirm">
-            <transition name="animation-dialog">
+            <transition name="animation-fade">
                 <div class="sdDialog-confirm-box" v-if="type === 'confirm' && isShow" :style="isRound ? 'border-radius: 0.24rem;' : '' ">
                     <slot>
                         <p class="sdDialog-content">
