@@ -70,7 +70,7 @@
                 document.body.style.overflow = 'auto';
                 setTimeout(()=>{
                     this.isShowOverlay = false
-                    //this.$destroy(true);
+                    this.$destroy(true);
                     this.$el.parentNode.removeChild(this.$el);
                 },300)
             },

@@ -4,6 +4,7 @@
  */
 import sdHeader from './header/index.js';
 import {sdDialog, dialog} from './dialog/index.js';
+import toast from './toast/index.js'
 
 
 const components = [
@@ -15,6 +16,7 @@ const install = function(Vue) {
     if (install.installed) return
     components.map((component) => {Vue.component(component.name, component)})
     Vue.prototype.$dialog = dialog
+    Vue.prototype.$toast = toast
 }
 if (typeof window !== 'undefined' && window.Vue) {
     install(window.Vue)
@@ -70,9 +72,9 @@ function icon() {
     const script = document.createElement('script')
     const css = document.createElement('link')
     const html = document.getElementsByTagName('html')[0]
-    script.src = '//at.alicdn.com/t/font_1665721_6ut2lmc7vf6.js'
+    script.src = '//at.alicdn.com/t/font_1665721_9k1s0ol9u4r.js'
     script.type = 'text/javascript'
-    css.href = '//at.alicdn.com/t/font_1665721_6ut2lmc7vf6.css'
+    css.href = '//at.alicdn.com/t/font_1665721_9k1s0ol9u4r.css'
     css.rel = 'stylesheet'
     html.appendChild(css)
     html.appendChild(script)

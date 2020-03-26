@@ -19,5 +19,6 @@
     *{
         margin: 0; padding: 0;
         color: #333;
+        min-height: 0; height: auto;
     }
 </style>
