@@ -5,11 +5,17 @@
 import sdHeader from './header/index.js';
 import {sdDialog, dialog} from './dialog/index.js';
 import toast from './toast/index.js'
+import sdPopup from './popup/index.js'
+import sdPicker from './picker/index.js'
+import sdDateTimePicker from './dateTimePicker'
 
 
 const components = [
     sdHeader,
-    sdDialog
+    sdDialog,
+    sdPopup,
+    sdPicker,
+    sdDateTimePicker
 ]
 
 const install = function(Vue) {
@@ -21,7 +27,7 @@ const install = function(Vue) {
 if (typeof window !== 'undefined' && window.Vue) {
     install(window.Vue)
 }
-
+//移动端集成响应式布局 rem
 function flexible (window, document) {
     var docEl = document.documentElement
     var dpr = window.devicePixelRatio || 1
@@ -67,7 +73,7 @@ function flexible (window, document) {
     }
 }
 flexible(window, document)
-
+//使用阿里巴巴矢量库
 function icon() {
     const script = document.createElement('script')
     const css = document.createElement('link')
@@ -84,5 +90,8 @@ icon()
 export default {
     install,
     sdHeader,
-    sdDialog
+    sdDialog,
+    sdPopup,
+    sdPicker,
+    sdDateTimePicker
 }

@@ -38,10 +38,13 @@
         data() {
             return {
                 isShowOverlay: false,
-                isShow: false  //是否显示弹框
             }
         },
         props: {
+            isShow: {  //是否显示弹框
+                type: Boolean,
+                default: false
+            },
             isOverlay: {   //是否显示遮罩层
                 type: Boolean,
                 default: true
@@ -95,6 +98,25 @@
                 default: true
             }
         },
+        model: {
+            prop: 'isShow',
+            event: 'overlayClose'
+        },
+        mounted() {
+            //此处为解决ios弹簧效果
+            if(this.lockScroll) {
+                const body = document.getElementsByTagName('body')[0]
+                const html = document.getElementsByTagName('html')[0]
+                body.style.overflow = 'auto'
+                html.style.overflow = 'auto'
+                body.style.position = 'fixed'
+                html.style.position = 'fixed'
+                body.style.left = '0'
+                html.style.left = '0'
+                body.style.top = '0'
+                html.style.top = '0'
+            }
+        },
         methods: {
             /**
              * 点击确认按钮
@@ -120,40 +142,49 @@
              * @return
              */
             closeOverlay(e){
-                if(this.closeOnClickOverlay){
-                    this.close()
-                }
+                this.$emit('overlayClose', false)
                 e.stopPropagation()
-            },
-            /**
-             * 打开弹窗
-             * @param
-             * @return
-             */
-            open(){
-                this.isShow = true
-                this.isShowOverlay = true
-                if(this.lockScroll){
-                    document.body.style.overflow = 'hidden';
+            }
+        },
+        watch: {
+            isShow(boolean) {
+                if(boolean) {
+                    this.isShowOverlay = true
+                    if(this.lockScroll){
+                        document.body.style.overflow = 'hidden'
+                        const body = document.getElementsByTagName('body')[0]
+                        const html = document.getElementsByTagName('html')[0]
+                        body.style.overflow = 'hidden'
+                        html.style.overflow = 'hidden'
+                        body.style.position = 'fixed'
+                        html.style.position = 'fixed'
+                        body.style.left = '0'
+                        html.style.left = '0'
+                        body.style.top = '0'
+                        html.style.top = '0'
+                    }
+                    setTimeout(()=>{
+                        //打开弹出层切动画结束后触发
+                        this.$emit('opened')
+                    },300)
+                } else {
+                    document.body.style.overflow = 'auto'
+                    const body = document.getElementsByTagName('body')[0]
+                    const html = document.getElementsByTagName('html')[0]
+                    body.style.overflow = 'auto'
+                    html.style.overflow = 'auto'
+                    body.style.position = 'static'
+                    html.style.position = 'static'
+                    body.style.left = 'auto'
+                    html.style.left = 'auto'
+                    body.style.top = 'auto'
+                    html.style.top = 'auto'
+                    setTimeout(()=>{
+                        //关闭弹出层切动画结束后触发
+                        this.$emit('closed')
+                        this.isShowOverlay = false
+                    },300)
                 }
-                setTimeout(()=>{
-                    //打开弹出层切动画结束后触发
-                    this.$emit('opened')
-                },300)
-            },
-            /**
-             * 关闭弹窗
-             * @param
-             * @return
-             */
-            close(){
-                this.isShow= false
-                document.body.style.overflow = 'auto';
-                setTimeout(()=>{
-                    //关闭弹出层切动画结束后触发
-                    this.$emit('closed')
-                    this.isShowOverlay = false
-                },300)
             }
         }
     }
