@@ -16,7 +16,6 @@
 </template>
 
 <script>
-    import SDK from '../../static/NIM_Web_SDK_v7.4.0'
     import city from '../../static/city-data'
     export default {
         name: 'HelloWorld',
