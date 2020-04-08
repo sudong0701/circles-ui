@@ -1,21 +1,21 @@
 <template>
-    <div class="md_picker">
-        <div class="md_picker-title">
-            <div class="md_picker-title-left" @click="clickLeftBtn">{{leftButtonText}}</div>
-            <div class="md_picker-title-right" @click="clickRightBtn">{{rightButtonText}}</div>
-            <div class="md_picker-title-center">{{title}}</div>
+    <div class="sd_picker">
+        <div class="sd_picker-title">
+            <div class="sd_picker-title-left" @click="clickLeftBtn">{{leftButtonText}}</div>
+            <div class="sd_picker-title-right" @click="clickRightBtn">{{rightButtonText}}</div>
+            <div class="sd_picker-title-center">{{title}}</div>
         </div>
         <!--普通选择器组件-->
-        <div class="md_picker-box">
-            <div :class="`md_picker-column`" v-for="(list, key) in columns" :key="key">
-                <div class="md_picker-column-inner">
-                    <div class="md_picker-column-list" :ref="`md_pickerList${key}`" @touchstart.stop="touchStart($event)" @touchmove.stop="touchMove($event, key)" @touchend.stop="touchEnd($event, key)" :style="`transform: translate(0, ${(2 - (selectArr[key] - list.num)) * 44}px)`">
-                        <div @click="selectItem(key, item, list.type)" v-for="(item, index) in list.values" :key="index" :class="`md_picker-column-item ${item == selectArr[key] ? 'md_picker-column-currItem' : ''}`">{{item}}{{list.name}}</div>
+        <div class="sd_picker-box">
+            <div :class="`sd_picker-column`" v-for="(list, key) in columns" :key="key">
+                <div class="sd_picker-column-inner">
+                    <div class="sd_picker-column-list" :ref="`sd_pickerList${key}`" @touchstart.stop="touchStart($event)" @touchmove.stop="touchMove($event, key)" @touchend.stop="touchEnd($event, key)" :style="`transform: translate(0, ${(2 - (selectArr[key] - list.num)) * 44}px)`">
+                        <div @click="selectItem(key, item, list.type)" v-for="(item, index) in list.values" :key="index" :class="`sd_picker-column-item ${item == selectArr[key] ? 'sd_picker-column-currItem' : ''}`">{{item}}{{list.name}}</div>
                     </div>
                 </div>
             </div>
-            <div class="md_picker-column-overlay"></div>
-            <div class="md_picker-column-frame"></div>
+            <div class="sd_picker-column-overlay"></div>
+            <div class="sd_picker-column-frame"></div>
         </div>
     </div>
 </template>
@@ -974,7 +974,7 @@
                 }
                 this.changeData(key, item)
                 this.$set(this.selectArr, key, item)
-                const pickerList = this.$refs[`md_pickerList${key}`][0]
+                const pickerList = this.$refs[`sd_pickerList${key}`][0]
                 pickerList.style.transition="-webkit-transform 150ms ease-out";
                 this.$emit('change',this.getValue())
             },
@@ -1010,7 +1010,7 @@
              @return
              */
             touchMove(e, key) {
-                const pickerList = this.$refs[`md_pickerList${key}`][0]
+                const pickerList = this.$refs[`sd_pickerList${key}`][0]
                 pickerList.style.transform=`translate(0, ${e.targetTouches[0].pageY - startPageY + ((2 - (this.selectArr[key] - this.columns[key].num)) * 44)}px)`;
                 e.stopPropagation()
                 e.preventDefault()
@@ -1028,7 +1028,7 @@
                     return
                 } else {
                     let currIndex = Math.round((startPageY - endPageY) / 44) + (this.selectArr[key] - list.num)   //这里改动了
-                    const pickerList = this.$refs[`md_pickerList${key}`][0]
+                    const pickerList = this.$refs[`sd_pickerList${key}`][0]
                     if(currIndex < 0){
                         currIndex = 0
                         pickerList.style.transition="-webkit-transform 150ms ease-out"
@@ -1091,122 +1091,11 @@
              @param {Number} index 列数
              */
             initTransform(index) {
-                if( this.$refs[`md_pickerList${index}`]) {
-                    const pickerList = this.$refs[`md_pickerList${index}`][0]
+                if( this.$refs[`sd_pickerList${index}`]) {
+                    const pickerList = this.$refs[`sd_pickerList${index}`][0]
                     pickerList.style.transition="-webkit-transform 0ms ease-out"
                 }
             }
         }
     }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-    .md_picker {
-        .md_picker-title{
-            height: 0.88rem;
-            border-bottom: 0.01rem solid #f4f4f4;
-            background-color: #fff;
-            .md_picker-title-left{
-                float: left;
-                height: 100%;
-                padding: 0 0.32rem;
-                cursor: pointer;
-                color: #1989fa;
-                font-size: 0.28rem;
-                background-color: transparent;
-                line-height: .88rem;
-            }
-            .md_picker-title-right{
-                float: right;
-                height: 100%;
-                padding: 0 0.32rem;
-                cursor: pointer;
-                color: #1989fa;
-                font-size: 0.28rem;
-                line-height: .88rem;
-            }
-            .md_picker-title-center{
-                font-weight: 500;
-                font-size: 0.32rem;
-                text-align: center;
-                line-height: 0.88rem;
-            }
-            .md_picker-title-left:active {
-                background-color: #f2f2f2;
-            }
-            .md_picker-title-right:active {
-                background-color: #f2f2f2;
-            }
-        }
-        .md_picker-box {
-            position: relative;
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            .md_picker-column {
-                flex: 1;
-                position: relative;
-                height: 220px;
-                overflow: hidden;
-                .md_picker-column-inner {
-                    width: 100%;
-                    height: 100%;
-                    overflow-y: hidden;
-                    box-sizing: content-box;
-                    .md_picker-column-list {
-                        width: 100%;
-                        transform: translate(0, 88px);
-                        .md_picker-column-item {
-                            width: 100%;  height: 44px;
-                            line-height: 44px;
-                            text-align: center;
-                            font-weight: 500;
-                            font-size: 0.28rem;
-                        }
-                        .md_picker-column-currItem {
-                            font-size: 0.32rem;
-                        }
-                    }
-                }
-            }
-            .md_picker-column-overlay {
-                position: absolute;
-                left: 0; top: 0;
-                height: 100%; width: 100%;
-                z-index: 2;
-                background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4)), linear-gradient(0deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4));
-                background-size: 100% 88px;
-                background-position: top, bottom;
-                background-repeat: no-repeat;
-                pointer-events: none
-            }
-            .md_picker-column-frame {
-                position: absolute;
-                top: 50%;
-                left: 0;
-                z-index: 3;
-                width: 100%;
-                height: 44px;
-                -webkit-transform: translateY(-50%);
-                transform: translateY(-50%);
-                pointer-events: none;
-            }
-            .md_picker-column-frame::after {
-                position: absolute;
-                box-sizing: border-box;
-                content: ' ';
-                pointer-events: none;
-                top: -50%;
-                right: -50%;
-                bottom: -50%;
-                left: -50%;
-                border: 1px solid #ebedf0;
-                -webkit-transform: scale(0.5);
-                transform: scale(0.5)
-            }
-        }
-    }
-</style>
