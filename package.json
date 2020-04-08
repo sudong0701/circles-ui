@@ -1,6 +1,6 @@
 {
   "name": "sudong-ui",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "This is a UI components for Vue 2.x ",
   "author": "sudong.duan",
   "main": "packages/index.js",
