@@ -70,6 +70,7 @@
         },
         mounted() {
             const sdPullRefreshParent = this.$refs.sdPullRefresh.parentNode
+            sdPullRefreshParent.style[`overflow-y`] = auto
             sdPullRefreshParent.addEventListener('scroll', this.fncThr(this.scroll))
         },
         methods: {
@@ -187,3 +188,60 @@
         }
     }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+    .sd-pullRefresh {
+        .sd-pullRefresh-track {
+            .sd-pullRefresh-track-head{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                p {
+                    position: relative;
+                    text-align: center;
+                    font-size: 0.26rem;
+                    line-height: 0.44rem;
+                    color: #999;
+                }
+                .sd-pullRefresh-track-head-loading {
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .sd-pullRefresh-loading {
+                        animation-name: aniSpin; /*动画的名称 */
+                        animation-duration: 800ms; /*动画从开始到结束的时间*/
+                        animation-timing-function: linear; /*动画执行快慢的参数*/
+                        animation-iteration-count: infinite; /*动画执行多少次的参数*//*以下是兼容ios所需，参数意义与上相同*/
+                        //-webkit-animation-name: aniRotate;
+                        -webkit-animation-duration: 800ms;
+                        -webkit-animation-timing-function: linear;
+                        -webkit-animation-iteration-count: infinite;
+                        height: 0.36rem; width: 0.36rem;
+                        color: #bbb;
+                        use {
+                            color: #bbb;
+                            background-color: #bbb;
+                        }
+                    }
+                    p {
+                        position: relative;
+                        top: 0.04rem;
+                        margin-left: 0.08rem;
+                    }
+                    @keyframes aniSpin {
+                        /*开始转的角度*/
+                        from {
+                            transform: rotate(0deg);
+                        }/*结束的角度*/
+                        to {
+                            transform: rotate(359deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+</style>

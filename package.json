@@ -1,6 +1,6 @@
 {
   "name": "sudong-ui",
-  "version": "1.1.1",
+  "version": "1.1.4",
   "description": "This is a UI components for Vue 2.x ",
   "author": "sudong.duan",
   "main": "packages/index.js",
@@ -16,18 +16,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.2",
-    "fs": "^0.0.1-security",
-    "inquirer": "^4.0.0",
-    "markdown-it-anchor": "^4.0.0",
-    "markdown-it-container": "^2.0.0",
-    "moment": "^2.19.2",
-    "path": "^0.12.7",
-    "semver": "^5.4.1",
-    "transliteration": "^1.6.2",
-    "vue": "^2.5.2",
-    "vue-markdown-loader": "^2.2.3",
-    "vue-router": "^3.0.1"
+
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
