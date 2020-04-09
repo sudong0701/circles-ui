@@ -7,15 +7,19 @@ import {sdDialog, dialog} from './dialog/index.js';
 import toast from './toast/index.js'
 import sdPopup from './popup/index.js'
 import sdPicker from './picker/index.js'
-import sdDateTimePicker from './dateTimePicker'
-
+import sdDateTimePicker from './dateTimePicker/index.js'
+import {sdSwipe, sdSwipeItem} from './swipe/index.js'
+import sdPullRefresh from './pullRefresh/index.js'
 
 const components = [
     sdHeader,
     sdDialog,
     sdPopup,
     sdPicker,
-    sdDateTimePicker
+    sdDateTimePicker,
+    sdSwipe,
+    sdSwipeItem,
+    sdPullRefresh
 ]
 
 const install = function(Vue) {
@@ -78,9 +82,9 @@ function icon() {
     const script = document.createElement('script')
     const css = document.createElement('link')
     const html = document.getElementsByTagName('html')[0]
-    script.src = '//at.alicdn.com/t/font_1665721_9k1s0ol9u4r.js'
+    script.src = '//at.alicdn.com/t/font_1665721_i9d5nsl2c29.js'
     script.type = 'text/javascript'
-    css.href = '//at.alicdn.com/t/font_1665721_9k1s0ol9u4r.css'
+    css.href = '//at.alicdn.com/t/font_1665721_i9d5nsl2c29.css'
     css.rel = 'stylesheet'
     html.appendChild(css)
     html.appendChild(script)
@@ -93,5 +97,8 @@ export default {
     sdDialog,
     sdPopup,
     sdPicker,
-    sdDateTimePicker
+    sdDateTimePicker,
+    sdSwipe,
+    sdSwipeItem,
+    sdPullRefresh
 }
