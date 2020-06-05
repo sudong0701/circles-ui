@@ -4,13 +4,13 @@
             <slot ref="slot"></slot>
         </div>
         <div :class="`${vertical ? 'sdIndicator_portrait' : 'sdIndicator'}`">
-            <div @click="selectSwipeItem(key)" v-for="(item, key) in indicatorArr" :class="`${indicatorClass} ${(key == currentIndex || ((key == indicatorArr.length - 1) && currentIndex >= indicatorArr.length)) ? indicatorSelectedClass + ' sdIndicator_select' : ''}`"></div>
+            <div  @click="selectSwipeItem(key)" v-for="(item, key) in indicatorArr" :class="`${indicatorClass} ${(key == currentIndex || ((key == indicatorArr.length - 1) && currentIndex >= indicatorArr.length)) ? indicatorSelectedClass + ' sdIndicator_select' : ''}`"></div>
         </div>
     </div>
 </template>
 
 <script>
-    let startPageY, startPageX, swipeTimer
+    let startPageY, startPageX, swipeTimer, prePageNum, touchDirection = ''
     export default {
         name: 'sdSwipe',
         data() {
@@ -18,7 +18,7 @@
                 currentIndex: 0,   //当前轮播的下标
                 sdSwipeNum: 0,   //总长度
                 clientNum: 0,
-                indicatorArr: []
+                indicatorArr: [],
             }
         },
         props: {
@@ -57,11 +57,11 @@
             distance: {   //滑动距离(大于该距离会切换)
                 type: Number,
                 default: 80
+            },
+            isDisabled: {   //是否禁用
+                type: Boolean,
+                default: false
             }
-        },
-        model: {
-            prop: 'swipeIndex',
-            event: 'change'
         },
         mounted() {
             this.currentIndex = this.swipeIndex
@@ -107,6 +107,14 @@
         },
         methods: {
             /**
+             设置当前的下标
+             @param {Number} index 索引
+             @return
+             */
+            setCurrentIndex(index) {
+                this.currentIndex = index
+            },
+            /**
              点击滑块时触发
              @param {Number} index 索引
              @return
@@ -130,13 +138,18 @@
              @return
              */
             touchStart(e) {
+                if(this.isDisabled) {
+                    return
+                }
                 if(swipeTimer) {
                     clearInterval(swipeTimer)
                 }
                 if(!this.vertical) {
                     startPageX = e.targetTouches[0].pageX
+                    prePageNum = e.targetTouches[0].pageX
                 } else {
                     startPageY = e.targetTouches[0].pageY
+                    prePageNum = e.targetTouches[0].pageY
                 }
                 e.stopPropagation()
             },
@@ -146,8 +159,17 @@
              @return
              */
             touchMove(e) {
+                if(this.isDisabled) {
+                    return
+                }
                 const sdSwipe_box = this.$refs[`sdSwipe_box`]
-                if(!this.vertical) {
+                if(!this.vertical) {   //X轴滑动
+                    if(prePageNum > e.targetTouches[0].pageX) {   //向左滑
+                        touchDirection = 'left'
+                    } else {
+                        touchDirection = 'right'
+                    }
+                    prePageNum = e.targetTouches[0].pageX
                     if(this.isLoop) {
                         sdSwipe_box.style.transform=`translate(${e.targetTouches[0].pageX - startPageX + -this.clientNum * (this.currentIndex + 1)}px, 0)`;
                         //非嵌接滑动
@@ -168,7 +190,13 @@
                             }
                         }
                     }
-                } else {
+                } else {   //Y轴滑动
+                    if(prePageNum > e.targetTouches[0].pageY) {   //向上滑
+                        touchDirection = 'top'
+                    } else {
+                        touchDirection = 'bottom'
+                    }
+                    prePageNum = e.targetTouches[0].pageY
                     //是否嵌接滑动
                     if(this.isLoop) {
                         sdSwipe_box.style.transform=`translate(0, ${e.targetTouches[0].pageY - startPageY + -this.clientNum * (this.currentIndex + 1)}px)`;
@@ -199,6 +227,9 @@
              @return
              */
             touchEnd(e) {
+                if(this.isDisabled) {
+                    return
+                }
                 const sdSwipe_box = this.$refs[`sdSwipe_box`]
                 //横向轮播
                 if(!this.vertical) {
@@ -209,53 +240,64 @@
                     } else {
                         //右滑
                         if(endPageX - startPageX > this.distance) {
-                            sdSwipe_box.style.transition="-webkit-transform 200ms ease-out";
-                            const currentIndex = this.currentIndex - 1
-                            //是否嵌接滑动
-                            if(this.isLoop) {
-                                this.currentIndex = currentIndex
-                                setTimeout(()=> {
-                                    if(this.currentIndex == -1) {
-                                        sdSwipe_box.style.transition="-webkit-transform 0ms ease-out";
-                                        this.currentIndex = this.sdSwipeNum - 3
-                                    }
-                                    this.$emit('change', this.currentIndex)
-                                }, 200)
-                                this.autoPlay()
-                                //非嵌接滑动
-                            } else {
-                                if(this.currentIndex != 0) {
+                            if(touchDirection === 'right') {
+                                sdSwipe_box.style.transition="-webkit-transform 200ms ease-out";
+                                const currentIndex = this.currentIndex - 1
+                                //是否嵌接滑动
+                                if(this.isLoop) {
                                     this.currentIndex = currentIndex
                                     setTimeout(()=> {
-                                        this.$emit('change', currentIndex)
+                                        if(this.currentIndex == -1) {
+                                            sdSwipe_box.style.transition="-webkit-transform 0ms ease-out";
+                                            this.currentIndex = this.sdSwipeNum - 3
+                                        }
+                                        this.$emit('change', this.currentIndex)
                                     }, 200)
                                     this.autoPlay()
+                                    //非嵌接滑动
+                                } else {
+                                    if(this.currentIndex != 0) {
+                                        this.currentIndex = currentIndex
+                                        setTimeout(()=> {
+                                            this.$emit('change', currentIndex)
+                                        }, 200)
+                                        this.autoPlay()
+                                    }
                                 }
+                            } else {
+                                sdSwipe_box.style.transition="-webkit-transform 150ms ease-out";
+                                sdSwipe_box.style.transform = `translate(${-this.clientNum * (this.isLoop ? this.currentIndex + 1 : this.currentIndex)}px, 0)`
                             }
+
                             //左滑
                         } else if(endPageX - startPageX < -(this.distance)) {
-                            sdSwipe_box.style.transition="-webkit-transform 200ms ease-out";
-                            const currentIndex = this.currentIndex + 1
-                            //是否嵌接滑动
-                            if(this.isLoop) {
-                                this.currentIndex = currentIndex
-                                setTimeout(()=> {
-                                    if(this.currentIndex == (this.sdSwipeNum - 2)) {
-                                        sdSwipe_box.style.transition="-webkit-transform 0ms ease-out";
-                                        this.currentIndex = 0
-                                    }
-                                    this.$emit('change', this.currentIndex)
-                                }, 200)
-                                this.autoPlay()
-                                //非嵌接滑动
-                            } else {
-                                if(this.currentIndex !== this.sdSwipeNum - 1) {
+                            if(touchDirection === 'left') {
+                                sdSwipe_box.style.transition="-webkit-transform 200ms ease-out";
+                                const currentIndex = touchDirection === 'left' ? this.currentIndex + 1 : this.currentIndex
+                                //是否嵌接滑动
+                                if(this.isLoop) {
                                     this.currentIndex = currentIndex
                                     setTimeout(()=> {
-                                        this.$emit('change', currentIndex)
+                                        if(this.currentIndex == (this.sdSwipeNum - 2)) {
+                                            sdSwipe_box.style.transition="-webkit-transform 0ms ease-out";
+                                            this.currentIndex = 0
+                                        }
+                                        this.$emit('change', this.currentIndex)
                                     }, 200)
                                     this.autoPlay()
+                                    //非嵌接滑动
+                                } else {
+                                    if(this.currentIndex !== this.sdSwipeNum - 1) {
+                                        this.currentIndex = currentIndex
+                                        setTimeout(()=> {
+                                            this.$emit('change', currentIndex)
+                                        }, 200)
+                                        this.autoPlay()
+                                    }
                                 }
+                            } else {
+                                sdSwipe_box.style.transition="-webkit-transform 150ms ease-out";
+                                sdSwipe_box.style.transform = `translate(${-this.clientNum * (this.isLoop ? this.currentIndex + 1 : this.currentIndex)}px, 0)`
                             }
                         } else {
                             sdSwipe_box.style.transition="-webkit-transform 100ms ease-out";
@@ -274,55 +316,65 @@
                     } else {
                         //下滑
                         if(endPageY - startPageY > this.distance) {
-                            sdSwipe_box.style.transition="-webkit-transform 200ms ease-out";
-                            const currentIndex = this.currentIndex - 1
-                            //是否嵌接滑动
-                            if(this.isLoop) {
-                                this.currentIndex = currentIndex
-                                setTimeout(()=> {
-                                    if(this.currentIndex == -1) {
-                                        sdSwipe_box.style.transition="-webkit-transform 0ms ease-out";
-                                        this.currentIndex = this.sdSwipeNum - 3
-                                    }
-                                    this.$emit('change', this.currentIndex)
-                                }, 200)
-                                this.autoPlay()
-                            } else {   //非嵌接滑动
-                                if(this.currentIndex != 0) {
+                            if(touchDirection === 'bottom') {
+                                sdSwipe_box.style.transition="-webkit-transform 200ms ease-out";
+                                const currentIndex = this.currentIndex - 1
+                                //是否嵌接滑动
+                                if(this.isLoop) {
                                     this.currentIndex = currentIndex
                                     setTimeout(()=> {
-                                        this.$emit('change', currentIndex)
-                                    })
+                                        if(this.currentIndex == -1) {
+                                            sdSwipe_box.style.transition="-webkit-transform 0ms ease-out";
+                                            this.currentIndex = this.sdSwipeNum - 3
+                                        }
+                                        this.$emit('change', this.currentIndex)
+                                    }, 200)
                                     this.autoPlay()
-                                }
-                            }
-                        } else if(endPageY - startPageY < -(this.distance)) {   //上滑
-                            sdSwipe_box.style.transition="-webkit-transform 200ms ease-out";
-                            const currentIndex = this.currentIndex + 1
-                            if(this.isLoop) {   //是否嵌接滑动
-                                this.currentIndex = currentIndex
-                                if(currentIndex == (this.sdSwipeNum - 2)) {
-                                    setTimeout(()=> {
-                                        sdSwipe_box.style.transition="-webkit-transform 0ms ease-out";
-                                        this.currentIndex = 0
-                                        this.$emit('change', 0)
-                                    }, 200)
-                                } else {
-                                    setTimeout(()=> {
-                                        this.$emit('change', currentIndex)
-                                    })
-                                }
-                                this.autoPlay()
-                            } else {   //非嵌接滑动
-                                if(this.currentIndex != this.sdSwipeNum - 1) {
-                                    this.currentIndex = currentIndex
-                                    setTimeout(()=> {
-                                        this.$emit('change', currentIndex)
-                                    }, 200)
-                                    if(currentIndex != this.sdSwipeNum - 1) {
+                                } else {   //非嵌接滑动
+                                    if(this.currentIndex != 0) {
+                                        this.currentIndex = currentIndex
+                                        setTimeout(()=> {
+                                            this.$emit('change', currentIndex)
+                                        })
                                         this.autoPlay()
                                     }
                                 }
+                            } else {
+                                sdSwipe_box.style.transition="-webkit-transform 150ms ease-out";
+                                sdSwipe_box.style.transform = `translate(0, ${-this.clientNum * (this.isLoop ? this.currentIndex + 1 : this.currentIndex)}px)`
+                            }
+                        } else if(endPageY - startPageY < -(this.distance)) {   //上滑
+                            if(touchDirection === 'top') {
+                                sdSwipe_box.style.transition="-webkit-transform 200ms ease-out";
+                                const currentIndex = this.currentIndex + 1
+                                if(this.isLoop) {   //是否嵌接滑动
+                                    this.currentIndex = currentIndex
+                                    if(currentIndex == (this.sdSwipeNum - 2)) {
+                                        setTimeout(()=> {
+                                            sdSwipe_box.style.transition="-webkit-transform 0ms ease-out";
+                                            this.currentIndex = 0
+                                            this.$emit('change', 0)
+                                        }, 200)
+                                    } else {
+                                        setTimeout(()=> {
+                                            this.$emit('change', currentIndex)
+                                        })
+                                    }
+                                    this.autoPlay()
+                                } else {   //非嵌接滑动
+                                    if(this.currentIndex != this.sdSwipeNum - 1) {
+                                        this.currentIndex = currentIndex
+                                        setTimeout(()=> {
+                                            this.$emit('change', currentIndex)
+                                        }, 200)
+                                        if(currentIndex != this.sdSwipeNum - 1) {
+                                            this.autoPlay()
+                                        }
+                                    }
+                                }
+                            } else {
+                                sdSwipe_box.style.transition="-webkit-transform 150ms ease-out";
+                                sdSwipe_box.style.transform = `translate(0, ${-this.clientNum * (this.isLoop ? this.currentIndex + 1 : this.currentIndex)}px)`
                             }
                         } else {
                             sdSwipe_box.style.transition="-webkit-transform 200ms ease-out";
@@ -335,6 +387,7 @@
                     }
 
                 }
+                this.autoPlay()
             },
             /**
              自动切换事件
@@ -356,6 +409,7 @@
                     sdSwipe_box.style.transition=`-webkit-transform ${this.duration}ms ease-out`;
                     const currentIndex = this.currentIndex + 1
                     this.currentIndex = currentIndex
+                    //是否嵌接滑动
                     if(this.isLoop) {
                         this.$emit('change', currentIndex == (this.sdSwipeNum - 2) ? 0 : currentIndex)
                         setTimeout(()=> {
@@ -365,7 +419,7 @@
                             }
                         }, this.duration)
                     } else {
-                        this.$emit('change', currentIndex == (this.sdSwipeNum - 2) ? 0 : currentIndex)
+                        this.$emit('change', currentIndex)
                         setTimeout(()=> {
                             if(this.currentIndex == (this.sdSwipeNum - 1)) {
                                 clearInterval(swipeTimer)

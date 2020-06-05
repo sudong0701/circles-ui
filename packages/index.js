@@ -10,6 +10,9 @@ import sdPicker from './picker/index.js'
 import sdDateTimePicker from './dateTimePicker/index.js'
 import {sdSwipe, sdSwipeItem} from './swipe/index.js'
 import sdPullRefresh from './pullRefresh/index.js'
+import sdSwipeCell from './swipeCell/index.js'
+import chartRadar from './chartRadar/index'
+import sdImagePreview from './imagePreview/index'
 
 const components = [
     sdHeader,
@@ -19,7 +22,9 @@ const components = [
     sdDateTimePicker,
     sdSwipe,
     sdSwipeItem,
-    sdPullRefresh
+    sdPullRefresh,
+    sdSwipeCell,
+    sdImagePreview
 ]
 
 const install = function(Vue) {
@@ -27,6 +32,11 @@ const install = function(Vue) {
     components.map((component) => {Vue.component(component.name, component)})
     Vue.prototype.$dialog = dialog
     Vue.prototype.$toast = toast
+    Vue.prototype.$chartRadar = chartRadar
+    Vue.prototype.$windowInfo = {
+        width: document.documentElement.clientWidth || window.innerWidth,
+        height: document.documentElement.clientHeight || window.innerHeight
+    }
 }
 if (typeof window !== 'undefined' && window.Vue) {
     install(window.Vue)
@@ -82,9 +92,9 @@ function icon() {
     const script = document.createElement('script')
     const css = document.createElement('link')
     const html = document.getElementsByTagName('html')[0]
-    script.src = '//at.alicdn.com/t/font_1665721_i9d5nsl2c29.js'
+    script.src = '//at.alicdn.com/t/font_1665721_gevecbebujb.js'
     script.type = 'text/javascript'
-    css.href = '//at.alicdn.com/t/font_1665721_i9d5nsl2c29.css'
+    css.href = '//at.alicdn.com/t/font_1665721_gevecbebujb.css'
     css.rel = 'stylesheet'
     html.appendChild(css)
     html.appendChild(script)
@@ -100,5 +110,7 @@ export default {
     sdDateTimePicker,
     sdSwipe,
     sdSwipeItem,
-    sdPullRefresh
+    sdPullRefresh,
+    sdSwipeCell,
+    sdImagePreview
 }

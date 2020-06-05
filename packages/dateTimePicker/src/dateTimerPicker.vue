@@ -158,20 +158,46 @@
                     dateValue = new Date(this.maxDate)
                 }
                 if(!dateValue) {
+                    if(minYear == maxYear) {
+                        monthObj.values = this.getValues(minMonth, maxMonth)
+                        if(minMonth == maxMonth) {
+                            dayObj.values = this.getValues(minDay,maxDay)
+                            if(minDay == maxDay) {
+                                hourObj.values = this.getValues(minHour, maxHour)
+                                if(minHour == maxHour) {
+                                    minuteObj.values = this.getValues(minMinute, maxMinute)
+                                    if(minMinute == maxMinute) {
+                                        secondObj.values = this.getValues(minSecond, maxSecond)
+                                    } else {
+                                        secondObj.values = this.getValues(minSecond, 59)
+                                    }
+                                } else {
+                                    minuteObj.values = this.getValues(minMinute, 59)
+                                    secondObj.values = this.getValues(minSecond, 59)
+                                }
+                            } else {
+                                hourObj.values = this.getValues(minHour, 23)
+                                minuteObj.values = this.getValues(minMinute, 59)
+                                secondObj.values = this.getValues(minSecond, 59)
+                            }
+                        } else {
+                            dayObj.values = this.getValues(minDay,this.getCountDays(minYear, minMonth))
+                            hourObj.values = this.getValues(minHour, 23)
+                            minuteObj.values = this.getValues(minMinute, 59)
+                            secondObj.values = this.getValues(minSecond, 59)
+                        }
+                    } else {
+                        monthObj.values = this.getValues(minMonth, 12)
+                        dayObj.values = this.getValues(minDay,this.getCountDays(minYear, minMonth))
+                        hourObj.values = this.getValues(minHour, 23)
+                        minuteObj.values = this.getValues(minMinute, 59)
+                        secondObj.values = this.getValues(minSecond, 59)
+                    }
                     monthObj.num = minMonth
-                    monthObj.values = this.getValues(minMonth, 12)
-
                     dayObj.num = minDay
-                    dayObj.values = this.getValues(minDay,this.getCountDays(minYear, minMonth))
-
                     hourObj.num = minHour
-                    hourObj.values = this.getValues(minHour, 23)
-
                     minuteObj.num = minMinute
-                    minuteObj.values = this.getValues(minMinute, 59)
-
                     secondObj.num = minSecond
-                    secondObj.values = this.getValues(minSecond, 59)
                 } else {
                     yearValue = new Date(dateValue).getFullYear()
                     monthValue = new Date(dateValue).getMonth() + 1

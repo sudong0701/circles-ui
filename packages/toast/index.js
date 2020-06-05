@@ -20,12 +20,16 @@ let toast  = (options = {})=> {
     })
     document.body.appendChild(instance.$mount().$el)
 }
-['success','error','warning','close','loading'].forEach((type)=>{
+['default','success','error','warning','close','loading'].forEach((type)=>{
     toast[type] = (options = {})=>{
         if(type !== 'close'){
-            console.log(type)
-            options.type = type
-            return toast(options)
+            return new Promise((resolve, reject)=> {
+                options.type = type
+                toast(Object.assign(options, {
+                    resolve: resolve,
+                    reject: reject
+                }))
+            })
         }else {
             instance.close()
         }

@@ -20,7 +20,12 @@ let dialog = (options = {}) => {
     dialog[type] = options => {
         if(type !== 'close'){
             options.type = type;
-            return dialog(options);
+            return new Promise((resolve, reject)=> {
+                dialog(Object.assign(options, {
+                    confirmBthFnc: resolve,
+                    cancelBthFnc: reject
+                }))
+            })
         } else {
             instance.close()
         }

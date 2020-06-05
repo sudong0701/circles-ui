@@ -7,7 +7,7 @@
                     <p class="sdDialog-content">
                         <span>{{content}}</span>
                     </p>
-                    <div :style="`color: ${confirmBthColor}; background-color: ${confirmBthBgColor}`" class="sdDialog-btn" @click="confirmBthFnc">{{confirmBtnText}}</div>
+                    <div :style="`color: ${confirmBthColor}; background-color: ${confirmBthBgColor}`" class="sdDialog-btn" @click="confirmBthFnc()">{{confirmBtnText}}</div>
                 </div>
             </transition>
         </div>
@@ -18,7 +18,7 @@
                     <p class="sdDialog-content">
                         <span>{{content}}</span>
                     </p>
-                    <div @click="cancelBthFnc" :style="`color: ${cancelBthColor} background-color: ${cancelBthBgColor}`" class="sdDialog-btn sdDialog-btn-left">{{cancelBtnText}}</div>
+                    <div @click="cancelBthFnc" :style="`color: ${cancelBthColor}; background-color: ${cancelBthBgColor}`" class="sdDialog-btn sdDialog-btn-left">{{cancelBtnText}}</div>
                     <div @click="confirmBthFnc" :style="`color: ${confirmBthColor}; background-color: ${confirmBthBgColor}`" class="sdDialog-btn sdDialog-btn-right">{{confirmBtnText}}</div>
                 </div>
             </transition>
@@ -45,12 +45,10 @@
                 type: '',   //弹出框类型
                 confirmBtnText: '确定',   //确认按钮文案，alert类型时为底部按钮的文案
                 confirmBthColor: '#FF2C7D',   //确认按钮文字颜色,默认#FF2C7D
-                confirmBthBgColor: '#fff',   //确认按钮的背景颜色
-                confirmBthFnc: this.close,   //确认按钮的回调
+                confirmBthBgColor: '',   //确认按钮的背景颜色
                 cancelBtnText: ' 取消',  //取消按钮文案
                 cancelBthColor: '#333',   //取消按钮文字颜色,默认#333
-                cancelBthBgColor: '#fff',   //取消按钮的背景颜色
-                cancelBthFnc: this.close,   //取消按钮的回调
+                cancelBthBgColor: '',   //取消按钮的背景颜色
             }
         },
         mounted() {

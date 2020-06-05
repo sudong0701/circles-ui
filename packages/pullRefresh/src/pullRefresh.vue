@@ -1,11 +1,12 @@
+<!--遗留问题：在android微信浏览器下，先上滑触发scroll事件，再上滑至scroll为0触发下拉操作会触发微信浏览器的默认touch事件，暂时未想到完美的解决方案-->
 <template>
-    <div class="sd-pullRefresh" ref="sdPullRefresh" @touchstart.stop="touchStart($event)" @touchmove.stop="touchMove($event)" @touchend.stop="touchEnd($event)">
+    <div class="sd-pullRefresh" ref="sdPullRefresh" @touchstart.stop="touchStart($event)" @touchmove.stop="touchMove($event)" @touchend.stop="touchEnd($event)" :style="`background: ${backgroundColor}`">
         <div class="sd-pullRefresh-track" ref="sd-pullRefresh-track" :style="`margin-top: -${headHeight}px;`">
             <div class="sd-pullRefresh-track-head" :style="`height: ${headHeight}px;`">
                 <p v-show="pullRefreshStatus === 'pull'">{{pullingText}}</p>
                 <p v-show="pullRefreshStatus === 'loos'">{{loosingText}}</p>
                 <div v-show="pullRefreshStatus === 'loading'" class="sd-pullRefresh-track-head-loading">
-                    <svg class="sd-pullRefresh-loading" aria-hidden="true">
+                    <svg class="sd-pullRefresh-loading aniRotate" aria-hidden="true">
                         <use xlink:href="#iconloading"></use>
                     </svg>
                     <p>{{loadingText}}</p>
@@ -27,6 +28,10 @@
              }
         },
         props: {
+            maxMoveDistance: {   //允许下拉的最大高度
+                type: Number,
+                default: 120
+            },
             isLoading: {   //是否处于加载状态
               type: Boolean,
               default: false
@@ -57,11 +62,15 @@
             },
             lower: {    //页面触底事件的阈值
                 type: Number,
-                default: 200
+                default: 50
             },
             isThrottling: {   //是否开启节流
                 type:Boolean,
                 default: false
+            },
+            backgroundColor: {
+                type: String,
+                default: '#fafafa'
             }
         },
         model: {
@@ -70,7 +79,6 @@
         },
         mounted() {
             const sdPullRefreshParent = this.$refs.sdPullRefresh.parentNode
-            sdPullRefreshParent.style[`overflow-y`] = auto
             sdPullRefreshParent.addEventListener('scroll', this.fncThr(this.scroll))
         },
         methods: {
@@ -104,6 +112,9 @@
                 let scrollHeight = sdPullRefreshParent.scrollHeight
                 let clientHeight = sdPullRefreshParent.clientHeight
                 let scrollTop = sdPullRefreshParent.scrollTop
+                if(scrollTop === 0) {
+
+                }
                 if(scrollTop + clientHeight + t.lower >= scrollHeight) {
                     //是否节流
                     if(t.isThrottling) {
@@ -115,6 +126,7 @@
                 } else {
                     fnc()
                 }
+                e[0].stopPropagation()
             },
             /**
              触摸移动开始事件
@@ -133,7 +145,13 @@
             touchMove(e) {
                 if(this.isPullRefresh) {
                     const sdPullRefresh = this.$refs.sdPullRefresh
+                    //只有在元素到达顶部时下拉才会有效果
                     if(sdPullRefresh.parentNode.scrollTop === 0) {
+                        //禁止上拉事件
+                        if(e.targetTouches[0].pageY - startPageY < 0) {
+                            return
+                        }
+                        e.preventDefault()
                         if(this.pullRefreshStatus === 'pull' || this.pullRefreshStatus === 'loos') {
                             if(e.targetTouches[0].pageY - startPageY > this.headHeight) {
                                 this.pullRefreshStatus = 'loos'
@@ -142,12 +160,12 @@
                             }
                             const sdPullRefreshTrack = this.$refs['sd-pullRefresh-track']
                             sdPullRefreshTrack.style.transition = "-webkit-transform 0 ease-out";
-                            sdPullRefreshTrack.style.webkitTransform = `translate(0, ${e.targetTouches[0].pageY - startPageY}px)`;
-                            e.stopPropagation()
-                            e.preventDefault()
+                            const moveDistance = (e.targetTouches[0].pageY - startPageY) > this.maxMoveDistance ? this.maxMoveDistance : e.targetTouches[0].pageY - startPageY
+                            sdPullRefreshTrack.style.webkitTransform = `translate(0, ${moveDistance}px)`;
                         }
                     }
                 }
+                e.stopPropagation()
             },
             /**
              触摸移动结束事件
@@ -164,7 +182,7 @@
                             sdPullRefreshTrack.style.webkitTransform = `translate(0, ${this.headHeight}px)`;
                             this.pullRefreshStatus = 'loading'
                             this.$emit('refresh', true)
-                            e.stopPropagation()
+                            //e.stopPropagation()
                         } else if(this.pullRefreshStatus === 'pull') {
                             sdPullRefreshTrack.style.transition = "-webkit-transform 200ms ease-out";
                             sdPullRefreshTrack.style.webkitTransform = `translate(0, 0px)`;
@@ -192,7 +210,11 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
     .sd-pullRefresh {
+        overflow: hidden;
         .sd-pullRefresh-track {
+            /*position: absolute;*/
+            /*top: 0; left: 0;*/
+            right: 0;
             .sd-pullRefresh-track-head{
                 display: flex;
                 flex-direction: row;

@@ -15,7 +15,9 @@
   "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-cssmin": "^0.1.7"
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-sass": "^4.1.0"
   },
   "dependencies": {
     "gulp-concat": "^2.6.1",

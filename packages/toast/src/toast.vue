@@ -57,5 +57,26 @@
                 },this.duration)
             }
         },
+        methods: {
+            /**
+             * 关闭toast
+             * @param
+             * @return
+             */
+            close() {
+                this.isShow = false
+                setTimeout(()=>{
+                    this.$destroy(true);
+                    this.$el.parentNode.removeChild(this.$el);
+                },300)
+            }
+        },
+        watch: {
+            isShow(val) {
+                if(!val) {
+                    this.resolve()
+                }
+            }
+        }
     }
 </script>
