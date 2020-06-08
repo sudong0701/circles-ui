@@ -2,10 +2,10 @@
     <transition name="animation-fade-imagePreview">
         <div class="sdImagePreview_list" v-if="isShow" @click="closeImagePreview">
             <div class="sdImagePreview_list_index">{{currIndex + 1}} / {{images.length}}</div>
-            <sd-swipe ref="sdSwipe" :isAuto="false" @change="swipeChange" :swipeIndex="currIndex" :duration="duration" :isDisabled="isDblClick">
+            <sd-swipe ref="sdSwipe" :isAuto="false" @change="swipeChange" :swipeIndex="currIndex" :duration="duration" :isZoom="isDblClick">
                 <sd-swipe-item v-for="(item, index) in images" :key="index">
-                    <div class="sdImagePreview_item" @touchstart.stop="touchStart($event, index)" @touchmove.stop="touchMove($event, index)" @touchend.stop="touchEnd($event, index)" :style="`transform: scale(${(isDblClick && currIndex === index) ? 1.66 : 1})`">
-                        <img :ref="`${index === currIndex ? 'sdImagePreview_item' : ''}`" @click="imagePreviewZoom(index)" :src="item" alt="">
+                    <div class="sdImagePreview_item" :style="`transform: scale(${(isDblClick && currIndex === index) ? 8 : 1})`">
+                        <img @click="imagePreviewZoom(index)" :src="item" alt="">
                     </div>
                 </sd-swipe-item>
             </sd-swipe>
@@ -21,9 +21,7 @@
         data() {
             return {
                 currIndex: 0,
-                isDblClick: false,
-                maxWidth: 0,
-                maxHeight: 0
+                isDblClick: false
             }
         },
         mounted() {
@@ -31,8 +29,6 @@
                 this.currIndex = this.startPosition
                 this.$refs.sdSwipe.setCurrentIndex(this.startPosition)
             }
-           this.maxWidth = this.$windowInfo.width * 0.2
-           this.maxHeight =  this.$windowInfo.height * 0.2
         },
         props: {
             isShow: {   //是否展示
@@ -106,60 +102,11 @@
              */
             imagePreviewZoom(e) {
                 this.isDblClick = !this.isDblClick
-                if(!this.isDblClick) {
-                    const sdImagePreview = this.$refs[`sdImagePreview_item`][0]
-                    sdImagePreview.style.transform=`translate(0, 0)`
-                }
+//                if(!this.isDblClick) {
+//                    const sdImagePreview = this.$refs[`sdImagePreview_item`][0]
+//                    sdImagePreview.style.transform=`translate(0, 0)`
+//                }
             },
-            /**
-             触摸移动事件
-             @param {dom} e 触摸开始事件参数
-             @return
-             */
-            touchStart(e) {
-                //记录初始位置的下表
-                if(this.isDblClick) {
-                    startPageObj = {
-                        x: e.targetTouches[0].pageX,
-                        y: e.targetTouches[0].pageY
-                    }
-                }
-            },
-            /**
-             触摸移动事件
-             @param {dom} e 触摸移动事件参数
-             @param {number} index 下标
-             @return
-             */
-            touchMove(e, index) {
-                if(this.isDblClick) {
-                    let currPageX = e.targetTouches[0].pageX - startPageObj.x, currPageY = e.targetTouches[0].pageY - startPageObj.y
-                    if(e.targetTouches[0].pageX - startPageObj.x >= this.maxWidth) {
-                        currPageX = this.maxWidth
-                    }
-                    if(e.targetTouches[0].pageX - startPageObj.x <= -this.maxWidth) {
-                        currPageX = -this.maxWidth
-                    }
-                    if(e.targetTouches[0].pageY - startPageObj.y >= this.maxHeight) {
-                        currPageY = this.maxHeight
-                    }
-                    if(e.targetTouches[0].pageY - startPageObj.y <= -this.maxHeight) {
-                        currPageY = -this.maxHeight
-                    }
-                    const sdImagePreview = this.$refs[`sdImagePreview_item`][0]
-                    sdImagePreview.style.transform=`translate(${currPageX}px, ${currPageY}px)`
-                    e.stopPropagation()
-                    e.preventDefault()
-                }
-            },
-            /**
-             触摸事件结束事件
-             @param {dom} e 触摸结束事件参数
-             @return
-             */
-            touchEnd(e) {
-
-            }
         },
         watch: {
             isShow(value) {
@@ -182,6 +129,8 @@
         position: absolute;
         height: 100%;
         width: 100%;
+        top: 0; right: 0;
+        left:0; bottom: 0;
         .sdImagePreview_list_index {
             position: absolute;
             left: 0; right: 0;
@@ -203,7 +152,7 @@
             transform-style: all;
             img {
                 display: block;
-                width: 100%
+                width: 100%;
             }
         }
         .sdImagePreview_close {
