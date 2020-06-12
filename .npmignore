@@ -1,0 +1,25 @@
+.DS_Store
+node_modules/
+/dist/
+/src/
+/static/
+/test/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/test/unit/coverage/
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+/src/components/HelloWorld.vue
+/packages/theme-default/src/
+/packages/theme-default/gulpfile.js
+/packages/theme-default/package.json
+/packages/theme-default/readme.md
+/.gitignore
+/index.html

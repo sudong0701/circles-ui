@@ -12,7 +12,7 @@ import {sdSwipe, sdSwipeItem} from './swipe/index.js'
 import sdPullRefresh from './pullRefresh/index.js'
 import sdSwipeCell from './swipeCell/index.js'
 import chartRadar from './chartRadar/index'
-import sdImagePreview from './imagePreview/index'
+import {sdImagePreview, imagePreview} from './imagePreview/index'
 
 const components = [
     sdHeader,
@@ -33,6 +33,7 @@ const install = function(Vue) {
     Vue.prototype.$dialog = dialog
     Vue.prototype.$toast = toast
     Vue.prototype.$chartRadar = chartRadar
+    Vue.prototype.$imagePreview = imagePreview
     Vue.prototype.$windowInfo = {
         width: document.documentElement.clientWidth || window.innerWidth,
         height: document.documentElement.clientHeight || window.innerHeight

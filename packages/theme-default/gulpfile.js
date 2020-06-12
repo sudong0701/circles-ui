@@ -10,7 +10,11 @@ const rename = require('gulp-rename')
 const concat = require('gulp-concat')
 //将多个文件合并成一个文件
 var cssmin = require('gulp-cssmin');
-// css代码压缩
+// es6转es5
+var babel = require('gulp-babel');
+
+const uglify=require("gulp-uglify");
+
 
 gulp.task('default', function() {
     return gulp.src('./src/*')
@@ -23,3 +27,12 @@ gulp.task('default', function() {
         }))
         .pipe(gulp.dest('./lib'))
 })
+
+gulp.task('js',function(){
+    return  gulp.src('./script/*.js')
+        .pipe(babel({
+            presets: ['es2015', 'es2016', 'es2017'],
+            plugins: [["transform-runtime", { "polyfill": false,"regenerator": true}]]
+        }))
+        .pipe(gulp.dest('dist'));
+});

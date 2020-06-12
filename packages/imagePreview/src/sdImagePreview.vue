@@ -5,7 +5,7 @@
             <sd-swipe ref="sdSwipe" :isAuto="false" @change="swipeChange" :swipeIndex="currIndex" :duration="duration" :showIndicators="showIndicators">
                 <sd-swipe-item v-for="(item, index) in images" :key="index">
                     <div :ref="`${currIndex === index ? 'sdImagePreview_item' : ''}`" class="sdImagePreview_item" :style="`transform: scale3d(${(currIndex === index) ? `${zoom},${zoom},1`  : 1})`" @touchstart="touchStart($event)"
-                         @touchmove="touchMove($event)" @touchend="touchEnd($event)" @click.stop="imagePreviewZoom(index)">
+                         @touchmove="touchMove($event)" @touchend="touchEnd($event)" @click="imagePreviewZoom(index)">
                         <img :src="item" alt="">
                     </div>
                 </sd-swipe-item>
@@ -19,31 +19,65 @@
 <script>
     let startPageObj = {}, endChangeX = 0, endChangeY = 0, moveChangeX = 0, moveChangeY = 0, distance = 0, preZoom = 0, currDate = 0
     export default {
-        name: 'imagePreview',
+        name: 'sdImagePreview',
         data() {
             return {
                 currIndex: 0,
                 zoom: 1,
                 maxPageX: 0,
                 maxPageY: 0,
-                isDbTouch: false,
-                isShow: false,
-                images: [],
-                loop: true,
-                startPosition: 0,
-                showIndex: true,
-                showIndicators: true,
-                isClickClose: true,
-                isShowClose: true,
-                duration: 100
+                isDbTouch: false
             }
         },
         mounted() {
-            this.isShow = true
-            this.$nextTick(()=> {
+            if(this.isShow) {
                 this.currIndex = this.startPosition
                 this.$refs.sdSwipe.setCurrentIndex(this.startPosition)
-            })
+            }
+        },
+        props: {
+            isShow: {   //是否展示
+                type: Boolean,
+                default: false
+            },
+            images: {   //图片的数组
+                type: Array,
+                default: ()=> {
+                    return []
+                }
+            },
+            loop: {   //是否循环播放
+                type: Boolean,
+                default: true
+            },
+            startPosition: {   //开始下标
+                type: Number,
+                default: 0
+            },
+            showIndex: {   //是否显示页码
+                type: Boolean,
+                default: false
+            },
+            showIndicators: {   //是否显示轮播指示器
+                type: Boolean,
+                default: true
+            },
+            isClickClose: {   //是否点击任意区域关闭
+                type: Boolean,
+                default: false
+            },
+            isShowClose: {   //是否显示关闭按钮
+                type: Boolean,
+                default: true
+            },
+            duration: {   //动画时长
+                type: Number,
+                default: 100
+            }
+        },
+        model: {
+            prop: 'isShow',
+            event: 'change'
         },
         methods: {
             /**
@@ -62,7 +96,7 @@
             closeImagePreview(type) {
                 if(this.isClickClose || type === 'close') {
                     setTimeout(()=> {
-                        this.isShow = false
+                        this.$emit('change', false)
                     }, 280)
                 }
             },
@@ -84,8 +118,6 @@
                     } else {
                         this.zoom = 2
                     }
-                } else {
-
                 }
                 currDate = new Date().getTime()
             },
