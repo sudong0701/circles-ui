@@ -13,6 +13,7 @@ import sdPullRefresh from './pullRefresh/index.js'
 import sdSwipeCell from './swipeCell/index.js'
 import chartRadar from './chartRadar/index'
 import {sdImagePreview, imagePreview} from './imagePreview/index'
+import sdNumberKeyboard from  './numberKeyboard/index'
 
 const components = [
     sdHeader,
@@ -24,7 +25,8 @@ const components = [
     sdSwipeItem,
     sdPullRefresh,
     sdSwipeCell,
-    sdImagePreview
+    sdImagePreview,
+    sdNumberKeyboard
 ]
 
 const install = function(Vue) {
@@ -93,9 +95,9 @@ function icon() {
     const script = document.createElement('script')
     const css = document.createElement('link')
     const html = document.getElementsByTagName('html')[0]
-    script.src = '//at.alicdn.com/t/font_1665721_gevecbebujb.js'
+    script.src = '//at.alicdn.com/t/font_1665721_3mh2z9gabnh.js'
     script.type = 'text/javascript'
-    css.href = '//at.alicdn.com/t/font_1665721_gevecbebujb.css'
+    css.href = '//at.alicdn.com/t/font_1665721_3mh2z9gabnh.css'
     css.rel = 'stylesheet'
     html.appendChild(css)
     html.appendChild(script)
@@ -113,5 +115,6 @@ export default {
     sdSwipeItem,
     sdPullRefresh,
     sdSwipeCell,
-    sdImagePreview
+    sdImagePreview,
+    sdNumberKeyboard
 }
