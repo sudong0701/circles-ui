@@ -14,6 +14,7 @@ import sdSwipeCell from './swipeCell/index.js'
 import chartRadar from './chartRadar/index'
 import {sdImagePreview, imagePreview} from './imagePreview/index'
 import sdNumberKeyboard from  './numberKeyboard/index'
+import sdPasswordInput from './passwordInput'
 
 const components = [
     sdHeader,
@@ -26,7 +27,8 @@ const components = [
     sdPullRefresh,
     sdSwipeCell,
     sdImagePreview,
-    sdNumberKeyboard
+    sdNumberKeyboard,
+    sdPasswordInput
 ]
 
 const install = function(Vue) {
@@ -41,6 +43,7 @@ const install = function(Vue) {
         height: document.documentElement.clientHeight || window.innerHeight
     }
 }
+
 if (typeof window !== 'undefined' && window.Vue) {
     install(window.Vue)
 }
@@ -101,6 +104,18 @@ function icon() {
     css.rel = 'stylesheet'
     html.appendChild(css)
     html.appendChild(script)
+    Array.prototype.shuffle = function() {
+        var array = this;
+        var m = array.length,
+            t, i;
+        while (m) {
+            i = Math.floor(Math.random() * m--);
+            t = array[m];
+            array[m] = array[i];
+            array[i] = t;
+        }
+        return array;
+    }
 }
 icon()
 
@@ -116,5 +131,6 @@ export default {
     sdPullRefresh,
     sdSwipeCell,
     sdImagePreview,
-    sdNumberKeyboard
+    sdNumberKeyboard,
+    sdPasswordInput
 }

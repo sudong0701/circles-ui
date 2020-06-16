@@ -1,14 +1,14 @@
 <template>
     <transition name="ani-popup-bottom">
         <div class="sd-numberKeyboard" v-if="show" :style="`animation-duration: ${(duration) / 1000}s; border-radius: ${isRound ? '0.4rem 0.4rem 0 0' : ''}`" @animationend="animationend">
-            <div class="sd-numberKeyboard-header" v-if="title" @click.stop>
+            <div class="sd-numberKeyboard-header" v-if="title" @click.stop :style="`border-radius: ${isRound ? '0.4rem 0.4rem 0 0' : ''}`">
                 <div class="sd-numberKeyboard-title">{{title}}</div>
                 <div v-if="closeButtonText" class="sd-numberKeyboard-close" @click.stop="blur">{{closeButtonText}}</div>
             </div>
             <div class="sd-numberKeyboard-list">
                 <div class="sd-numberKeyboard-default">
-                    <div :class="`sd-numberKeyboard-item ${((extraKey === '.' && key === 9) || isKeyArray && extraKey.length === 1 && key === 9) ? 'sd-numberKeyboard-item-wider' : ''}`" v-for="(item, key) in keyboardData">
-                        <div @click.stop="selectItem(item.value)" class="sd-numberKeyboardContent">
+                    <div :class="`sd-numberKeyboard-item ${((extraKey === '.' && key === 9) || isKeyArray && extraKey.length === 1 && key === 9) ? 'sd-numberKeyboard-item-wider' : ''}`" v-for="(item, key) in keyboardData" :key="key">
+                        <div @click.stop="selectItem(item)" class="sd-numberKeyboardContent">
                             <span v-if="item.isShow">{{item.value}}</span>
                             <i @click.stop="blur" v-if="item.value === 'collapse'" class="iconfont iconnumberKeyboard_collapse"></i>
                             <i v-if="item.value === 'delete'" class="iconfont iconnumberKeyboard_delete" @click.stop="deleteNumber"></i>
@@ -32,7 +32,8 @@
         data() {
             return {
                 keyboardData: [],
-                isKeyArray: false
+                isKeyArray: false,
+                maxlengthComponent: 0
             }
         },
         props: {
@@ -40,7 +41,10 @@
               type: Boolean,
               default: false
             },
-            extraKey: '',
+            extraKey: {
+                type: String | Array ,
+                default: ''
+            },
             duration: {
                 type: Number,
                 default: 300
@@ -50,10 +54,13 @@
                 default: '完成'
             },
             maxlength: {
-                type: Number,
+                type: Number | String,
                 default: 0
             },
-            value: '',
+            value: {
+                type: String,
+                default: ''
+            },
             hideOnclickOutside: {   //点击外部时是否收起键盘
                 type: Boolean,
                 default: true
@@ -65,6 +72,10 @@
             isRound: {   //是否展示圆角
                 type: Boolean,
                 default: true
+            },
+            isShuffle: {   //是否打乱数组
+                type: Boolean,
+                default: false
             }
         },
         model: {
@@ -72,17 +83,58 @@
             event: 'change'
         },
         mounted() {
+            this.maxlengthComponent = parseInt(this.maxlength)
+            let defaultKeyboardData = this.isShuffle ? [1,2,3,4,5,6,7,8,9,0].shuffle() : [1,2,3,4,5,6,7,8,9,0], keyboardData = []
             if(this.extraKey === '') {   //普通键盘
-                this.keyboardData = [{isShow: true, value: 1}, {isShow: true, value: 2}, {isShow: true, value: 3}, {isShow: true, value: 4}, {isShow: true, value: 5}, {isShow: true, value: 6}, {isShow: true, value: 7}, {isShow: true, value: 8}, {isShow: true, value: 9}, {isShow: false, value: 'collapse'}, {isShow: true, value: 0}, {isShow: false, value: 'delete'}]
+                defaultKeyboardData.map((item, key)=> {
+                    keyboardData.push({
+                        isShow: true,
+                        value: item
+                    })
+                    if(key === 8) {
+                        keyboardData.push({isShow: false, value: 'collapse'})
+                    } else if(key === 9) {
+                        keyboardData.push({isShow: false, value: 'delete'})
+                    }
+                })
+                this.keyboardData = keyboardData
             } else if(this.extraKey === '.') {   //带有右侧栏的键盘
-                this.keyboardData = [{isShow: true, value: 1}, {isShow: true, value: 2}, {isShow: true, value: 3}, {isShow: true, value: 4}, {isShow: true, value: 5}, {isShow: true, value: 6}, {isShow: true, value: 7}, {isShow: true, value: 8}, {isShow: true, value: 9}, {isShow: true, value: 0}, {isShow: true, value: '.'}]
+                defaultKeyboardData.map((item, key)=> {
+                    keyboardData.push({
+                        isShow: true,
+                        value: item
+                    })
+                    if(key === 9) {
+                        keyboardData.push({isShow: true, value: '.'})
+                    }
+                })
+                this.keyboardData = keyboardData
             } else if(this.extraKey === 'X') {   //配置带有身份证号的键盘
-                this.keyboardData = [{isShow: true, value: 1}, {isShow: true, value: 2}, {isShow: true, value: 3}, {isShow: true, value: 4}, {isShow: true, value: 5}, {isShow: true, value: 6}, {isShow: true, value: 7}, {isShow: true, value: 8}, {isShow: true, value: 9}, {isShow: true, value: 'X'}, {isShow: true, value: 0}, {isShow: false, value: 'delete'}]
+                defaultKeyboardData.map((item, key)=> {
+                    keyboardData.push({
+                        isShow: true,
+                        value: item
+                    })
+                    if(key === 8) {
+                        keyboardData.push({isShow: true, value: 'X'})
+                    } else if(key === 9) {
+                        keyboardData.push({isShow: false, value: 'delete'})
+                    }
+                })
+                this.keyboardData = keyboardData
             } else if(this.extraKey instanceof Array) {
-                this.keyboardData = [{isShow: true, value: 1}, {isShow: true, value: 2}, {isShow: true, value: 3}, {isShow: true, value: 4}, {isShow: true, value: 5}, {isShow: true, value: 6}, {isShow: true, value: 7}, {isShow: true, value: 8}, {isShow: true, value: 9}, {isShow: true, value: this.extraKey[0]}, {isShow: true, value: 0}]
-                if(this.extraKey.length === 2) {
-                    this.keyboardData.push({isShow: true, value: this.extraKey[1]})
-                }
+                defaultKeyboardData.map((item, key)=> {
+                    keyboardData.push({
+                        isShow: true,
+                        value: item
+                    })
+                    if(key === 8) {
+                        keyboardData.push({isShow: true, value: this.extraKey[0]})
+                    } else if(key === 9 && this.extraKey.length === 2) {
+                        keyboardData.push({isShow: true, value: this.extraKey[1]})
+                    }
+                })
+                this.keyboardData = keyboardData
             }
             this.isKeyArray = this.extraKey instanceof Array
         },
@@ -93,9 +145,11 @@
              @return
              */
             selectItem(item) {
-                if(!this.maxlength || this.value < this.maxlength) {
-                    this.$emit('change', `${this.value}${item}`)     //内容改变时触发
-                    this.$emit('input', item)    //点击输入内容时触发
+                if(item.isShow) {
+                    if(!this.maxlengthComponent || this.value.length < this.maxlengthComponent) {
+                        this.$emit('change', `${this.value}${item.value}`)     //内容改变时触发
+                        this.$emit('input', item.value)    //点击输入内容时触发
+                    }
                 }
             },
             /**
@@ -104,7 +158,7 @@
              @return
              */
             blur() {
-                this.$emit('blur')    //隐藏密码时触发
+                this.$emit('blur')    //点击隐藏密码时触发
             },
             /**
              点击删除按钮触发的事件
@@ -112,8 +166,10 @@
              @return
              */
             deleteNumber() {
-                this.$emit('change', `${this.value.substring(0, this.value.length -1)}`)   //内容改变时触发
-                this.$emit('delete', this.value)   //删除输入内容时出发
+                if(this.value !== '') {
+                    this.$emit('change', `${this.value.substring(0, this.value.length -1)}`)   //内容改变时触发
+                    this.$emit('delete', this.value)   //删除输入内容时出发
+                }
             },
             /**
              点击删除按钮触发的事件
@@ -142,14 +198,14 @@
                         let vm = this
                         if(this.hideOnclickOutside) {
                             document.getElementsByTagName('html')[0].style.height = '100%'
-                            document.getElementsByTagName('html')[0].addEventListener('click', vm.blur)
+                            document.getElementsByTagName('html')[0].addEventListener('click', vm.blur, false)
                         }
                     }, this.duration)
                 } else {
                     let vm = this
                     if(this.hideOnclickOutside) {
                         document.getElementsByTagName('html')[0].style.height = '100%'
-                        document.getElementsByTagName('html')[0].removeEventListener('click', vm.blur)
+                        document.getElementsByTagName('html')[0].removeEventListener('click', vm.blur, false)
                     }
                 }
             }
@@ -182,6 +238,9 @@
                 padding: 0 0.32rem;
                 color: #576b95;
                 font-size: 0.28rem;
+            }
+            .sd-numberKeyboard-close:active {
+                color: rgba(87, 107, 149, 0.5)
             }
         }
         .sd-numberKeyboard-list {
