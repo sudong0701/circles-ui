@@ -15,6 +15,7 @@ import chartRadar from './chartRadar/index'
 import {sdImagePreview, imagePreview} from './imagePreview/index'
 import sdNumberKeyboard from  './numberKeyboard/index'
 import sdPasswordInput from './passwordInput'
+import {sdCollapse, sdCollapseItem} from './collapse/index'
 
 const components = [
     sdHeader,
@@ -28,7 +29,9 @@ const components = [
     sdSwipeCell,
     sdImagePreview,
     sdNumberKeyboard,
-    sdPasswordInput
+    sdPasswordInput,
+    sdCollapse,
+    sdCollapseItem
 ]
 
 const install = function(Vue) {
@@ -132,5 +135,7 @@ export default {
     sdSwipeCell,
     sdImagePreview,
     sdNumberKeyboard,
-    sdPasswordInput
+    sdPasswordInput,
+    sdCollapse,
+    sdCollapseItem
 }
