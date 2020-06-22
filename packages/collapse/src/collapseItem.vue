@@ -1,5 +1,5 @@
 <template>
-    <div class="sdCollapseItem" ref="collapseItem" :style="`height: ${isUnfoldCopy ? 'auto' : `${cellHeight}px`}`" @webkitTransitionEnd="animationEnd" @transitionend="animationEnd">
+    <div class="sdCollapseItem" ref="collapseItem" :style="`height: ${isUnfold ? `${contentHeight + cellHeight}px` : `${cellHeight}px`}`" @webkitTransitionEnd="animationEnd($event)" @transitionend="animationEnd($event)">
         <div class="sdCollapseItem-cell"  @click="clickCollapseItem" ref="collapseItemCell">
             <div class="sdCollapseItem-left" v-if="icon">
                 <img v-if="icon.indexOf('http') > -1 || icon.indexOf('https') > -1" :src="icon" alt="">
@@ -19,12 +19,13 @@
             </div>
 
             <div class="sdCollapseItem-right" v-if="isLink">
-                <i class="iconfont iconfanhui" :style="`transform: rotate(${isUnfoldCopy ? 270 : 90}deg)`"></i>
+                <i class="iconfont iconfanhui" :style="`transform: rotate(${isUnfold ? 90 : 270}deg)`"></i>
             </div>
 
             <div class="sdCollapseItem-line"></div>
         </div>
-        <div class="sdCollapseItem-content" ref="collapseItemContent" :style="`height: ${contentHeight ? (isUnfoldCopy ? `calc(${contentHeight}px + 0.4rem)` : `0px`) : 'auto'}; padding: ${isUnfoldCopy ? '0.2rem 0.32rem' : '0 0.32rem'}`">
+        <div class="sdCollapseItem-content" ref="collapseItemContent" >
+            <div class="sdCollapseItem-line"></div>
             <slot></slot>
         </div>
     </div>
@@ -62,13 +63,16 @@
             icon: {
                 type: String,
                 default: ''
+            },
+            name: {
+                type: String,
+                default: ''
             }
         },
         mounted() {
             this.cellHeight = this.$refs.collapseItemCell.clientHeight
-            console.log(this.cellHeight)
             this.contentHeight = this.$refs.collapseItemContent.clientHeight
-            console.log(this.contentHeight)
+            this.$refs.collapseItem.style.transitionDuration = '0.3s'
         },
         methods: {
             /**
@@ -77,27 +81,23 @@
              @return
              */
             clickCollapseItem() {
-//                if(this.isUnfoldCopy) {
-//                    this.isUnfoldCopy = false
-//                } else {
-//
-//                }
-                this.isUnfoldCopy = !this.isUnfoldCopy
-//                if(this.isUnfold) {   //
-//                    this.isUnfoldCopy = !this.isUnfoldCopy
-//                }
-                //this.isUnfold = !this.isUnfold
-                this.$nextTick(()=> {
-                    this.$refs.collapseItem.style.transitionDuration = '0.3s'
-                })
+                this.isUnfold = !this.isUnfold
+                this.$emit('change', this.isUnfold)   //面板显隐改变时触发
+                this.$refs.collapseItem.parentNode.__vue__.changeActive(this.name, this.isUnfold)
             },
             /**
              动画结束时触发
              @param
              @return
              */
-            animationEnd() {
-                console.log(1111)
+            animationEnd(e) {
+                if(this.isUnfold) {
+                    this.$emit('showed')   //面板完全显示时触发
+                } else {
+                    this.$emit('hided')   //面板完全隐藏时触发
+                }
+                e.preventDefault()
+                e.stopPropagation()
             }
         }
     }
@@ -160,19 +160,12 @@
                     color: #999;
                 }
             }
-            .sdCollapseItem-line {
-                position: absolute;
-                height: 0.02rem;
-                left: 0.32rem;
-                right: 0;
-                bottom: 0;
-                background-color: #f3f3f3;
-            }
         }
         .sdCollapseItem-content {
+            position: relative;
             box-sizing: border-box;
             transition-property: all;
-            transition-duration: 0.3s;
+            transition-duration: .3s;
             padding: 0.2rem 0.32rem;
             font-size: 0.28rem;
             -webkit-transform-origin: top;
@@ -181,8 +174,13 @@
             background-color: #fff;
             color: #999;
         }
-        .sdCollapseItem-content-hide {
-            padding: 0;
+        .sdCollapseItem-line {
+            position: absolute;
+            height: 0.02rem;
+            left: 0.32rem;
+            right: 0;
+            bottom: 0;
+            background-color: #f3f3f3;
         }
     }
 </style>
