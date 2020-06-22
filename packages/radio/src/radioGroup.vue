@@ -64,6 +64,6 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
     .sdRadioGroup {
-        padding: 0 0.32rem;
+        padding: 0 0 0 0.32rem;
     }
 </style>

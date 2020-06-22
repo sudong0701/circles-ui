@@ -107,9 +107,9 @@ function icon() {
     const script = document.createElement('script')
     const css = document.createElement('link')
     const html = document.getElementsByTagName('html')[0]
-    script.src = '//at.alicdn.com/t/font_1665721_k2fk42jzso.js'
+    script.src = '//at.alicdn.com/t/font_1665721_4iqwtwlqa6f.js'
     script.type = 'text/javascript'
-    css.href = '//at.alicdn.com/t/font_1665721_k2fk42jzso.css'
+    css.href = '//at.alicdn.com/t/font_1665721_4iqwtwlqa6f.css'
     css.rel = 'stylesheet'
     html.appendChild(css)
     html.appendChild(script)
