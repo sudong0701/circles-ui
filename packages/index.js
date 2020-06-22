@@ -2,6 +2,7 @@
  * @author sudong.duan
  * Date: 20/2/28
  */
+import Vue from 'vue'
 import sdHeader from './header/index.js';
 import {sdDialog, dialog} from './dialog/index.js';
 import toast from './toast/index.js'
@@ -16,6 +17,7 @@ import {sdImagePreview, imagePreview} from './imagePreview/index'
 import sdNumberKeyboard from  './numberKeyboard/index'
 import sdPasswordInput from './passwordInput'
 import {sdCollapse, sdCollapseItem} from './collapse/index'
+import sdSwitch from './switch/index'
 
 const components = [
     sdHeader,
@@ -31,7 +33,8 @@ const components = [
     sdNumberKeyboard,
     sdPasswordInput,
     sdCollapse,
-    sdCollapseItem
+    sdCollapseItem,
+    sdSwitch
 ]
 
 const install = function(Vue) {
@@ -122,6 +125,51 @@ function icon() {
 }
 icon()
 
+Vue.directive('lazy', {    //图片懒加载
+    inserted: function (el, binding, vnode ) {
+        if(typeof IntersectionObserver !== 'undefined') {   //支持IntersectionObserver
+            var observer  = new IntersectionObserver(
+                function (entries) {
+                    entries.map((item)=> {
+                        if(item.isIntersecting) {
+                            if(vnode.tag === 'img') {   //图片懒加载
+                                el.src = binding.value
+                            }
+                            observer.unobserve(el)
+                        } else {
+                            if(vnode.tag === 'img') {   //图片懒加载
+                                el.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+                            }
+                        }
+                    })
+                }
+            )
+            observer.observe(el)
+        }
+    }
+})
+
+Vue.directive('lazyBGImg', {    //背景图片懒加载
+    inserted: function (el, binding, vnode ) {
+        if(typeof IntersectionObserver !== 'undefined') {   //支持IntersectionObserver
+            var observer  = new IntersectionObserver(
+                function (entries) {
+                    entries.map((item)=> {
+                        if(item.isIntersecting) {
+                            el.style.backgroundImage = `url(${binding.value})`
+                            observer.unobserve(el)
+                        } else {
+                            el.style.backgroundImage = 'url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)'
+                        }
+                    })
+                }
+            )
+            observer.observe(el)
+        }
+    }
+})
+
+
 export default {
     install,
     sdHeader,
@@ -137,5 +185,6 @@ export default {
     sdNumberKeyboard,
     sdPasswordInput,
     sdCollapse,
-    sdCollapseItem
+    sdCollapseItem,
+    sdSwitch
 }
