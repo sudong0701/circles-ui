@@ -1,6 +1,6 @@
 <template>
-    <div :class="`sdRadio ${type === 'cell' ? 'sdRadio-cell' : ''}`" ref="sdRadio" @click="changeRadio">
-        <span :class="`sdRadio-iconBox`">
+    <div :class="`sdRadio ${type === 'cell' ? 'sdRadio-cell' : ''}`" ref="sdRadio">
+        <span :class="`sdRadio-iconBox`" @click="changeRadio('icon')">
             <slot name="unActiveIcon">
                 <i v-if="shape === 'round'" :class="`iconfont icon_unSelect_round sdRadio-icon ${disabled || disabledForGroup ? 'sdRadio-icon-disabled' : ''}`" :style="`color: ${isActive ? '#fff' : ''}`"></i>
                 <i v-if="shape === 'square'" :class="`iconfont icon_unSelect_square sdRadio-icon ${disabled || disabledForGroup ? 'sdRadio-icon-disabled' : ''}`" :style="`color: ${isActive ? '#fff' : ''}`"></i>
@@ -14,7 +14,7 @@
                 </div>
             </transition>
         </span>
-        <span :class="`sdRadio-content ${disabled || disabledForGroup ? 'sdRadio-content-disabled' : ''} ${type === 'cell' ? 'sdRadio-iconBox-cell' : ''}`">
+        <span :class="`sdRadio-content ${disabled || disabledForGroup ? 'sdRadio-content-disabled' : ''} ${type === 'cell' ? 'sdRadio-content-cell' : ''}`" @click="changeRadio">
             <slot></slot>
         </span>
         <i class="sdRadio-line" v-if="type === 'cell'"></i>
@@ -47,6 +47,10 @@
             shape: {   //形状
                 type: String,
                 default: 'round'
+            },
+            labelDisabled: {   //是否禁用文本的点击
+                type: Boolean,
+                default: false
             }
         },
         mounted() {
@@ -55,13 +59,20 @@
             }
         },
         methods: {
-            changeRadio() {
-                if(!this.disabledForGroup && !this.disabled) {
-                    this.isActive = !this.isActive
-                    if(this.$refs.sdRadio.parentNode.__vue__.changeRadio) {
-                        this.$refs.sdRadio.parentNode.__vue__.changeRadio(this.name, this.isActive)
+            /**
+             * 点击radio时触发
+             * @param {string} type 点击类型
+             * @return
+             */
+            changeRadio(type) {
+                if(type === 'icon' || !this.labelDisabled) {
+                    if(!this.disabledForGroup && !this.disabled) {
+                        this.isActive = !this.isActive
+                        if(this.$refs.sdRadio.parentNode.__vue__.changeRadio) {
+                            this.$refs.sdRadio.parentNode.__vue__.changeRadio(this.name, this.isActive)
+                        }
+                        this.$emit('change', this.isActive)
                     }
-                    this.$emit('change', this.isActive)
                 }
             }
         }
@@ -94,6 +105,7 @@
             animation-duration: .3s;
         }
         .sdRadio-content {
+            flex: 1;
             margin-left: 0.16rem;
             font-size: 0.3rem;
             color: #323233;
@@ -114,7 +126,7 @@
         padding: 0.2rem 0.32rem 0.2rem 0;
         margin-bottom: 0;
         justify-content: space-between;
-        .sdRadio-iconBox-cell {
+        .sdRadio-content-cell {
             order: -3;
         }
     }
