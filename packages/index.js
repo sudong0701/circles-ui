@@ -21,6 +21,7 @@ import sdSwitch from './switch/index'   //开关组件
 import {sdRadio, sdRadioGroup} from './radio/index'   //单选组件
 import sdStepper from './stepper/index'   //步进器组件
 import {sdCheckbox, sdCheckboxGroup} from './checkbox/index'   //复选框组件
+import sdNoticeBar from './noticeBar/index'
 
 const components = [
     sdHeader,
@@ -42,7 +43,8 @@ const components = [
     sdRadio,
     sdStepper,
     sdCheckbox,
-    sdCheckboxGroup
+    sdCheckboxGroup,
+    sdNoticeBar
 ]
 
 const install = function(Vue) {
@@ -199,5 +201,6 @@ export default {
     sdRadio,
     sdStepper,
     sdCheckbox,
-    sdCheckboxGroup
+    sdCheckboxGroup,
+    sdNoticeBar
 }
