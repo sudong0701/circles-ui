@@ -20,6 +20,7 @@ import {sdCollapse, sdCollapseItem} from './collapse/index'   //折叠面板组�
 import sdSwitch from './switch/index'   //开关组件
 import {sdRadio, sdRadioGroup} from './radio/index'   //单选组件
 import sdStepper from './stepper/index'   //步进器组件
+import {sdCheckbox, sdCheckboxGroup} from './checkbox/index'   //复选框组件
 
 const components = [
     sdHeader,
@@ -39,7 +40,9 @@ const components = [
     sdSwitch,
     sdRadioGroup,
     sdRadio,
-    sdStepper
+    sdStepper,
+    sdCheckbox,
+    sdCheckboxGroup
 ]
 
 const install = function(Vue) {
@@ -194,5 +197,7 @@ export default {
     sdSwitch,
     sdRadioGroup,
     sdRadio,
-    sdStepper
+    sdStepper,
+    sdCheckbox,
+    sdCheckboxGroup
 }
