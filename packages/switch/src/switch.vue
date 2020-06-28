@@ -79,32 +79,3 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-    .sdSwitch {
-        box-sizing: content-box;
-        display: inline-block;
-        position: relative;
-        padding: 0.02rem;
-        border: 0.02rem solid rgba(0, 0, 0, 0.1);
-        border-radius: 1em;
-        width: 2em;
-        height: 1em;
-        overflow: hidden;
-        transition-property: all;
-        transition-duration: .3s;
-        .sdSwitch-circle {
-            position: absolute;
-            top: 0.03rem;
-            left: 0.03rem;
-            transition-duration: .3s;
-            transition-property: all;
-            transition-timing-function: ease-in-out;
-            border-radius: 50%;
-            box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.05), 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.05);
-        }
-    }
-    .sdSwitch--disabled {
-        cursor: not-allowed;
-        opacity: 0.5;
-    }
-</style>
