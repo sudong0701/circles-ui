@@ -6,7 +6,7 @@
 <template>
     <div class="sd_popup">
         <div v-if="isOverlay && isShowOverlay" :class="`sd_popup-overlay ${overlayClass}`" @click="closePopup()"></div>
-        <transition :name="`ani-popup-${position}`">
+        <transition :name="`ani-popup-${position}`" @after-enter="enterCancelled" @after-leave="afterLeave">
             <div v-if="isShow" :class="`sd_popup-box sd_popup-${position} ${isRound ? 'sd_popup-round-' + position : ''}`" :style="`animation-duration: ${(duration - 20) / 1000}s`">
                 <slot></slot>
             </div>
@@ -54,6 +54,10 @@
             lockScroll: {   //是否锁定背景滚动 默认为true
                 type: Boolean,
                 default: true
+            },
+            isNested: {
+                type: Boolean,
+                default: false
             }
         },
         model: {
@@ -81,13 +85,58 @@
         },
         methods: {
             /**
+             popup打开且动画完成时触发
+             @return
+             */
+            enterCancelled() {
+                this.$emit('opened')
+                document.body.style.overflow = 'hidden'
+                const body = document.getElementsByTagName('body')[0]
+                const html = document.getElementsByTagName('html')[0]
+                body.style.overflow = 'hidden'
+                html.style.overflow = 'hidden'
+                body.style.position = 'fixed'
+                html.style.position = 'fixed'
+                body.style.left = '0'
+                html.style.left = '0'
+                body.style.top = '0'
+                html.style.top = '0'
+            },
+            /**
+             popup打开且动画完成时触发
+             @return
+             */
+            afterLeave() {
+                this.isShowOverlay = false
+                //popup关闭且动画结束时触发触发
+                this.$nextTick(()=>{
+                    this.$emit('closed')
+                    if(this.lockScroll){
+                        document.body.style.overflow = 'auto'
+                        const body = document.getElementsByTagName('body')[0]
+                        const html = document.getElementsByTagName('html')[0]
+                        body.style.overflow = 'auto'
+                        html.style.overflow = 'auto'
+                        body.style.position = 'static'
+                        html.style.position = 'static'
+                        body.style.left = 'auto'
+                        html.style.left = 'auto'
+                        body.style.top = 'auto'
+                        html.style.top = 'auto'
+                    }
+                })
+            },
+            /**
              点击遮罩层时触发
              @return
              */
             closePopup() {
-                if(this.closeOnClickOverlay){
-                    //popup开始关闭时触发
-                    this.$emit('overlayClose', false)
+                if(this.closeOnClickOverlay){  //popup开始关闭时触发
+                    if(this.isNested) {
+                        this.$emit('clickOverlay')
+                    } else {
+                        this.$emit('overlayClose', false)
+                    }
                 }
             }
         },
@@ -105,43 +154,8 @@
                         const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
                         window.scrollTo(0, scrollTop + 1)
                     }
-                    setTimeout(()=>{
-                        //popup打开且动画完成时触发
-                        this.$emit('opened')
-                        document.body.style.overflow = 'hidden'
-                        const body = document.getElementsByTagName('body')[0]
-                        const html = document.getElementsByTagName('html')[0]
-                        body.style.overflow = 'hidden'
-                        html.style.overflow = 'hidden'
-                        body.style.position = 'fixed'
-                        html.style.position = 'fixed'
-                        body.style.left = '0'
-                        html.style.left = '0'
-                        body.style.top = '0'
-                        html.style.top = '0'
-                    }, this.duration)
                 } else {
                     this.$emit('close', false)
-                    setTimeout(()=>{
-                        this.isShowOverlay = val
-                        //popup关闭且动画结束时触发触发
-                        this.$nextTick(()=>{
-                            this.$emit('closed')
-                            if(this.lockScroll){
-                                document.body.style.overflow = 'auto'
-                                const body = document.getElementsByTagName('body')[0]
-                                const html = document.getElementsByTagName('html')[0]
-                                body.style.overflow = 'auto'
-                                html.style.overflow = 'auto'
-                                body.style.position = 'static'
-                                html.style.position = 'static'
-                                body.style.left = 'auto'
-                                html.style.left = 'auto'
-                                body.style.top = 'auto'
-                                html.style.top = 'auto'
-                            }
-                        })
-                    },this.duration)
                 }
             }
         }
