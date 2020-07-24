@@ -14,6 +14,7 @@ const actionSheet = ()=> import('../components/actionSheet.vue')
 const tabs = ()=> import('../components/tabs.vue')
 const circle = ()=> import('../components/circle.vue')
 const tabbar = ()=> import('../components/tabbar.vue')
+const indexBar = ()=> import('../components/indexBar.vue')
 
 Vue.use(Router)
 
@@ -84,6 +85,11 @@ export default new Router({
             path: '/tabbar',
             name: 'tabbar',
             component: tabbar
+        },
+        {
+            path: '/indexBar',
+            name: 'indexBar',
+            component: indexBar
         }
     ]
 })

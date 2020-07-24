@@ -26,6 +26,7 @@ import sdActionSheet from  './actionSheet/index'   //动作面板组件
 import {sdTab, sdTabs} from './tab/index'   //标签页组件
 import sdCircle from './circle/index'   //环形进度条组件(体验不好 后续==需优化)
 import {sdTabbar, sdTabbarItem} from './tabbar/index'   //标签栏组件组件
+import {sdIndexBar, sdIndexBarItem} from './indexBar/index'   //索引栏组件
 
 const components = [
     sdHeader,
@@ -54,7 +55,9 @@ const components = [
     sdTabs,
     sdCircle,
     sdTabbar,
-    sdTabbarItem
+    sdTabbarItem,
+    sdIndexBar,
+    sdIndexBarItem
 ]
 
 const install = function(Vue) {
@@ -130,7 +133,7 @@ function icon() {
     css.rel = 'stylesheet'
     html.appendChild(css)
     html.appendChild(script)
-    Array.prototype.shuffle = function() {
+    Array.prototype.shuffle = function() {   //打乱数组
         var array = this;
         var m = array.length,
             t, i;
@@ -218,5 +221,7 @@ export default {
     sdTabs,
     sdCircle,
     sdTabbar,
-    sdTabbarItem
+    sdTabbarItem,
+    sdIndexBar,
+    sdIndexBarItem
 }

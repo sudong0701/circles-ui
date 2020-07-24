@@ -75,17 +75,3 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-    .sdTabbar {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        height: 1rem;
-        background-color: #fff;
-    }
-    .sdTabbar_fixed {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-</style>
