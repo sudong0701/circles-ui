@@ -13,6 +13,7 @@ const noticeBar = ()=> import('../components/noticeBar.vue')
 const actionSheet = ()=> import('../components/actionSheet.vue')
 const tabs = ()=> import('../components/tabs.vue')
 const circle = ()=> import('../components/circle.vue')
+const tabbar = ()=> import('../components/tabbar.vue')
 
 Vue.use(Router)
 
@@ -78,6 +79,11 @@ export default new Router({
             path: '/circle',
             name: 'circle',
             component: circle
+        },
+        {
+            path: '/tabbar',
+            name: 'tabbar',
+            component: tabbar
         }
     ]
 })

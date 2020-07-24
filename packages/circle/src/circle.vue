@@ -1,6 +1,6 @@
 <template>
     <div class="sdCircle">
-        <canvas class="sdCircle-item" ref="sdCircle"></canvas>
+        <canvas width="400" height="400" style="width: 200px;height:200px;" class="sdCircle-item" ref="sdCircle"></canvas>
     </div>
 </template>
 
@@ -8,85 +8,162 @@
     export default {
         name: 'sdCircle',
         data() {
-            return {}
+            return {
+                num:0,
+                canvas: '',
+                context: '',
+                cirX: '',
+                cirY: '',
+                rad: '',
+                r: 36,
+                preValue: 0
+            }
         },
         props: {
-
+            value: {   //当前进度
+                type: Number,
+                default: 0
+            },
+            size: {   //圆环直径
+                type: Number | String,
+                default: 30
+            },
+            color: {   //进度条颜色 Object为渐变色
+                type: String | Array,
+                default: ()=> { return [
+                    {num: 0, value: '#ffc26b'},
+                    {num: 0.5, value: '#ff9a5f'},
+                    {num: 1, value: '#ff8157'}
+                ]}   //'#1989fa'
+            },
+            layerColor: {   //轨道颜色
+                type: String,
+                default: '#fff'
+            },
+            text: {   //文字
+                type: String,
+                default: '0'
+            },
+            textColor: {
+                type: String,
+                default: '#1989fa'
+            },
+            fontSize: {
+                type: String | Number,
+                default: 16
+            },
+            strokeWidth: {   //进度条宽度
+                type: Number | String,
+                default: 3
+            },
+            strokeLinecap: {   //进度条端点形状
+                type: String,
+                default: 'default'
+            },
+            clockwise: {   //是否逆时针增加
+                type: Boolean,
+                default: false
+            }
+        },
+        model: {
+            prop: 'value',
+            event: 'change'
         },
         mounted() {
-            this.drawMain(this.$refs.sdCircle, 50, '#1989fa', '#ccc')
+            this.canvas = this.$refs.sdCircle
+            this.context = this.canvas.getContext("2d")
+            this.context.scale(2,2);
+            this.cirX = 150
+            this.cirY = 75
+            this.rad = Math.PI * 2 / 100
+            this.initCircle()
         },
         methods: {
             /**
-             更改展开或收起状态
-             @param {Dom} drawing_elem name值
-             @param {Boolean} percent 是否展开
-             @param {Boolean} forecolor 是否展开
-             @param {Boolean} bgcolor 是否展开
+             初始化进度条
+             @param
              @return
              */
-            drawMain(drawing_elem, percent, forecolor, bgcolor) {
-                var canvas = this.$refs.sdCircle,
-                    ctx = canvas.getContext("2d"),
-                    circleValue = {
-                        x : 150,
-                        y : 50,
-                        radius : 40,
-                        startAngle : 0,
-                        endAngle : 2 * Math.PI,
-                        anticlockwise : false
-                    };
-
-                drowArc(ctx,0.8);
-                function drowArc(ctx,percent){
-
-                    //打底 圆环 绘制
-                    ctx.lineWidth = 11;
-                    ctx.beginPath();
-                    var grd = ctx.createRadialGradient(circleValue.x, circleValue.y, 72, circleValue.x, circleValue.y, 93);
-                    grd.addColorStop(0,"#e9eae9");
-                    grd.addColorStop("0.8","#fefefe");
-                    grd.addColorStop("1","#e9eae9");
-                    ctx.strokeStyle = grd;
-                    ctx.arc(circleValue.x, circleValue.y, circleValue.radius, circleValue.startAngle, circleValue.endAngle, circleValue.anticlockwise);
-                    ctx.closePath();
-                    ctx.stroke();
-
-                    //展示进度圆环绘制
-                    ctx.lineWidth = 11;
-                    ctx.beginPath();
-                    var linear = ctx.createLinearGradient(100,100,150,100);
-                    linear.addColorStop(0,'#ffc26b');
-//                    linear.addColorStop(0.5,'#ff9a5f');
-                    linear.addColorStop(1,'#ff8157');
-                    ctx.strokeStyle = linear;
-                    ctx.arc(circleValue.x, circleValue.y, circleValue.radius, circleValue.startAngle, circleValue.endAngle*percent, circleValue.anticlockwise);
-                    ctx.stroke();
-
-//                    //进度起点圆角
-//                    ctx.beginPath();
-//                    ctx.fillStyle = '#ff8157';
-//                    ctx.arc(circleValue.x + circleValue.radius, circleValue.y - 1, 5.5, circleValue.startAngle, circleValue.endAngle, circleValue.anticlockwise);
-//                    ctx.closePath();
-//                    ctx.fill();
-
-                    //终点圆角
-                    ctx.lineWidth = 3.5;
-                    ctx.beginPath();
-                    ctx.shadowOffsetX = 0;
-                    ctx.shadowOffsetY = 0;
-                    ctx.shadowBlur = 6;
-                    ctx.shadowColor = '#ff7854';
-                    ctx.fillStyle = '#ff7854';
-                    ctx.strokeStyle = '#fff';
-                    //计算终点的坐标
-                    var getX = circleValue.x + circleValue.radius * Math.cos(2 * percent * Math.PI),
-                        getY = circleValue.y + circleValue.radius * Math.sin(2 * percent * Math.PI);
-                    ctx.arc(getX , getY, 9, circleValue.startAngle, circleValue.endAngle, circleValue.anticlockwise);
-                    ctx.closePath();
-                    ctx.fill();
-                    ctx.stroke();
+            initCircle(){
+                //清除所有，重新绘制
+                this.context.clearRect(0,0,this.canvas.width,this.canvas.height)
+                this.writeTrack()
+                this.writeText(this.value)
+                this.writeGradient()   //绘制渐变
+            },
+            /**
+             绘制轨迹圈
+             @param
+             @return
+             */
+            writeTrack(){
+                this.context.save()        //save和restore可以保证样式属性只运用于该段canvas元素
+                this.context.beginPath()    //开始路径
+                this.context.strokeStyle = this.layerColor      //设置边线的颜色
+                this.context.lineWidth = this.strokeWidth / 2
+                this.context.arc(this.cirX, this.cirY, this.size, 0, Math.PI * 2, false)      //画一个圆的路径
+                this.context.stroke()       //绘制边线
+                this.context.closePath()
+            },
+            /**
+             绘制文本
+             @param
+             @return
+             */
+            writeText(n){
+                this.context.save()
+                this.context.font = `${parseInt(this.fontSize)}px Arial`
+                this.context.fillStyle= this.textColor //字体颜色
+                this.context.fillText(n.toFixed(0)+"%",this.cirX - 20 ,this.cirY + 10) //绘制实心
+                this.context.stroke()
+                this.context.restore()
+            },
+            /**
+             绘制渐变
+             @param
+             @return
+             */
+            writeGradient() {
+                this.context.save();
+                this.context.lineWidth = this.strokeWidth / 2
+                this.context.lineCap = 'round'
+                this.writeCircle(0)
+            },
+            /**
+             绘制进度条
+             @param
+             @return
+             */
+            writeCircle(n){
+                if(this.color instanceof Array) {   //如果为数组 渐变色
+                    let linear = this.context.createLinearGradient(150 - this.size, 100,150 + this.size, 100)
+                    this.color.map((item)=> {
+                        linear.addColorStop(item.num, item.value)
+                    })
+                    this.context.strokeStyle = linear
+                } else if (typeof this.color === 'string'){   //为字符串
+                    this.context.strokeStyle = this.color       //设置边线的颜色
                 }
+                this.context.beginPath()
+                this.context.arc(this.cirX, this.cirY, this.size, -Math.PI/2,-Math.PI/2+ this.rad * n, false)
+                this.context.stroke()
+                this.context.restore()
+                if(n < Number(this.value)) {
+                    window.requestAnimationFrame(()=> {
+                        this.writeCircle(n + 1)
+                    });
+                } else if(n > Number(this.value)) {
+                    window.requestAnimationFrame(()=> {
+                        this.writeCircle(n - 1)
+                    })
+                } else {
+                    this.preValue = Number(this.value)
+                }
+            }
+        },
+        watch: {
+            value(value) {
+                this.writeCircle(this.preValue)
             }
         }
     }

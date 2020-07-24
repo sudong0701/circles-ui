@@ -786,7 +786,7 @@
                             secondList.num = 0
                         }
                     }
-                    if(this.type === 'date') {
+                    if(this.type === 'date' || this.type === 'datetime') {
                         this.$set(this.columns, 2, dayList)
                     }
                     if(this.type === 'datetime') {
@@ -1085,7 +1085,7 @@
                     return new Date(selectArr[0], selectArr[1] - 1)
                 } else if(this.type === 'date') {
                     return new Date(selectArr[0], selectArr[1] - 1, selectArr[2])
-                } else if(this.type === 'time') {
+                } else if(this.type === 'datetime') {
                     return new Date(selectArr[0], selectArr[1] - 1, selectArr[2], selectArr[3], selectArr[4], selectArr[5])
                 }
                 return new Date()

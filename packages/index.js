@@ -8,12 +8,12 @@ import {sdDialog, dialog} from './dialog/index.js';   //弹出框组件
 import toast from './toast/index.js'   //toast弱提示组件
 import sdPopup from './popup/index.js'   //弹出层组件
 import sdPicker from './picker/index.js'   //普通选择器or级联选择器组件
-import sdDateTimePicker from './dateTimePicker/index.js'   //时间选择器
+import sdDateTimePicker from './dateTimePicker/index.js'   //时间日期选择器
 import {sdSwipe, sdSwipeItem} from './swipe/index.js'   //轮播图组件
 import sdPullRefresh from './pullRefresh/index.js'   //下拉刷新or上拉加载组件
 import sdSwipeCell from './swipeCell/index.js'   //滑动单元格组件
 import chartRadar from './chartRadar/index'   //绘制雷达图组件
-import {sdImagePreview, imagePreview} from './imagePreview/index'   //图片预览组件
+import {sdImagePreview, imagePreview} from './imagePreview/index'   //图片预览组件(有待优化)
 import sdNumberKeyboard from  './numberKeyboard/index'   //数字键盘组件
 import sdPasswordInput from './passwordInput'   //密码输入框组件
 import {sdCollapse, sdCollapseItem} from './collapse/index'   //折叠面板组件
@@ -21,10 +21,11 @@ import sdSwitch from './switch/index'   //开关组件
 import {sdRadio, sdRadioGroup} from './radio/index'   //单选组件
 import sdStepper from './stepper/index'   //步进器组件
 import {sdCheckbox, sdCheckboxGroup} from './checkbox/index'   //复选框组件
-import sdNoticeBar from './noticeBar/index'
-import sdActionSheet from  './actionSheet/index'
-import {sdTab, sdTabs} from './tab/index'
-import sdCircle from './circle/index'
+import sdNoticeBar from './noticeBar/index'   //通知栏组件
+import sdActionSheet from  './actionSheet/index'   //动作面板组件
+import {sdTab, sdTabs} from './tab/index'   //标签页组件
+import sdCircle from './circle/index'   //环形进度条组件(体验不好 后续==需优化)
+import {sdTabbar, sdTabbarItem} from './tabbar/index'   //标签栏组件组件
 
 const components = [
     sdHeader,
@@ -51,7 +52,9 @@ const components = [
     sdActionSheet,
     sdTab,
     sdTabs,
-    sdCircle
+    sdCircle,
+    sdTabbar,
+    sdTabbarItem
 ]
 
 const install = function(Vue) {
@@ -121,9 +124,9 @@ function icon() {
     const script = document.createElement('script')
     const css = document.createElement('link')
     const html = document.getElementsByTagName('html')[0]
-    script.src = '//at.alicdn.com/t/font_1665721_wp0aot8ggas.js'
+    script.src = '//at.alicdn.com/t/font_1665721_rljtpy8bxgg.js'
     script.type = 'text/javascript'
-    css.href = '//at.alicdn.com/t/font_1665721_wp0aot8ggas.css'
+    css.href = '//at.alicdn.com/t/font_1665721_rljtpy8bxgg.css'
     css.rel = 'stylesheet'
     html.appendChild(css)
     html.appendChild(script)
@@ -213,5 +216,7 @@ export default {
     sdActionSheet,
     sdTab,
     sdTabs,
-    sdCircle
+    sdCircle,
+    sdTabbar,
+    sdTabbarItem
 }

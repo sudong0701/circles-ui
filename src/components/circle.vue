@@ -1,9 +1,10 @@
 <template>
     <div class="circle">
-        <!--<sd-circle></sd-circle>-->
-        <div>
-            <p style="height: 6rem"></p>
-        </div>
+        <sd-circle v-model="value"></sd-circle>
+        <button @click="changeValue">改变value</button>
+        <!--<div>-->
+            <!--<p style="height: 6rem"></p>-->
+        <!--</div>-->
     </div>
 </template>
 
@@ -11,7 +12,18 @@
     export default {
         name: '',
         data() {
-            return {}
+            return {
+                value: 30
+            }
+        },
+        methods: {
+            changeValue() {
+                if(this.value === 30) {
+                    this.value = 80
+                } else {
+                    this.value = 30
+                }
+            }
         }
     }
 </script>
@@ -19,16 +31,8 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
     .circle {
-        /*padding-top: 2rem;*/
+        padding-top: 2rem;
         height: 20rem;
-        background-color: #e99d3a;
-        >div {
-            height: 4rem;
-            overflow-y: auto;
-            background-color: #67c23a;
-            >p {
-
-            }
-        }
+        background-color: #f4f4f4;
     }
 </style>
