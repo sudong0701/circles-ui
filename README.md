@@ -29,6 +29,10 @@ import Vue from 'vue'
 Vue.use(sdPicker)
 ```
 
-# 组件
+# 文档
 
-[popup]
+## 基础组件
+[`Popup` 弹出层](./docs/cn/popup.md)
+
+
+
