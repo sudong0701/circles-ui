@@ -63,4 +63,4 @@ None.
 ```
 
 ## Screenshots
-![](../img/popup/1.gif?raw=true)
+![](../img/popup/1.gif)
