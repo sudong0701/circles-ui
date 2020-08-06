@@ -9,9 +9,11 @@
 
 ## 全局引入
 > 在main.js里新增以下代码
+  ```bash
   import sdUI from 'sudong-ui'
   import 'sudong-ui/packages/theme-default/lib/index.min.css'
   Vue.use(sdUI)
+  ```
 
 ``` bash
 # install dependencies
