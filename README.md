@@ -8,8 +8,10 @@
 > 在Vue项目根目录下npm/cnpm i sudong-ui --save-dev
 
 ## 全局引入
-> 在main.js里新增以下代码 = 
-> import sdUI from 'sudong-ui'
+> 在main.js里新增以下代码
+  import sdUI from 'sudong-ui'
+  import 'sudong-ui/packages/theme-default/lib/index.min.css'
+  Vue.use(sdUI)
 
 ``` bash
 # install dependencies
