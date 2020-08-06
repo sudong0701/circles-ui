@@ -32,7 +32,15 @@ Vue.use(sdPicker)
 # 文档
 
 ## 基础组件
-[`Popup` 弹出层](./docs/cn/popup.md)
+[`Popup` 弹出层组件](./docs/cn/popup.md)
 
+[`Picker` 选择器组件](./docs/cn/picker.md)
 
+[`Toast` 弱提示组件](./docs/cn/toast.md)
+
+[`Dialog` 弹出框组件](./docs/cn/dialog.md)
+
+[`DateTimePicker` 时间选择器组件](./docs/cn/dateTimePicker.md)
+
+[`ChartRadar` 雷达图组件](./docs/cn/chartRadar.md)
 
