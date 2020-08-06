@@ -29,3 +29,6 @@ import Vue from 'vue'
 Vue.use(sdPicker)
 ```
 
+# 组件
+
+[popup]
