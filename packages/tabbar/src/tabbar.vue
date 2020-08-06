@@ -41,7 +41,6 @@
             initComponent() {
                 this.$nextTick(()=> {
                     const sdTabbarChild = this.$refs.sdTabbar.children
-                    console.log(sdTabbarChild)
                     for(let i = 0; i < sdTabbarChild.length; i++) {
                         sdTabbarChild[i].__vue__.activeColor = this.activeColor
                         sdTabbarChild[i].__vue__.inactiveColor = this.inactiveColor
@@ -64,6 +63,18 @@
                 this.$emit('change', key)
                 for(let i = 0; i < sdTabbarChild.length; i++) {
                     if(i === key) {
+                        sdTabbarChild[i].__vue__.isActive = true
+                    } else {
+                        sdTabbarChild[i].__vue__.isActive = false
+                    }
+                }
+            }
+        },
+        watch: {
+            active(index) {
+                const sdTabbarChild = this.$refs.sdTabbar.children
+                for(let i = 0; i < sdTabbarChild.length; i++) {
+                    if(i === index) {
                         sdTabbarChild[i].__vue__.isActive = true
                     } else {
                         sdTabbarChild[i].__vue__.isActive = false

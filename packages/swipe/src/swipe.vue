@@ -422,6 +422,13 @@
                     }
                 }, this.interval)
             }
+        },
+        watch: {
+            swipeIndex(index) {
+                const sdSwipe_box = this.$refs[`sdSwipe_box`]
+                sdSwipe_box.style.transition = `-webkit-transform ${this.duration}ms ease-out`;
+                this.currentIndex = index
+            }
         }
     }
 </script>

@@ -1,21 +1,23 @@
 <template>
-    <div class="sdSwipeCell" ref="sdSwipeCell">
-        <div class="sdSwipeCell_left" ref="sdSwipeCell_left">
-            <slot name="left">
+    <div class="sdSwipeCellBox" style="width: 100%; overflow-x: hidden">
+        <div class="sdSwipeCell" ref="sdSwipeCell">
+            <div class="sdSwipeCell_left" ref="sdSwipeCell_left">
+                <slot name="left">
 
-            </slot>
-        </div>
-        <div class="sdSwipeCell_center" @touchstart="touchStart($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)" @touchleave="touchLeave($event)" @touchenter="touchEnter($event)">
-            <slot>
+                </slot>
+            </div>
+            <div class="sdSwipeCell_center" @touchstart="touchStart($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)" @touchleave="touchLeave($event)" @touchenter="touchEnter($event)">
+                <slot>
 
-            </slot>
-        </div>
-        <div class="sdSwipeCell_right" ref="sdSwipeCell_right">
-            <slot name="right"></slot>
-        </div>
-        <!--<div class="sdSwipeCell_box">-->
+                </slot>
+            </div>
+            <div class="sdSwipeCell_right" ref="sdSwipeCell_right">
+                <slot name="right"></slot>
+            </div>
+            <!--<div class="sdSwipeCell_box">-->
             <!---->
-        <!--</div>-->
+            <!--</div>-->
+        </div>
     </div>
 </template>
 
@@ -175,27 +177,3 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-    .sdSwipeCell {
-        position: relative;
-        width: 100%;
-        //overflow: hidden;
-        .sdSwipeCell_left {
-            position: absolute;
-            top: 0; left: 0;
-            height: 100%;
-            transform: translate(-100%, 0);
-            z-index: 2;
-        }
-        .sdSwipeCell_center {
-            width: 100%
-        }
-        .sdSwipeCell_right {
-            position: absolute;
-            top: 0; right: 0;
-            height: 100%;
-            transform: translate(100%, 0);
-            z-index: 2;
-        }
-    }
-</style>

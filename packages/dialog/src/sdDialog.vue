@@ -17,11 +17,11 @@
         <div class="sdDialog-confirm">
             <transition name="animation-fade">
                 <div class="sdDialog-confirm-box" v-if="type === 'confirm' && isShow" :style="isRound ? 'border-radius: 0.24rem;' : '' ">
-                    <slot>
-                        <p class="sdDialog-content">
+                    <p class="sdDialog-content">
+                        <slot>
                             <span>{{content}}</span>
-                        </p>
-                    </slot>
+                        </slot>
+                    </p>
                     <div @click="cancelBthFnc" :style="`color: ${cancelBthColor} background-color: ${cancelBthBgColor}`" class="sdDialog-btn sdDialog-btn-left">{{cancelBtnText}}</div>
                     <div @click="confirmBthFnc" :style="`color: ${confirmBthColor}; background-color: ${confirmBthBgColor}`" class="sdDialog-btn sdDialog-btn-right">{{confirmBtnText}}</div>
                 </div>
