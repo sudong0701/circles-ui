@@ -1,8 +1,8 @@
-# sd-npm
+# sudong-ui
 
-> test npm package
+> 仿Vant-ui移动端UI框架
 
-## Build Setup
+## 
 
 ``` bash
 # install dependencies
