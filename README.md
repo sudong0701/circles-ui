@@ -4,11 +4,11 @@
 
 # 快速上手
 
-##安装
+## 安装
 > 在Vue项目根目录下npm/cnpm i sudong-ui --save-dev
 
-##全局引入
-> 在main.js里新增以下代码:
+## 全局引入
+> 在main.js里新增以下代码 = 
 > import sdUI from 'sudong-ui'
 
 ``` bash
