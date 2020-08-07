@@ -66,7 +66,7 @@ None.
 
         <sdDialog v-model="showAlert" content="这是一个alert" :closeOnClickOverlay="false" @open="open" @opened="opened" @close="close" @closed="closed" @confirm="alertConfirm"></sdDialog>
 
-        <sdDialog v-model="showConfirm" content="这是一个confirm"></sdDialog>
+        <sdDialog v-model="showConfirm" content="这是一个confirm" type="confirm" @confirm="confirm" @cancel="cancel"></sdDialog>
     </div>
 </template>
 
@@ -132,6 +132,12 @@ None.
             },
             alertConfirm() {
                 this.showAlert = false
+            },
+            cancel() {
+                this.showConfirm = false
+            },
+            confirm() {
+                this.showConfirm = false
             }
         }
     }
@@ -139,9 +145,6 @@ None.
 ```
 
 ## Screenshots
-### 普通选择器
-![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/07/1596770770530.gif)
+![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/07/1596785263231.gif)
 
-### 级联选择器
-![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/07/1596770998636.gif)
 
