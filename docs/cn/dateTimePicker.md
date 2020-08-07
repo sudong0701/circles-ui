@@ -17,9 +17,9 @@ dateTimePicker 组件定义一个时间选择器。
 ## Events
 | Event Name | Returns | Notes |
 |---|---|---|
-| change | Array(当前选项的数组) | 选项改变时触发。
-| clickLeftBtn | Array(当前选项的数组) | 点击左边按钮时触发。
-| clickRightBtn | Array(当前选项的数组) | 点击右边按钮时触发。
+| change | DateValue | 当前选中的时间。
+| clickLeftBtn | DateValue | 点击左边按钮时触发。
+| clickRightBtn | DateValue | 点击右边按钮时触发。
 
 <!--
 ## Methods
@@ -37,14 +37,90 @@ None.
 ## Example
 简单用法
 
-### 非级联选择器
 ```
+<template>
+    <div style="padding: 0.3rem" class="picker">
+        <div @click="showYMPicker">显示year-month的picker</div>
+        <div @click="showDatePicker">显示date的picker</div>
+        <div @click="showDateTimePicker">显示datetime的picker</div>
 
-```
-### 级联选择器
-```
+        <sdPopup v-model="showPopup">
+            <sd-dateTimePicker v-model="dateValue" type="year-month" :minDate="minDate" :maxDate="maxDate" @clickLeftB="cancel" @clickRightBtn="confirm"></sd-dateTimePicker>
+        </sdPopup>
 
+        <sdPopup v-model="showDatePopup">
+            <sd-dateTimePicker v-model="dateValue" type="date" :minDate="minDate" :maxDate="maxDate" @clickLeftB="cancel" @clickRightBtn="confirm"></sd-dateTimePicker>
+        </sdPopup>
 
+        <sdPopup v-model="showDateTimePopup">
+            <sd-dateTimePicker v-model="dateValue" type="datetime" :minDate="minDate" :maxDate="maxDate" @clickLeftB="cancel" @clickRightBtn="confirm"></sd-dateTimePicker>
+        </sdPopup>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: '',
+        data() {
+            return {
+                showPopup: false,
+                showDatePopup: false,
+                showDateTimePopup: false,
+                dateValue: new Date(2009, 8, 9, 15, 30, 30),
+                minDate: new Date(2000, 5, 6),
+                maxDate: new Date(2038, 5, 1)
+            }
+        },
+        methods: {
+            /**
+             显示year-month选择器
+             @param
+             @return
+             */
+            showYMPicker() {
+                this.showPopup = true
+            },
+            /**
+             显示date选择器
+             @param
+             @return
+             */
+            showDatePicker() {
+                this.showDatePopup = true
+            },
+            /**
+             显示datetime选择器
+             @param
+             @return
+             */
+            showDateTimePicker() {
+                this.showDateTimePopup = true
+            },
+            /**
+             点击右侧(确认)按钮时触发
+             @param {Date} date 选中的时间
+             @return
+             */
+            confirm(date) {
+                console.log(date)
+                this.showPopup = false
+                this.showDatePopup = false
+                this.showDateTimePopup = false
+            },
+            /**
+             点击左侧(取消)按钮时触发
+             @param {Date} date 选中的时间
+             @return
+             */
+            cancel(date) {
+                console.log(date)
+                this.showPopup = false
+                this.showDatePopup = false
+                this.showDateTimePopup = false
+            }
+        }
+    }
+</script>
 ```
 
 ## Screenshots
