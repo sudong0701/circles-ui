@@ -10,8 +10,6 @@ Toast 组件定义一个弱提示组件。
 | icon | String | '' | icon的标识。
 | image | String | '' | 图片的地址。
 | bgColor | String | '' | 自定义toast背景颜色。
-| customName | String | 'name' | 自定义文字属性名。
-| customChild | String | 'children' | 自定义子类数组名(仅isCascade为true时有效)。
 
 ## Events
   None。
@@ -31,6 +29,7 @@ None.
 
 ## Example
 用法示例:
+```
 <template>
     <div style="padding: 0.3rem">
         <div @click="showToast">显示普通toast</div>
