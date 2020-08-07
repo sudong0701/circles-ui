@@ -6,7 +6,7 @@ Toast 组件定义一个弱提示组件。
 |---|---|---|---|
 | content | String | '' | 提示文字内容。
 | duration | Number | 3000 | 弱提示展示时长默认3000ms，为0则永久展示，此时调用close方法即可关闭toast。
-| type | String | '' | toast提示类型(default(默认)、success(成功)、error(错误)、warning(警告)、loading(加载))。
+| type | String | 'default' | toast提示类型(default(默认)、success(成功)、error(错误)、warning(警告)、loading(加载))。
 | icon | String | '' | icon的标识。
 | image | String | '' | 图片的地址。
 | bgColor | String | '' | 自定义toast背景颜色。
@@ -55,7 +55,7 @@ None.
              @return
              */
             showToast() {
-                this.$toast.default({
+                this.$toast({
                     content: '这是一条弱提示',
                     duration: 3000
                 }).then(()=> {
