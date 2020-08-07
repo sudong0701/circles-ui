@@ -12,7 +12,6 @@ dateTimePicker 组件定义一个时间选择器。
 | left-button-text | String | '取消' | 左边按钮文案。
 | minDate | Date | 10年前的今天 | 最小时间。
 | maxDate | Date | 10年后的今天 | 最大时间。
-| customChild | String | 'children' | 自定义子类数组名(仅isCascade为true时有效)。
 
 ## Events
 | Event Name | Returns | Notes |
