@@ -95,6 +95,38 @@ columns: [
 ```
 ### 级联选择器
 ```
+<template>
+    <div>
+        <div @click="showPicker">显示picker</div>
+        <sdPopup v-model="show">
+            <sdPicker v-model="defaultArr" isCascade :columns="city" @clickRightBtn="pickerConfirm" customName="label" customChild="children"></sdPicker>
+        </sdPopup>
+    </div>
+</template>
+
+<script>
+    import city from '../../static/city-data'
+    export default {
+        name: '',
+        data() {
+            return {
+                show: false,
+                defaultArr: [5, 3, 4],
+                city: city
+            }
+        },
+        methods: {
+            showPicker() {
+                this.show = true
+            },
+            pickerConfirm(res) {
+                console.log(res)
+                this.show = false
+            }
+        }
+    }
+</script>
+
 columns示例:
 [
   {
@@ -147,32 +179,6 @@ columns示例:
   }]
 }
 ]
-
-```
-<template>
-    <div>
-        <div @click="showPopup">点击显示</div>
-        <sdPopup v-model="show">
-            <div style="height: 200px"></div>
-        </sdPopup>
-    </div>
-</template>
-
-<script>
-    export default {
-        name: '',
-        data() {
-            return {
-                show: false
-            }
-        },
-        methods: {
-            showPopup() {
-                this.show = true
-            }
-        }
-    }
-</script>
 
 ```
 
