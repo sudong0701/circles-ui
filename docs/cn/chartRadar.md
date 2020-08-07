@@ -15,7 +15,7 @@ ChartRadar 组件用于绘制雷达图(仅支持函数式调用)。
 | dataArr | Array | [] | 雷达图数据。
 | outerColor | String | '#E5E5E5' | 最外边的颜色。
 | isInside | Boolean | true | 是否绘制内边。
-| insideColor | String | '#EaEaEa' | 最内边的颜色。
+| insideColor | String | '#EaEaEa' | 内边的颜色。
 | insideNumber | Number | 6 | 内边的层数。
 | isDataCable | Boolean | true | 是否绘制区域连接线。
 | isDataPoint | Boolean | true | 是否绘制区域点。
