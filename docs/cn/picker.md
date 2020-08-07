@@ -183,4 +183,5 @@ columns示例:
 ```
 
 ## Screenshots
-![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/06/1596704209263.gif)
+### 普通选择器
+![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/07/1596770770530.gif)
