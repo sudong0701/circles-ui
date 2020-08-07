@@ -146,6 +146,6 @@ None.
 
 
 ## Screenshots
-![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/07/1596785263231.gif)
+![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/07/1596785406092.gif)
 
 
