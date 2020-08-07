@@ -1,7 +1,7 @@
 <template>
     <div class="sdToast" id="sdToast">
         <transition name="animation-fade">
-            <div v-if="(type !== 'loading' && (!icon && !image)) && isShow" class="sdToast-box-default" :style="`background: ${bgColor ? bgColor : (type === '' ? '' :this.typeObj[type])})`">
+            <div v-if="(type !== 'loading' && (!icon && !image)) && isShow" class="sdToast-box-default" :style="`background: ${bgColor ? bgColor : (type === '' ? '' : typeObj[type])}`">
                 <div class="sdToast-icon"></div>
                 <div class="sdToast-content">{{content}}</div>
             </div>
@@ -12,7 +12,7 @@
                     <i class="iconfont iconloading"></i>
                 </div>
                 <div v-if="icon" class="sdToast-icon">
-                    <i :class="`iconfont ${icon}`"></i>
+                    <i :class="`iconfont icon${icon}`"></i>
                 </div>
                 <div v-if="image" class="sdToast-icon">
                     <img :src="image" />
@@ -32,14 +32,14 @@
             return {
                 typeObj: {
                     success: '#67c23a',
-                    error: '#FF2C79',
+                    error: '#ee0a24',
                     warning: '#e99d3a',
                     loading: 'rgba(0, 0, 0, 0.8)'
                 },
                 isShow: false,
                 content: '',   //toast提示文字内容
                 duration: 3000,   //toast展示时间 为0则永久展示
-                type: '',    //toast类型
+                type: 'default',    //toast类型
                 icon: '',   //icon的标识
                 image: '',   //图片链接
                 bgColor: ''   //自定义背景颜色
@@ -47,6 +47,7 @@
         },
         mounted() {
             this.isShow = true
+            
             if(this.duration > 0){
                 setTimeout(()=>{
                     this.isShow = false

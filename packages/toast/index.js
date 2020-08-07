@@ -11,16 +11,24 @@ const ToastConstructor = Vue.extend($toast)
 let instance
 
 let toast  = (options = {})=> {
-    //仅允许一个toast提示
-    if(document.getElementById('sdToast')){
-        return
-    }
-    instance = new ToastConstructor({
-        data: options
+
+    return new Promise((resolve, reject)=> {
+        //仅允许一个toast提示
+        if(document.getElementById('sdToast')){
+            return
+        }
+        instance = new ToastConstructor({
+            data: Object.assign(options, {
+                resolve: resolve,
+                reject: reject
+            })
+        })
+        document.body.appendChild(instance.$mount().$el)
     })
-    document.body.appendChild(instance.$mount().$el)
 }
-['default','success','error','warning','close','loading'].forEach((type)=>{
+
+
+['success','error','warning','close','loading'].forEach((type)=>{
     toast[type] = (options = {})=>{
         if(type !== 'close'){
             return new Promise((resolve, reject)=> {

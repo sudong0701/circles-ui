@@ -12,7 +12,7 @@
                 canvasWidth: 300,   //canvas的宽度
                 canvasRadius: 100,   //canvas的半径
                 xCenter: 0,   //中心点X轴坐标
-                lineWidth: 2,   //连接线的宽度
+                lineWidth: 1,   //连接线的宽度
                 yCenter: 0,   //中心点Y轴坐标
                 isData: true,    //是否绘制填充区域
                 dataArr: [],  //绘制区域的数据

@@ -75,7 +75,7 @@
                     return new Date(new Date().getFullYear() + 10, new Date().getMonth(), new Date().getDate())
                 }
             },
-            type: {   //数据数组
+            type: {   //事件选择器类型
                 type: String,
                 default: 'date'
             },
@@ -85,7 +85,7 @@
         },
         model: {
             prop: 'value',
-            event: 'initValue'
+            event: 'change'
         },
         mounted() {
             this.initData()
@@ -150,11 +150,11 @@
                 }
                 let yearValue, monthValue, dayValue, hourValue, minuteValue, secondValue, dateValue = this.value
                 if(new Date(this.value).getTime() < new Date(this.minDate).getTime()) {
-                    this.$emit('initValue', new Date(this.minDate))
+                    this.$emit('change', new Date(this.minDate))
                     dateValue = new Date(this.minDate)
                 }
                 if(new Date(this.value).getTime() > new Date(this.maxDate).getTime()) {
-                    this.$emit('initValue', new Date(this.maxDate))
+                    this.$emit('change', new Date(this.maxDate))
                     dateValue = new Date(this.maxDate)
                 }
                 if(!dateValue) {

@@ -138,6 +138,7 @@
                         this.$emit('overlayClose', false)
                     }
                 }
+                this.$emit('click-overlay')
             }
         },
         watch: {

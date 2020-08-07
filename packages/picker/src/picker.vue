@@ -231,6 +231,7 @@
              @return
              */
             touchEnd(e, key) {
+                
                 const endPageY = e.changedTouches[0].pageY
                 const list = this.isCascade ? this.cascadeColumns[key] : this.columns[key]
                 if(startPageY === endPageY){
@@ -251,10 +252,9 @@
                         pickerList.style.webkitTransform=`translate(0, ${(2 - currIndex) * 44}px)`;
                     }
                     this.$set(this.defaultArr, key, currIndex)
-                    //选项改变时触发
-                    this.$emit('change',this.getValue())
                     if(this.isCascade) {
                         if(key === 0){
+              
                             this.changeData(this.columns[currIndex][this.customChild], key + 1)
                         } else if(key === 1) {
                             this.changeData(this.columns[this.defaultArr[0]][this.customChild][currIndex][this.customChild], key + 1)
@@ -265,6 +265,8 @@
                             pickerList.style.webkitTransform=`translate(0,88px)`;
                         }
                     }
+                    //选项改变时触发
+                    this.$emit('change',this.getValue())
                 }
             },
             /**

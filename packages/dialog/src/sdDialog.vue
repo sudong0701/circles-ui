@@ -2,7 +2,7 @@
     <!--组件形式调用-->
     <div class="sdDialog">
             <div class="sdDialog-alert">
-                <transition name="animation-fade" >
+                <transition name="animation-fade" @after-enter="afterEnter"  @after-leave="afterLeave">
                     <div class="sdDialog-alert-box" v-if="type === 'alert' && isShow" :style="isRound ? 'border-radius: 0.24rem;' : '' ">
                         <slot>
                             <p class="sdDialog-content">
@@ -15,7 +15,7 @@
             </div>
 
         <div class="sdDialog-confirm">
-            <transition name="animation-fade">
+            <transition name="animation-fade"  @after-enter="afterEnter"  @after-leave="afterLeave">
                 <div class="sdDialog-confirm-box" v-if="type === 'confirm' && isShow" :style="isRound ? 'border-radius: 0.24rem;' : '' ">
                     <p class="sdDialog-content">
                         <slot>
@@ -59,7 +59,7 @@
             },
             type: {   //弹出框类型
                 type: String,
-                default: ''
+                default: 'alert'
             },
             confirmBtnText: {   //确认按钮文案，alert类型时为底部按钮的文案
                 type: String,
@@ -146,14 +146,38 @@
              * @return
              */
             closeOverlay(e){
-                this.$emit('overlayClose', false)
+                if(this.closeOnClickOverlay) {
+                    this.$emit('overlayClose', false)
+                }
                 e.stopPropagation()
+            },
+            /**
+             * dialog显示动画结束后触发
+             * @param {dom} e 点击事件参数
+             * @return
+             */
+            afterEnter() {
+                //打开弹出层切动画结束后触发
+                this.$emit('opened')
+            },
+            /**
+             * dialog隐藏动画结束后触发
+             * @param {dom} e 点击事件参数
+             * @return
+             */
+            afterLeave() {
+                //关闭弹出层切动画结束后触发
+                this.$emit('closed')
+                setTimeout(()=> {
+                    this.isShowOverlay = false
+                }, 30)
             }
         },
         watch: {
             isShow(boolean) {
                 if(boolean) {
                     this.isShowOverlay = true
+                    this.$emit('open')
                     if(this.lockScroll){
                         document.body.style.overflow = 'hidden'
                         const body = document.getElementsByTagName('body')[0]
@@ -167,11 +191,8 @@
                         body.style.top = '0'
                         html.style.top = '0'
                     }
-                    setTimeout(()=>{
-                        //打开弹出层切动画结束后触发
-                        this.$emit('opened')
-                    },300)
                 } else {
+                    this.$emit('close')
                     document.body.style.overflow = 'auto'
                     const body = document.getElementsByTagName('body')[0]
                     const html = document.getElementsByTagName('html')[0]
@@ -183,11 +204,6 @@
                     html.style.left = 'auto'
                     body.style.top = 'auto'
                     html.style.top = 'auto'
-                    setTimeout(()=>{
-                        //关闭弹出层切动画结束后触发
-                        this.$emit('closed')
-                        this.isShowOverlay = false
-                    },300)
                 }
             }
         }
