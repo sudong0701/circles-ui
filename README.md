@@ -44,3 +44,31 @@ Vue.use(sdPicker)
 
 [`ChartRadar` 雷达图组件](./docs/cn/chartRadar.md)
 
+[`ActionSheet` 动作面板组件](./docs/cn/actionSheet.md)
+
+[`Swipe` 轮播组件](./docs/cn/swipe.md)
+
+[`SwipeCell` 滑动单元格组件](./docs/cn/swipeCell.md)
+
+[`NumberKeyboard` 数字键盘组件](./docs/cn/numberKeyboard.md)
+
+[`PasswordInput` 密码输入框组件](./docs/cn/passwordInput.md)
+
+[`Collapse` 折叠面板组件](./docs/cn/collapse.md)
+
+[`Switch` 开关组件](./docs/cn/switch.md)
+
+[`Radio` 单选组件](./docs/cn/radio.md)
+
+[`Stepper` 步进器组件](./docs/cn/stepper.md)
+
+[`Checkbox` 复选框组件](./docs/cn/checkbox.md)
+
+[`NoticeBar` 通知栏组件](./docs/cn/noticeBar.md)
+
+[`Tab` 标签页组件](./docs/cn/tab.md)
+
+[`Tabbar` 标签栏组件](./docs/cn/tabbar.md)
+
+[`IndexBar` 索引栏组件](./docs/cn/indexBar.md)
+
