@@ -133,4 +133,4 @@ None.
 
 ```
 ## Screenshots
-![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/10/1597048329028.gif)
+![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/10/1597048530334.gif)
