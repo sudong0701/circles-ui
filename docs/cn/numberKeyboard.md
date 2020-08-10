@@ -41,9 +41,7 @@ None.
 ```
 <template>
     <div class="numberKeyboard">
-        <!--<button @click="showNumberKeyboard">点击显示</button>-->
-        <input type="text" readonly @click.stop @touchstart.stop="isShow = true">
-        <sdPasswordInput :gutter="'0.12rem'" :length="6" bgColor="#fff" style="margin-top: 0.5rem" :isMask="true" v-model="numberKeyboardValue" :isFocus="isFocus" @focus="focus"></sdPasswordInput>
+        <input type="text" readonly @click.stop @touchstart.stop="isShow = true" v-model="numberKeyboardValue">
         <sd-numberKeyboard v-model="numberKeyboardValue" title="支付密码" :show="isShow" @change="change" @blur="isShow = false; isFocus = false" maxlength="6" :isShuffle="true" :extraKey="''"></sd-numberKeyboard>
     </div>
 </template>
@@ -68,12 +66,12 @@ None.
                 this.isFocus = true
             },
             change(index) {
-                this.$toast({
-                    content: index
-                })
+
             }
         }
     }
 </script>
 
 ```
+## Screenshots
+![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/10/1597039026936.gif)
