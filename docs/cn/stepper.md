@@ -4,7 +4,7 @@ Stepper 组件定义一个步进器。
 ## Props
 | Prop | Type | Default | Note |
 |---|---|---|---|
-| v-model(value) | String & Numbe | '' | 步进器绑定的值。
+| v-model(value) | String & Number | '' | 步进器绑定的值。
 | min | String & Number | 0 | 最小值。
 | max | String & Number | 10 | 最大值。
 | step | String & Number | 1 | 每一次增加/减少的值。
