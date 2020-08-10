@@ -6,8 +6,8 @@ NumberKeyboard 组件定义一个数字键盘。
 |---|---|---|---|
 | v-model(value) | String | '' | 当前输入值。
 | show | Boolean | false | 控制数字键盘的显示与隐藏。
-| extraKey | Number | 300(ms) | 键盘弹出收回动画时长。
-| duration | String | 'bottom' | 弹出层的位置(top、right、bottom、left、center)。
+| extraKey | String & Array | '' | 底部额外按键的内容 string支持'', '.', 'X' 数组支持自定义底部按键但最多配置2个。
+| duration | Number | 300ms | 键盘弹出收回动画时长。
 | closeButtonText | String | '完成' | 关闭按钮的文案。
 | maxlength | Number | String | 0 | 输入值最大长度。
 | hideOnclickOutside | Boolean | true | 点击外部时是否收起键盘。
@@ -75,3 +75,13 @@ None.
 ```
 ## Screenshots
 ![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/10/1597039108025.gif)
+
+ ### extraKey === '.'时
+ ![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/10/1597039521799.png)
+ 
+  ### extraKey === 'X'时
+ ![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/10/1597039528283.png)
+ 
+  ### 自定义extraKey时
+ ![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/10/1597039533535.png)
+ 
