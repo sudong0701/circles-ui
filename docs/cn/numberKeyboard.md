@@ -1,25 +1,29 @@
-# `Popup` 弹出层
-Popup 组件定义一个弹出层。
+# `NumberKeyboard` 数字键盘
+NumberKeyboard 组件定义一个数字键盘。
 
 ## Props
 | Prop | Type | Default | Note |
 |---|---|---|---|
-| v-model(isShow) | Boolean | false | 控制Popup的显示隐藏。
-| isOverlay | Boolean | true | 是否显示背景蒙层。
-| closeOnClickOverlay | Boolean | true | 是否点击背景蒙层后关闭。
-| position | String | 'bottom' | 弹出层的位置(top、right、bottom、left、center)。
+| v-model(value) | String | '' | 当前输入值。
+| show | Boolean | false | 控制数字键盘的显示与隐藏。
+| extraKey | Number | 300(ms) | 键盘弹出收回动画时长。
+| duration | String | 'bottom' | 弹出层的位置(top、right、bottom、left、center)。
+| closeButtonText | String | '完成' | 关闭按钮的文案。
+| maxlength | Number | String | 0 | 输入值最大长度。
+| hideOnclickOutside | Boolean | true | 点击外部时是否收起键盘。
+| title | String | '' | 键盘的标题。
 | isRound | Boolean | true | 是否展示圆角。
-| duration | Number | 300(ms) | 动画时长。
-| lockScroll | Boolean | true | 是否锁定背景滚动。
+| isShuffle | Boolean | false | 是否打乱数字顺序。
 
 ## Events
 | Event Name | Returns | Notes |
 |---|---|---|
-| open |  | popup打开时触发。
-| opened |  | popup打开且动画结束时触发。
-| close |  | popup关闭时触发。
-| closed |  | popup关闭且动画结束时触发。
-| click-overlay |  | p点击遮罩层时触发。
+| change | value(当前的value) | 内容改变时触发。
+| input | item(当前点击的值) | 点击输入内容时触发。
+| blur |  | 点击隐藏密码时触发。
+| delete | item | 删除输入内容时出发。
+| show |  | 键盘完全出现时触发。
+| hide |  | 键盘完全隐藏时触发。
 
 <!--
 ## Methods
@@ -36,11 +40,11 @@ None.
 简单用法
 ```
 <template>
-    <div>
-        <div @click="showPopup">点击显示</div>
-        <sdPopup v-model="show">
-            <div style="height: 200px"></div>
-        </sdPopup>
+    <div class="numberKeyboard">
+        <!--<button @click="showNumberKeyboard">点击显示</button>-->
+        <input type="text" readonly @click.stop @touchstart.stop="isShow = true">
+        <sdPasswordInput :gutter="'0.12rem'" :length="6" bgColor="#fff" style="margin-top: 0.5rem" :isMask="true" v-model="numberKeyboardValue" :isFocus="isFocus" @focus="focus"></sdPasswordInput>
+        <sd-numberKeyboard v-model="numberKeyboardValue" title="支付密码" :show="isShow" @change="change" @blur="isShow = false; isFocus = false" maxlength="6" :isShuffle="true" :extraKey="''"></sd-numberKeyboard>
     </div>
 </template>
 
@@ -49,12 +53,24 @@ None.
         name: '',
         data() {
             return {
-                show: false
+                isShow: false,
+                numberKeyboardValue: '',
+                extraKey: '.',   //'' '.' 'X' ['$', '￥'],
+                isFocus: false
             }
         },
         methods: {
-            showPopup() {
-                this.show = true
+            showNumberKeyboard() {
+              this.isShow = !this.isShow
+            },
+            focus() {
+                this.isShow = true
+                this.isFocus = true
+            },
+            change(index) {
+                this.$toast({
+                    content: index
+                })
             }
         }
     }
