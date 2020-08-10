@@ -74,4 +74,4 @@ None.
 
 ```
 ## Screenshots
-![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/10/1597039026936.gif)
+![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/10/1597039108025.gif)
