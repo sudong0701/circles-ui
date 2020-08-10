@@ -80,7 +80,7 @@ None.
  ![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/10/1597039521799.png)
  
   ### extraKey === 'X'时
- ![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/10/1597040008922.png)
+ ![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/10/1597040086440.png)
  
   ### 自定义extraKey时
  ![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/10/1597039533535.png)
