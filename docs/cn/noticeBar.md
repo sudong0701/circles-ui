@@ -4,22 +4,23 @@ Popup 组件定义一个弹出层。
 ## Props
 | Prop | Type | Default | Note |
 |---|---|---|---|
-| v-model(isShow) | Boolean | false | 控制Popup的显示隐藏。
-| isOverlay | Boolean | true | 是否显示背景蒙层。
-| closeOnClickOverlay | Boolean | true | 是否点击背景蒙层后关闭。
-| position | String | 'bottom' | 弹出层的位置(top、right、bottom、left、center)。
-| isRound | Boolean | true | 是否展示圆角。
-| duration | Number | 300(ms) | 动画时长。
-| lockScroll | Boolean | true | 是否锁定背景滚动。
+| mode | String | '' | 通知栏模式 可选值为link和close。
+| text | String | '' | 通知栏内容。
+| scrollable | Boolean | true | 是否在长度溢出时滚动。
+| delay | Number & String | 1(s) | 滚动动画延时。
+| speed | Number & String | 50px/s | 滚动速度。
+| wrapable | Boolean | false | 是否开启文本换行(开始文本换行后 scrollable不生效)。
+| color | String | '#ed6a0c' | 文字颜色。
+| background | String | '#fffbe8' | 通知栏背景颜色。
 
 ## Events
 | Event Name | Returns | Notes |
 |---|---|---|
-| open |  | popup打开时触发。
-| opened |  | popup打开且动画结束时触发。
-| close |  | popup关闭时触发。
-| closed |  | popup关闭且动画结束时触发。
-| click-overlay |  | p点击遮罩层时触发。
+| click |  | 点击通知栏时触发。
+| finish |  | 每当滚动栏一轮滚动结束时触发。
+| replay |  | 每当滚动栏重新开始滚动时触发。
+| close |  | 点击close按钮时触发。
+| link |  | 点击link图标时触发。
 
 <!--
 ## Methods
@@ -36,11 +37,9 @@ None.
 简单用法
 ```
 <template>
-    <div>
-        <div @click="showPopup">点击显示</div>
-        <sdPopup v-model="show">
-            <div style="height: 200px"></div>
-        </sdPopup>
+    <div class="noticeBar">
+        <sd-noticeBar  :scrollable="true" :text="text" mode="close" delay="0.5" speed="50">
+        </sd-noticeBar>
     </div>
 </template>
 
@@ -49,12 +48,7 @@ None.
         name: '',
         data() {
             return {
-                show: false
-            }
-        },
-        methods: {
-            showPopup() {
-                this.show = true
+                text: '在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。'
             }
         }
     }
