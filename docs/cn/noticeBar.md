@@ -1,5 +1,5 @@
-# `Popup` 弹出层
-Popup 组件定义一个弹出层。
+# `NoticeBar` 通知栏
+NoticeBar 组件定义通知栏。
 
 ## Props
 | Prop | Type | Default | Note |
