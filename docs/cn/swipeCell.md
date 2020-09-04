@@ -12,7 +12,7 @@ swipeCell 组件定义一个滑动单元格。
 <!--
 ## Methods
 None.
-
+-->
 ## Static Props
 None.
 
