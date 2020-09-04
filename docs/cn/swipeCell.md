@@ -4,12 +4,12 @@ swipeCell 组件定义一个滑动单元格。
 ## Props
 | Prop | Type | Default | Note |
 |---|---|---|---|
-|无|---|---|---|
+|无|
 
 ## Events
 | Event Name | Returns | Notes |
 |---|---|---|
-|无|---|---|
+|无|
 
 <!--
 ## Methods
