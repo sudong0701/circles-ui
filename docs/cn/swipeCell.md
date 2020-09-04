@@ -18,11 +18,11 @@ None.
 
 ## Static Methods
 None.
--->
 
 ## Static Slot
 left 定义左侧滑动的内容(需要自己定义样式)
 right 定义右侧滑动的内容(需要自己定义样式)
+-->
 
 ## Example
 简单用法
