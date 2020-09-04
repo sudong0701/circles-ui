@@ -100,4 +100,4 @@ None.
 ```
 
 ## Screenshots
-![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/09/04/1599212209236.gif)
+![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/09/04/1599212379617.gif)
