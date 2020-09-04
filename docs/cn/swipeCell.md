@@ -45,7 +45,7 @@ None.
         name: '',
         data() {
             return {
-                cellArr: [1,1,1,1,1]
+                cellArr: [1,1,1,1,1,1]
             }
         }
     }
