@@ -9,20 +9,20 @@ swipeCell 组件定义一个滑动单元格。
 | Event Name | Returns | Notes |
 |---|---|---|
 
+## Slot
+left 定义左侧滑动的内容(需要自己定义样式)
+right 定义右侧滑动的内容(需要自己定义样式)
+
 <!--
 ## Methods
 None.
--->
+
 ## Static Props
 None.
 
 ## Static Methods
 None.
-
-## Static Slot
-left 定义左侧滑动的内容(需要自己定义样式)
-right 定义右侧滑动的内容(需要自己定义样式)
-
+-->
 ## Example
 简单用法
 ```
