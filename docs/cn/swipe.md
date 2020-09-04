@@ -1,25 +1,22 @@
-# `Popup` 弹出层
-Popup 组件定义一个弹出层。
+# `swipe` 轮播图组件
+swipe 组件定义一个轮播图。
 
 ## Props
 | Prop | Type | Default | Note |
 |---|---|---|---|
-| v-model(isShow) | Boolean | false | 控制Popup的显示隐藏。
-| isOverlay | Boolean | true | 是否显示背景蒙层。
-| closeOnClickOverlay | Boolean | true | 是否点击背景蒙层后关闭。
-| position | String | 'bottom' | 弹出层的位置(top、right、bottom、left、center)。
-| isRound | Boolean | true | 是否展示圆角。
-| duration | Number | 300(ms) | 动画时长。
-| lockScroll | Boolean | true | 是否锁定背景滚动。
+| swipeIndex | Number | 0 | 轮播图起始下标。
+| vertical | Boolean | false | 是否为纵向 false为横向轮播 true为纵向轮播。
+| isLoop | Boolean | true | 是否嵌接滑动。
+| isAuto | Boolean | true | 是否自动轮播。
+| interval | Number | 5000(ms) | 自动轮播时长。
+| duration | Number | 500(ms) | 滑动动画时长。
+| distance | Number | 80 | 滑动距离(大于该距离会切换下标)。
+| showIndicators | Boolean | true | 是否显示轮播指示器。
 
 ## Events
 | Event Name | Returns | Notes |
 |---|---|---|
-| open |  | popup打开时触发。
-| opened |  | popup打开且动画结束时触发。
-| close |  | popup关闭时触发。
-| closed |  | popup关闭且动画结束时触发。
-| click-overlay |  | p点击遮罩层时触发。
+| change | 当前轮播的下标index | 轮播图下标改变触发的事件。
 
 <!--
 ## Methods
@@ -36,28 +33,23 @@ None.
 简单用法
 ```
 <template>
-    <div>
-        <div @click="showPopup">点击显示</div>
-        <sdPopup v-model="show">
-            <div style="height: 200px"></div>
-        </sdPopup>
+    <div class="swipe">
+        <div style="text-align: center; line-height: 1.2rem">轮播图组件</div>
+        <sd-swipe>
+            <sd-swipe-item>
+                <img src="../../static/img/1.jpg" alt="">
+            </sd-swipe-item>
+            <sd-swipe-item>
+                <img src="../../static/img/2.jpg" alt="">
+            </sd-swipe-item>
+            <sd-swipe-item>
+                <img src="../../static/img/3.jpg" alt="">
+            </sd-swipe-item>
+            <sd-swipe-item>
+                <img src="../../static/img/4.jpg" alt="">
+            </sd-swipe-item>
+        </sd-swipe>
     </div>
 </template>
-
-<script>
-    export default {
-        name: '',
-        data() {
-            return {
-                show: false
-            }
-        },
-        methods: {
-            showPopup() {
-                this.show = true
-            }
-        }
-    }
-</script>
 
 ```
