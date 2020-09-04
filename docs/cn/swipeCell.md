@@ -1,25 +1,13 @@
-# `Popup` 弹出层
-Popup 组件定义一个弹出层。
+# `swipeCell` 滑动单元格组件
+swipeCell 组件定义一个滑动单元格。
 
 ## Props
 | Prop | Type | Default | Note |
 |---|---|---|---|
-| v-model(isShow) | Boolean | false | 控制Popup的显示隐藏。
-| isOverlay | Boolean | true | 是否显示背景蒙层。
-| closeOnClickOverlay | Boolean | true | 是否点击背景蒙层后关闭。
-| position | String | 'bottom' | 弹出层的位置(top、right、bottom、left、center)。
-| isRound | Boolean | true | 是否展示圆角。
-| duration | Number | 300(ms) | 动画时长。
-| lockScroll | Boolean | true | 是否锁定背景滚动。
 
 ## Events
 | Event Name | Returns | Notes |
 |---|---|---|
-| open |  | popup打开时触发。
-| opened |  | popup打开且动画结束时触发。
-| close |  | popup关闭时触发。
-| closed |  | popup关闭且动画结束时触发。
-| click-overlay |  | p点击遮罩层时触发。
 
 <!--
 ## Methods
@@ -32,15 +20,24 @@ None.
 None.
 -->
 
+## Static Slot
+left 定义左侧滑动的内容(需要自己定义样式)
+right 定义右侧滑动的内容(需要自己定义样式)
+
 ## Example
 简单用法
 ```
 <template>
-    <div>
-        <div @click="showPopup">点击显示</div>
-        <sdPopup v-model="show">
-            <div style="height: 200px"></div>
-        </sdPopup>
+    <div class="swipeCell">
+        <sdSwipeCell v-for="(item, key) in cellArr" :key="key">
+            <template #left>
+                <div class="left">查看详情</div>
+            </template>
+            <div style="padding: 10px 16px;background-color: #fff;line-height: 0.48rem">测试滑动单元格组件{{key}}</div>
+            <template #right>
+                <div class="right">删除</div>
+            </template>
+        </sdSwipeCell>
     </div>
 </template>
 
@@ -49,15 +46,34 @@ None.
         name: '',
         data() {
             return {
-                show: false
-            }
-        },
-        methods: {
-            showPopup() {
-                this.show = true
+                cellArr: [1,1,1,1,1]
             }
         }
     }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+    .swipeCell {
+        .left {
+            width: 60px;
+            height: 100%;
+            font-size: 0.28rem;
+            text-align: center;
+            line-height: 44px;
+            background-color: #67c23a;
+            color: #fff;
+        }
+        .right {
+            width: 60px;
+            height: 100%;
+            font-size: 0.28rem;
+            text-align: center;
+            line-height: 44px;
+            background-color: #ee0a24;
+            color: #fff;
+        }
+    }
+</style>
 
 ```
