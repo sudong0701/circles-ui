@@ -28,7 +28,7 @@ None.
 ```
 <template>
     <div class="swipeCell">
-        <sdSwipeCell v-for="(item, key) in cellArr" :key="key">
+        <csSwipeCell v-for="(item, key) in cellArr" :key="key">
             <template #left>
                 <div class="left">查看详情</div>
             </template>
@@ -36,7 +36,7 @@ None.
             <template #right>
                 <div class="right">删除</div>
             </template>
-        </sdSwipeCell>
+        </csSwipeCell>
     </div>
 </template>
 

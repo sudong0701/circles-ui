@@ -50,11 +50,11 @@ None.
 ```
 <template>
     <div class="radio">
-        <sdRadioGroup type="cell" v-model="value" @change="changeGroup" :disabled="false">
-            <sdRadio color="#67c23a" name="1" @change="changeRadio">单选框1</sdRadio>
-            <sdRadio name="2" :labelDisabled="true">单选框2</sdRadio>
-            <sdRadio name="3">单选框3</sdRadio>
-        </sdRadioGroup>
+        <csRadioGroup type="cell" v-model="value" @change="changeGroup" :disabled="false">
+            <csRadio color="#67c23a" name="1" @change="changeRadio">单选框1</csRadio>
+            <csRadio name="2" :labelDisabled="true">单选框2</csRadio>
+            <csRadio name="3">单选框3</csRadio>
+        </csRadioGroup>
     </div>
 </template>
 

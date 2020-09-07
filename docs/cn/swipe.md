@@ -35,20 +35,20 @@ None.
 <template>
     <div class="swipe">
         <div style="text-align: center; line-height: 1.2rem">轮播图组件</div>
-        <sd-swipe>
-            <sd-swipe-item>
+        <cs-swipe>
+            <cs-swipe-item>
                 <img src="../../static/img/1.jpg" alt="">
-            </sd-swipe-item>
-            <sd-swipe-item>
+            </cs-swipe-item>
+            <cs-swipe-item>
                 <img src="../../static/img/2.jpg" alt="">
-            </sd-swipe-item>
-            <sd-swipe-item>
+            </cs-swipe-item>
+            <cs-swipe-item>
                 <img src="../../static/img/3.jpg" alt="">
-            </sd-swipe-item>
-            <sd-swipe-item>
+            </cs-swipe-item>
+            <cs-swipe-item>
                 <img src="../../static/img/4.jpg" alt="">
-            </sd-swipe-item>
-        </sd-swipe>
+            </cs-swipe-item>
+        </cs-swipe>
     </div>
 </template>
 

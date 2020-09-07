@@ -37,7 +37,7 @@ None.
 ```
 <template>
     <div class="stepper">
-        <sdStepper v-model="stepperValue"  :asyncChange="false" :disabled="false" :decimalLength="2" step="2" min="-60" @add="add"></sdStepper>
+        <csStepper v-model="stepperValue"  :asyncChange="false" :disabled="false" :decimalLength="2" step="2" min="-60" @add="add"></csStepper>
     </div>
 </template>
 

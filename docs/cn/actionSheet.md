@@ -39,7 +39,7 @@ actions: [{ name: '选项一', remake: '', disabled: true}, { name: '选项二',
     <div class="actionSheet">
         <span>{{selectItem.action.name}}</span>
         <div @click="isShow = !isShow">点击显示</div>
-        <sdActionSheet v-model="isShow" :actions="actions" cancelText="取消" description="请选择身份" @open="open" @opened="opened" @close="close" @closed="closed" @select="select" @cancel="cancel"></sdActionSheet>
+        <csActionSheet v-model="isShow" :actions="actions" cancelText="取消" description="请选择身份" @open="open" @opened="opened" @close="close" @closed="closed" @select="select" @cancel="cancel"></csActionSheet>
 
     </div>
 </template>

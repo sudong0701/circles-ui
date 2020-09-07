@@ -43,17 +43,17 @@ None.
         <div @click="showDatePicker">显示date的picker</div>
         <div @click="showDateTimePicker">显示datetime的picker</div>
 
-        <sdPopup v-model="showPopup">
-            <sd-dateTimePicker v-model="dateValue" type="year-month" :minDate="minDate" :maxDate="maxDate" @clickLeftB="cancel" @clickRightBtn="confirm"></sd-dateTimePicker>
-        </sdPopup>
+        <csPopup v-model="showPopup">
+            <cs-dateTimePicker v-model="dateValue" type="year-month" :minDate="minDate" :maxDate="maxDate" @clickLeftB="cancel" @clickRightBtn="confirm"></cs-dateTimePicker>
+        </csPopup>
 
-        <sdPopup v-model="showDatePopup">
-            <sd-dateTimePicker v-model="dateValue" type="date" :minDate="minDate" :maxDate="maxDate" @clickLeftB="cancel" @clickRightBtn="confirm"></sd-dateTimePicker>
-        </sdPopup>
+        <csPopup v-model="showDatePopup">
+            <cs-dateTimePicker v-model="dateValue" type="date" :minDate="minDate" :maxDate="maxDate" @clickLeftB="cancel" @clickRightBtn="confirm"></cs-dateTimePicker>
+        </csPopup>
 
-        <sdPopup v-model="showDateTimePopup">
-            <sd-dateTimePicker v-model="dateValue" type="datetime" :minDate="minDate" :maxDate="maxDate" @clickLeftB="cancel" @clickRightBtn="confirm"></sd-dateTimePicker>
-        </sdPopup>
+        <csPopup v-model="showDateTimePopup">
+            <cs-dateTimePicker v-model="dateValue" type="datetime" :minDate="minDate" :maxDate="maxDate" @clickLeftB="cancel" @clickRightBtn="confirm"></cs-dateTimePicker>
+        </csPopup>
     </div>
 </template>
 

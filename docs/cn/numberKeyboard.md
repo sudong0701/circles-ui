@@ -42,7 +42,7 @@ None.
 <template>
     <div class="numberKeyboard">
         <input type="text" readonly @click.stop @touchstart.stop="isShow = true" v-model="numberKeyboardValue">
-        <sd-numberKeyboard v-model="numberKeyboardValue" title="支付密码" :show="isShow" @change="change" @blur="isShow = false; isFocus = false" maxlength="6" :isShuffle="true" :extraKey="''"></sd-numberKeyboard>
+        <cs-numberKeyboard v-model="numberKeyboardValue" title="支付密码" :show="isShow" @change="change" @blur="isShow = false; isFocus = false" maxlength="6" :isShuffle="true" :extraKey="''"></cs-numberKeyboard>
     </div>
 </template>
 

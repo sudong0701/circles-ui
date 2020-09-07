@@ -64,9 +64,9 @@ None.
         <div @click="showAlertDialogComponents">弹出组件式alert弹出框</div>
         <div @click="showConfirmDialogComponents">弹出组件式confirm弹出框</div>
 
-        <sdDialog v-model="showAlert" content="这是一个alert" :closeOnClickOverlay="false" @open="open" @opened="opened" @close="close" @closed="closed" @confirm="alertConfirm"></sdDialog>
+        <csDialog v-model="showAlert" content="这是一个alert" :closeOnClickOverlay="false" @open="open" @opened="opened" @close="close" @closed="closed" @confirm="alertConfirm"></csDialog>
 
-        <sdDialog v-model="showConfirm" content="这是一个confirm" type="confirm" @confirm="confirm" @cancel="cancel"></sdDialog>
+        <csDialog v-model="showConfirm" content="这是一个confirm" type="confirm" @confirm="confirm" @cancel="cancel"></csDialog>
     </div>
 </template>
 

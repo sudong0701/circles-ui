@@ -42,9 +42,9 @@ None.
 <template>
     <div>
         <div @click="showPicker">显示picker</div>
-        <sdPopup v-model="show">
-            <sdPicker v-model="defaultArr" :columns="columns" @clickRightBtn="pickerConfirm" customName="label"></sdPicker>
-        </sdPopup>
+        <csPopup v-model="show">
+            <csPicker v-model="defaultArr" :columns="columns" @clickRightBtn="pickerConfirm" customName="label"></csPicker>
+        </csPopup>
     </div>
 </template>
 
@@ -98,9 +98,9 @@ columns: [
 <template>
     <div>
         <div @click="showPicker">显示picker</div>
-        <sdPopup v-model="show">
-            <sdPicker v-model="defaultArr" isCascade :columns="city" @clickRightBtn="pickerConfirm" customName="label" customChild="children"></sdPicker>
-        </sdPopup>
+        <csPopup v-model="show">
+            <csPicker v-model="defaultArr" isCascade :columns="city" @clickRightBtn="pickerConfirm" customName="label" customChild="children"></csPicker>
+        </csPopup>
     </div>
 </template>
 

@@ -38,9 +38,9 @@ None.
 <template>
     <div>
         <div @click="showPopup">点击显示</div>
-        <sdPopup v-model="show">
+        <csPopup v-model="show">
             <div style="height: 200px"></div>
-        </sdPopup>
+        </csPopup>
     </div>
 </template>
 

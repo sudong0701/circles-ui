@@ -45,8 +45,8 @@ None.
 ```
 <template>
     <div class="collapse">
-        <sd-collapse  @change="changeCollapse" v-model="collapseActive">
-            <sd-collapse-item title="标题" icon="close" value="右侧" name="1" @change="changeCollapseItem">
+        <cs-collapse  @change="changeCollapse" v-model="collapseActive">
+            <cs-collapse-item title="标题" icon="close" value="右侧" name="1" @change="changeCollapseItem">
                 春江潮水连海平，海上明月共潮生。<br/>
                 艳艳水波千万里，何处春江无月明。<br/>
                 江流宛转绕芳甸，月照花林皆似霰。<br/>
@@ -55,8 +55,8 @@ None.
                 江畔何人初见月，江月何年初照人。<br/>
                 人生代代无穷已，江月年年只相似。<br/>
                 不知江月待何人，但见长江送流水。
-            </sd-collapse-item>
-            <sd-collapse-item title="标题" icon="close" value="右侧" name="2">
+            </cs-collapse-item>
+            <cs-collapse-item title="标题" icon="close" value="右侧" name="2">
                 春江潮水连海平，海上明月共潮生。<br/>
                 艳艳水波千万里，何处春江无月明。<br/>
                 江流宛转绕芳甸，月照花林皆似霰。<br/>
@@ -65,8 +65,8 @@ None.
                 江畔何人初见月，江月何年初照人。<br/>
                 人生代代无穷已，江月年年只相似。<br/>
                 不知江月待何人，但见长江送流水。
-            </sd-collapse-item>
-            <sd-collapse-item title="标题" icon="close" value="右侧" name="3">
+            </cs-collapse-item>
+            <cs-collapse-item title="标题" icon="close" value="右侧" name="3">
                 春江潮水连海平，海上明月共潮生。<br/>
                 艳艳水波千万里，何处春江无月明。<br/>
                 江流宛转绕芳甸，月照花林皆似霰。<br/>
@@ -75,8 +75,8 @@ None.
                 江畔何人初见月，江月何年初照人。<br/>
                 人生代代无穷已，江月年年只相似。<br/>
                 不知江月待何人，但见长江送流水。
-            </sd-collapse-item>
-        </sd-collapse>
+            </cs-collapse-item>
+        </cs-collapse>
     </div>
 </template>
 
