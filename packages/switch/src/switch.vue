@@ -1,5 +1,5 @@
 <template>
-    <div :class="`sdSwitch ${disabled ? 'van-switch--disabled': ''}`" :style="`font-size: ${circleSize}; background-color: ${isActive ? activeParentsNodeColor : unActiveParentsNodeColor}; `" @click="changeActive">
+    <div :class="`sdSwitch ${disabled ? 'van-switch--disabled': (isActive ? 'sdSwitch-active' : '')} `" :style="`font-size: ${circleSize}; background-color: ${isActive ? activeParentsNodeColor : unActiveParentsNodeColor}; `" @click="changeActive">
         <div :class="`sdSwitch-circle ${isActive ? 'sdSwitch-active' : ''}`" :style="`width: ${circleSize}; height: ${circleSize}; background-color: ${isActive ? activeNodeColor : unActiveNodeColor}; transform: translateX(${isActive ? '100%' : '0%'})`" @webkitTransitionEnd="animationEnd($event)" @transitionend="animationEnd($event)">
 
         </div>
@@ -23,7 +23,7 @@
             },
             activeParentsNodeColor: {
                 type: String,
-                default: '#1989fa'
+                default: ''
             },
             activeNodeColor: {
                 type: String,
@@ -38,6 +38,10 @@
                 default: '#fff'
             },
             disabled: {
+                type: Boolean,
+                default: false
+            },
+            asyncChange: {
                 type: Boolean,
                 default: false
             }
@@ -59,7 +63,11 @@
              */
             changeActive() {
                 if(!this.disabled) {
-                    this.$emit('change', !this.isActive)
+                    if(!this.asyncChange) {
+                        this.$emit('change', !this.isActive)
+                    } else {
+                        this.$emit('click')
+                    }
                 }
             },
             /**
