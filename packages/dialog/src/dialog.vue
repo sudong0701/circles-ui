@@ -1,30 +1,30 @@
 <template>
     <!--函数形式调用-->
-    <div class="sdDialog">
-        <div class="sdDialog-alert">
+    <div class="csDialog">
+        <div class="csDialog-alert">
             <transition name="animation-fade" >
-                <div class="sdDialog-alert-box" v-if="type === 'alert' && isShow" :style="isRound ? 'border-radius: 0.24rem;' : '' ">
-                    <p class="sdDialog-content">
+                <div class="csDialog-alert-box" v-if="type === 'alert' && isShow" :style="isRound ? 'border-radius: 0.24rem;' : '' ">
+                    <p class="csDialog-content">
                         <span>{{content}}</span>
                     </p>
-                    <div :style="`color: ${confirmBthColor}; background-color: ${confirmBthBgColor}`" class="sdDialog-btn" @click="confirmBthFnc()">{{confirmBtnText}}</div>
+                    <div :style="`color: ${confirmBthColor}; background-color: ${confirmBthBgColor}`" class="csDialog-btn" @click="confirmBthFnc()">{{confirmBtnText}}</div>
                 </div>
             </transition>
         </div>
 
-        <div class="sdDialog-confirm">
+        <div class="csDialog-confirm">
             <transition name="animation-fade">
-                <div class="sdDialog-confirm-box" v-if="type === 'confirm' && isShow" :style="isRound ? 'border-radius: 0.24rem;' : '' ">
-                    <p class="sdDialog-content">
+                <div class="csDialog-confirm-box" v-if="type === 'confirm' && isShow" :style="isRound ? 'border-radius: 0.24rem;' : '' ">
+                    <p class="csDialog-content">
                         <span>{{content}}</span>
                     </p>
-                    <div @click="cancelBthFnc" :style="`color: ${cancelBthColor}; background-color: ${cancelBthBgColor}`" class="sdDialog-btn sdDialog-btn-left">{{cancelBtnText}}</div>
-                    <div @click="confirmBthFnc" :style="`color: ${confirmBthColor}; background-color: ${confirmBthBgColor}`" class="sdDialog-btn sdDialog-btn-right">{{confirmBtnText}}</div>
+                    <div @click="cancelBthFnc" :style="`color: ${cancelBthColor}; background-color: ${cancelBthBgColor}`" class="csDialog-btn csDialog-btn-left">{{cancelBtnText}}</div>
+                    <div @click="confirmBthFnc" :style="`color: ${confirmBthColor}; background-color: ${confirmBthBgColor}`" class="csDialog-btn csDialog-btn-right">{{confirmBtnText}}</div>
                 </div>
             </transition>
         </div>
 
-        <div v-if="isOverlay && isShowOverlay"  :class="`sdDialog-bg ${overlayClass}`" :style="isOverlay ? `background-color: rgba(0, 0, 0, 0.6);${overlayStyle}` : ''" @click="closeOverlay($event)" @touchmove="overlayMove($event)"></div>
+        <div v-if="isOverlay && isShowOverlay"  :class="`csDialog-bg ${overlayClass}`" :style="isOverlay ? `background-color: rgba(0, 0, 0, 0.6);${overlayStyle}` : ''" @click="closeOverlay($event)" @touchmove="overlayMove($event)"></div>
     </div>
 </template>
 

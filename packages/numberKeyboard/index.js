@@ -1,7 +1,7 @@
-import sdNumberKeyboard from './src/numberKeyboard.vue'
+import csNumberKeyboard from './src/numberKeyboard.vue'
 
-sdNumberKeyboard.install = function (Vue) {
-    Vue.component(sdNumberKeyboard.name, sdNumberKeyboard)
+csNumberKeyboard.install = function (Vue) {
+    Vue.component(csNumberKeyboard.name, csNumberKeyboard)
 }
 
-export default sdNumberKeyboard
+export default csNumberKeyboard

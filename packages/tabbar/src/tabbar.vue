@@ -1,12 +1,12 @@
 <template>
-    <div :class="`sdTabbar ${fixed ? 'sdTabbar_fixed' : ''}`" ref="sdTabbar">
+    <div :class="`csTabbar ${fixed ? 'csTabbar_fixed' : ''}`" ref="csTabbar">
         <slot></slot>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'sdTabbar',
+        name: 'csTabbar',
         data() {
             return {
 
@@ -40,15 +40,15 @@
         methods: {
             initComponent() {
                 this.$nextTick(()=> {
-                    const sdTabbarChild = this.$refs.sdTabbar.children
-                    for(let i = 0; i < sdTabbarChild.length; i++) {
-                        sdTabbarChild[i].__vue__.activeColor = this.activeColor
-                        sdTabbarChild[i].__vue__.inactiveColor = this.inactiveColor
-                        sdTabbarChild[i].__vue__.key = i
+                    const csTabbarChild = this.$refs.csTabbar.children
+                    for(let i = 0; i < csTabbarChild.length; i++) {
+                        csTabbarChild[i].__vue__.activeColor = this.activeColor
+                        csTabbarChild[i].__vue__.inactiveColor = this.inactiveColor
+                        csTabbarChild[i].__vue__.key = i
                         if(i === Number(this.active)) {
-                            sdTabbarChild[i].__vue__.isActive = true
+                            csTabbarChild[i].__vue__.isActive = true
                         } else {
-                            sdTabbarChild[i].__vue__.isActive = false
+                            csTabbarChild[i].__vue__.isActive = false
                         }
                     }
                 })
@@ -59,25 +59,25 @@
              * @return
              */
             changeTab(key) {
-                const sdTabbarChild = this.$refs.sdTabbar.children
+                const csTabbarChild = this.$refs.csTabbar.children
                 this.$emit('change', key)
-                for(let i = 0; i < sdTabbarChild.length; i++) {
+                for(let i = 0; i < csTabbarChild.length; i++) {
                     if(i === key) {
-                        sdTabbarChild[i].__vue__.isActive = true
+                        csTabbarChild[i].__vue__.isActive = true
                     } else {
-                        sdTabbarChild[i].__vue__.isActive = false
+                        csTabbarChild[i].__vue__.isActive = false
                     }
                 }
             }
         },
         watch: {
             active(index) {
-                const sdTabbarChild = this.$refs.sdTabbar.children
-                for(let i = 0; i < sdTabbarChild.length; i++) {
+                const csTabbarChild = this.$refs.csTabbar.children
+                for(let i = 0; i < csTabbarChild.length; i++) {
                     if(i === index) {
-                        sdTabbarChild[i].__vue__.isActive = true
+                        csTabbarChild[i].__vue__.isActive = true
                     } else {
-                        sdTabbarChild[i].__vue__.isActive = false
+                        csTabbarChild[i].__vue__.isActive = false
                     }
                 }
             }

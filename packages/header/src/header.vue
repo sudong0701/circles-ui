@@ -1,19 +1,19 @@
 <template>
     <div>
-        <div class="sd-header" :style="`height: ${height}`">
-            <div class="sd-header-left">
+        <div class="cs-header" :style="`height: ${height}`">
+            <div class="cs-header-left">
                 <slot name="left" clas="slot">
-                    <div class="sd-header-leftBox" @click="goBack()">
-                        <i class="sd-header-leftImg iconfont iconfanhui"></i>
+                    <div class="cs-header-leftBox" @click="goBack()">
+                        <i class="cs-header-leftImg iconfont iconfanhui"></i>
                     </div>
                 </slot>
             </div>
-            <div :style="`line-height: ${height}`" class="sd-header-title">{{title}}</div>
-            <div class="sd-header-right">
+            <div :style="`line-height: ${height}`" class="cs-header-title">{{title}}</div>
+            <div class="cs-header-right">
                 <slot name="right">
-                    <div class="sd-header-rightBox" @click="clickRight()">
-                        <i :style="`line-height: ${height}`" v-if="type === 'share'" class="iconfont iconfenxiang sd-header-rightImg"></i>
-                        <i :style="`line-height: ${height}`" v-if="type === 'point'" class="iconfont icontishi sd-header-rightImg"></i>
+                    <div class="cs-header-rightBox" @click="clickRight()">
+                        <i :style="`line-height: ${height}`" v-if="type === 'share'" class="iconfont iconfenxiang cs-header-rightImg"></i>
+                        <i :style="`line-height: ${height}`" v-if="type === 'point'" class="iconfont icontishi cs-header-rightImg"></i>
                     </div>
                 </slot>
             </div>
@@ -24,7 +24,7 @@
 
 <script>
     export default {
-        name:'sdHeader',
+        name:'csHeader',
         data() {
             return {}
         },

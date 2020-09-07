@@ -1,7 +1,7 @@
-import sdNoticeBar from './src/noticeBar.vue'
+import csNoticeBar from './src/noticeBar.vue'
 
-sdNoticeBar.install = function (Vue) {
-    Vue.component(sdNoticeBar.name, sdNoticeBar)
+csNoticeBar.install = function (Vue) {
+    Vue.component(csNoticeBar.name, csNoticeBar)
 }
 
-export default sdNoticeBar
+export default csNoticeBar

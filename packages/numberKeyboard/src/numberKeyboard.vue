@@ -1,21 +1,21 @@
 <template>
     <transition name="ani-popup-bottom">
-        <div class="sd-numberKeyboard" v-if="show" :style="`animation-duration: ${(duration) / 1000}s; border-radius: ${isRound ? '0.4rem 0.4rem 0 0' : ''}`" @animationend="animationend">
-            <div class="sd-numberKeyboard-header" v-if="title" @click.stop :style="`border-radius: ${isRound ? '0.4rem 0.4rem 0 0' : ''}`">
-                <div class="sd-numberKeyboard-title">{{title}}</div>
-                <div v-if="closeButtonText" class="sd-numberKeyboard-close" @click.stop="blur">{{closeButtonText}}</div>
+        <div class="cs-numberKeyboard" v-if="show" :style="`animation-duration: ${(duration) / 1000}s; border-radius: ${isRound ? '0.4rem 0.4rem 0 0' : ''}`" @animationend="animationend">
+            <div class="cs-numberKeyboard-header" v-if="title" @click.stop :style="`border-radius: ${isRound ? '0.4rem 0.4rem 0 0' : ''}`">
+                <div class="cs-numberKeyboard-title">{{title}}</div>
+                <div v-if="closeButtonText" class="cs-numberKeyboard-close" @click.stop="blur">{{closeButtonText}}</div>
             </div>
-            <div class="sd-numberKeyboard-list">
-                <div class="sd-numberKeyboard-default">
-                    <div :class="`sd-numberKeyboard-item ${((extraKey === '.' && key === 9) || isKeyArray && extraKey.length === 1 && key === 9) ? 'sd-numberKeyboard-item-wider' : ''}`" v-for="(item, key) in keyboardData" :key="key">
-                        <div @click.stop="selectItem(item)" class="sd-numberKeyboardContent">
+            <div class="cs-numberKeyboard-list">
+                <div class="cs-numberKeyboard-default">
+                    <div :class="`cs-numberKeyboard-item ${((extraKey === '.' && key === 9) || isKeyArray && extraKey.length === 1 && key === 9) ? 'cs-numberKeyboard-item-wider' : ''}`" v-for="(item, key) in keyboardData" :key="key">
+                        <div @click.stop="selectItem(item)" class="cs-numberKeyboardContent">
                             <span v-if="item.isShow">{{item.value}}</span>
                             <i @click.stop="blur" v-if="item.value === 'collapse'" class="iconfont iconnumberKeyboard_collapse"></i>
                             <i v-if="item.value === 'delete'" class="iconfont iconnumberKeyboard_delete" @click.stop="deleteNumber"></i>
                         </div>
                     </div>
                 </div>
-                <div class="sd-numberKeyboard-right" v-if="extraKey === '.' || isKeyArray">
+                <div class="cs-numberKeyboard-right" v-if="extraKey === '.' || isKeyArray">
                     <div @click.stop="deleteNumber">
                         <i class="iconfont iconnumberKeyboard_delete"></i>
                     </div>
@@ -28,7 +28,7 @@
 
 <script>
     export default {
-        name: 'sdNumberKeyboard',
+        name: 'csNumberKeyboard',
         data() {
             return {
                 keyboardData: [],

@@ -1,13 +1,13 @@
 <template>
-    <div class="sdIndexBarItem">
-        <div class="sdIndexBarItem_title">{{index}}</div>
+    <div class="csIndexBarItem">
+        <div class="csIndexBarItem_title">{{index}}</div>
         <slot></slot>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'sdIndexBarItem',
+        name: 'csIndexBarItem',
         data() {
             return {}
         },

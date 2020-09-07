@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import sdImagePreview from './src/sdImagePreview.vue'
+import csImagePreview from './src/csImagePreview.vue'
 import $imagePreview from './src/imagePreview.vue'
 let instance, imagePreviewConstructor = Vue.extend($imagePreview)
 
@@ -13,8 +13,8 @@ let imagePreview = (options = {}) => {
 
 
 
-sdImagePreview.install = function (Vue) {
-    Vue.component(sdImagePreview.name, sdImagePreview)
+csImagePreview.install = function (Vue) {
+    Vue.component(csImagePreview.name, csImagePreview)
 }
 
-export {sdImagePreview, imagePreview}
+export {csImagePreview, imagePreview}

@@ -1,7 +1,7 @@
 <template>
     <div class="noticeBar">
-        <sd-noticeBar  :scrollable="true" :text="text" mode="close" delay="0.5" speed="50">
-        </sd-noticeBar>
+        <cs-noticeBar  :scrollable="true" :text="text" mode="close" delay="0.5" speed="50">
+        </cs-noticeBar>
     </div>
 </template>
 

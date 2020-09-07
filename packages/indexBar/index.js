@@ -1,15 +1,15 @@
-import sdIndexBar from './src/indexBar.vue'
-import sdIndexBarItem from './src/indexBarItem.vue'
+import csIndexBar from './src/indexBar.vue'
+import csIndexBarItem from './src/indexBarItem.vue'
 
-sdIndexBar.install = function (Vue) {
-    Vue.component(sdIndexBar.name, sdIndexBar)
+csIndexBar.install = function (Vue) {
+    Vue.component(csIndexBar.name, csIndexBar)
 }
 
-sdIndexBarItem.install = function (Vue) {
-    Vue.component(sdIndexBarItem.name, sdIndexBarItem)
+csIndexBarItem.install = function (Vue) {
+    Vue.component(csIndexBarItem.name, csIndexBarItem)
 }
 
 export {
-    sdIndexBar,
-    sdIndexBarItem
+    csIndexBar,
+    csIndexBarItem
 }

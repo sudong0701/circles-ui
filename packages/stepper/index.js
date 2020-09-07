@@ -1,7 +1,7 @@
-import sdStepper from './src/stepper.vue'
+import csStepper from './src/stepper.vue'
 
-sdStepper.install = function (Vue) {
-    Vue.component(sdStepper.name, sdStepper)
+csStepper.install = function (Vue) {
+    Vue.component(csStepper.name, csStepper)
 }
 
-export default sdStepper
+export default csStepper

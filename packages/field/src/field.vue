@@ -1,18 +1,18 @@
 <template>
-    <div class="sdField">
-        <div class="sdField_left">
+    <div class="csField">
+        <div class="csField_left">
             <span>{{label}}</span>
         </div>
 
-        <div class="sdField_value">
-            <input v-model="selfValue" :password="password" class="sdField_input" type="text" @input="oninput" :placeholder="placeholder">
+        <div class="csField_value">
+            <input v-model="selfValue" :password="password" class="csField_input" type="text" @input="oninput" :placeholder="placeholder">
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'sdField',
+        name: 'csField',
         data() {
             return {
                 selfValue: ''
@@ -84,19 +84,19 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-    .sdField {
+    .csField {
         display: flex;
         flex-direction: row;
         padding: 0.2rem 0.32rem;
         line-height: 0.48rem;
         background-color: #fff;
-        .sdField_left {
+        .csField_left {
             width: 1.8rem;
             margin-right: 0.24rem;
         }
-        .sdField_value {
+        .csField_value {
             flex: 1;
-            .sdField_input {
+            .csField_input {
                 display: block;
                 box-sizing: border-box;
                 width: 100%;

@@ -1,12 +1,12 @@
-import sdCheckbox from './src/checkbox.vue'
-import sdCheckboxGroup from './src/checkboxGroup.vue'
+import csCheckbox from './src/checkbox.vue'
+import csCheckboxGroup from './src/checkboxGroup.vue'
 
-sdCheckbox.install = function (Vue) {
-    Vue.component(sdCheckbox.name, sdCheckbox)
+csCheckbox.install = function (Vue) {
+    Vue.component(csCheckbox.name, csCheckbox)
 }
 
-sdCheckboxGroup.install = function (Vue) {
-    Vue.component(sdCheckboxGroup.name, sdCheckboxGroup)
+csCheckboxGroup.install = function (Vue) {
+    Vue.component(csCheckboxGroup.name, csCheckboxGroup)
 }
 
-export {sdCheckbox, sdCheckboxGroup}
+export {csCheckbox, csCheckboxGroup}

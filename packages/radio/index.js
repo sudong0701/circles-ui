@@ -1,12 +1,12 @@
-import sdRadio from './src/radio.vue'
-import sdRadioGroup from './src/radioGroup.vue'
+import csRadio from './src/radio.vue'
+import csRadioGroup from './src/radioGroup.vue'
 
-sdRadio.install = function (Vue) {
-    Vue.component(sdRadio.name, sdRadio)
+csRadio.install = function (Vue) {
+    Vue.component(csRadio.name, csRadio)
 }
 
-sdRadioGroup.install = function (Vue) {
-    Vue.component(sdRadioGroup.name, sdRadioGroup)
+csRadioGroup.install = function (Vue) {
+    Vue.component(csRadioGroup.name, csRadioGroup)
 }
 
-export {sdRadio, sdRadioGroup}
+export {csRadio, csRadioGroup}

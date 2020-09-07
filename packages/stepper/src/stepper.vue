@@ -1,14 +1,14 @@
 <template>
-    <div class="sdStepper">
-        <div :class="`sdStepper-lower ${inputValue <= Number(min) || disabled ? 'sdStepper-lower-disabled' : ''}`" @click="lowerStepper"></div>
-        <input type="text" :disabled="disabledEnter || disabled" :class="`sdStepper-content ${disabled ? 'sdStepper-lower-disabled' : ''}`" v-model="inputValue" @keyup="stepperKeyUp($event)" @change="stepperChange">
-        <div :class="`sdStepper-add ${inputValue >= Number(max) || disabled ? 'sdStepper-lower-disabled' : ''}`" @click="addStepper"></div>
+    <div class="csStepper">
+        <div :class="`csStepper-lower ${inputValue <= Number(min) || disabled ? 'csStepper-lower-disabled' : ''}`" @click="lowerStepper"></div>
+        <input type="text" :disabled="disabledEnter || disabled" :class="`csStepper-content ${disabled ? 'csStepper-lower-disabled' : ''}`" v-model="inputValue" @keyup="stepperKeyUp($event)" @change="stepperChange">
+        <div :class="`csStepper-add ${inputValue >= Number(max) || disabled ? 'csStepper-lower-disabled' : ''}`" @click="addStepper"></div>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'sdStepper',
+        name: 'csStepper',
         data() {
             return {
                 inputValue: '',

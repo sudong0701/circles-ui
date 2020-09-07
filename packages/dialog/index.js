@@ -5,7 +5,7 @@
  */
 import Vue from 'vue'
 import $dialog from './src/dialog.vue';
-import sdDialog from './src/sdDialog.vue';
+import csDialog from './src/csDialog.vue';
 
 let DialogConstructor = Vue.extend($dialog)
 let instance
@@ -32,7 +32,7 @@ let dialog = (options = {}) => {
     }
 })
 
-sdDialog.install = function (Vue) {
-    Vue.component(sdDialog.name, sdDialog);
+csDialog.install = function (Vue) {
+    Vue.component(csDialog.name, csDialog);
 };
-export {dialog, sdDialog};
+export {dialog, csDialog};

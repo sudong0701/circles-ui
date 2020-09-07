@@ -1,30 +1,30 @@
 <template>
-    <div class="sdCollapseItem" ref="collapseItem" :style="`height: ${isUnfold ? `${contentHeight + cellHeight}px` : `${cellHeight}px`}`" @webkitTransitionEnd="animationEnd($event)" @transitionend="animationEnd($event)">
-        <div class="sdCollapseItem-cell"  @click="clickCollapseItem" ref="collapseItemCell">
-            <div class="sdCollapseItem-left" v-if="icon">
+    <div class="csCollapseItem" ref="collapseItem" :style="`height: ${isUnfold ? `${contentHeight + cellHeight}px` : `${cellHeight}px`}`" @webkitTransitionEnd="animationEnd($event)" @transitionend="animationEnd($event)">
+        <div class="csCollapseItem-cell"  @click="clickCollapseItem" ref="collapseItemCell">
+            <div class="csCollapseItem-left" v-if="icon">
                 <img v-if="icon.indexOf('http') > -1 || icon.indexOf('https') > -1" :src="icon" alt="">
                 <i v-if="icon.indexOf('http') === -1 && icon.indexOf('https') === -1" :class="`iconfont icon${icon}`"></i>
             </div>
 
-            <div class="sdCollapseItem-title">
+            <div class="csCollapseItem-title">
                 <slot name="title">
-                    <span class="sdCollapseItem-titleContent">{{title}}</span>
+                    <span class="csCollapseItem-titleContent">{{title}}</span>
                 </slot>
             </div>
 
-            <div class="sdCollapseItem-value">
+            <div class="csCollapseItem-value">
                 <slot name="value">
-                    <span class="sdCollapseItem-valueContent">{{value}}</span>
+                    <span class="csCollapseItem-valueContent">{{value}}</span>
                 </slot>
             </div>
 
-            <div class="sdCollapseItem-right" v-if="isLink">
+            <div class="csCollapseItem-right" v-if="isLink">
                 <i class="iconfont iconfanhui" :style="`transform: rotate(${isUnfold ? 90 : 270}deg)`"></i>
             </div>
-            <div class="sdCollapseItem-line"></div>
+            <div class="csCollapseItem-line"></div>
         </div>
-        <div class="sdCollapseItem-content" ref="collapseItemContent" >
-            <div class="sdCollapseItem-line"></div>
+        <div class="csCollapseItem-content" ref="collapseItemContent" >
+            <div class="csCollapseItem-line"></div>
             <slot></slot>
         </div>
     </div>
@@ -32,7 +32,7 @@
 
 <script>
     export default {
-        name: 'sdCollapseItem',
+        name: 'csCollapseItem',
         data() {
             return {
                 isUnfold: false,

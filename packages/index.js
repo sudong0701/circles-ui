@@ -3,63 +3,63 @@
  * Date: 20/2/28
  */
 import Vue from 'vue'
-import sdHeader from './header/index.js';   //头部组件
-import {sdDialog, dialog} from './dialog/index.js';   //弹出框组件
+import csHeader from './header/index.js';   //头部组件
+import {csDialog, dialog} from './dialog/index.js';   //弹出框组件
 import toast from './toast/index.js'   //toast弱提示组件
-import sdPopup from './popup/index.js'   //弹出层组件
-import sdPicker from './picker/index.js'   //普通选择器or级联选择器组件
-import sdDateTimePicker from './dateTimePicker/index.js'   //时间日期选择器
-import {sdSwipe, sdSwipeItem} from './swipe/index.js'   //轮播图组件
-import sdPullRefresh from './pullRefresh/index.js'   //下拉刷新or上拉加载组件
-import sdSwipeCell from './swipeCell/index.js'   //滑动单元格组件
+import csPopup from './popup/index.js'   //弹出层组件
+import csPicker from './picker/index.js'   //普通选择器or级联选择器组件
+import csDateTimePicker from './dateTimePicker/index.js'   //时间日期选择器
+import {csSwipe, csSwipeItem} from './swipe/index.js'   //轮播图组件
+import csPullRefresh from './pullRefresh/index.js'   //下拉刷新or上拉加载组件
+import csSwipeCell from './swipeCell/index.js'   //滑动单元格组件
 import chartRadar from './chartRadar/index'   //绘制雷达图组件
-import {sdImagePreview, imagePreview} from './imagePreview/index'   //图片预览组件(有待优化)
-import sdNumberKeyboard from  './numberKeyboard/index'   //数字键盘组件
-import sdPasswordInput from './passwordInput'   //密码输入框组件
-import {sdCollapse, sdCollapseItem} from './collapse/index'   //折叠面板组件
-import sdSwitch from './switch/index'   //开关组件
-import {sdRadio, sdRadioGroup} from './radio/index'   //单选组件
-import sdStepper from './stepper/index'   //步进器组件
-import {sdCheckbox, sdCheckboxGroup} from './checkbox/index'   //复选框组件
-import sdNoticeBar from './noticeBar/index'   //通知栏组件
-import sdActionSheet from  './actionSheet/index'   //动作面板组件
-import {sdTab, sdTabs} from './tab/index'   //标签页组件
-import sdCircle from './circle/index'   //环形进度条组件(体验不好 后续需优化)
-import {sdTabbar, sdTabbarItem} from './tabbar/index'   //标签栏组件组件
-import {sdIndexBar, sdIndexBarItem} from './indexBar/index'   //索引栏组件
-import sdField from './field/index'   //输入框
+import {csImagePreview, imagePreview} from './imagePreview/index'   //图片预览组件(有待优化)
+import csNumberKeyboard from  './numberKeyboard/index'   //数字键盘组件
+import csPasswordInput from './passwordInput'   //密码输入框组件
+import {csCollapse, csCollapseItem} from './collapse/index'   //折叠面板组件
+import csSwitch from './switch/index'   //开关组件
+import {csRadio, csRadioGroup} from './radio/index'   //单选组件
+import csStepper from './stepper/index'   //步进器组件
+import {csCheckbox, csCheckboxGroup} from './checkbox/index'   //复选框组件
+import csNoticeBar from './noticeBar/index'   //通知栏组件
+import csActionSheet from  './actionSheet/index'   //动作面板组件
+import {csTab, csTabs} from './tab/index'   //标签页组件
+import csCircle from './circle/index'   //环形进度条组件(体验不好 后续需优化)
+import {csTabbar, csTabbarItem} from './tabbar/index'   //标签栏组件组件
+import {csIndexBar, csIndexBarItem} from './indexBar/index'   //索引栏组件
+import csField from './field/index'   //输入框
 
 const components = [
-    sdHeader,
-    sdDialog,
-    sdPopup,
-    sdPicker,
-    sdDateTimePicker,
-    sdSwipe,
-    sdSwipeItem,
-    sdPullRefresh,
-    sdSwipeCell,
-    sdImagePreview,
-    sdNumberKeyboard,
-    sdPasswordInput,
-    sdCollapse,
-    sdCollapseItem,
-    sdSwitch,
-    sdRadioGroup,
-    sdRadio,
-    sdStepper,
-    sdCheckbox,
-    sdCheckboxGroup,
-    sdNoticeBar,
-    sdActionSheet,
-    sdTab,
-    sdTabs,
-    sdCircle,
-    sdTabbar,
-    sdTabbarItem,
-    sdIndexBar,
-    sdIndexBarItem,
-    sdField
+    csHeader,
+    csDialog,
+    csPopup,
+    csPicker,
+    csDateTimePicker,
+    csSwipe,
+    csSwipeItem,
+    csPullRefresh,
+    csSwipeCell,
+    csImagePreview,
+    csNumberKeyboard,
+    csPasswordInput,
+    csCollapse,
+    csCollapseItem,
+    csSwitch,
+    csRadioGroup,
+    csRadio,
+    csStepper,
+    csCheckbox,
+    csCheckboxGroup,
+    csNoticeBar,
+    csActionSheet,
+    csTab,
+    csTabs,
+    csCircle,
+    csTabbar,
+    csTabbarItem,
+    csIndexBar,
+    csIndexBarItem,
+    csField
 ]
 
 const install = function(Vue, options) {
@@ -202,34 +202,34 @@ Vue.directive('lazyBGImg', {    //背景图片懒加载
 
 export default {
     install,
-    sdHeader,
-    sdDialog,
-    sdPopup,
-    sdPicker,
-    sdDateTimePicker,
-    sdSwipe,
-    sdSwipeItem,
-    sdPullRefresh,
-    sdSwipeCell,
-    sdImagePreview,
-    sdNumberKeyboard,
-    sdPasswordInput,
-    sdCollapse,
-    sdCollapseItem,
-    sdSwitch,
-    sdRadioGroup,
-    sdRadio,
-    sdStepper,
-    sdCheckbox,
-    sdCheckboxGroup,
-    sdNoticeBar,
-    sdActionSheet,
-    sdTab,
-    sdTabs,
-    sdCircle,
-    sdTabbar,
-    sdTabbarItem,
-    sdIndexBar,
-    sdIndexBarItem,
-    sdField
+    csHeader,
+    csDialog,
+    csPopup,
+    csPicker,
+    csDateTimePicker,
+    csSwipe,
+    csSwipeItem,
+    csPullRefresh,
+    csSwipeCell,
+    csImagePreview,
+    csNumberKeyboard,
+    csPasswordInput,
+    csCollapse,
+    csCollapseItem,
+    csSwitch,
+    csRadioGroup,
+    csRadio,
+    csStepper,
+    csCheckbox,
+    csCheckboxGroup,
+    csNoticeBar,
+    csActionSheet,
+    csTab,
+    csTabs,
+    csCircle,
+    csTabbar,
+    csTabbarItem,
+    csIndexBar,
+    csIndexBarItem,
+    csField
 }

@@ -1,8 +1,8 @@
 <template>
-    <div ref="sdTabbarItem" :class="`sdTabbarItem ${isActive ? 'sdTabbarItem-active' : ''}`" :style="`color: ${isActive ? activeColor : inactiveColor}`" @click="selectTab">
-        <span class="sdTabbarItem_icon">
-            <span class="sdTabbarItem_dot" v-if="dot"></span>
-            <span class="sdTabbarItem_badge">{{badge}}</span>
+    <div ref="csTabbarItem" :class="`csTabbarItem ${isActive ? 'csTabbarItem-active' : ''}`" :style="`color: ${isActive ? activeColor : inactiveColor}`" @click="selectTab">
+        <span class="csTabbarItem_icon">
+            <span class="csTabbarItem_dot" v-if="dot"></span>
+            <span class="csTabbarItem_badge">{{badge}}</span>
             <slot name="icon" :active="isActive">
                 <i :class="`iconfont icon${icon} ${isActive ? 'iconfont-active' : ''}`" :style="`color: ${isActive ? activeColor : inactiveColor}`"></i>
             </slot>
@@ -13,7 +13,7 @@
 
 <script>
     export default {
-        name: 'sdTabbarItem',
+        name: 'csTabbarItem',
         data() {
             return {
                 isActive: false,
@@ -39,8 +39,8 @@
         methods: {
             selectTab() {
                 this.$emit('select')
-                if(typeof this.$refs.sdTabbarItem.parentNode.__vue__.changeTab === 'function') {
-                    this.$refs.sdTabbarItem.parentNode.__vue__.changeTab(this.key)
+                if(typeof this.$refs.csTabbarItem.parentNode.__vue__.changeTab === 'function') {
+                    this.$refs.csTabbarItem.parentNode.__vue__.changeTab(this.key)
                 }
             }
         }

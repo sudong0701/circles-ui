@@ -1,19 +1,19 @@
 <template>
-    <div class="sdPasswordInput">
-        <div class="sdPasswordInput-list" :style="`border: ${gutter ? '' : '0.02rem solid #f2f3f5'}; height: ${height ? (typeof height === 'string' ? height : height + 'px') : ''}`" @click.stop="passwordInputFocus">
-            <div class="sdPasswordInput-item" v-for="(item, key) in initData" :key="key" :style="`border-left: ${gutter ? '' : '0.02rem solid #f2f3f5'}; margin-left: ${gutter ? (typeof gutter === 'string' ? gutter : gutter + 'px') : ''}; background-color: ${bgColor}`">
-                <span class="sdPasswordInput-item-notMask" v-if="!isMask">{{item.content}}</span>
-                <i class="sdPasswordInput-item-mask" v-if="isMask && item.content"></i>
-                <i class="sdPasswordInput-item-typing" v-if="!item.content && (key === 0 || initData[key - 1].content) && isFocus"></i>
+    <div class="csPasswordInput">
+        <div class="csPasswordInput-list" :style="`border: ${gutter ? '' : '0.02rem solid #f2f3f5'}; height: ${height ? (typeof height === 'string' ? height : height + 'px') : ''}`" @click.stop="passwordInputFocus">
+            <div class="csPasswordInput-item" v-for="(item, key) in initData" :key="key" :style="`border-left: ${gutter ? '' : '0.02rem solid #f2f3f5'}; margin-left: ${gutter ? (typeof gutter === 'string' ? gutter : gutter + 'px') : ''}; background-color: ${bgColor}`">
+                <span class="csPasswordInput-item-notMask" v-if="!isMask">{{item.content}}</span>
+                <i class="csPasswordInput-item-mask" v-if="isMask && item.content"></i>
+                <i class="csPasswordInput-item-typing" v-if="!item.content && (key === 0 || initData[key - 1].content) && isFocus"></i>
             </div>
         </div>
-        <div class="sdPasswordInput-bottom"></div>
+        <div class="csPasswordInput-bottom"></div>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'sdPasswordInput',
+        name: 'csPasswordInput',
         data() {
             return {}
         },

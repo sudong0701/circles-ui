@@ -1,14 +1,14 @@
 <template>
-    <div class="sdIndexBar" :style="`height: ${barHeight}`">
-        <div class="sdIndexBar_title" :style="`color: ${color}`">{{currTitle}}</div>
-        <div class="sdIndexBar_content" ref="sdIndexBar_content" @scroll="scrollBar($event)">
+    <div class="csIndexBar" :style="`height: ${barHeight}`">
+        <div class="csIndexBar_title" :style="`color: ${color}`">{{currTitle}}</div>
+        <div class="csIndexBar_content" ref="csIndexBar_content" @scroll="scrollBar($event)">
             <slot></slot>
         </div>
-        <div class="sdIndexBar_sort">
-            <span @click="selectSort(key)" v-for="(item, key) in tabNameArr" :class="`${currIndex === key ? 'sdIndexBarActive' : ''}`" :style="`color: ${currIndex === key ? color : ''}`">{{sortArr.length ? item.customize : item.label}}</span>
+        <div class="csIndexBar_sort">
+            <span @click="selectSort(key)" v-for="(item, key) in tabNameArr" :class="`${currIndex === key ? 'csIndexBarActive' : ''}`" :style="`color: ${currIndex === key ? color : ''}`">{{sortArr.length ? item.customize : item.label}}</span>
         </div>
         <transition name="animation-fade-imagePreview">
-            <div v-show="isToast" class="sdIndexBar_tip">{{currTitle}}</div>
+            <div v-show="isToast" class="csIndexBar_tip">{{currTitle}}</div>
         </transition>
     </div>
 </template>
@@ -16,7 +16,7 @@
 <script>
     let indexBarTimer
     export default {
-        name: 'sdIndexBar',
+        name: 'csIndexBar',
         data() {
             return {
                 currTitle: '',
@@ -55,16 +55,16 @@
             event: 'change'
         },
         mounted() {
-            const indexBarContent = this.$refs.sdIndexBar_content
-            const sdIndexBarChild = this.$refs.sdIndexBar_content.children
-            this.currTitle = sdIndexBarChild[0].__vue__.index
-            for(let i = 0; i < sdIndexBarChild.length; i++) {
+            const indexBarContent = this.$refs.csIndexBar_content
+            const csIndexBarChild = this.$refs.csIndexBar_content.children
+            this.currTitle = csIndexBarChild[0].__vue__.index
+            for(let i = 0; i < csIndexBarChild.length; i++) {
                 if(i === Number(this.active)) {
-                    indexBarContent.scrollTo(0, sdIndexBarChild[i].offsetTop)
+                    indexBarContent.scrollTo(0, csIndexBarChild[i].offsetTop)
                 }
                 this.tabNameArr.push({
-                    label: sdIndexBarChild[i].__vue__.index,
-                    top: sdIndexBarChild[i].offsetTop,
+                    label: csIndexBarChild[i].__vue__.index,
+                    top: csIndexBarChild[i].offsetTop,
                     key: i,
                     customize: this.sortArr.length ? (this.sortArr[i] ? this.sortArr[i] : '') : ''
                 })
@@ -103,7 +103,7 @@
              @return
              */
             selectSort(key) {
-                const indexBarContent = this.$refs.sdIndexBar_content
+                const indexBarContent = this.$refs.csIndexBar_content
                 this.currTitle = this.tabNameArr[key].label
                 this.currIndex = this.tabNameArr[key].key
                 indexBarContent.scrollTo(0, this.tabNameArr[key].top)

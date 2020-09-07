@@ -1,6 +1,7 @@
 <template>
     <div class="stepper">
-        <sdStepper v-model="stepperValue" :integer="true" :asyncChange="false" :disabled="false" :decimalLength="2" step="2" min="-60" @add="add"></sdStepper>
+        <csStepper v-model="stepperValue"  :asyncChange="false" :disabled="false" :decimalLength="2" step="2" min="-60" @add="add"></csStepper>
+
     </div>
 </template>
 
@@ -14,9 +15,7 @@
         },
         methods: {
             add() {
-//                setTimeout(()=> {
-//                    this.stepperValue = this.stepperValue + 0.3
-//                }, 2000)
+                console.log('add')
             }
         }
     }

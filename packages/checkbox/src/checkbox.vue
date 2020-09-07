@@ -1,32 +1,32 @@
 <template>
-    <div :class="`sdCheckbox ${type === 'cell' ? 'sdCheckbox-cell' : ''}`" ref="sdCheckbox" :style="`padding-left: ${isGroup ? '' : '0.32rem'}; padding-bottom: ${type === 'cell' ? '' : '0.16rem'}`">
-        <span class="sdCheckbox-iconBox" @click="selectCheckBox('icon')">
+    <div :class="`csCheckbox ${type === 'cell' ? 'csCheckbox-cell' : ''}`" ref="csCheckbox" :style="`padding-left: ${isGroup ? '' : '0.32rem'}; padding-bottom: ${type === 'cell' ? '' : '0.16rem'}`">
+        <span class="csCheckbox-iconBox" @click="selectCheckBox('icon')">
             <div v-show="isGroup ? !checkedGroup : !checked">
                 <slot name="unActiveIcon">
-                <i v-if="shape !== 'square'" :class="`iconfont icon_unSelect_round sdCheckbox-icon ${disabled || disabledGroup? 'sdCheckbox-icon-disabled' : ''}`" :style="`color: ${!isGroup && checked ? '#fff' : ''}`"></i>
-                <i v-if="shape === 'square'" :class="`iconfont icon_unSelect_square sdCheckbox-icon ${disabled || disabledGroup ? 'sdCheckbox-icon-disabled' : ''}`" :style="`color: ${!isGroup && checked ? '#fff' : ''}`"></i>
+                <i v-if="shape !== 'square'" :class="`iconfont icon_unSelect_round csCheckbox-icon ${disabled || disabledGroup? 'csCheckbox-icon-disabled' : ''}`" :style="`color: ${!isGroup && checked ? '#fff' : ''}`"></i>
+                <i v-if="shape === 'square'" :class="`iconfont icon_unSelect_square csCheckbox-icon ${disabled || disabledGroup ? 'csCheckbox-icon-disabled' : ''}`" :style="`color: ${!isGroup && checked ? '#fff' : ''}`"></i>
             </slot>
             </div>
             <transition name="animation-fade-imagePreview" >
-            <div class="sdCheckbox-active" v-show="isGroup ? checkedGroup : checked">
+            <div class="csCheckbox-active" v-show="isGroup ? checkedGroup : checked">
                 <slot name="activeIcon">
-                    <i v-if="shape !== 'square'" :class="`iconfont icon_select_round sdCheckbox-icon ${disabled || disabledGroup ? 'sdCheckbox-icon-disabled' : ''}`" :style="`color: ${disabled ? '' : color}`"></i>
-                    <i v-if="shape === 'square'" :class="`iconfont icon_select_square sdCheckbox-icon ${disabled || disabledGroup ? 'sdCheckbox-icon-disabled' : ''}`" :style="`color: ${disabled ? '' : color}`"></i>
+                    <i v-if="shape !== 'square'" :class="`iconfont icon_select_round csCheckbox-icon ${disabled || disabledGroup ? 'csCheckbox-icon-disabled' : ''}`" :style="`color: ${disabled ? '' : color}`"></i>
+                    <i v-if="shape === 'square'" :class="`iconfont icon_select_square csCheckbox-icon ${disabled || disabledGroup ? 'csCheckbox-icon-disabled' : ''}`" :style="`color: ${disabled ? '' : color}`"></i>
                 </slot>
             </div>
         </transition>
         </span>
-        <div class="sdCheckbox-content" @click="selectCheckBox">
+        <div class="csCheckbox-content" @click="selectCheckBox">
             <slot></slot>
         </div>
 
-         <div class="sdCheckbox-line" v-if="isGroup"></div>
+         <div class="csCheckbox-line" v-if="isGroup"></div>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'sdCheckbox',
+        name: 'csCheckbox',
         data() {
             return {
                 isGroup: false,
@@ -78,7 +78,7 @@
                             this.$emit('change', !this.checked)
                         }
                     } else {
-                        this.$refs.sdCheckbox.parentNode.__vue__.changeValue(this.name)
+                        this.$refs.csCheckbox.parentNode.__vue__.changeValue(this.name)
                     }
                 }
             }

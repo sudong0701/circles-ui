@@ -1,6 +1,6 @@
 <template>
-    <div :class="`sdTab`" @click="selectTab" ref="sdTab" :style="`background-color: ${tabBackGround}`">
-        <p :class="`${disabled ? 'sdTab-disabled' : ''} ${active ? 'sdTab-active' : ''}`" :style="`color: ${active ? titleActiveColor : titleInactiveColor}`">
+    <div :class="`csTab`" @click="selectTab" ref="csTab" :style="`background-color: ${tabBackGround}`">
+        <p :class="`${disabled ? 'csTab-disabled' : ''} ${active ? 'csTab-active' : ''}`" :style="`color: ${active ? titleActiveColor : titleInactiveColor}`">
             <slot name="title">{{title}}</slot>
         </p>
     </div>
@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: 'sdTab',
+        name: 'csTab',
         data() {
             return {
                 active: false,
@@ -35,8 +35,8 @@
              * @return
              */
             selectTab() {
-                if(!this.disabled && this.$refs.sdTab.parentNode.parentNode.parentNode.__vue__) {
-                    this.$refs.sdTab.parentNode.parentNode.parentNode.__vue__.changeTab(this.index)
+                if(!this.disabled && this.$refs.csTab.parentNode.parentNode.parentNode.__vue__) {
+                    this.$refs.csTab.parentNode.parentNode.parentNode.__vue__.changeTab(this.index)
                 }
 
             }

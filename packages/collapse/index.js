@@ -1,12 +1,12 @@
-import sdCollapse from './src/collapse.vue'
-import sdCollapseItem from './src/collapseItem.vue'
+import csCollapse from './src/collapse.vue'
+import csCollapseItem from './src/collapseItem.vue'
 
-sdCollapse.install = function (Vue) {
-    Vue.component(sdCollapse.name, sdCollapse)
+csCollapse.install = function (Vue) {
+    Vue.component(csCollapse.name, csCollapse)
 }
 
-sdCollapseItem.install = function (Vue) {
-    Vue.component(sdCollapseItem.name, sdCollapseItem)
+csCollapseItem.install = function (Vue) {
+    Vue.component(csCollapseItem.name, csCollapseItem)
 }
 
-export {sdCollapse, sdCollapseItem}
+export {csCollapse, csCollapseItem}

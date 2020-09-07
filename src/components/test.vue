@@ -1,10 +1,10 @@
 <template>
     <div class="test">
-        <sd-header title="身份信息" type="point" ></sd-header>
+        <cs-header title="身份信息" type="point" ></cs-header>
         <div style="height: 5rem; overflow-y: auto">
-            <sdPullRefresh :isPullRefresh="false" @refresh="refreshPage" v-model="isLoading" @scrolltolower="scrolltolower" @bindscroll="scroll" :isThrottling="true">
+            <csPullRefresh :isPullRefresh="false" @refresh="refreshPage" v-model="isLoading" @scrolltolower="scrolltolower" @bindscroll="scroll" :isThrottling="true">
                 <div class="list">
-                    <sdSwipeCell v-for="(item, key) in cellArr" :key="key">
+                    <csSwipeCell v-for="(item, key) in cellArr" :key="key">
                         <template #left>
                             <div class="left">查看详情</div>
                         </template>
@@ -12,9 +12,9 @@
                         <template #right>
                             <div class="right">删除</div>
                         </template>
-                    </sdSwipeCell>
+                    </csSwipeCell>
                 </div>
-            </sdPullRefresh>
+            </csPullRefresh>
         </div>
     </div>
 </template>

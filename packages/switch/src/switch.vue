@@ -1,6 +1,6 @@
 <template>
-    <div :class="`sdSwitch ${disabled ? 'van-switch--disabled': (isActive ? 'sdSwitch-active' : '')} `" :style="`font-size: ${circleSize}; background-color: ${isActive ? activeParentsNodeColor : unActiveParentsNodeColor}; `" @click="changeActive">
-        <div :class="`sdSwitch-circle ${isActive ? 'sdSwitch-active' : ''}`" :style="`width: ${circleSize}; height: ${circleSize}; background-color: ${isActive ? activeNodeColor : unActiveNodeColor}; transform: translateX(${isActive ? '100%' : '0%'})`" @webkitTransitionEnd="animationEnd($event)" @transitionend="animationEnd($event)">
+    <div :class="`csSwitch ${disabled ? 'van-switch--disabled': (isActive ? 'csSwitch-active' : '')} `" :style="`font-size: ${circleSize}; background-color: ${isActive ? activeParentsNodeColor : unActiveParentsNodeColor}; `" @click="changeActive">
+        <div :class="`csSwitch-circle ${isActive ? 'csSwitch-active' : ''}`" :style="`width: ${circleSize}; height: ${circleSize}; background-color: ${isActive ? activeNodeColor : unActiveNodeColor}; transform: translateX(${isActive ? '100%' : '0%'})`" @webkitTransitionEnd="animationEnd($event)" @transitionend="animationEnd($event)">
 
         </div>
     </div>
@@ -8,7 +8,7 @@
 
 <script>
     export default {
-        name: 'sdSwitch',
+        name: 'csSwitch',
         data() {
             return {}
         },

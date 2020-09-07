@@ -1,6 +1,6 @@
-import sdSwitch from './src/switch.vue'
+import csSwitch from './src/switch.vue'
 
-sdSwitch.install = function (Vue) {
-    Vue.component(sdSwitch.name, sdSwitch)
+csSwitch.install = function (Vue) {
+    Vue.component(csSwitch.name, csSwitch)
 }
-export default sdSwitch
+export default csSwitch

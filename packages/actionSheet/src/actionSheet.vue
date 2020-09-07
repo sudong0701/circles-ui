@@ -1,26 +1,26 @@
 <template>
-    <div class="sdActionSheet">
-        <sdPopup :isNested="true" v-model="isShow" @clickOverlay="changePopup" :isRound="isRound" :isOverlay="isOverlay" :closeOnClickOverlay="closeOnClickOverlay" :lockScroll="lockScroll" @open="open" @opened="opened" @close="close" @closed="closed">
-            <div class="sdActionSheet-top">{{description}}</div>
+    <div class="csActionSheet">
+        <csPopup :isNested="true" v-model="isShow" @clickOverlay="changePopup" :isRound="isRound" :isOverlay="isOverlay" :closeOnClickOverlay="closeOnClickOverlay" :lockScroll="lockScroll" @open="open" @opened="opened" @close="close" @closed="closed">
+            <div class="csActionSheet-top">{{description}}</div>
 
-            <div class="sdActionSheet-list">
-                <div v-for="(item, key) in actions" :key="key" :class="`sdActionSheet-item ${item.disabled ? 'sdActionSheet-item-disabled' : 'sdActionSheet-item-default'}`" :style="`border-bottom: ${isBorder ? '0.02rem solid #f3f3f3' : ''}`"  @click="selectItem(item, key)">
+            <div class="csActionSheet-list">
+                <div v-for="(item, key) in actions" :key="key" :class="`csActionSheet-item ${item.disabled ? 'csActionSheet-item-disabled' : 'csActionSheet-item-default'}`" :style="`border-bottom: ${isBorder ? '0.02rem solid #f3f3f3' : ''}`"  @click="selectItem(item, key)">
                     <span :style="`color: ${item.disabled ? '#c8c9cc' : (item.color ? item.color : '')}`">{{item.name}}</span>
-                    <span class="sdActionSheet-remake" v-if="item.remake">{{item.remake}}</span>
+                    <span class="csActionSheet-remake" v-if="item.remake">{{item.remake}}</span>
                 </div>
             </div>
 
-            <div class="sdActionSheet-bottom" v-if="cancelText" @click="cancel">
+            <div class="csActionSheet-bottom" v-if="cancelText" @click="cancel">
                 <p>{{cancelText}}</p>
             </div>
-        </sdPopup>
+        </csPopup>
     </div>
 </template>
 
 <script>
-    import sdPopup from '../../popup/src/popup.vue'
+    import csPopup from '../../popup/src/popup.vue'
     export default {
-        name: 'sdActionSheet',
+        name: 'csActionSheet',
         data() {
             return {}
         },
@@ -69,7 +69,7 @@
             event: 'clickOverlay'
         },
         components: {
-            sdPopup
+            csPopup
         },
         methods: {
             /**

@@ -1,23 +1,23 @@
 <template>
-    <div class="sdToast" id="sdToast">
+    <div class="csToast" id="csToast">
         <transition name="animation-fade">
-            <div v-if="(type !== 'loading' && (!icon && !image)) && isShow" class="sdToast-box-default" :style="`background: ${bgColor ? bgColor : (type === '' ? '' : typeObj[type])}`">
-                <div class="sdToast-icon"></div>
-                <div class="sdToast-content">{{content}}</div>
+            <div v-if="(type !== 'loading' && (!icon && !image)) && isShow" class="csToast-box-default" :style="`background: ${bgColor ? bgColor : (type === '' ? '' : typeObj[type])}`">
+                <div class="csToast-icon"></div>
+                <div class="csToast-content">{{content}}</div>
             </div>
         </transition>
         <transition name="animation-fade">
-            <div v-if="(type === 'loading' || icon || image) && isShow" class="sdToast-box-loading" :style="`background: ${bgColor ? bgColor : ''}`">
-                <div v-if="!icon && !image" class="sdToast-icon aniRotate">
+            <div v-if="(type === 'loading' || icon || image) && isShow" class="csToast-box-loading" :style="`background: ${bgColor ? bgColor : ''}`">
+                <div v-if="!icon && !image" class="csToast-icon aniRotate">
                     <i class="iconfont iconloading"></i>
                 </div>
-                <div v-if="icon" class="sdToast-icon">
+                <div v-if="icon" class="csToast-icon">
                     <i :class="`iconfont icon${icon}`"></i>
                 </div>
-                <div v-if="image" class="sdToast-icon">
+                <div v-if="image" class="csToast-icon">
                     <img :src="image" />
                 </div>
-                <div class="sdToast-content">
+                <div class="csToast-content">
                     <span>{{content ? content : (type === 'loading' ? '加载中...' : '')}}</span>
                 </div>
             </div>
@@ -27,7 +27,7 @@
 
 <script>
     export default {
-        name: 'sdToast',
+        name: 'csToast',
         data() {
             return {
                 typeObj: {

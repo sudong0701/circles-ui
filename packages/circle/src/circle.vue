@@ -1,12 +1,12 @@
 <template>
-    <div class="sdCircle">
-        <canvas width="400" height="400" style="width: 200px;height:200px;" class="sdCircle-item" ref="sdCircle"></canvas>
+    <div class="csCircle">
+        <canvas width="400" height="400" style="width: 200px;height:200px;" class="csCircle-item" ref="csCircle"></canvas>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'sdCircle',
+        name: 'csCircle',
         data() {
             return {
                 num:0,
@@ -70,7 +70,7 @@
             event: 'change'
         },
         mounted() {
-            this.canvas = this.$refs.sdCircle
+            this.canvas = this.$refs.csCircle
             this.context = this.canvas.getContext("2d")
             this.context.scale(2,2);
             this.cirX = 150

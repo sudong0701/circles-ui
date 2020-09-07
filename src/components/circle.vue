@@ -1,6 +1,6 @@
 <template>
     <div class="circle">
-        <sd-circle v-model="value"></sd-circle>
+        <cs-circle v-model="value"></cs-circle>
         <button @click="changeValue">改变value</button>
         <!--<div>-->
             <!--<p style="height: 6rem"></p>-->

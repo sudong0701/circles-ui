@@ -1,21 +1,21 @@
 <template>
-    <div class="sd_picker">
-        <div class="sd_picker-title">
-            <div class="sd_picker-title-left" @click="clickLeftBtn" :style="`color: ${leftButtonColor}`">{{leftButtonText}}</div>
-            <div class="sd_picker-title-right" @click="clickRightBtn" :style="`color: ${rightButtonColor}`">{{rightButtonText}}</div>
-            <div class="sd_picker-title-center">{{title}}</div>
+    <div class="cs_picker">
+        <div class="cs_picker-title">
+            <div class="cs_picker-title-left" @click="clickLeftBtn" :style="`color: ${leftButtonColor}`">{{leftButtonText}}</div>
+            <div class="cs_picker-title-right" @click="clickRightBtn" :style="`color: ${rightButtonColor}`">{{rightButtonText}}</div>
+            <div class="cs_picker-title-center">{{title}}</div>
         </div>
         <!--普通选择器组件-->
-        <div class="sd_picker-box">
-            <div :class="`sd_picker-column`" v-for="(list, key) in columns" :key="key">
-                <div class="sd_picker-column-inner">
-                    <div class="sd_picker-column-list" :ref="`sd_pickerList${key}`" @touchstart.stop="touchStart($event)" @touchmove.stop="touchMove($event, key)" @touchend.stop="touchEnd($event, key)" :style="`transform: translate(0, ${(2 - (selectArr[key] - list.num)) * 44}px)`">
-                        <div @click="selectItem(key, item, list.type)" v-for="(item, index) in list.values" :key="index" :class="`sd_picker-column-item ${item == selectArr[key] ? 'sd_picker-column-currItem' : ''}`">{{item}}{{list.name}}</div>
+        <div class="cs_picker-box">
+            <div :class="`cs_picker-column`" v-for="(list, key) in columns" :key="key">
+                <div class="cs_picker-column-inner">
+                    <div class="cs_picker-column-list" :ref="`cs_pickerList${key}`" @touchstart.stop="touchStart($event)" @touchmove.stop="touchMove($event, key)" @touchend.stop="touchEnd($event, key)" :style="`transform: translate(0, ${(2 - (selectArr[key] - list.num)) * 44}px)`">
+                        <div @click="selectItem(key, item, list.type)" v-for="(item, index) in list.values" :key="index" :class="`cs_picker-column-item ${item == selectArr[key] ? 'cs_picker-column-currItem' : ''}`">{{item}}{{list.name}}</div>
                     </div>
                 </div>
             </div>
-            <div class="sd_picker-column-overlay"></div>
-            <div class="sd_picker-column-frame"></div>
+            <div class="cs_picker-column-overlay"></div>
+            <div class="cs_picker-column-frame"></div>
         </div>
     </div>
 </template>
@@ -23,7 +23,7 @@
 <script>
     let startPageY
     export default {
-        name: 'sdDateTimePicker',
+        name: 'csDateTimePicker',
         data() {
             return {
                 columns: [],
@@ -1008,7 +1008,7 @@
                 }
                 this.changeData(key, item)
                 this.$set(this.selectArr, key, item)
-                const pickerList = this.$refs[`sd_pickerList${key}`][0]
+                const pickerList = this.$refs[`cs_pickerList${key}`][0]
                 pickerList.style.transition="-webkit-transform 150ms ease-out";
                 this.$emit('change',this.getValue())
             },
@@ -1044,7 +1044,7 @@
              @return
              */
             touchMove(e, key) {
-                const pickerList = this.$refs[`sd_pickerList${key}`][0]
+                const pickerList = this.$refs[`cs_pickerList${key}`][0]
                 pickerList.style.transform=`translate(0, ${e.targetTouches[0].pageY - startPageY + ((2 - (this.selectArr[key] - this.columns[key].num)) * 44)}px)`;
                 e.stopPropagation()
                 e.preventDefault()
@@ -1062,7 +1062,7 @@
                     return
                 } else {
                     let currIndex = Math.round((startPageY - endPageY) / 44) + (this.selectArr[key] - list.num)   //这里改动了
-                    const pickerList = this.$refs[`sd_pickerList${key}`][0]
+                    const pickerList = this.$refs[`cs_pickerList${key}`][0]
                     if(currIndex < 0){
                         currIndex = 0
                         pickerList.style.transition="-webkit-transform 150ms ease-out"
@@ -1125,8 +1125,8 @@
              @param {Number} index 列数
              */
             initTransform(index) {
-                if( this.$refs[`sd_pickerList${index}`]) {
-                    const pickerList = this.$refs[`sd_pickerList${index}`][0]
+                if( this.$refs[`cs_pickerList${index}`]) {
+                    const pickerList = this.$refs[`cs_pickerList${index}`][0]
                     pickerList.style.transition="-webkit-transform 0ms ease-out"
                 }
             }

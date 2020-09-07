@@ -1,29 +1,29 @@
 <template>
-    <div :class="`sdRadio ${type === 'cell' ? 'sdRadio-cell' : ''}`" ref="sdRadio">
-        <span :class="`sdRadio-iconBox`" @click="changeRadio('icon')">
+    <div :class="`csRadio ${type === 'cell' ? 'csRadio-cell' : ''}`" ref="csRadio">
+        <span :class="`csRadio-iconBox`" @click="changeRadio('icon')">
             <slot name="unActiveIcon">
-                <i v-if="shape === 'round'" :class="`iconfont icon_unSelect_round sdRadio-icon ${disabled || disabledForGroup ? 'sdRadio-icon-disabled' : ''}`" :style="`color: ${isActive ? '#fff' : ''}`"></i>
-                <i v-if="shape === 'square'" :class="`iconfont icon_unSelect_square sdRadio-icon ${disabled || disabledForGroup ? 'sdRadio-icon-disabled' : ''}`" :style="`color: ${isActive ? '#fff' : ''}`"></i>
+                <i v-if="shape === 'round'" :class="`iconfont icon_unSelect_round csRadio-icon ${disabled || disabledForGroup ? 'csRadio-icon-disabled' : ''}`" :style="`color: ${isActive ? '#fff' : ''}`"></i>
+                <i v-if="shape === 'square'" :class="`iconfont icon_unSelect_square csRadio-icon ${disabled || disabledForGroup ? 'csRadio-icon-disabled' : ''}`" :style="`color: ${isActive ? '#fff' : ''}`"></i>
             </slot>
             <transition name="animation-fade-imagePreview" >
-                <div v-show="isActive" class="sdRadio-selected">
+                <div v-show="isActive" class="csRadio-selected">
                     <slot name="activeIcon">
-                        <i v-if="shape === 'round'"  :class="`iconfont icon_select_round sdRadio-icon ${disabled || disabledForGroup ? 'sdRadio-icon-disabled' : 'sdRadio-icon-active'}`" :style="`color: ${disabled || disabledForGroup ? '#c8c9cc' : color}; z-index: 10`"></i>
-                        <i v-if="shape === 'square'" :class="`iconfont icon_select_square sdRadio-icon ${disabled || disabledForGroup ? 'sdRadio-icon-disabled' : 'sdRadio-icon-active'}`" :style="`color: ${disabled || disabledForGroup ? '#c8c9cc' : color}; z-index: 10`"></i>
+                        <i v-if="shape === 'round'"  :class="`iconfont icon_select_round csRadio-icon ${disabled || disabledForGroup ? 'csRadio-icon-disabled' : 'csRadio-icon-active'}`" :style="`color: ${disabled || disabledForGroup ? '#c8c9cc' : color}; z-index: 10`"></i>
+                        <i v-if="shape === 'square'" :class="`iconfont icon_select_square csRadio-icon ${disabled || disabledForGroup ? 'csRadio-icon-disabled' : 'csRadio-icon-active'}`" :style="`color: ${disabled || disabledForGroup ? '#c8c9cc' : color}; z-index: 10`"></i>
                     </slot>
                 </div>
             </transition>
         </span>
-        <span :class="`sdRadio-content ${disabled || disabledForGroup ? 'sdRadio-content-disabled' : ''} ${type === 'cell' ? 'sdRadio-content-cell' : ''}`" @click="changeRadio">
+        <span :class="`csRadio-content ${disabled || disabledForGroup ? 'csRadio-content-disabled' : ''} ${type === 'cell' ? 'csRadio-content-cell' : ''}`" @click="changeRadio">
             <slot></slot>
         </span>
-        <i class="sdRadio-line" v-if="type === 'cell'"></i>
+        <i class="csRadio-line" v-if="type === 'cell'"></i>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'sdRadio',
+        name: 'csRadio',
         data() {
             return {
                 type: '',
@@ -54,8 +54,8 @@
             }
         },
         mounted() {
-            if(this.$refs.sdRadio.parentNode.__vue__.type) {
-                this.type = this.$refs.sdRadio.parentNode.__vue__.type
+            if(this.$refs.csRadio.parentNode.__vue__.type) {
+                this.type = this.$refs.csRadio.parentNode.__vue__.type
             }
         },
         methods: {
@@ -68,8 +68,8 @@
                 if(type === 'icon' || !this.labelDisabled) {
                     if(!this.disabledForGroup && !this.disabled) {
                         this.isActive = !this.isActive
-                        if(this.$refs.sdRadio.parentNode.__vue__.changeRadio) {
-                            this.$refs.sdRadio.parentNode.__vue__.changeRadio(this.name, this.isActive)
+                        if(this.$refs.csRadio.parentNode.__vue__.changeRadio) {
+                            this.$refs.csRadio.parentNode.__vue__.changeRadio(this.name, this.isActive)
                         }
                         this.$emit('change', this.isActive)
                     }

@@ -1,6 +1,6 @@
 <template>
     <div style="padding: 0.3rem" class="picker" ref="content">
-        <sd-switch v-model="isOpen" @change="change"></sd-switch>
+        <cs-switch v-model="isOpen" @change="change"></cs-switch>
     </div>
 </template>
 

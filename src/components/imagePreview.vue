@@ -1,8 +1,8 @@
 <template>
     <div class="imagePreview">
-        <sdImagePreview v-model="isShow" :showIndex="true" :showIndicators="true" :images="images" :startPosition="2">
+        <csImagePreview v-model="isShow" :showIndex="true" :showIndicators="true" :images="images" :startPosition="2">
 
-        </sdImagePreview>
+        </csImagePreview>
         <button @click="showImagePreview">显示</button>
         <button @click="showImagePreview_method">函数式引用</button>
     </div>

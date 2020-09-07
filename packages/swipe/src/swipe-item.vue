@@ -1,12 +1,12 @@
 <template>
-    <div class="sdSwipeItem">
+    <div class="csSwipeItem">
         <slot></slot>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'sdSwipeItem',
+        name: 'csSwipeItem',
         data() {
             return {}
         }

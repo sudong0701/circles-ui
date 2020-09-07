@@ -1,26 +1,26 @@
 <template>
     <div class="checkbox">
-        <sdCheckboxGroup v-model="value" @change="change" type="cell">
-            <sd-checkbox shape="" color="#67c23a" :checked="checked"  @change="changeCheckbox" name="1">选项11
-                <!--<template slot="unActiveIcon">-->
-                <!--<img src="https://img.yzcdn.cn/vant/user-inactive.png" alt="">-->
-                <!--</template>-->
-                <!--<template slot="activeIcon">-->
-                <!--<img src="https://img.yzcdn.cn/vant/user-active.png" alt="">-->
-                <!--</template>-->
-            </sd-checkbox>
-            <sd-checkbox shape="" color="#67c23a" :checked="checked"  @change="changeCheckbox" name="2">选项22
-            </sd-checkbox>
-            <sd-checkbox shape="" color="#67c23a" :checked="checked"  @change="changeCheckbox" name="3">选项33
-            </sd-checkbox>
-            <sd-checkbox shape="" color="#67c23a" :checked="checked"  @change="changeCheckbox" name="4">选项44
-            </sd-checkbox>
-            <sd-checkbox shape="" color="#67c23a" :checked="checked"  @change="changeCheckbox" name="5">选项55
-            </sd-checkbox>
-        </sdCheckboxGroup>
+        <csCheckboxGroup v-model="value" @change="change" type="cell">
+            <cs-checkbox shape="" color="#67c23a" :checked="checked"  @change="changeCheckbox" name="1">选项11
+                <template slot="unActiveIcon">
+                <img src="https://img.yzcdn.cn/vant/user-inactive.png" alt="">
+                </template>
+                <template slot="activeIcon">
+                <img src="https://img.yzcdn.cn/vant/user-active.png" alt="">
+                </template>
+            </cs-checkbox>
+            <cs-checkbox shape="" color="#67c23a" :checked="checked"  @change="changeCheckbox" name="2">选项22
+            </cs-checkbox>
+            <cs-checkbox shape="" color="#67c23a" :checked="checked"  @change="changeCheckbox" name="3">选项33
+            </cs-checkbox>
+            <cs-checkbox shape="" color="#67c23a" :checked="checked"  @change="changeCheckbox" name="4">选项44
+            </cs-checkbox>
+            <cs-checkbox shape="" color="#67c23a" :checked="checked"  @change="changeCheckbox" name="5">选项55
+            </cs-checkbox>
+        </csCheckboxGroup>
 
-        <sd-checkbox shape="" color="#67c23a" :checked="checked"  @change="changeCheckbox" name="5">选项55
-        </sd-checkbox>
+        <cs-checkbox shape="" color="#67c23a" :checked="checked"  @change="changeCheckbox" name="5">选项66
+        </cs-checkbox>
     </div>
 </template>
 

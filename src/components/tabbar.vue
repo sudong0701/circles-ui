@@ -1,16 +1,16 @@
 <template>
     <div class="tabbar">
         <div @click="show">显示</div>
-        <sd-tabbar fixed v-model="active" @change="changeTab" ref="tabbar">
-            <sdTabbarItem icon="home" :dot="true">主页</sdTabbarItem>
-            <sdTabbarItem  badge="2">购物车
+        <cs-tabbar fixed v-model="active" @change="changeTab" ref="tabbar">
+            <csTabbarItem icon="home" :dot="true">主页</csTabbarItem>
+            <csTabbarItem  badge="2">购物车
                 <template #icon="props">
                     <i :style="`color: ${props.active ? '#1989fa' : '#7d7e80'}`" class="iconfont iconcart"></i>
                 </template>
-            </sdTabbarItem>
-            <sdTabbarItem v-if="isShow" icon="apps">菜单</sdTabbarItem>
-            <sdTabbarItem icon="people">我的</sdTabbarItem>
-        </sd-tabbar>
+            </csTabbarItem>
+            <csTabbarItem v-if="isShow" icon="apps">菜单</csTabbarItem>
+            <csTabbarItem icon="people">我的</csTabbarItem>
+        </cs-tabbar>
     </div>
 </template>
 

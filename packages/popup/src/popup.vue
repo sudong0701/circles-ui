@@ -4,10 +4,10 @@
  * 创建时间：2020.3.30
 -->
 <template>
-    <div class="sd_popup">
-        <div v-if="isOverlay && isShowOverlay" :class="`sd_popup-overlay ${overlayClass}`" @click="closePopup()"></div>
+    <div class="cs_popup">
+        <div v-if="isOverlay && isShowOverlay" :class="`cs_popup-overlay ${overlayClass}`" @click="closePopup()"></div>
         <transition :name="`ani-popup-${position}`" @after-enter="enterCancelled" @after-leave="afterLeave">
-            <div v-if="isShow" :class="`sd_popup-box sd_popup-${position} ${isRound ? 'sd_popup-round-' + position : ''}`" :style="`animation-duration: ${(duration - 20) / 1000}s`">
+            <div v-if="isShow" :class="`cs_popup-box cs_popup-${position} ${isRound ? 'cs_popup-round-' + position : ''}`" :style="`animation-duration: ${(duration - 20) / 1000}s`">
                 <slot></slot>
             </div>
         </transition>
@@ -16,7 +16,7 @@
 
 <script>
     export default {
-        name: 'sdPopup',
+        name: 'csPopup',
         data() {
             return {
                 isShowOverlay: false   //控制popup展示

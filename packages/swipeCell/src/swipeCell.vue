@@ -1,20 +1,20 @@
 <template>
-    <div class="sdSwipeCellBox" style="width: 100%; overflow-x: hidden">
-        <div class="sdSwipeCell" ref="sdSwipeCell">
-            <div class="sdSwipeCell_left" ref="sdSwipeCell_left">
+    <div class="csSwipeCellBox" style="width: 100%; overflow-x: hidden">
+        <div class="csSwipeCell" ref="csSwipeCell">
+            <div class="csSwipeCell_left" ref="csSwipeCell_left">
                 <slot name="left">
 
                 </slot>
             </div>
-            <div class="sdSwipeCell_center" @touchstart="touchStart($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)" @touchleave="touchLeave($event)" @touchenter="touchEnter($event)">
+            <div class="csSwipeCell_center" @touchstart="touchStart($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)" @touchleave="touchLeave($event)" @touchenter="touchEnter($event)">
                 <slot>
 
                 </slot>
             </div>
-            <div class="sdSwipeCell_right" ref="sdSwipeCell_right">
+            <div class="csSwipeCell_right" ref="csSwipeCell_right">
                 <slot name="right"></slot>
             </div>
-            <!--<div class="sdSwipeCell_box">-->
+            <!--<div class="csSwipeCell_box">-->
             <!---->
             <!--</div>-->
         </div>
@@ -24,7 +24,7 @@
 <script>
     let startPageX, startPageY, currentPageX
     export default {
-        name: 'sdSwipeCell',
+        name: 'csSwipeCell',
         data() {
             return {
                 isDisabled: false,
@@ -37,10 +37,10 @@
 
         },
         mounted() {
-            const sdSwipeCell_left = this.$refs.sdSwipeCell_left
-            const sdSwipeCell_right = this.$refs.sdSwipeCell_right
-            this.leftWidth = sdSwipeCell_left.clientWidth
-            this.rightWidth = sdSwipeCell_right.clientWidth
+            const csSwipeCell_left = this.$refs.csSwipeCell_left
+            const csSwipeCell_right = this.$refs.csSwipeCell_right
+            this.leftWidth = csSwipeCell_left.clientWidth
+            this.rightWidth = csSwipeCell_right.clientWidth
         },
         methods: {
             /**
@@ -78,7 +78,7 @@
                 if((startPageX - movePageX >= this.rightWidth && this.cellStatus === 'init') ||  (this.cellStatus === 'right' && movePageX < startPageX) || (this.cellStatus === 'left' && startPageX - movePageX >= (this.rightWidth + this.leftWidth))) {
                     return
                 }
-                const sdSwipeCell = this.$refs.sdSwipeCell
+                const csSwipeCell = this.$refs.csSwipeCell
                 let initPageX
                 if(this.cellStatus === 'init') {
                     initPageX = 0
@@ -87,8 +87,8 @@
                 }else if(this.cellStatus === 'right') {
                     initPageX = -this.rightWidth
                 }
-                sdSwipeCell.style.transition=`-webkit-transform 0 ease-out`;
-                sdSwipeCell.style.transform=`translate(${e.targetTouches[0].pageX - startPageX + initPageX}px, 0)`;
+                csSwipeCell.style.transition=`-webkit-transform 0 ease-out`;
+                csSwipeCell.style.transform=`translate(${e.targetTouches[0].pageX - startPageX + initPageX}px, 0)`;
             },
             /**
              触摸事件结束事件
@@ -109,46 +109,46 @@
                 if(endPageX === startPageX) {
                     return
                 }else if(endPageX - startPageX > 0) {   //向右滑
-                    const sdSwipeCell = this.$refs.sdSwipeCell
+                    const csSwipeCell = this.$refs.csSwipeCell
                     if(this.cellStatus === 'init'){
-                        sdSwipeCell.style.transition=`-webkit-transform 300ms ease-out`;
-                        sdSwipeCell.style.transform=`translate(${this.leftWidth}px, 0)`;
+                        csSwipeCell.style.transition=`-webkit-transform 300ms ease-out`;
+                        csSwipeCell.style.transform=`translate(${this.leftWidth}px, 0)`;
                         setTimeout(()=> {
                             this.cellStatus = 'left'
                         }, 300)
                     } else if(this.cellStatus === 'right'){
                         if(endPageX - startPageX > (this.rightWidth + this.leftWidth * 0.6)) {
-                            sdSwipeCell.style.transition=`-webkit-transform 300ms ease-out`;
-                            sdSwipeCell.style.transform=`translate(${this.leftWidth}px, 0)`;
+                            csSwipeCell.style.transition=`-webkit-transform 300ms ease-out`;
+                            csSwipeCell.style.transform=`translate(${this.leftWidth}px, 0)`;
                             setTimeout(()=> {
                                 this.cellStatus = 'left'
                             }, 300)
                         } else {
-                            sdSwipeCell.style.transition=`-webkit-transform 300ms ease-out`;
-                            sdSwipeCell.style.transform=`translate(0, 0)`;
+                            csSwipeCell.style.transition=`-webkit-transform 300ms ease-out`;
+                            csSwipeCell.style.transform=`translate(0, 0)`;
                             setTimeout(()=> {
                                 this.cellStatus = 'init'
                             }, 300)
                         }
                     }
                 } else {   //向左滑
-                    const sdSwipeCell = this.$refs.sdSwipeCell
+                    const csSwipeCell = this.$refs.csSwipeCell
                     if(this.cellStatus === 'init'){
-                        sdSwipeCell.style.transition=`-webkit-transform 300ms ease-out`;
-                        sdSwipeCell.style.transform=`translate(${-this.rightWidth}px, 0)`;
+                        csSwipeCell.style.transition=`-webkit-transform 300ms ease-out`;
+                        csSwipeCell.style.transform=`translate(${-this.rightWidth}px, 0)`;
                         setTimeout(()=> {
                             this.cellStatus = 'right'
                         }, 300)
                     } else if(this.cellStatus === 'left'){
                         if(startPageX - endPageX > (this.leftWidth + this.rightWidth * 0.6)) {
-                            sdSwipeCell.style.transition=`-webkit-transform 300ms ease-out`;
-                            sdSwipeCell.style.transform=`translate(${-this.rightWidth}px, 0)`;
+                            csSwipeCell.style.transition=`-webkit-transform 300ms ease-out`;
+                            csSwipeCell.style.transform=`translate(${-this.rightWidth}px, 0)`;
                             setTimeout(()=> {
                                 this.cellStatus = 'right'
                             }, 300)
                         } else {
-                            sdSwipeCell.style.transition=`-webkit-transform 300ms ease-out`;
-                            sdSwipeCell.style.transform=`translate(0, 0)`;
+                            csSwipeCell.style.transition=`-webkit-transform 300ms ease-out`;
+                            csSwipeCell.style.transform=`translate(0, 0)`;
                             setTimeout(()=> {
                                 this.cellStatus = 'init'
                             }, 300)

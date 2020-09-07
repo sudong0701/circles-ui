@@ -1,12 +1,12 @@
-import sdTab from './src/tab.vue'
-import sdTabs from './src/tabs.vue'
+import csTab from './src/tab.vue'
+import csTabs from './src/tabs.vue'
 
-sdTab.install = function (Vue) {
-    Vue.component(sdTab.name, sdTab)
+csTab.install = function (Vue) {
+    Vue.component(csTab.name, csTab)
 }
 
-sdTabs.install = function (Vue) {
-    Vue.component(sdTabs.name, sdTabs)
+csTabs.install = function (Vue) {
+    Vue.component(csTabs.name, csTabs)
 }
 
-export {sdTab, sdTabs}
+export {csTab, csTabs}

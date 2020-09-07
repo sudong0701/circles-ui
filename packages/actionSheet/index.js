@@ -1,7 +1,7 @@
-import sdActionSheet from './src/actionSheet.vue'
+import csActionSheet from './src/actionSheet.vue'
 
-sdActionSheet.install = function (Vue) {
-    Vue.component(sdActionSheet.name, sdActionSheet)
+csActionSheet.install = function (Vue) {
+    Vue.component(csActionSheet.name, csActionSheet)
 }
 
-export default sdActionSheet
+export default csActionSheet

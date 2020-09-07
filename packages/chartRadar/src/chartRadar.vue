@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        name: 'sdChartRadar',
+        name: 'csChartRadar',
         data() {
             return {
                 polygon: 3,   //绘制几边形

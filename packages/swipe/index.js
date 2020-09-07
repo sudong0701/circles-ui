@@ -1,13 +1,13 @@
-import sdSwipe from './src/swipe.vue'
-import sdSwipeItem from './src/swipe-item.vue'
+import csSwipe from './src/swipe.vue'
+import csSwipeItem from './src/swipe-item.vue'
 
-sdSwipe.install = function (Vue) {
-    Vue.component(sdSwipe.name, sdSwipe)
+csSwipe.install = function (Vue) {
+    Vue.component(csSwipe.name, csSwipe)
 }
 
-sdSwipeItem.install = function (Vue) {
-    Vue.component(sdSwipeItem.name, sdSwipeItem)
+csSwipeItem.install = function (Vue) {
+    Vue.component(csSwipeItem.name, csSwipeItem)
 }
 
 
-export {sdSwipe, sdSwipeItem};
+export {csSwipe, csSwipeItem};

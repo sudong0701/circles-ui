@@ -1,12 +1,12 @@
 <template>
-    <div class="sdRadioGroup" ref="sdRadioGroup">
+    <div class="csRadioGroup" ref="csRadioGroup">
         <slot></slot>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'sdRadioGroup',
+        name: 'csRadioGroup',
         data() {
             return {
 
@@ -31,23 +31,23 @@
             event: 'change'
         },
         mounted() {
-            if(this.$refs.sdRadioGroup.children) {
-                for(let i=0; i<this.$refs.sdRadioGroup.children.length; i++) {
-                    if(this.$refs.sdRadioGroup.children[i].__vue__.name === this.value) {
-                        this.$refs.sdRadioGroup.children[i].__vue__.isActive = true
+            if(this.$refs.csRadioGroup.children) {
+                for(let i=0; i<this.$refs.csRadioGroup.children.length; i++) {
+                    if(this.$refs.csRadioGroup.children[i].__vue__.name === this.value) {
+                        this.$refs.csRadioGroup.children[i].__vue__.isActive = true
                     }
                     if(this.disabled) {
-                        this.$refs.sdRadioGroup.children[i].__vue__.disabledForGroup = true
+                        this.$refs.csRadioGroup.children[i].__vue__.disabledForGroup = true
                     }
                 }
             }
         },
         methods: {
             changeRadio(name, isActive) {
-                if(this.$refs.sdRadioGroup.children) {
-                    for(let i=0; i<this.$refs.sdRadioGroup.children.length; i++) {
-                        if(this.$refs.sdRadioGroup.children[i].__vue__.name !== name) {
-                            this.$refs.sdRadioGroup.children[i].__vue__.isActive = false
+                if(this.$refs.csRadioGroup.children) {
+                    for(let i=0; i<this.$refs.csRadioGroup.children.length; i++) {
+                        if(this.$refs.csRadioGroup.children[i].__vue__.name !== name) {
+                            this.$refs.csRadioGroup.children[i].__vue__.isActive = false
                         }
                     }
                 }

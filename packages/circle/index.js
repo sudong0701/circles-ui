@@ -1,7 +1,7 @@
-import sdCircle from './src/circle.vue'
+import csCircle from './src/circle.vue'
 
-sdCircle.install = function (Vue) {
-    Vue.component(sdCircle.name, sdCircle)
+csCircle.install = function (Vue) {
+    Vue.component(csCircle.name, csCircle)
 }
 
-export default sdCircle
+export default csCircle

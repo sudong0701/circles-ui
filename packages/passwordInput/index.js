@@ -1,7 +1,7 @@
-import sdPasswordInput from './src/passwordInput.vue'
+import csPasswordInput from './src/passwordInput.vue'
 
-sdPasswordInput.install = function (Vue) {
-    Vue.component(sdPasswordInput.name, sdPasswordInput)
+csPasswordInput.install = function (Vue) {
+    Vue.component(csPasswordInput.name, csPasswordInput)
 }
 
-export default sdPasswordInput
+export default csPasswordInput

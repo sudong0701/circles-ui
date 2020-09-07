@@ -1,24 +1,37 @@
 <template>
     <div class="collapse">
-        <sd-collapse  @change="changeCollapse" v-model="collapseActive">
-            <sd-collapse-item title="标题" icon="close" value="右侧" name="1" @change="changeCollapseItem">
-                代码是写出来给人看的，附带能在机器上运行
-            </sd-collapse-item>
-            <sd-collapse-item title="标题" icon="close" value="右侧" name="2">
-                代码是写出来给人看的，附带能在机器上运行
-            </sd-collapse-item>
-            <sd-collapse-item title="标题" icon="close" value="右侧" name="3">
-                代码是写出来给人看的，附带能在机器上运行
-            </sd-collapse-item>
-        </sd-collapse>
-        <!--<input type="text" v-focus>-->
-        <!--<div>-->
-            <!--<div class="lazy" v-for="(item, key) in images" alt="" v-lazyBGImg="item">-->
-            <!--</div>-->
-        <!--</div>-->
-        <sd-switch size="30px" style="margin: 15px" v-model="isActive" @opened="opened" @closed="closed" @change="change">
-
-        </sd-switch>
+        <cs-collapse  @change="changeCollapse" v-model="collapseActive">
+            <cs-collapse-item title="标题" icon="close" value="右侧" name="1" @change="changeCollapseItem">
+                春江潮水连海平，海上明月共潮生。<br/>
+                艳艳水波千万里，何处春江无月明。<br/>
+                江流宛转绕芳甸，月照花林皆似霰。<br/>
+                空中流霜不觉飞，汀上白沙看不见。<br/>
+                江天一色无纤尘，皎皎空中孤月轮。<br/>
+                江畔何人初见月，江月何年初照人。<br/>
+                人生代代无穷已，江月年年只相似。<br/>
+                不知江月待何人，但见长江送流水。
+            </cs-collapse-item>
+            <cs-collapse-item title="标题" icon="close" value="右侧" name="2">
+                春江潮水连海平，海上明月共潮生。<br/>
+                艳艳水波千万里，何处春江无月明。<br/>
+                江流宛转绕芳甸，月照花林皆似霰。<br/>
+                空中流霜不觉飞，汀上白沙看不见。<br/>
+                江天一色无纤尘，皎皎空中孤月轮。<br/>
+                江畔何人初见月，江月何年初照人。<br/>
+                人生代代无穷已，江月年年只相似。<br/>
+                不知江月待何人，但见长江送流水。
+            </cs-collapse-item>
+            <cs-collapse-item title="标题" icon="close" value="右侧" name="3">
+                春江潮水连海平，海上明月共潮生。<br/>
+                艳艳水波千万里，何处春江无月明。<br/>
+                江流宛转绕芳甸，月照花林皆似霰。<br/>
+                空中流霜不觉飞，汀上白沙看不见。<br/>
+                江天一色无纤尘，皎皎空中孤月轮。<br/>
+                江畔何人初见月，江月何年初照人。<br/>
+                人生代代无穷已，江月年年只相似。<br/>
+                不知江月待何人，但见长江送流水。
+            </cs-collapse-item>
+        </cs-collapse>
     </div>
 </template>
 
@@ -27,30 +40,10 @@
         name: '',
         data() {
             return {
-                images: [
-                    'http://rightinhome.oss-cn-hangzhou.aliyuncs.com/uploads/2020/04/21/9517e971501edacc92675632677d2bba.jpg',
-                    'http://rightinhome.oss-cn-hangzhou.aliyuncs.com/uploads/2020/04/20/fc97a7f08bc087a500c7f3d961d56357.png',
-                    'https://img.yzcdn.cn/vant/apple-2.jpg',
-                    'http://rightinhome.oss-cn-hangzhou.aliyuncs.com/uploads/2019/11/13/c0c4fcbcd72f3ae73d687965ba4caa5d.png',
-                    '/static/img/18.jpg',
-                    '/static/img/22.jpg',
-                    '/static/img/23.jpg',
-                    '/static/img/32.jpg'
-                ],
-                isActive: false,
-                collapseActive: []
+                collapseActive: ['1']
             }
         },
         methods: {
-            opened() {
-                console.log('opened')
-            },
-            closed() {
-                console.log('closed')
-            },
-            change() {
-                console.log('change')
-            },
             changeCollapse(e) {
                 console.log(e)
             },
@@ -67,10 +60,5 @@
         padding-top: 1rem;
         height: 100%;
         background-color: #f8f8f8;
-    }
-    .lazy {
-        width: 100%;
-        height: 5rem;
-        background-size: 100%;
     }
 </style>

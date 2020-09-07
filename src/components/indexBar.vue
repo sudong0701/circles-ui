@@ -1,88 +1,85 @@
 <template>
-    <div class="hello">
-        <div style="height: 50px">
-
-        </div>
-        <sdIndexBar height="617px" v-model="active" @change="change">
-            <sdIndexBarItem index="A">
+    <div class="indexBar">
+        <csIndexBar v-model="active" @change="change">
+            <csIndexBarItem index="A">
                 <div v-for="(item, key) in 5" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="B">
+            </csIndexBarItem>
+            <csIndexBarItem index="B">
                 <div v-for="(item, key) in 6" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="C">
+            </csIndexBarItem>
+            <csIndexBarItem index="C">
                 <div v-for="(item, key) in 3" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="D">
+            </csIndexBarItem>
+            <csIndexBarItem index="D">
                 <div v-for="(item, key) in 4" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="E">
+            </csIndexBarItem>
+            <csIndexBarItem index="E">
                 <div v-for="(item, key) in 8" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="F">
+            </csIndexBarItem>
+            <csIndexBarItem index="F">
                 <div v-for="(item, key) in 7" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="G">
+            </csIndexBarItem>
+            <csIndexBarItem index="G">
                 <div v-for="(item, key) in 2" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="H">
+            </csIndexBarItem>
+            <csIndexBarItem index="H">
                 <div v-for="(item, key) in 5" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="I">
+            </csIndexBarItem>
+            <csIndexBarItem index="I">
                 <div v-for="(item, key) in 2" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="J">
+            </csIndexBarItem>
+            <csIndexBarItem index="J">
                 <div v-for="(item, key) in 6" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="K">
+            </csIndexBarItem>
+            <csIndexBarItem index="K">
                 <div v-for="(item, key) in 4" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="L">
+            </csIndexBarItem>
+            <csIndexBarItem index="L">
                 <div v-for="(item, key) in 3" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="M">
+            </csIndexBarItem>
+            <csIndexBarItem index="M">
                 <div v-for="(item, key) in 1" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="N">
+            </csIndexBarItem>
+            <csIndexBarItem index="N">
                 <div v-for="(item, key) in 6" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="O">
+            </csIndexBarItem>
+            <csIndexBarItem index="O">
                 <div v-for="(item, key) in 5" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="P">
+            </csIndexBarItem>
+            <csIndexBarItem index="P">
                 <div v-for="(item, key) in 4" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="Q">
+            </csIndexBarItem>
+            <csIndexBarItem index="Q">
                 <div v-for="(item, key) in 3" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="R">
+            </csIndexBarItem>
+            <csIndexBarItem index="R">
                 <div v-for="(item, key) in 7" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="S">
+            </csIndexBarItem>
+            <csIndexBarItem index="S">
                 <div v-for="(item, key) in 5" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="T">
+            </csIndexBarItem>
+            <csIndexBarItem index="T">
                 <div v-for="(item, key) in 9" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="U">
+            </csIndexBarItem>
+            <csIndexBarItem index="U">
                 <div v-for="(item, key) in 2" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="V">
+            </csIndexBarItem>
+            <csIndexBarItem index="V">
                 <div v-for="(item, key) in 4" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="W">
+            </csIndexBarItem>
+            <csIndexBarItem index="W">
                 <div v-for="(item, key) in 8" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="X">
+            </csIndexBarItem>
+            <csIndexBarItem index="X">
                 <div v-for="(item, key) in 4" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="Y">
+            </csIndexBarItem>
+            <csIndexBarItem index="Y">
                 <div v-for="(item, key) in 6" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-            <sdIndexBarItem index="Z">
+            </csIndexBarItem>
+            <csIndexBarItem index="Z">
                 <div v-for="(item, key) in 5" class="indexBarItem">文本</div>
-            </sdIndexBarItem>
-        </sdIndexBar>
+            </csIndexBarItem>
+        </csIndexBar>
     </div>
 </template>
 

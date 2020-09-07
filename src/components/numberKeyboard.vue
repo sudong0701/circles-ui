@@ -1,9 +1,7 @@
 <template>
     <div class="numberKeyboard">
-        <!--<button @click="showNumberKeyboard">点击显示</button>-->
-        <input type="text" readonly @click.stop @touchstart.stop="isShow = true">
-        <sdPasswordInput :gutter="'0.12rem'" :length="6" bgColor="#fff" style="margin-top: 0.5rem" :isMask="true" v-model="numberKeyboardValue" :isFocus="isFocus" @focus="focus"></sdPasswordInput>
-        <sd-numberKeyboard v-model="numberKeyboardValue" title="支付密码" :show="isShow" @change="change" @blur="isShow = false; isFocus = false" maxlength="6" :isShuffle="true" :extraKey="''"></sd-numberKeyboard>
+        <csPasswordInput :gutter="'0.12rem'" :length="6" bgColor="#fff" style="padding-top: 0.5rem" :isMask="true" v-model="numberKeyboardValue" :isFocus="isFocus" @focus="focus"></csPasswordInput>
+        <cs-numberKeyboard v-model="numberKeyboardValue" title="支付密码" :show="isShow" @change="change" @blur="isShow = false; isFocus = false" maxlength="6" :isShuffle="true" :extraKey="'.'"></cs-numberKeyboard>
     </div>
 </template>
 
@@ -13,8 +11,8 @@
         data() {
             return {
                 isShow: false,
-                numberKeyboardValue: '',
-                extraKey: ['$', '￥'],
+                numberKeyboardValue: '77',
+                extraKey: '.',   //'' '.' 'X' ['$', '￥'],
                 isFocus: false
             }
         },
@@ -27,7 +25,7 @@
                 this.isFocus = true
             },
             change(index) {
-                console.log(index)
+
             }
         }
     }

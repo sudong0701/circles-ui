@@ -1,12 +1,12 @@
 <template>
-    <div class="sdCheckboxGroup" ref="sdCheckboxGroup">
+    <div class="csCheckboxGroup" ref="csCheckboxGroup">
         <slot></slot>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'sdCheckboxGroup',
+        name: 'csCheckboxGroup',
         data() {
             return {}
         },
@@ -35,13 +35,13 @@
             event: 'change'
         },
         mounted() {
-            const sdCheckboxGroupItems = this.$refs.sdCheckboxGroup.children
-            for(let i=0; i<sdCheckboxGroupItems.length; i++) {
-                sdCheckboxGroupItems[i].__vue__.isGroup = true
-                sdCheckboxGroupItems[i].__vue__.type = this.type
-                sdCheckboxGroupItems[i].__vue__.disabledGroup = this.disabled
-                if(this.value.indexOf(sdCheckboxGroupItems[i].__vue__.name) > -1) {
-                    sdCheckboxGroupItems[i].__vue__.checkedGroup = true
+            const csCheckboxGroupItems = this.$refs.csCheckboxGroup.children
+            for(let i=0; i<csCheckboxGroupItems.length; i++) {
+                csCheckboxGroupItems[i].__vue__.isGroup = true
+                csCheckboxGroupItems[i].__vue__.type = this.type
+                csCheckboxGroupItems[i].__vue__.disabledGroup = this.disabled
+                if(this.value.indexOf(csCheckboxGroupItems[i].__vue__.name) > -1) {
+                    csCheckboxGroupItems[i].__vue__.checkedGroup = true
                 }
             }
         },
@@ -67,12 +67,12 @@
         },
         watch: {
             value(value) {
-                const sdCheckboxGroupItems = this.$refs.sdCheckboxGroup.children
-                for(let i=0; i<sdCheckboxGroupItems.length; i++) {
-                    if(value.indexOf(sdCheckboxGroupItems[i].__vue__.name) > -1) {
-                        sdCheckboxGroupItems[i].__vue__.checkedGroup = true
+                const csCheckboxGroupItems = this.$refs.csCheckboxGroup.children
+                for(let i=0; i<csCheckboxGroupItems.length; i++) {
+                    if(value.indexOf(csCheckboxGroupItems[i].__vue__.name) > -1) {
+                        csCheckboxGroupItems[i].__vue__.checkedGroup = true
                     } else {
-                        sdCheckboxGroupItems[i].__vue__.checkedGroup = false
+                        csCheckboxGroupItems[i].__vue__.checkedGroup = false
                     }
                 }
             }

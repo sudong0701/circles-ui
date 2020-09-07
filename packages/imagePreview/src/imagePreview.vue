@@ -1,17 +1,17 @@
 <template>
     <transition name="animation-fade-imagePreview">
-        <div class="sdImagePreview_list" v-if="isShow" @click="closeImagePreview">
-            <div class="sdImagePreview_list_index" v-if="showIndex">{{currIndex + 1}} / {{images.length}}</div>
-            <sd-swipe ref="sdSwipe" :isAuto="false" @change="swipeChange" :swipeIndex="currIndex" :duration="duration" :showIndicators="showIndicators">
-                <sd-swipe-item v-for="(item, index) in images" :key="index">
-                    <div :ref="`${currIndex === index ? 'sdImagePreview_item' : ''}`" class="sdImagePreview_item" :style="`transform: scale3d(${(currIndex === index) ? `${zoom},${zoom},1`  : 1})`" @touchstart="touchStart($event)"
+        <div class="csImagePreview_list" v-if="isShow" @click="closeImagePreview">
+            <div class="csImagePreview_list_index" v-if="showIndex">{{currIndex + 1}} / {{images.length}}</div>
+            <cs-swipe ref="csSwipe" :isAuto="false" @change="swipeChange" :swipeIndex="currIndex" :duration="duration" :showIndicators="showIndicators">
+                <cs-swipe-item v-for="(item, index) in images" :key="index">
+                    <div :ref="`${currIndex === index ? 'csImagePreview_item' : ''}`" class="csImagePreview_item" :style="`transform: scale3d(${(currIndex === index) ? `${zoom},${zoom},1`  : 1})`" @touchstart="touchStart($event)"
                          @touchmove="touchMove($event)" @touchend="touchEnd($event)" @click.stop="imagePreviewZoom(index)">
                         <img :src="item" alt="">
                     </div>
-                </sd-swipe-item>
-            </sd-swipe>
-            <i v-if="isShowClose" @click.stop="closeImagePreview('close')" class="iconfont iconclose sdImagePreview_close"></i>
-            <div class="sdImagePreview_overlay"></div>
+                </cs-swipe-item>
+            </cs-swipe>
+            <i v-if="isShowClose" @click.stop="closeImagePreview('close')" class="iconfont iconclose csImagePreview_close"></i>
+            <div class="csImagePreview_overlay"></div>
         </div>
     </transition>
 </template>
@@ -42,7 +42,7 @@
             this.isShow = true
             this.$nextTick(()=> {
                 this.currIndex = this.startPosition
-                this.$refs.sdSwipe.setCurrentIndex(this.startPosition)
+                this.$refs.csSwipe.setCurrentIndex(this.startPosition)
             })
         },
         methods: {
@@ -72,8 +72,8 @@
              @return
              */
             imagePreviewZoom() {
-                const sdImagePreview_item = this.$refs[`sdImagePreview_item`][0]
-                sdImagePreview_item.style.transformOrigin = '50% 50%'
+                const csImagePreview_item = this.$refs[`csImagePreview_item`][0]
+                csImagePreview_item.style.transformOrigin = '50% 50%'
                 if(new Date().getTime() - currDate <= 400) {
                     if(this.zoom !== 1) {
                         this.zoom = 1;
@@ -96,8 +96,8 @@
              */
             touchStart(e) {
                 //如果为单点触摸
-                const sdImagePreview_item = this.$refs[`sdImagePreview_item`][0]
-                sdImagePreview_item.style.transitionDuration = '0s'
+                const csImagePreview_item = this.$refs[`csImagePreview_item`][0]
+                csImagePreview_item.style.transitionDuration = '0s'
                 if(e.targetTouches.length === 1) {
                     if(this.zoom !== 1) {
                         if(this.zoom > 1) {
@@ -128,10 +128,10 @@
                         e.stopPropagation()
                         const changePageX = e.targetTouches[0].pageX - startPageObj.x
                         const changePageY = e.targetTouches[0].pageY - startPageObj.y
-                        const sdImagePreview_item = this.$refs[`sdImagePreview_item`][0]
+                        const csImagePreview_item = this.$refs[`csImagePreview_item`][0]
                         moveChangeX = changePageX + endChangeX > this.maxPageX ? this.maxPageX : (changePageX + endChangeX < -this.maxPageX ? -this.maxPageX : changePageX + endChangeX)
                         moveChangeY = changePageY+ endChangeY > this.maxPageY ? this.maxPageY : (changePageY + endChangeY < -this.maxPageY ? -this.maxPageY : changePageY+ endChangeY)
-                        sdImagePreview_item.style.transform = `scale3d(${this.zoom}, ${this.zoom}, 1) translate(${moveChangeX}px, ${moveChangeY}px)`;
+                        csImagePreview_item.style.transform = `scale3d(${this.zoom}, ${this.zoom}, 1) translate(${moveChangeX}px, ${moveChangeY}px)`;
                     } else if(this.zoom < 1) {
                         e.stopPropagation()
                     }
@@ -150,8 +150,8 @@
              @return
              */
             touchEnd(e) {
-                const sdImagePreview_item = this.$refs[`sdImagePreview_item`][0]
-                sdImagePreview_item.style.transitionDuration = '0.3s'
+                const csImagePreview_item = this.$refs[`csImagePreview_item`][0]
+                csImagePreview_item.style.transitionDuration = '0.3s'
                 if(this.zoom !== 1) {
                     if(this.zoom > 1) {
                         endChangeX = moveChangeX
@@ -170,7 +170,7 @@
                 if(value) {
                     this.$nextTick(()=> {
                         this.currIndex = this.startPosition
-                        this.$refs.sdSwipe.setCurrentIndex(this.startPosition)
+                        this.$refs.csSwipe.setCurrentIndex(this.startPosition)
                     })
                 } else {
                     this.zoom = 1

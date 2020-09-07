@@ -1,19 +1,19 @@
 <template>
-    <div :class="`sdTabs`"  @touchstart="touchStart($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)">
-        <div :class="`sdTabs-box ${isFixed ? 'sdTabs-box-fixed' : ''}`" :style="`transform: translateX(${transformWidth}px)`" ref="sdTabs-box">
-            <div class="sdTabs-list" ref="sdTabsList">
+    <div :class="`csTabs`"  @touchstart="touchStart($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)">
+        <div :class="`csTabs-box ${isFixed ? 'csTabs-box-fixed' : ''}`" :style="`transform: translateX(${transformWidth}px)`" ref="csTabs-box">
+            <div class="csTabs-list" ref="csTabsList">
                 <slot :titleActiveColor="titleActiveColor" :titleInactiveColor="titleInactiveColor"></slot>
             </div>
-            <div class="sdTabs-list-line" ref="sdTabsListLine" :style="`transform: translate(${totalNum_line + rightWidth}px, 0); color: ${active ? titleActiveColor : titleInactiveColor}`"></div>
+            <div class="csTabs-list-line" ref="csTabsListLine" :style="`transform: translate(${totalNum_line + rightWidth}px, 0); color: ${active ? titleActiveColor : titleInactiveColor}`"></div>
         </div>
-        <div class="sdTabs-sticky" ref="sdTabs-sticky" v-if="isSticky"></div>
+        <div class="csTabs-sticky" ref="csTabs-sticky" v-if="isSticky"></div>
     </div>
 </template>
 
 <script>
     let startPageX = 0, totalWidth = 0, tabWidthArr = [], moveNum = 0, itemWidth = 0
     export default {
-        name: 'sdTabs',
+        name: 'csTabs',
         data() {
             return {
                 transformWidth: 0,
@@ -67,7 +67,7 @@
              * @return
              */
             initData() {
-                const line = this.$refs.sdTabsListLine, tabs = this.$refs.sdTabsList.children, tabsLength = tabs.length > Number(this.swipeThreshold) ? Number(this.swipeThreshold) + 0.5 : tabs.length
+                const line = this.$refs.csTabsListLine, tabs = this.$refs.csTabsList.children, tabsLength = tabs.length > Number(this.swipeThreshold) ? Number(this.swipeThreshold) + 0.5 : tabs.length
                 let totalNum = 0
                 for(let i = 0; i < tabs.length; i++) {
                     tabs[i].__vue__.index = i
@@ -111,7 +111,7 @@
                             })
                         }
                     )
-                    observer.observe(this.$refs['sdTabs-sticky'])
+                    observer.observe(this.$refs['csTabs-sticky'])
                 }
             },
             /**
@@ -120,7 +120,7 @@
              * @return
              */
             changeTab(index) {
-                const tabs = this.$refs.sdTabsList.children
+                const tabs = this.$refs.csTabsList.children
                 this.totalNum_line = this.computedTran(index)
                 this.$emit('change', index)
                 for(let i = 0; i < tabs.length; i++) {
@@ -142,7 +142,7 @@
              * @return
              */
             touchStart(e) {
-                const tabBox = this.$refs['sdTabs-box']
+                const tabBox = this.$refs['csTabs-box']
                 tabBox.style.transition = `transform, 0s`
                 startPageX = e.touches[0].pageX
             },
@@ -163,7 +163,7 @@
              * @return
              */
             touchEnd() {
-                const tabBox = this.$refs['sdTabs-box']
+                const tabBox = this.$refs['csTabs-box']
                 tabBox.style.transition = `transform, 0.3s`
             },
             /**
@@ -181,7 +181,7 @@
         },
         watch: {
             tabBackGround(value) {
-                const tabs = this.$refs.sdTabsList.children
+                const tabs = this.$refs.csTabsList.children
                 for(let i = 0; i < tabs.length; i++) {
                     tabs[i].__vue__.tabBackGround = value
                 }
