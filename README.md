@@ -36,7 +36,7 @@ Vue.use(sdPicker)
 | 主色(默认) | 成功 | 警告 | 危险 | 详情 |
 |--|--|--|--|--|
 | Primary | Success | Warning | Danger | Info |
-| #1989fa | #69c23a |  | #E6A23C | #FF2C7D | #909399 |
+| #1989fa | #69c23a | #E6A23C | #FF2C7D | #909399 |
 
 代码示例:
 ```
