@@ -18,6 +18,7 @@ Tabbar 组件定义一个标签栏。
 
 ## TabbarItem Slots
 | Slots Name | Notes |
+|---|---|
 | icon | 自定义tabbar图标。
 
 ## Tabbar Events
