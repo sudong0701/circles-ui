@@ -8,7 +8,7 @@
 > 在Vue项目根目录下
 
 ```bash
-npm i sudong-ui --save-dev
+npm i CircleS-ui --save-dev
 ```
 
 ## 全局引入
