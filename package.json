@@ -1,7 +1,7 @@
 {
-  "name": "sudong-ui",
-  "version": "1.1.6",
-  "description": "This is a UI components for Vue 2.x ",
+  "name": "circles-ui",
+  "version": "1.0.0",
+  "description": "This is a UI components for Vue 2.x.github: https://github.com/sudong0701/CircleS-ui",
   "author": "sudong.duan",
   "main": "packages/index.js",
   "private": false,
