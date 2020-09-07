@@ -1,25 +1,25 @@
-# `Popup` 弹出层
-Popup 组件定义一个弹出层。
+# `Stepper` 步进器
+Stepper 组件定义一个步进器。
 
 ## Props
 | Prop | Type | Default | Note |
 |---|---|---|---|
-| v-model(isShow) | Boolean | false | 控制Popup的显示隐藏。
-| isOverlay | Boolean | true | 是否显示背景蒙层。
-| closeOnClickOverlay | Boolean | true | 是否点击背景蒙层后关闭。
-| position | String | 'bottom' | 弹出层的位置(top、right、bottom、left、center)。
-| isRound | Boolean | true | 是否展示圆角。
-| duration | Number | 300(ms) | 动画时长。
-| lockScroll | Boolean | true | 是否锁定背景滚动。
+| v-model(value) | String & Number | '' | 步进器绑定的值。
+| min | String & Number | 0 | 最小值。
+| max | String & Number | 10 | 最大值。
+| step | String & Number | 1 | 每一次增加/减少的值。
+| integer | Boolean | false | 是否限制输入整数。
+| decimalLength | Number | 0 | 保留的小数位。
+| disabled | Boolean | false | 是否禁用步进器。
+| disabledEnter | Boolean | false | 是否禁止输入。
+| asyncChange | Boolean | false | 是否开启异步更改。
 
 ## Events
 | Event Name | Returns | Notes |
 |---|---|---|
-| open |  | popup打开时触发。
-| opened |  | popup打开且动画结束时触发。
-| close |  | popup关闭时触发。
-| closed |  | popup关闭且动画结束时触发。
-| click-overlay |  | p点击遮罩层时触发。
+| change | value | 更改后的值。
+| add |  | 点击+号触发。
+| lower |  | 点击-号触发。
 
 <!--
 ## Methods
@@ -36,11 +36,8 @@ None.
 简单用法
 ```
 <template>
-    <div>
-        <div @click="showPopup">点击显示</div>
-        <sdPopup v-model="show">
-            <div style="height: 200px"></div>
-        </sdPopup>
+    <div class="stepper">
+        <sdStepper v-model="stepperValue"  :asyncChange="false" :disabled="false" :decimalLength="2" step="2" min="-60" @add="add"></sdStepper>
     </div>
 </template>
 
@@ -49,15 +46,18 @@ None.
         name: '',
         data() {
             return {
-                show: false
+                stepperValue: -2
             }
         },
         methods: {
-            showPopup() {
-                this.show = true
+            add() {
+                console.log('add')
             }
         }
     }
 </script>
 
 ```
+
+## Screenshots
+![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/10/1597043799867.gif)

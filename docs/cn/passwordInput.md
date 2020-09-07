@@ -1,25 +1,21 @@
-# `Popup` 弹出层
-Popup 组件定义一个弹出层。
+# `PasswordInput` 密码输入框
+PasswordInput 组件定义一个密码输入框。
 
 ## Props
 | Prop | Type | Default | Note |
 |---|---|---|---|
-| v-model(isShow) | Boolean | false | 控制Popup的显示隐藏。
-| isOverlay | Boolean | true | 是否显示背景蒙层。
-| closeOnClickOverlay | Boolean | true | 是否点击背景蒙层后关闭。
-| position | String | 'bottom' | 弹出层的位置(top、right、bottom、left、center)。
-| isRound | Boolean | true | 是否展示圆角。
-| duration | Number | 300(ms) | 动画时长。
-| lockScroll | Boolean | true | 是否锁定背景滚动。
+| v-model(value) | String | Number | '' | 控制Popup的显示隐藏。
+| length | Number | 6 | 密码输入框长度。
+| gutter | Number | String | 0 | 输入框格子之间的间距 number默认单位为px。
+| bgColor | String | '#fff' | 背景颜色。
+| isMask | Boolean | true | 是否隐藏密码内容。
+| isFocus | Boolean | false | 输入框是否获取焦点。
+| height | String | Number | '' | 输入框的高度 number默认单位为px。
 
 ## Events
 | Event Name | Returns | Notes |
 |---|---|---|
-| open |  | popup打开时触发。
-| opened |  | popup打开且动画结束时触发。
-| close |  | popup关闭时触发。
-| closed |  | popup关闭且动画结束时触发。
-| click-overlay |  | p点击遮罩层时触发。
+| focus |  | 输入框获取焦点时触发。
 
 <!--
 ## Methods
@@ -36,11 +32,9 @@ None.
 简单用法
 ```
 <template>
-    <div>
-        <div @click="showPopup">点击显示</div>
-        <sdPopup v-model="show">
-            <div style="height: 200px"></div>
-        </sdPopup>
+    <div class="numberKeyboard">
+        <sdPasswordInput :gutter="'0.12rem'" :length="6" bgColor="#fff" style="margin-top: 0.5rem" :isMask="true" v-model="numberKeyboardValue" :isFocus="isFocus" @focus="focus"></sdPasswordInput>
+        <sd-numberKeyboard v-model="numberKeyboardValue" title="支付密码" :show="isShow" @change="change" @blur="isShow = false; isFocus = false" maxlength="6" :isShuffle="true" :extraKey="''"></sd-numberKeyboard>
     </div>
 </template>
 
@@ -49,15 +43,28 @@ None.
         name: '',
         data() {
             return {
-                show: false
+                isShow: false,
+                numberKeyboardValue: '',
+                extraKey: '.',   //'' '.' 'X' ['$', '￥'],
+                isFocus: false
             }
         },
         methods: {
-            showPopup() {
-                this.show = true
+            showNumberKeyboard() {
+              this.isShow = !this.isShow
+            },
+            focus() {
+                this.isShow = true
+                this.isFocus = true
+            },
+            change(index) {
+
             }
         }
     }
 </script>
 
 ```
+
+## Screenshots
+![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/10/1597040904831.gif)

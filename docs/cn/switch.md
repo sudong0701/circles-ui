@@ -1,25 +1,24 @@
-# `Popup` 弹出层
-Popup 组件定义一个弹出层。
+# `Switch` 开关组件
+Switch 组件定义一个弹出层。
 
 ## Props
 | Prop | Type | Default | Note |
 |---|---|---|---|
-| v-model(isShow) | Boolean | false | 控制Popup的显示隐藏。
-| isOverlay | Boolean | true | 是否显示背景蒙层。
-| closeOnClickOverlay | Boolean | true | 是否点击背景蒙层后关闭。
-| position | String | 'bottom' | 弹出层的位置(top、right、bottom、left、center)。
-| isRound | Boolean | true | 是否展示圆角。
-| duration | Number | 300(ms) | 动画时长。
-| lockScroll | Boolean | true | 是否锁定背景滚动。
+| v-model(isActive) | Boolean | false | 控制Popup的显示隐藏。
+| size | String & Number | 0.6rem | Switch大小。
+| activeParentsNodeColor | String | '#1989fa' | 打开时switch的背景颜色。
+| activeNodeColor | String | 'fff' | 打开时switch圆圈的背景颜色。
+| unActiveParentsNodeColor | String | '#fff' | 关闭时switch的背景颜色。
+| unActiveNodeColor | String | '#fff' | 关闭时switch圆圈的背景颜色。
+| disabled | Boolean | false | 是否禁用。
+| asyncChange | Boolean | false | 是否开始异步变化。
 
 ## Events
 | Event Name | Returns | Notes |
 |---|---|---|
-| open |  | popup打开时触发。
-| opened |  | popup打开且动画结束时触发。
-| close |  | popup关闭时触发。
-| closed |  | popup关闭且动画结束时触发。
-| click-overlay |  | p点击遮罩层时触发。
+| change | isActive | switch状态。
+| opened |  | switch打开动画结束后触发。
+| closed |  | switch关闭动画结束后触发。
 
 <!--
 ## Methods
@@ -36,11 +35,8 @@ None.
 简单用法
 ```
 <template>
-    <div>
-        <div @click="showPopup">点击显示</div>
-        <sdPopup v-model="show">
-            <div style="height: 200px"></div>
-        </sdPopup>
+    <div style="padding: 0.3rem" class="picker" ref="content">
+        <sd-switch v-model="isOpen" @change="change"></sd-switch>
     </div>
 </template>
 
@@ -49,15 +45,17 @@ None.
         name: '',
         data() {
             return {
-                show: false
+                isOpen: false
             }
         },
         methods: {
-            showPopup() {
-                this.show = true
+            change(val) {
+                console.log(val)
             }
         }
     }
 </script>
 
 ```
+## Screenshots
+![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/10/1597045613374.gif)

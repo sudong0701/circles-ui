@@ -1,25 +1,35 @@
-# `Popup` 弹出层
-Popup 组件定义一个弹出层。
+# `Tabbar` 标签栏
+Tabbar 组件定义一个标签栏。
 
-## Props
+## Tabbar Props
 | Prop | Type | Default | Note |
 |---|---|---|---|
-| v-model(isShow) | Boolean | false | 控制Popup的显示隐藏。
-| isOverlay | Boolean | true | 是否显示背景蒙层。
-| closeOnClickOverlay | Boolean | true | 是否点击背景蒙层后关闭。
-| position | String | 'bottom' | 弹出层的位置(top、right、bottom、left、center)。
-| isRound | Boolean | true | 是否展示圆角。
-| duration | Number | 300(ms) | 动画时长。
-| lockScroll | Boolean | true | 是否锁定背景滚动。
+| v-model(active) | String & Number | 0 | 当前选中tabbar的索引。
+| fixed | Boolean | false | 是否使用fixed布局。
+| activeColor | String | #1989fa | 选中时的颜色。
+| inactiveColor | String | #7d7e80 | 未选中时的颜色。
 
-## Events
+## TabbarItem Props
+| Prop | Type | Default | Note |
+|---|---|---|---|
+| icon | String | '' | 图标icon。
+| dot | Boolean | false | 是否显示右上角小红点。
+| badge | String | '' | 图标右上角徽标的内容。
+
+## TabbarItem Slots
+| Slots Name | Notes |
+|---|---|
+| icon | 自定义tabbar图标。
+
+## Tabbar Events
 | Event Name | Returns | Notes |
 |---|---|---|
-| open |  | popup打开时触发。
-| opened |  | popup打开且动画结束时触发。
-| close |  | popup关闭时触发。
-| closed |  | popup关闭且动画结束时触发。
-| click-overlay |  | p点击遮罩层时触发。
+| change | active | 当前选中的tabbar改变时触发。
+
+## TabbarItem Events
+| Event Name | Returns | Notes |
+|---|---|---|
+| select |  | item被选中时触发。
 
 <!--
 ## Methods
@@ -36,11 +46,18 @@ None.
 简单用法
 ```
 <template>
-    <div>
-        <div @click="showPopup">点击显示</div>
-        <sdPopup v-model="show">
-            <div style="height: 200px"></div>
-        </sdPopup>
+    <div class="tabbar">
+        <div @click="show">显示</div>
+        <sd-tabbar fixed v-model="active" @change="changeTab" ref="tabbar">
+            <sdTabbarItem icon="home" :dot="true">主页</sdTabbarItem>
+            <sdTabbarItem  badge="2">购物车
+                <template #icon="props">
+                    <i :style="`color: ${props.active ? '#1989fa' : '#7d7e80'}`" class="iconfont iconcart"></i>
+                </template>
+            </sdTabbarItem>
+            <sdTabbarItem v-if="isShow" icon="apps">菜单</sdTabbarItem>
+            <sdTabbarItem icon="people">我的</sdTabbarItem>
+        </sd-tabbar>
     </div>
 </template>
 
@@ -49,15 +66,23 @@ None.
         name: '',
         data() {
             return {
-                show: false
+                active: 0,
+                isShow: false
             }
         },
         methods: {
-            showPopup() {
-                this.show = true
+            changeTab(key) {
+                console.log(key)
+            },
+            show() {
+                this.isShow = !this.isShow
+                this.$refs.tabbar.initComponent()
             }
         }
     }
 </script>
 
 ```
+
+## Screenshots
+![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/09/07/1599448627070.gif)

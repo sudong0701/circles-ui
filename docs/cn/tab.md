@@ -1,25 +1,31 @@
-# `Popup` 弹出层
-Popup 组件定义一个弹出层。
+# `Tab` 标签页
+Tab 组件定义一个标签页。
 
-## Props
+## Tabs Props
 | Prop | Type | Default | Note |
 |---|---|---|---|
-| v-model(isShow) | Boolean | false | 控制Popup的显示隐藏。
-| isOverlay | Boolean | true | 是否显示背景蒙层。
-| closeOnClickOverlay | Boolean | true | 是否点击背景蒙层后关闭。
-| position | String | 'bottom' | 弹出层的位置(top、right、bottom、left、center)。
-| isRound | Boolean | true | 是否展示圆角。
-| duration | Number | 300(ms) | 动画时长。
-| lockScroll | Boolean | true | 是否锁定背景滚动。
+| v-model(active) | String & Number | '0' | 当前选择标签页的下标。
+| tabBackGround | String | #fff | 标签页的背景颜色。
+| titleActiveColor | String | '#1989fa' | title选中的颜色。
+| titleInactiveColor | String | '333' | title未选中的颜色。
+| isSticky | Boolean | true | 是否吸顶。
+| swipeThreshold | String & Number | 4 | 滚动阈值，标签数量超过阈值时开始横向滚动。
 
-## Events
+## Tab Props
+| Prop | Type | Default | Note |
+|---|---|---|---|
+| title | String| '' | 标签页的内容。
+| disabled | Boolean | false | 是否禁用。
+
+## Tabs Events
 | Event Name | Returns | Notes |
 |---|---|---|
-| open |  | popup打开时触发。
-| opened |  | popup打开且动画结束时触发。
-| close |  | popup关闭时触发。
-| closed |  | popup关闭且动画结束时触发。
-| click-overlay |  | p点击遮罩层时触发。
+| change | active(当前选中的下标) | tab选中项改变时触发。
+
+## Tab Slots
+| Slots Name | Returns |
+|---|---|
+| 默认 | tab页的内容。
 
 <!--
 ## Methods
@@ -36,11 +42,28 @@ None.
 简单用法
 ```
 <template>
-    <div>
-        <div @click="showPopup">点击显示</div>
-        <sdPopup v-model="show">
-            <div style="height: 200px"></div>
-        </sdPopup>
+    <div class="tabs">
+        <sd-tabs titleActiveColor="#1989fa" @change="tabChange">
+            <sd-tab title="标签啥肯耐珂萨1"></sd-tab>
+            <sd-tab title="标签2"></sd-tab>
+            <sd-tab title="标签3" disabled></sd-tab>
+            <sd-tab title="标签4"></sd-tab>
+            <sd-tab title="标签5"></sd-tab>
+            <sd-tab title="标签6">
+            </sd-tab>
+            <sd-tab title="标签7"></sd-tab>
+            <sd-tab title="标签8"></sd-tab>
+            <sd-tab title="标签9"></sd-tab>
+        </sd-tabs>
+
+        <p style="text-align: center">春江潮水连海平，海上明月共潮生。<br/>
+            艳艳水波千万里，何处春江无月明。<br/>
+            江流宛转绕芳甸，月照花林皆似霰。<br/>
+            空中流霜不觉飞，汀上白沙看不见。<br/>
+            江天一色无纤尘，皎皎空中孤月轮。<br/>
+            江畔何人初见月，江月何年初照人。<br/>
+            人生代代无穷已，江月年年只相似。<br/>
+            不知江月待何人，但见长江送流水。</p>
     </div>
 </template>
 
@@ -48,16 +71,17 @@ None.
     export default {
         name: '',
         data() {
-            return {
-                show: false
-            }
+            return {}
         },
         methods: {
-            showPopup() {
-                this.show = true
+            tabChange(e) {
+                //console.log(e)
             }
         }
     }
 </script>
 
 ```
+
+## Screenshots
+![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/09/04/1599213432495.gif)
