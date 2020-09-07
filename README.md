@@ -31,6 +31,15 @@ Vue.use(sdPicker)
 
 # 文档
 
+## 主题色
+2020.09.07新增主题色，使用css variable实现，请注意兼容性。要使用主题色只需在注册sdUI时修改为Vue.use(sdUI, themeName)，目前支持的主题色有
+| 主色(默认) | 成功 | 警告 | 危险 | 详情 |
+|--|--|--|--|--|
+```
+Vue.use(sdUI, 'Warning')
+```
+
+
 ## 基础组件
 [`Popup` 弹出层组件](./docs/cn/popup.md)
 
