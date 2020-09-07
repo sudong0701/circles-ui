@@ -15,7 +15,7 @@ npm i CircleS-ui --save-dev
 > 在main.js里新增以下代码
 
  ```bash
- import csUI from 'sudong-ui'
+ import csUI from 'CircleS-ui'
  import 'CircleS-ui/packages/theme-default/lib/index.min.css'
  Vue.use(csUI)
  ```
