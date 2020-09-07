@@ -15,24 +15,24 @@ npm i sudong-ui --save-dev
 > 在main.js里新增以下代码
 
  ```bash
- import sdUI from 'sudong-ui'
- import 'sudong-ui/packages/theme-default/lib/index.min.css'
- Vue.use(sdUI)
+ import csUI from 'sudong-ui'
+ import 'CircleS-ui/packages/theme-default/lib/index.min.css'
+ Vue.use(csUI)
  ```
   
 ## 按需引入
 > 在需要引入的Vue页面新增以下代码
 
 ```bash
-import { sdPicker } from 'sudong-ui'
+import { csPicker } from 'CircleS-ui'
 import Vue from 'vue'
-Vue.use(sdPicker)
+Vue.use(csPicker)
 ```
 
 # 文档
 
 ## 主题色
-> 2020.09.07新增主题色，使用css variable实现，请注意兼容性。要使用主题色只需在注册sdUI时修改为Vue.use(sdUI, themeName)，目前支持的主题色有
+> 2020.09.07新增主题色，使用css variable实现，请注意兼容性。要使用主题色只需在注册sdUI时修改为Vue.use(csUI, themeName)，目前支持的主题色有
 
 | 主色(默认) | 成功 | 警告 | 危险 | 详情 |
 |--|--|--|--|--|
@@ -41,7 +41,7 @@ Vue.use(sdPicker)
 
 代码示例:
 ```
-Vue.use(sdUI, 'Warning')
+Vue.use(csUI, 'Warning')
 ```
 
 
