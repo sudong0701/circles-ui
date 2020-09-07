@@ -5,12 +5,16 @@
             <slot></slot>
         </div>
         <div class="sdIndexBar_sort">
-            <span @click="selectSort(key)" v-for="(item, key) in tabNameArr" :style="`color: ${currIndex === key ? color : ''}`">{{sortArr.length ? item.customize : item.label}}</span>
+            <span @click="selectSort(key)" v-for="(item, key) in tabNameArr" :class="`${currIndex === key ? 'sdIndexBarActive' : ''}`" :style="`color: ${currIndex === key ? color : ''}`">{{sortArr.length ? item.customize : item.label}}</span>
         </div>
+        <transition name="animation-fade-imagePreview">
+            <div v-show="isToast" class="sdIndexBar_tip">{{currTitle}}</div>
+        </transition>
     </div>
 </template>
 
 <script>
+    let indexBarTimer
     export default {
         name: 'sdIndexBar',
         data() {
@@ -18,7 +22,8 @@
                 currTitle: '',
                 currIndex: 0,
                 scrollTop: 0,
-                tabNameArr: []
+                tabNameArr: [],
+                isToast: false
             }
         },
         props: {
@@ -38,7 +43,11 @@
             },
             color: {
                 type: String,
-                default: '#07c160'
+                default: ''
+            },
+            showToast: {
+                type: Boolean,
+                default: true
             }
         },
         model: {
@@ -98,6 +107,16 @@
                 this.currTitle = this.tabNameArr[key].label
                 this.currIndex = this.tabNameArr[key].key
                 indexBarContent.scrollTo(0, this.tabNameArr[key].top)
+                if(this.showToast) {
+                    this.isToast = true
+                    if(indexBarTimer) {
+                        clearTimeout(indexBarTimer)
+                    }
+                    indexBarTimer = setTimeout(()=> {
+                        this.isToast = false
+                        indexBarTimer = null
+                    }, 1000)
+                }
                 this.$emit('change', key)
             }
         }

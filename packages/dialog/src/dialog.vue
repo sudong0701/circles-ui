@@ -44,7 +44,7 @@
                 isRound: true,  //是否展示圆角
                 type: '',   //弹出框类型
                 confirmBtnText: '确定',   //确认按钮文案，alert类型时为底部按钮的文案
-                confirmBthColor: '#FF2C7D',   //确认按钮文字颜色,默认#FF2C7D
+                confirmBthColor: '',   //确认按钮文字颜色
                 confirmBthBgColor: '',   //确认按钮的背景颜色
                 cancelBtnText: ' 取消',  //取消按钮文案
                 cancelBthColor: '#333',   //取消按钮文字颜色,默认#333

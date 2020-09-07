@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '../components/HelloWorld.vue'
 
+const picker = () => import('../components/picker.vue')
 const test = () => import('../components/test.vue')
 const imagePreview = () => import('../components/imagePreview.vue')
 const numberKeyboard = () => import('../components/numberKeyboard.vue')
@@ -15,6 +16,9 @@ const tabs = ()=> import('../components/tabs.vue')
 const circle = ()=> import('../components/circle.vue')
 const tabbar = ()=> import('../components/tabbar.vue')
 const indexBar = ()=> import('../components/indexBar.vue')
+const field = () => import('../components/field.vue')
+const swipe = ()=> import('../components/swipe.vue')
+const swipeCell = ()=> import('../components/swipeCell.vue')
 
 Vue.use(Router)
 
@@ -90,6 +94,27 @@ export default new Router({
             path: '/indexBar',
             name: 'indexBar',
             component: indexBar
+        },
+        {
+            path: '/field',
+            name: 'field',
+            component: field
+        },
+        {
+            path: '/picker',
+            name: 'picker',
+            component: picker
+        },
+        {
+            path: '/swipe',
+            name: 'swipe',
+            component: swipe
+        },
+        {
+            path: '/swipeCell',
+            name: 'swipeCell',
+            component: swipeCell
         }
+
     ]
 })

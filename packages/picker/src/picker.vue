@@ -6,8 +6,8 @@
 <template>
     <div class="sd_picker">
         <div class="sd_picker-title">
-            <div class="sd_picker-title-left" @click="clickLeftBtn">{{leftButtonText}}</div>
-            <div class="sd_picker-title-right" @click="clickRightBtn">{{rightButtonText}}</div>
+            <div class="sd_picker-title-left" @click="clickLeftBtn" :style="`color: ${leftButtonColor}`">{{leftButtonText}}</div>
+            <div class="sd_picker-title-right" @click="clickRightBtn" :style="`color: ${rightButtonColor}`">{{rightButtonText}}</div>
             <div class="sd_picker-title-center">{{title}}</div>
         </div>
         <!--普通选择器组件-->
@@ -15,7 +15,7 @@
             <div :class="`sd_picker-column`" v-for="(list, key) in columns" :key="key">
                 <div class="sd_picker-column-inner">
                     <div class="sd_picker-column-list" :ref="`sd_pickerList${key}`" @touchstart.stop="touchStart($event)" @touchmove.stop="touchMove($event, key)" @touchend.stop="touchEnd($event, key)" :style="`transform: translate(0, ${(2 - defaultArr[key]) * 44}px)`">
-                        <div @click="selectItem(key, index)" v-for="(item, index) in list.values" :key="index" :class="`sd_picker-column-item ${index === defaultArr[key] ? 'sd_picker-column-currItem' : ''}`">{{item[customName]}}</div>
+                        <div @click="selectItem(key, index)" v-for="(item, index) in list.values" :key="index" :class="`sd_picker-column-item ${index == defaultArr[key] ? 'sd_picker-column-currItem' : ''}`">{{item[customName]}}</div>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
             <div :class="`sd_picker-column`" v-for="(list, key) in cascadeColumns" :key="key">
                 <div class="sd_picker-column-inner">
                     <div class="sd_picker-column-list" :ref="`sd_pickerList${key}`" @touchstart.stop="touchStart($event)" @touchmove.stop="touchMove($event, key)" @touchend.stop="touchEnd($event, key)" :style="`transform: translate(0, ${(2 - defaultArr[key]) * 44}px)`">
-                        <div @click="selectItem(key, index)" v-for="(item, index) in list.values" :key="index" :class="`sd_picker-column-item ${index === defaultArr[key] ? 'sd_picker-column-currItem' : ''}`">{{item}}</div>
+                        <div @click="selectItem(key, index)" v-for="(item, index) in list.values" :key="index" :class="`sd_picker-column-item ${index == defaultArr[key] ? 'sd_picker-column-currItem' : ''}`">{{item}}</div>
                     </div>
                 </div>
             </div>
@@ -63,6 +63,14 @@
             'left-button-text': {   //左边按钮文案
                 type: String,
                 default: '取消'
+            },
+            'right-button-color': {   //右边按钮颜色
+                type: String,
+                default: ''
+            },
+            'left-button-color': {   //左边按钮颜色
+                type: String,
+                default: ''
             },
             columns: {   //数据数组
                 type: Array,

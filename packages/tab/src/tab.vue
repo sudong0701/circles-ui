@@ -1,6 +1,6 @@
 <template>
     <div :class="`sdTab`" @click="selectTab" ref="sdTab" :style="`background-color: ${tabBackGround}`">
-        <p :class="`${disabled ? 'sdTab-disabled' : ''}`" :style="`color: ${active ? titleActiveColor : titleInactiveColor}`">
+        <p :class="`${disabled ? 'sdTab-disabled' : ''} ${active ? 'sdTab-active' : ''}`" :style="`color: ${active ? titleActiveColor : titleInactiveColor}`">
             <slot name="title">{{title}}</slot>
         </p>
     </div>

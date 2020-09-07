@@ -15,7 +15,7 @@ let toast  = (options = {})=> {
     return new Promise((resolve, reject)=> {
         //仅允许一个toast提示
         if(document.getElementById('sdToast')){
-            return
+            document.body.removeChild(document.getElementById('sdToast'))
         }
         instance = new ToastConstructor({
             data: Object.assign(options, {

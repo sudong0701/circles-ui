@@ -23,7 +23,7 @@
             },
             activeColor: {
                 type: String,
-                default: '#1989fa'
+                default: ''
             },
             inactiveColor: {
                 type: String,

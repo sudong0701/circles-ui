@@ -1,10 +1,10 @@
 <template>
-    <div ref="sdTabbarItem" :class="`sdTabbarItem`" :style="`color: ${isActive ? activeColor : inactiveColor}`" @click="selectTab">
+    <div ref="sdTabbarItem" :class="`sdTabbarItem ${isActive ? 'sdTabbarItem-active' : ''}`" :style="`color: ${isActive ? activeColor : inactiveColor}`" @click="selectTab">
         <span class="sdTabbarItem_icon">
             <span class="sdTabbarItem_dot" v-if="dot"></span>
             <span class="sdTabbarItem_badge">{{badge}}</span>
             <slot name="icon" :active="isActive">
-                <i :class="`iconfont icon${icon}`" :style="`color: ${isActive ? activeColor : inactiveColor}`"></i>
+                <i :class="`iconfont icon${icon} ${isActive ? 'iconfont-active' : ''}`" :style="`color: ${isActive ? activeColor : inactiveColor}`"></i>
             </slot>
         </span>
         <slot></slot>

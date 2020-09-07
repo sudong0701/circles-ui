@@ -31,9 +31,9 @@
         data() {
             return {
                 typeObj: {
-                    success: '#67c23a',
-                    error: '#ee0a24',
-                    warning: '#e99d3a',
+                    success: '#67C23A',
+                    error: '#FF2C7D',
+                    warning: '#E6A23C',
                     loading: 'rgba(0, 0, 0, 0.8)'
                 },
                 isShow: false,
@@ -47,13 +47,14 @@
         },
         mounted() {
             this.isShow = true
-            
             if(this.duration > 0){
                 setTimeout(()=>{
                     this.isShow = false
                     setTimeout(()=>{
                         this.$destroy(true);
-                        this.$el.parentNode.removeChild(this.$el);
+                        if(this.$el.parentNode) {
+                            this.$el.parentNode.removeChild(this.$el);
+                        }
                     },300)
                 },this.duration)
             }

@@ -65,9 +65,9 @@
                 type: String,
                 default: '确定'
             },
-            confirmBthColor: {   //确认按钮文字颜色,默认#FF2C7D
+            confirmBthColor: {   //确认按钮文字颜色
                 type: String,
-                default: '#FF2C7D'
+                default: ''
             },
             confirmBthBgColor: {   //确认按钮的背景颜色
                 type: String

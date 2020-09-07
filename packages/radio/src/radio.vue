@@ -8,8 +8,8 @@
             <transition name="animation-fade-imagePreview" >
                 <div v-show="isActive" class="sdRadio-selected">
                     <slot name="activeIcon">
-                        <i v-if="shape === 'round'"  :class="`iconfont icon_select_round sdRadio-icon ${disabled || disabledForGroup ? 'sdRadio-icon-disabled' : ''}`" :style="`color: ${disabled || disabledForGroup ? '#c8c9cc' : color}; z-index: 10`"></i>
-                        <i v-if="shape === 'square'" :class="`iconfont icon_select_square sdRadio-icon ${disabled || disabledForGroup ? 'sdRadio-icon-disabled' : ''}`" :style="`color: ${disabled || disabledForGroup ? '#c8c9cc' : color}; z-index: 10`"></i>
+                        <i v-if="shape === 'round'"  :class="`iconfont icon_select_round sdRadio-icon ${disabled || disabledForGroup ? 'sdRadio-icon-disabled' : 'sdRadio-icon-active'}`" :style="`color: ${disabled || disabledForGroup ? '#c8c9cc' : color}; z-index: 10`"></i>
+                        <i v-if="shape === 'square'" :class="`iconfont icon_select_square sdRadio-icon ${disabled || disabledForGroup ? 'sdRadio-icon-disabled' : 'sdRadio-icon-active'}`" :style="`color: ${disabled || disabledForGroup ? '#c8c9cc' : color}; z-index: 10`"></i>
                     </slot>
                 </div>
             </transition>
@@ -34,7 +34,7 @@
         props: {
             color: {
                 type: String,
-                default: '#1989fa'
+                default: ''
             },
             name: {
                 type: String | Number,

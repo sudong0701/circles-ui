@@ -6,7 +6,8 @@ import router from './router'
 import sdUI from '../packages/index'
 import '../packages/theme-default/lib/index.min.css'
 
-Vue.use(sdUI)
+Vue.use(sdUI, 'Warning')
+
 
 Vue.config.productionTip = false
 

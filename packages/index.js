@@ -24,9 +24,10 @@ import {sdCheckbox, sdCheckboxGroup} from './checkbox/index'   //复选框组件
 import sdNoticeBar from './noticeBar/index'   //通知栏组件
 import sdActionSheet from  './actionSheet/index'   //动作面板组件
 import {sdTab, sdTabs} from './tab/index'   //标签页组件
-import sdCircle from './circle/index'   //环形进度条组件(体验不好 后续==需优化)
+import sdCircle from './circle/index'   //环形进度条组件(体验不好 后续需优化)
 import {sdTabbar, sdTabbarItem} from './tabbar/index'   //标签栏组件组件
 import {sdIndexBar, sdIndexBarItem} from './indexBar/index'   //索引栏组件
+import sdField from './field/index'   //输入框
 
 const components = [
     sdHeader,
@@ -57,10 +58,11 @@ const components = [
     sdTabbar,
     sdTabbarItem,
     sdIndexBar,
-    sdIndexBarItem
+    sdIndexBarItem,
+    sdField
 ]
 
-const install = function(Vue) {
+const install = function(Vue, options) {
     if (install.installed) return
     components.map((component) => {Vue.component(component.name, component)})
     Vue.prototype.$dialog = dialog
@@ -70,6 +72,9 @@ const install = function(Vue) {
     Vue.prototype.$windowInfo = {
         width: document.documentElement.clientWidth || window.innerWidth,
         height: document.documentElement.clientHeight || window.innerHeight
+    }
+    if(options) {
+        document.documentElement.dataset.theme = options
     }
 }
 
@@ -122,6 +127,7 @@ function flexible (window, document) {
     }
 }
 flexible(window, document)
+
 //使用阿里巴巴矢量库
 function icon() {
     const script = document.createElement('script')
@@ -147,6 +153,7 @@ function icon() {
     }
 }
 icon()
+
 
 Vue.directive('lazy', {    //图片懒加载
     inserted: function (el, binding, vnode ) {
@@ -223,5 +230,6 @@ export default {
     sdTabbar,
     sdTabbarItem,
     sdIndexBar,
-    sdIndexBarItem
+    sdIndexBarItem,
+    sdField
 }

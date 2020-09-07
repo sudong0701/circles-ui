@@ -1,8 +1,8 @@
 <template>
     <div class="sd_picker">
         <div class="sd_picker-title">
-            <div class="sd_picker-title-left" @click="clickLeftBtn">{{leftButtonText}}</div>
-            <div class="sd_picker-title-right" @click="clickRightBtn">{{rightButtonText}}</div>
+            <div class="sd_picker-title-left" @click="clickLeftBtn" :style="`color: ${leftButtonColor}`">{{leftButtonText}}</div>
+            <div class="sd_picker-title-right" @click="clickRightBtn" :style="`color: ${rightButtonColor}`">{{rightButtonText}}</div>
             <div class="sd_picker-title-center">{{title}}</div>
         </div>
         <!--普通选择器组件-->
@@ -62,6 +62,14 @@
             'left-button-text': {   //左边按钮文案
                 type: String,
                 default: '取消'
+            },
+            'right-button-color': {   //右边按钮颜色
+                type: String,
+                default: ''
+            },
+            'left-button-color': {   //左边按钮颜色
+                type: String,
+                default: ''
             },
             'minDate': {   //最小时间
                 type: '',

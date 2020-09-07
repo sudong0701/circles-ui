@@ -4,9 +4,8 @@
             <div class="sdTabs-list" ref="sdTabsList">
                 <slot :titleActiveColor="titleActiveColor" :titleInactiveColor="titleInactiveColor"></slot>
             </div>
-            <div class="sdTabs-list-line" ref="sdTabsListLine" :style="`transform: translate(${totalNum_line + rightWidth}px, 0)`"></div>
+            <div class="sdTabs-list-line" ref="sdTabsListLine" :style="`transform: translate(${totalNum_line + rightWidth}px, 0); color: ${active ? titleActiveColor : titleInactiveColor}`"></div>
         </div>
-        <!--<div class="sdTabs-content"></div>-->
         <div class="sdTabs-sticky" ref="sdTabs-sticky" v-if="isSticky"></div>
     </div>
 </template>

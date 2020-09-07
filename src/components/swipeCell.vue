@@ -1,0 +1,48 @@
+<template>
+    <div class="swipeCell">
+        <sdSwipeCell v-for="(item, key) in cellArr" :key="key">
+            <template #left>
+                <div class="left">查看详情</div>
+            </template>
+            <div style="padding: 10px 16px;background-color: #fff;line-height: 0.48rem">测试滑动单元格组件{{key}}</div>
+            <template #right>
+                <div class="right">删除</div>
+            </template>
+        </sdSwipeCell>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: '',
+        data() {
+            return {
+                cellArr: [1,1,1,1,1]
+            }
+        }
+    }
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+    .swipeCell {
+        .left {
+            width: 60px;
+            height: 100%;
+            font-size: 0.28rem;
+            text-align: center;
+            line-height: 44px;
+            background-color: #67c23a;
+            color: #fff;
+        }
+        .right {
+            width: 60px;
+            height: 100%;
+            font-size: 0.28rem;
+            text-align: center;
+            line-height: 44px;
+            background-color: #ee0a24;
+            color: #fff;
+        }
+    }
+</style>

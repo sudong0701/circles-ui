@@ -19,9 +19,7 @@
 
         },
         methods: {
-            change() {
-                console.log('change')
-            }
+
         }
     }
 </script>

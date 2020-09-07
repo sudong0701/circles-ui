@@ -155,22 +155,6 @@
                         }
                     }
                 }
-            },
-            /**
-             触摸事件离开dom元素时触发
-             @param {dom} e 触摸结束事件参数
-             @return
-             */
-            touchLeave(e) {
-                console.log(e)
-            },
-            /**
-             触摸事件进入dom元素时触发
-             @param {dom} e 触摸结束事件参数
-             @return
-             */
-            touchEnter(e) {
-                console.log(e)
             }
         }
     }

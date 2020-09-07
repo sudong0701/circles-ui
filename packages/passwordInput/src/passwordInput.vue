@@ -7,9 +7,7 @@
                 <i class="sdPasswordInput-item-typing" v-if="!item.content && (key === 0 || initData[key - 1].content) && isFocus"></i>
             </div>
         </div>
-        <div class="sdPasswordInput-bottom">
-
-        </div>
+        <div class="sdPasswordInput-bottom"></div>
     </div>
 </template>
 
@@ -17,10 +15,7 @@
     export default {
         name: 'sdPasswordInput',
         data() {
-            return {
-                initData: [],
-                heightValue: ''
-            }
+            return {}
         },
         props: {
             value: {
@@ -56,9 +51,6 @@
             prop: 'value',
             event: 'change'
         },
-        mounted() {
-            this.initData = this.settingInitData(this.value)
-        },
         methods: {
             /**
              点击密码框事件
@@ -67,25 +59,22 @@
              */
             passwordInputFocus() {
                 this.$emit('focus')
-            },
+            }
+        },
+        computed: {
             /**
              设置initData
-             @param {String} value 当前value
+             @param
              @return {Array} 数据数组
              */
-            settingInitData(value) {
+            initData() {
                 let initData = []
                 for(let i=0; i < this.length; i++) {
                     initData.push({
-                        content: value[i] ? value[i] : ''
+                        content: this.value[i] ? this.value[i] : ''
                     })
                 }
                 return initData
-            }
-        },
-        watch: {
-            value(value) {
-                this.initData = this.settingInitData(value)
             }
         }
     }
