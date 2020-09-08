@@ -1,6 +1,34 @@
+
 <template>
-    <div class="csCircle">
-        <canvas width="400" height="400" style="width: 200px;height:200px;" class="csCircle-item" ref="csCircle"></canvas>
+    <div>
+        <svg style="transform: rotate(-90deg)" :width="width" :height="width" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <!--使用渐变色-->
+                <linearGradient  id="csCircleGrad" :x1="x1" :y1="y1" :x2="x2" :y2="y2">
+                    <stop v-if="!Array.isArray(barColor)" offset="1" :stop-color="barColor" />
+                    <stop v-if="Array.isArray(barColor)" v-for="(item, key) in barColor" :key="key" :offset="item.offset" :stop-color="item.color"></stop>
+                </linearGradient >
+
+            </defs>
+            <circle :r="(width-radius)/2"
+                    :cy="width/2"
+                    :cx="width/2"
+                    :stroke-width="radius"
+                    :stroke="backgroundColor"
+                    fill="none"
+            />
+            <circle ref="$bar"
+                    :r="(width-radius)/2"
+                    :cy="width/2"
+                    :cx="width/2"
+                    stroke="url(#csCircleGrad)"
+                    :stroke-width="radius"
+                    :stroke-linecap="isRound ? 'round' : 'square'"
+                    :stroke-dasharray="(width-radius)*3.14"
+                    :stroke-dashoffset="isAnimation ? (width-radius) * 3.14 : (width - radius) * 3.14 * (100 - progress) / 100"
+                    fill="none"
+            />
+        </svg>
     </div>
 </template>
 
@@ -9,164 +37,120 @@
         name: 'csCircle',
         data() {
             return {
-                num:0,
-                canvas: '',
-                context: '',
-                cirX: '',
-                cirY: '',
-                rad: '',
-                r: 36,
-                preValue: 0
+                idStr: `csCircle${this.id}`
             }
         },
         props: {
-            value: {   //当前进度
-                type: Number,
+            width: {   // 圆的大小
+                type: Number | String,
+                default: 120
+            },
+            radius: {   // 进度条厚度
+                type: Number | String,
+                default: 6
+            },
+            gradDire: {   //渐变方向
+                type: String,
+                default: 'right'
+            },
+            progress: {   // 进度条百分比
+                type: Number | String,
                 default: 0
             },
-            size: {   //圆环直径
-                type: Number | String,
-                default: 30
-            },
-            color: {   //进度条颜色 Object为渐变色
+            barColor: {   // 进度条颜色
                 type: String | Array,
-                default: ()=> { return [
-                    {num: 0, value: '#ffc26b'},
-                    {num: 0.5, value: '#ff9a5f'},
-                    {num: 1, value: '#ff8157'}
-                ]}   //'#1989fa'
+                default: '#1989fa'
             },
-            layerColor: {   //轨道颜色
+            backgroundColor: {  // 背景颜色
                 type: String,
                 default: '#fff'
             },
-            text: {   //文字
-                type: String,
-                default: '0'
-            },
-            textColor: {
-                type: String,
-                default: '#1989fa'
-            },
-            fontSize: {
-                type: String | Number,
-                default: 16
-            },
-            strokeWidth: {   //进度条宽度
-                type: Number | String,
-                default: 3
-            },
-            strokeLinecap: {   //进度条端点形状
-                type: String,
-                default: 'default'
-            },
-            clockwise: {   //是否逆时针增加
+            isAnimation: { // 是否是动画效果
                 type: Boolean,
-                default: false
-            }
+                default: true,
+            },
+            isRound: { // 是否是圆形画笔
+                type: Boolean,
+                default: true,
+            },
+            id: { // 组件的id，多组件共存时使用
+                type: String | Number,
+                default: '',
+            },
+            duration: { // 整个动画时长
+                type: String | Number,
+                default: 600,
+            },
+            delay: { // 延迟多久执行
+                type: String | Number,
+                default: 0,
+            },
+            timeFunction: { // 动画缓动函数
+                type: String,
+                default: '',
+            },
         },
         model: {
-            prop: 'value',
-            event: 'change'
+          prop: 'progress',
+          event: 'change'
+        },
+        computed: {
+            x1() {
+                if(this.gradDire === 'bottom' || this.gradDire === 'bottom-right' || this.gradDire === 'bottom-left') {
+                    return 1
+                } else {
+                    return 0
+                }
+            },
+            y1() {
+                if(this.gradDire === 'left' || this.gradDire === 'top-left' || this.gradDire === 'bottom-left') {
+                    return 1
+                } else {
+                    return 0
+                }
+            },
+            x2() {
+                if(this.gradDire === 'top' || this.gradDire === 'top-right' || this.gradDire === 'top-left') {
+                    return 1
+                } else {
+                    return 0
+                }
+            },
+            y2() {
+                if(this.gradDire === 'right' || this.gradDire === 'top-right' || this.gradDire === 'bottom-right') {
+                    return 1
+                } else {
+                    return 0
+                }
+            }
+
+        },
+        beforeDestroy() {
+            // 清除旧组件的样式标签
+            document.getElementById(this.idStr) && document.getElementById(this.idStr).remove()
         },
         mounted() {
-            this.canvas = this.$refs.csCircle
-            this.context = this.canvas.getContext("2d")
-            this.context.scale(2,2);
-            this.cirX = 150
-            this.cirY = 75
-            this.rad = Math.PI * 2 / 100
-            this.initCircle()
-        },
-        methods: {
-            /**
-             初始化进度条
-             @param
-             @return
-             */
-            initCircle(){
-                //清除所有，重新绘制
-                this.context.clearRect(0,0,this.canvas.width,this.canvas.height)
-                this.writeTrack()
-                this.writeText(this.value)
-                this.writeGradient()   //绘制渐变
-            },
-            /**
-             绘制轨迹圈
-             @param
-             @return
-             */
-            writeTrack(){
-                this.context.save()        //save和restore可以保证样式属性只运用于该段canvas元素
-                this.context.beginPath()    //开始路径
-                this.context.strokeStyle = this.layerColor      //设置边线的颜色
-                this.context.lineWidth = this.strokeWidth / 2
-                this.context.arc(this.cirX, this.cirY, this.size, 0, Math.PI * 2, false)      //画一个圆的路径
-                this.context.stroke()       //绘制边线
-                this.context.closePath()
-            },
-            /**
-             绘制文本
-             @param
-             @return
-             */
-            writeText(n){
-                this.context.save()
-                this.context.font = `${parseInt(this.fontSize)}px Arial`
-                this.context.fillStyle= this.textColor //字体颜色
-                this.context.fillText(n.toFixed(0)+"%",this.cirX - 20 ,this.cirY + 10) //绘制实心
-                this.context.stroke()
-                this.context.restore()
-            },
-            /**
-             绘制渐变
-             @param
-             @return
-             */
-            writeGradient() {
-                this.context.save();
-                this.context.lineWidth = this.strokeWidth / 2
-                this.context.lineCap = 'round'
-                this.writeCircle(0)
-            },
-            /**
-             绘制进度条
-             @param
-             @return
-             */
-            writeCircle(n){
-                if(this.color instanceof Array) {   //如果为数组 渐变色
-                    let linear = this.context.createLinearGradient(150 - this.size, 100,150 + this.size, 100)
-                    this.color.map((item)=> {
-                        linear.addColorStop(item.num, item.value)
-                    })
-                    this.context.strokeStyle = linear
-                } else if (typeof this.color === 'string'){   //为字符串
-                    this.context.strokeStyle = this.color       //设置边线的颜色
+            if (this.isAnimation) {
+                // 重复定义判断
+                if (document.getElementById(this.idStr)) {
+                    document.getElementById(this.idStr).remove()
                 }
-                this.context.beginPath()
-                this.context.arc(this.cirX, this.cirY, this.size, -Math.PI/2,-Math.PI/2+ this.rad * n, false)
-                this.context.stroke()
-                this.context.restore()
-                if(n < Number(this.value)) {
-                    window.requestAnimationFrame(()=> {
-                        this.writeCircle(n + 1)
-                    });
-                } else if(n > Number(this.value)) {
-                    window.requestAnimationFrame(()=> {
-                        this.writeCircle(n - 1)
-                    })
-                } else {
-                    this.preValue = Number(this.value)
-                }
+                // 生成动画样式文件
+                let style = document.createElement('style')
+                style.id = this.idStr
+                style.type = 'text/css'
+                style.innerHTML = `
+                                    @keyframes csCircle_keyframes_name_${this.id} {
+                                    from {stroke-dashoffset: ${(this.width - this.radius) * 3.14}px;}
+                                    to {stroke-dashoffset: ${(this.width - this.radius) * 3.14 * (100 - this.progress) / 100}px;}}
+                                    .circle_progress_bar${this.id} {
+                                        animation: csCircle_keyframes_name_${this.id} ${this.duration}ms ${this.delay}ms ${this.timeFunction} forwards;
+                                    }`
+                // 添加新样式文件
+                document.getElementsByTagName('head')[0].appendChild(style)
+                // 往svg元素中添加动画class
+                this.$refs.$bar.classList.add(`circle_progress_bar${this.id}`)
             }
         },
-        watch: {
-            value(value) {
-                this.writeCircle(this.preValue)
-            }
-        }
     }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->

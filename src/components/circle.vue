@@ -1,10 +1,7 @@
 <template>
     <div class="circle">
-        <cs-circle v-model="value"></cs-circle>
+        <cs-circle v-model="progress" :barColor="barColor"></cs-circle>
         <button @click="changeValue">改变value</button>
-        <!--<div>-->
-            <!--<p style="height: 6rem"></p>-->
-        <!--</div>-->
     </div>
 </template>
 
@@ -13,8 +10,11 @@
         name: '',
         data() {
             return {
-                value: 30
+                
             }
+        },
+        components: {
+
         },
         methods: {
             changeValue() {
@@ -31,8 +31,8 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
     .circle {
-        padding-top: 2rem;
-        height: 20rem;
-        background-color: #f4f4f4;
+        height: 667px;
+        width: 100%;
+        background-color: #f6f6f6;
     }
 </style>
