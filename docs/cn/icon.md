@@ -12,4 +12,4 @@ import csUI from 'circles-ui'
 ```
 ## Icon图标库
 
-![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/09/08/1599543025370.png)
+![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/09/08/1599543372522.png)
