@@ -207,6 +207,10 @@ icon()
 export  {
     csHeader,
     csDialog,
+    dialog,
+    toast,
+    chartRadar,
+    imagePreview,
     csPopup,
     csPicker,
     csDateTimePicker,
