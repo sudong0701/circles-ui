@@ -1,7 +1,8 @@
 {
   "name": "circles-ui",
-  "version": "1.0.0",
-  "description": "This is a UI components for Vue 2.x.github: https://github.com/sudong0701/CircleS-ui",
+  "version": "1.0.1",
+  "repository": "https://github.com/sudong0701/circle-ui",
+  "description": "This is a UI components for Vue 2.x.",
   "author": "sudong.duan",
   "main": "packages/index.js",
   "private": false,
