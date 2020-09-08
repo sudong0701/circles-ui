@@ -19,6 +19,7 @@ const indexBar = ()=> import('../components/indexBar.vue')
 const field = () => import('../components/field.vue')
 const swipe = ()=> import('../components/swipe.vue')
 const swipeCell = ()=> import('../components/swipeCell.vue')
+const lazy = ()=> import('../components/lazy.vue')
 
 Vue.use(Router)
 
@@ -114,6 +115,11 @@ export default new Router({
             path: '/swipeCell',
             name: 'swipeCell',
             component: swipeCell
+        },
+        {
+            path: '/lazy',
+            name: 'lazy',
+            component: lazy
         }
 
     ]
