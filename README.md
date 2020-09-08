@@ -86,3 +86,5 @@ Vue.use(csUI, 'Warning')
 
 [`IndexBar` 索引栏组件](./docs/cn/indexBar.md)
 
+[`Lazy` 懒加载组件](./docs/cn/lazy.md)
+
