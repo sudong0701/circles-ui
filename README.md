@@ -32,7 +32,7 @@ Vue.use(csPicker)
 # 文档
 
 ## 主题色
-> 2020.09.07新增主题色，使用css variable实现，请注意兼容性。要使用主题色只需在注册sdUI时修改为Vue.use(csUI, themeName)，目前支持的主题色有
+> 2020.09.07新增主题色，使用css variable实现，请注意兼容性。要使用主题色只需在注册csUI时修改为Vue.use(csUI, themeName)，目前支持的主题色有
 
 | 主色(默认) | 成功 | 警告 | 危险 | 详情 |
 |--|--|--|--|--|
@@ -46,6 +46,9 @@ Vue.use(csUI, 'Warning')
 
 
 ## 基础组件
+
+[`Icon` Icon图标](./docs/cn/icon.md)
+
 [`Popup` 弹出层组件](./docs/cn/popup.md)
 
 [`Picker` 选择器组件](./docs/cn/picker.md)
@@ -87,4 +90,5 @@ Vue.use(csUI, 'Warning')
 [`IndexBar` 索引栏组件](./docs/cn/indexBar.md)
 
 [`Lazy` 懒加载组件](./docs/cn/lazy.md)
+
 
