@@ -28,6 +28,7 @@ import csCircle from './circle/index'   //环形进度条组件(体验不好 后
 import {csTabbar, csTabbarItem} from './tabbar/index'   //标签栏组件组件
 import {csIndexBar, csIndexBarItem} from './indexBar/index'   //索引栏组件
 import csField from './field/index'   //输入框
+import csLazy from './lazy/index'   //图片背景图片懒加载
 
 const components = [
     csHeader,
@@ -59,7 +60,8 @@ const components = [
     csTabbarItem,
     csIndexBar,
     csIndexBarItem,
-    csField
+    csField,
+    csLazy
 ]
 
 const install = function(Vue, options) {
@@ -76,11 +78,58 @@ const install = function(Vue, options) {
     if(options) {
         document.documentElement.dataset.theme = options
     }
+
+    Vue.directive('lazy', {    //图片懒加载
+        inserted: function (el, binding, vnode ) {
+            if(typeof IntersectionObserver !== 'undefined') {   //支持IntersectionObserver
+                var observer  = new IntersectionObserver(
+                    function (entries) {
+                        entries.map((item)=> {
+                            if(item.isIntersecting) {
+                                if(vnode.tag === 'img') {   //图片懒加载
+                                    el.src = binding.value
+                                }
+                                observer.unobserve(el)
+                            } else {
+                                if(vnode.tag === 'img') {   //图片懒加载
+                                    el.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+                                }
+                            }
+                        })
+                    }
+                )
+                observer.observe(el)
+            }
+        }
+    })
+
+    Vue.directive('lazyBGImg', {    //背景图片懒加载
+        inserted: function (el, binding, vnode ) {
+            if(typeof IntersectionObserver !== 'undefined') {   //支持IntersectionObserver
+                var observer  = new IntersectionObserver(
+                    function (entries) {
+                        entries.map((item)=> {
+                            if(item.isIntersecting) {
+                                el.style.backgroundImage = `url(${binding.value})`
+                                observer.unobserve(el)
+                            } else {
+                                el.style.backgroundImage = 'url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)'
+                            }
+                        })
+                    }
+                )
+                observer.observe(el)
+            }
+        }
+    })
+
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
     install(window.Vue)
 }
+
+
 //移动端集成响应式布局 rem
 function flexible (window, document) {
     var docEl = document.documentElement
@@ -155,50 +204,39 @@ function icon() {
 icon()
 
 
-Vue.directive('lazy', {    //图片懒加载
-    inserted: function (el, binding, vnode ) {
-        if(typeof IntersectionObserver !== 'undefined') {   //支持IntersectionObserver
-            var observer  = new IntersectionObserver(
-                function (entries) {
-                    entries.map((item)=> {
-                        if(item.isIntersecting) {
-                            if(vnode.tag === 'img') {   //图片懒加载
-                                el.src = binding.value
-                            }
-                            observer.unobserve(el)
-                        } else {
-                            if(vnode.tag === 'img') {   //图片懒加载
-                                el.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
-                            }
-                        }
-                    })
-                }
-            )
-            observer.observe(el)
-        }
-    }
-})
-
-Vue.directive('lazyBGImg', {    //背景图片懒加载
-    inserted: function (el, binding, vnode ) {
-        if(typeof IntersectionObserver !== 'undefined') {   //支持IntersectionObserver
-            var observer  = new IntersectionObserver(
-                function (entries) {
-                    entries.map((item)=> {
-                        if(item.isIntersecting) {
-                            el.style.backgroundImage = `url(${binding.value})`
-                            observer.unobserve(el)
-                        } else {
-                            el.style.backgroundImage = 'url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)'
-                        }
-                    })
-                }
-            )
-            observer.observe(el)
-        }
-    }
-})
-
+export  {
+    csHeader,
+    csDialog,
+    csPopup,
+    csPicker,
+    csDateTimePicker,
+    csSwipe,
+    csSwipeItem,
+    csPullRefresh,
+    csSwipeCell,
+    csImagePreview,
+    csNumberKeyboard,
+    csPasswordInput,
+    csCollapse,
+    csCollapseItem,
+    csSwitch,
+    csRadioGroup,
+    csRadio,
+    csStepper,
+    csCheckbox,
+    csCheckboxGroup,
+    csNoticeBar,
+    csActionSheet,
+    csTab,
+    csTabs,
+    csCircle,
+    csTabbar,
+    csTabbarItem,
+    csIndexBar,
+    csIndexBarItem,
+    csField,
+    csLazy
+}
 
 export default {
     install,
@@ -231,5 +269,6 @@ export default {
     csTabbarItem,
     csIndexBar,
     csIndexBarItem,
-    csField
+    csField,
+    csLazy
 }
