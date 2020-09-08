@@ -10,7 +10,7 @@
         name: '',
         data() {
             return {
-                
+                progress: 70
             }
         },
         components: {
