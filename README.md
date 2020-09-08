@@ -46,6 +46,9 @@ Vue.use(csUI, 'Warning')
 
 
 ## 基础组件
+
+[`Icon` Icon图标](./docs/cn/icon.md)
+
 [`Popup` 弹出层组件](./docs/cn/popup.md)
 
 [`Picker` 选择器组件](./docs/cn/picker.md)
@@ -87,4 +90,5 @@ Vue.use(csUI, 'Warning')
 [`IndexBar` 索引栏组件](./docs/cn/indexBar.md)
 
 [`Lazy` 懒加载组件](./docs/cn/lazy.md)
+
 
