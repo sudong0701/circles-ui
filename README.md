@@ -91,4 +91,6 @@ Vue.use(csUI, 'Warning')
 
 [`Lazy` 懒加载组件](./docs/cn/lazy.md)
 
+[`Circle` 环形进度条](./docs/cn/circle.md)
+
 
