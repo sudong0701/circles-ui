@@ -93,4 +93,6 @@ Vue.use(csUI, 'Warning')
 
 [`Circle` 环形进度条](./docs/cn/circle.md)
 
+[`Skeleton` 骨架屏](./docs/cn/skeleton.md)
+
 
