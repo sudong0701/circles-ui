@@ -10,18 +10,20 @@
         name: '',
         data() {
             return {
-                progress: 70
+                progress: 85,
+                barColor: [
+                    {offset: '0', color: '#5a96ec'},
+                    {offset: '0.5', color: '#67c23a'},
+                    {offset: '1', color: '#eff23a'}
+                ],
             }
-        },
-        components: {
-
         },
         methods: {
             changeValue() {
-                if(this.value === 30) {
-                    this.value = 80
+                if(this.progress === 30) {
+                    this.progress = 80
                 } else {
-                    this.value = 30
+                    this.progress = 30
                 }
             }
         }
