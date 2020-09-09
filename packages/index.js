@@ -24,11 +24,12 @@ import {csCheckbox, csCheckboxGroup} from './checkbox/index'   //复选框组件
 import csNoticeBar from './noticeBar/index'   //通知栏组件
 import csActionSheet from  './actionSheet/index'   //动作面板组件
 import {csTab, csTabs} from './tab/index'   //标签页组件
-import csCircle from './circle/index'   //环形进度条组件(体验不好 后续需优化)
+import csCircle from './circle/index'   //环形进度条组件
 import {csTabbar, csTabbarItem} from './tabbar/index'   //标签栏组件组件
 import {csIndexBar, csIndexBarItem} from './indexBar/index'   //索引栏组件
-import csField from './field/index'   //输入框
-import csLazy from './lazy/index'   //图片背景图片懒加载
+import csField from './field/index'   //输入框(正则太薄弱，输入框限制做不了完美)
+import csLazy from './lazy/index'   //懒加载组件
+import csSkeleton from './skeleton/index'   //骨架屏组件
 
 const components = [
     csHeader,
@@ -61,7 +62,8 @@ const components = [
     csIndexBar,
     csIndexBarItem,
     csField,
-    csLazy
+    csLazy,
+    csSkeleton
 ]
 
 const install = function(Vue, options) {
@@ -239,7 +241,8 @@ export  {
     csIndexBar,
     csIndexBarItem,
     csField,
-    csLazy
+    csLazy,
+    csSkeleton
 }
 
 export default {
@@ -274,5 +277,6 @@ export default {
     csIndexBar,
     csIndexBarItem,
     csField,
-    csLazy
+    csLazy,
+    csSkeleton
 }

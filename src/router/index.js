@@ -20,6 +20,7 @@ const field = () => import('../components/field.vue')
 const swipe = ()=> import('../components/swipe.vue')
 const swipeCell = ()=> import('../components/swipeCell.vue')
 const lazy = ()=> import('../components/lazy.vue')
+const skeleton = ()=> import('../components/skeleton.vue')
 
 Vue.use(Router)
 
@@ -120,7 +121,11 @@ export default new Router({
             path: '/lazy',
             name: 'lazy',
             component: lazy
+        },
+        {
+            path: '/skeleton',
+            name: 'skeleton',
+            component: skeleton
         }
-
     ]
 })
