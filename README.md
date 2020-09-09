@@ -1,6 +1,6 @@
 # circles-ui
 
-> 仿Vant-ui移动端Vue UI组件库 名字来源于你(circle star)
+> 仿Vant-ui移动端Vue UI组件库 名字来源于妳(circle star)
 
 # 快速上手
 
