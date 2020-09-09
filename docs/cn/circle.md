@@ -12,10 +12,7 @@ Circle 组件定义一个环形进度条。
 | backgroundColor | String | #fff | 进度条背景颜色。
 | isAnimation | Boolean | true | 是否有动画效果。
 | isRound | Boolean | true | 是否使用圆形画笔。
-| id | String & Number | '' | 组件的id，多组件共存时使用。
 | duration | Number | 600(ms) | 动画时长。
-| delay | String & Number | 0 | 动画延迟时长。
-| timeFunction | String | '' | 动画函数。
 
 <!--
 ## Methods
@@ -32,11 +29,9 @@ None.
 简单用法
 ```
 <template>
-    <div>
-        <div @click="showPopup">点击显示</div>
-        <csPopup v-model="show">
-            <div style="height: 200px"></div>
-        </csPopup>
+    <div class="circle">
+        <cs-circle v-model="progress" :barColor="barColor"></cs-circle>
+        <button @click="changeValue">改变value</button>
     </div>
 </template>
 
@@ -45,12 +40,21 @@ None.
         name: '',
         data() {
             return {
-                show: false
+                progress: 85,
+                barColor: [
+                    {offset: '0', color: '#5a96ec'},
+                    {offset: '0.5', color: '#67c23a'},
+                    {offset: '1', color: '#eff23a'}
+                ],
             }
         },
         methods: {
-            showPopup() {
-                this.show = true
+            changeValue() {
+                if(this.progress === 30) {
+                    this.progress = 80
+                } else {
+                    this.progress = 30
+                }
             }
         }
     }
@@ -59,4 +63,4 @@ None.
 ```
 
 ## Screenshots
-![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/08/06/1596704209263.gif)
+![](https://rightinhome.oss-cn-hangzhou.aliyuncs.com/jlbk_xcx/2020/09/09/1599617721786.gif)
