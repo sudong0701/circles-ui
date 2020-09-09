@@ -1,0 +1,52 @@
+.csRadio {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.16rem;
+  .csRadio-iconBox {
+    position: relative;
+    min-height: 0.4rem;
+    min-width: 0.4rem;
+    img {
+      height: 0.4rem;
+      width: 0.4rem;
+    }
+    .csRadio-selected {
+
+    }
+  }
+  .csRadio-icon {
+    position: absolute;
+    color: #c8c9cc;
+    font-size: 0.38rem;
+    animation-duration: .3s;
+  }
+  .csRadio-icon-active {
+    color: var(--color);
+  }
+  .csRadio-content {
+    flex: 1;
+    margin-left: 0.16rem;
+    font-size: 0.3rem;
+    color: #323233;
+  }
+  .csRadio-content-disabled, .csRadio-icon-disabled {
+    color: #c8c9cc;
+  }
+  .csRadio-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0.02rem;
+    background-color: #ebedf0;
+  }
+}
+.csRadio-cell {
+  padding: 0.2rem 0.32rem 0.2rem 0;
+  margin-bottom: 0;
+  justify-content: space-between;
+  .csRadio-content-cell {
+    order: -3;
+  }
+}

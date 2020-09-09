@@ -1,0 +1,12 @@
+.csTabbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 1rem;
+  background-color: #fff;
+}
+.csTabbar_fixed {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

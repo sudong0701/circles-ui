@@ -1,0 +1,57 @@
+.cs-pullRefresh {
+  overflow: hidden;
+  .cs-pullRefresh-track {
+    /*position: absolute;*/
+    /*top: 0; left: 0;*/
+    right: 0;
+    .cs-pullRefresh-track-head{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      p {
+        position: relative;
+        text-align: center;
+        font-size: 0.26rem;
+        line-height: 0.44rem;
+        color: #999;
+      }
+      .cs-pullRefresh-track-head-loading {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .cs-pullRefresh-loading {
+          animation-name: aniSpin; /*动画的名称 */
+          animation-duration: 800ms; /*动画从开始到结束的时间*/
+          animation-timing-function: linear; /*动画执行快慢的参数*/
+          animation-iteration-count: infinite; /*动画执行多少次的参数*//*以下是兼容ios所需，参数意义与上相同*/
+          //-webkit-animation-name: aniRotate;
+          -webkit-animation-duration: 800ms;
+          -webkit-animation-timing-function: linear;
+          -webkit-animation-iteration-count: infinite;
+          height: 0.36rem; width: 0.36rem;
+          color: #bbb;
+          use {
+            color: #bbb;
+            background-color: #bbb;
+          }
+        }
+        p {
+          position: relative;
+          top: 0.04rem;
+          margin-left: 0.08rem;
+        }
+        @keyframes aniSpin {
+          /*开始转的角度*/
+          from {
+            transform: rotate(0deg);
+          }/*结束的角度*/
+          to {
+            transform: rotate(359deg);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.csIndexBar {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  .csIndexBar_title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.64rem;
+    padding: 0 0.32rem;
+    line-height: 0.64rem;
+    z-index: 9;
+    background-color: #f7f8f8;
+    color: var(--color);
+  }
+  .csIndexBar_content {
+    flex: 1;
+    overflow-y: auto;
+  }
+  .csIndexBar_sort {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0.3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.24rem;
+    text-align: center;
+    >span {
+      font-size: 0.24rem;
+    }
+    .csIndexBarActive {
+      color: var(--color);
+    }
+  }
+  .csIndexBar_tip {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.06rem 0.5rem;
+    border-radius: 0.06rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+  }
+}

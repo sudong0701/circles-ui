@@ -1,0 +1,47 @@
+.csSkeleton {
+  display: flex;
+  flex-direction: row;
+  .csSkeleton-avatar {
+    margin-right: 0.32rem;
+    >div {
+      background-color: #f2f3f5;
+    }
+  }
+  .csSkeleton-content {
+    flex: 1;
+    .csSkeleton-title {
+      width: 40%;
+      margin-bottom: 0.4rem;
+    }
+    .csSkeleton-row {
+      margin-bottom: 0.24rem;
+    }
+    .csSkeleton-row:nth-last-child(1) {
+      margin-bottom: 0;
+    }
+    >div {
+      height: 0.32rem;
+      background-color: #f2f3f5;
+    }
+  }
+  //旋转动画
+  .csSkeleton-flashing {
+    animation-name: flashing; /*动画的名称 */
+    animation-duration: 1400ms; /*动画从开始到结束的时间*/
+    animation-iteration-count: infinite; /*动画执行多少次的参数*//*以下是兼容ios所需，参数意义与上相同*/
+    -webkit-animation-name: flashing;
+    -webkit-animation-duration: 1400ms;
+    -webkit-animation-iteration-count: infinite;
+  }
+  @keyframes flashing {
+    0% {
+      opacity: 1;
+    }
+    60% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}

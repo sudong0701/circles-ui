@@ -1,0 +1,96 @@
+.cs-numberKeyboard {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.12rem 0 0 0.12rem;
+  background-color: #f2f3f5;
+  .cs-numberKeyboard-header {
+    position: relative;
+    height: 0.72rem;
+    .cs-numberKeyboard-title {
+      text-align: center;
+      line-height: 0.72rem;
+      color: rgba(100, 101, 102, 0.83);
+    }
+    .cs-numberKeyboard-close {
+      position: absolute;
+      right: 0;
+      top: 0.12rem;
+      height: 100%;
+      padding: 0 0.32rem;
+      color: var(--color);
+      font-size: 0.28rem;
+    }
+    .cs-numberKeyboard-close:active {
+      color: rgba(87, 107, 149, 0.5)
+    }
+  }
+  .cs-numberKeyboard-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .cs-numberKeyboard-default {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .cs-numberKeyboard-item {
+        box-sizing: border-box;
+        flex: 1;
+        flex-basis: 33%;
+        padding: 0 0.12rem 0.12rem 0;
+        .cs-numberKeyboardContent {
+          height: 1.05rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 0.16rem;
+          background-color: #fff;
+          >span {
+            font-size: 0.56rem;
+          }
+          >i {
+            font-size: 0.56rem;
+          }
+        }
+        .cs-numberKeyboardContent:active {
+          background-color: #ebedf0;
+        }
+      }
+      .cs-numberKeyboard-item-wider {
+        flex-basis: 66%;
+      }
+    }
+    .cs-numberKeyboard-right {
+      display: flex;
+      flex-direction: column;
+      width: 1.7rem;
+      >div {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin: 0 0.12rem 0.12rem 0;
+        border-radius: 0.16rem;
+        font-size: 0.56rem;
+        background-color: #fff;
+        >i {
+          font-size: 0.56rem;
+        }
+      }
+      >div:nth-child(2) {
+        font-size: 0.36rem;
+        background-color: var(--color);
+        color: #fff;
+      }
+      >div:active {
+        background-color: #ebedf0;
+      }
+      >div:nth-child(2):active {
+        opacity: 0.8;
+      }
+    }
+  }
+}

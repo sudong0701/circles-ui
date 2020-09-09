@@ -1,0 +1,106 @@
+.cs_picker {
+  .cs_picker-title{
+    height: 0.88rem;
+    border-bottom: 0.01rem solid #f4f4f4;
+    background-color: #fff;
+    .cs_picker-title-left{
+      float: left;
+      height: 100%;
+      padding: 0 0.32rem;
+      cursor: pointer;
+      font-size: 0.28rem;
+      background-color: transparent;
+      line-height: .88rem;
+    }
+    .cs_picker-title-right{
+      float: right;
+      height: 100%;
+      padding: 0 0.32rem;
+      cursor: pointer;
+      color: var(--color);
+      font-size: 0.28rem;
+      line-height: .88rem;
+    }
+    .cs_picker-title-center{
+      font-weight: 500;
+      font-size: 0.32rem;
+      text-align: center;
+      line-height: 0.88rem;
+    }
+    .cs_picker-title-left:active {
+      background-color: #f2f2f2;
+    }
+    .cs_picker-title-right:active {
+      background-color: #f2f2f2;
+    }
+  }
+  .cs_picker-box {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .cs_picker-column {
+      flex: 1;
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      .cs_picker-column-inner {
+        width: 100%;
+        height: 100%;
+        overflow-y: hidden;
+        box-sizing: content-box;
+        .cs_picker-column-list {
+          width: 100%;
+          transform: translate(0, 88px);
+          .cs_picker-column-item {
+            width: 100%;  height: 44px;
+            line-height: 44px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.28rem;
+          }
+          .cs_picker-column-currItem {
+            font-size: 0.32rem;
+          }
+        }
+      }
+    }
+    .cs_picker-column-overlay {
+      position: absolute;
+      left: 0; top: 0;
+      height: 100%; width: 100%;
+      z-index: 2;
+      background-image: linear-gradient(180deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4)), linear-gradient(0deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.4));
+      background-size: 100% 88px;
+      background-position: top, bottom;
+      background-repeat: no-repeat;
+      pointer-events: none
+    }
+    .cs_picker-column-frame {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      z-index: 3;
+      width: 100%;
+      height: 44px;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .cs_picker-column-frame::after {
+      position: absolute;
+      box-sizing: border-box;
+      content: ' ';
+      pointer-events: none;
+      top: -50%;
+      right: -50%;
+      bottom: -50%;
+      left: -50%;
+      border: 1px solid #ebedf0;
+      -webkit-transform: scale(0.5);
+      transform: scale(0.5)
+    }
+  }
+}

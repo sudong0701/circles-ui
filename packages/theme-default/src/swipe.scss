@@ -1,0 +1,45 @@
+.csSwipe{
+  position: relative;
+  height: 100%; width: 100%;
+  overflow: hidden;
+  z-index: 50;
+  .csSwipe_box {
+    touch-action: none;
+    box-sizing: border-box;
+    display: flex;
+  }
+  .csIndicator {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0.3rem;
+    left: 0; right: 0;
+    div {
+      width: 0.16rem; height: 0.16rem;
+      margin-right: 0.08rem;
+      border-radius: 50%;
+      background-color: rgba(235, 237, 240, 0.3);
+    }
+    .csIndicator_select{
+      background-color: #fff;
+    }
+  }
+  .csIndicator_portrait {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    left: 0.3rem;
+    top: 0; bottom: 0;
+    margin: auto;
+    div {
+      width: 0.16rem; height: 0.16rem;
+      margin-bottom: 0.08rem;
+      border-radius: 50%;
+      background-color: rgba(235, 237, 240, 0.3);
+    }
+    .csIndicator_select{
+      background-color: #fff;
+    }
+  }
+}

@@ -1,0 +1,82 @@
+.csDialog{
+  .csDialog-bg{
+    position: fixed;
+    top: 0;  left: 0;
+    height: 100%; width: 100%;
+    z-index: 50;
+  }
+  .csDialog-alert{
+    position: fixed;
+    top: 50%;  left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    width: 5.92rem;
+    z-index: 99;
+    background-color: transparent;
+    .csDialog-alert-box{
+      background-color: #fff;
+      overflow: hidden;
+      .csDialog-content{
+        padding: 0.66rem 0.48rem;
+        border-bottom: 0.01rem solid #f4f4f4;
+        text-align: center;
+        span{
+          display: inline-block;
+          text-align: left;
+          font-size: 0.32rem;
+        }
+      }
+      .csDialog-btn{
+        padding: 0.26rem 0;
+        text-align: center;
+        font-size: 0.36rem;
+        color: var(--color);
+      }
+      .csDialog-btn:active{
+        background-color: #eee;
+      }
+    }
+  }
+  .csDialog-confirm{
+    position: fixed;
+    top: 50%;  left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    width: 5.92rem;
+    z-index: 99;
+    .csDialog-confirm-box{
+      background-color: #fff;
+      overflow: hidden;
+      border: 0.01rem solid #f4f4f4;
+      .csDialog-content{
+        padding: 0.66rem 0.48rem;
+        border-bottom: 0.01rem solid #f4f4f4;
+        text-align: center;
+        span{
+          display: inline-block;
+          text-align: left;
+          font-size: 0.32rem;
+        }
+      }
+      .csDialog-btn{
+        float: left;
+        width: 49.8%;
+        padding: 0.26rem 0;
+        text-align: center;
+        font-size: 0.36rem;
+      }
+      div:nth-of-type(1){
+        border-right: 0.01rem solid #f4f4f4;
+      }
+      .csDialog-btn-right {
+        color: var(--color);
+      }
+      .csDialog-btn-left:active{
+        background-color: #eee;
+      }
+      .csDialog-btn-right:active{
+        background-color: #eee;
+      }
+    }
+  }
+}
