@@ -1,10 +1,6 @@
 <template>
     <div class="Skeleton">
-        <csSkeleton>
-            <div>
-                春江草率脸啊
-            </div>
-        </csSkeleton>
+        <csSkeleton title avatar row="3" :rowWidth="rowWidth"></csSkeleton>
     </div>
 </template>
 
@@ -12,7 +8,9 @@
     export default {
         name: '',
         data() {
-            return {}
+            return {
+                rowWidth: [100, 100, 50]
+            }
         }
     }
 </script>
