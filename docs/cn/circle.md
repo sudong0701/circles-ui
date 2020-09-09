@@ -13,8 +13,6 @@ Circle 组件定义一个环形进度条。
 | isAnimation | Boolean | true | 是否有动画效果。
 | isRound | Boolean | true | 是否使用圆形画笔。
 | duration | Number | 600(ms) | 动画时长。
-| delay | String & Number | 0 | 动画延迟时长。
-| timeFunction | String | '' | 动画函数。
 
 <!--
 ## Methods
