@@ -10,10 +10,6 @@ const chalk = require('chalk')
 const webpack = require('webpack')
 const config = require('../config')
 let webpackConfig = require('./webpack.prod.conf')
-//判断参数是打包所有，则引入打包所有配置
-if(process.argv[2] === 'all') {
-    webpackConfig = require('./webpack.prodAll.conf')
-}
 
 const spinner = ora('building for production...')
 spinner.start()
