@@ -1,7 +1,7 @@
 
 # circles-ui
 
-> 仿Vant-ui移动端Vue UI组件库
+> 仿Vant-ui移动端Vue UI组件库(circle star)。更绚丽的文档制作中，敬请期待ing....
 
 # 快速上手
 
