@@ -11,6 +11,12 @@ const webpack = require('webpack')
 const config = require('../config')
 let webpackConfig = require('./webpack.prod.conf')
 
+//判断参数是否为打包文档
+if(process.argv[2] === 'examples') {
+    webpackConfig = require('./webpack.prod.examples.conf')
+    config.build.assetsRoot = path.resolve(__dirname, '../dist')
+}
+
 const spinner = ora('building for production...')
 spinner.start()
 
