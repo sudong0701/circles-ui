@@ -22,7 +22,28 @@ npm i circles-ui --save-dev
  ```
 
 ## 按需引入
-> 在需要引入的Vue页面新增以下代码
+### 更改根目录的.babelrc文件为下面的代码
+```
+{
+  "presets": [
+    ["env", {
+      "modules": false,
+      "targets": {
+        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+      }
+    }],
+    "stage-2"
+  ],
+  "plugins": ["transform-vue-jsx", "transform-runtime", ["component", {
+    "libraryName": "circles-ui",
+    "styleLibrary": {
+      "name": "theme",
+      "base": false
+    }
+  }]]
+}
+```
+### 在需要引入的Vue页面新增以下代码
 
 ```bash
 import { csPicker } from 'circles-ui'
