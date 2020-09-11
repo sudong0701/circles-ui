@@ -22,7 +22,7 @@ npm i circles-ui --save-dev
  ```
 
 ## 按需引入
-### 更改根目录的.babelrc文件为下面的代码
+* 更改根目录的.babelrc文件为下面的代码
 ```
 {
   "presets": [
@@ -43,7 +43,7 @@ npm i circles-ui --save-dev
   }]]
 }
 ```
-### 在需要引入的Vue页面新增以下代码
+* 在需要引入的Vue页面新增以下代码
 
 ```bash
 import { csPicker } from 'circles-ui'
