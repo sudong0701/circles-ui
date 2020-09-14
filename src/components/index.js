@@ -6,6 +6,7 @@ import './global.css'
 import './main.js'
 import csHeader from './header/index.js';   //头部组件
 import csDialog from './dialog/index.js';   //弹出框组件
+import csButton from './button/index.js'
 import dialog from './$dialog/index.js';   //弹出框组件(函数式)
 import toast from './toast/index.js'   //toast弱提示组件
 import csPopup from './popup/index.js'   //弹出层组件
@@ -44,6 +45,7 @@ import csSkeleton from './skeleton/index'   //骨架屏组件
 const components = [
     csHeader,
     csDialog,
+    csButton,
     csPopup,
     csPicker,
     csDateTimePicker,
@@ -146,6 +148,7 @@ export default {
     install,
     csHeader,
     csDialog,
+    csButton,
     csPopup,
     csPicker,
     csDateTimePicker,

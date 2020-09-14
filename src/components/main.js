@@ -58,13 +58,6 @@
             let style = document.createElement('style')
             style.type = 'text/css'
             style.innerHTML = `
-                * {
-                    box-sizing: border-box;
-                    margin: 0;
-                    padding: 0;
-                    font-size: 0.3rem;
-                    }
-
                 :root {
                     --color: #1989fa;
                     --inactiveColor: #7d7e80;

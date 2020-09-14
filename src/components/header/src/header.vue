@@ -4,7 +4,7 @@
             <div class="cs-header-left">
                 <slot name="left" clas="slot">
                     <div class="cs-header-leftBox" @click="goBack()">
-                        <i class="cs-header-leftImg iconfont iconfanhui"></i>
+                        <i class="cs-header-leftImg iconfont iconfanhui" v-if="isBack"></i>
                     </div>
                 </slot>
             </div>
@@ -34,6 +34,10 @@
             height: {
                 type: String,
                 default: '1rem'
+            },
+            isBack: {
+                type: Boolean,
+                default: true
             }
         },
         methods: {

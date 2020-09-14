@@ -3,6 +3,7 @@
   "cs-date-time-picker": "./src/components/dateTimePicker",
   "cs-dialog": "./src/components/dialog",
   "Dialog": "./src/components/$dialog",
+  "cs-button": "./src/components/button",
   "Toast": "./src/components/toast",
   "cs-picker": "./src/components/picker",
   "cs-swiper": "./src/components/swiper",
