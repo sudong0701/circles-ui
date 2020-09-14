@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="header-model">
-    <h1 class="info">
-      通用组件库
+    <h1 class="info" @click="goDocs">
+      文档
     </h1>
   </div>
 </template>
@@ -11,7 +11,12 @@ export default {
   data () {
     return {
     }
-  }
+  },
+    methods: {
+        goDocs() {
+            this.$router.push('/docs/guide/introduce')
+        }
+    }
 }
 </script>
 

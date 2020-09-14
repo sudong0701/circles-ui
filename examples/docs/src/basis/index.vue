@@ -19,13 +19,17 @@
             }
         },
         mounted() {
-            this.origin = window.location.origin
+            this.origin = window.location.origin + window.location.pathname
+        },
+        beforeRouteEnter(to, from, next) {
+            next( vm => {
+                vm.path = `#/demo/${to.name}`
+            })
         },
         watch: {
             $route: {
                 handler: function(val, oldVal){
-                    this.path = `/#/demo/${val.name}`
-                    console.log(val);
+                    this.path = `#/demo/${val.name}`
                 },
                 // 深度观察监听
                 deep: true

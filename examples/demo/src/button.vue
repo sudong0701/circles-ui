@@ -1,6 +1,5 @@
 <template>
     <div class="button-demo">
-        <cs-header title="Button" :isBack="false"></cs-header>
         <div class="cs-doc-demo-block">
             <div class="cs-doc-demo-block__title">按钮类型</div>
             <div class="button-demo-content">

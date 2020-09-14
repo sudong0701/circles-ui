@@ -94,12 +94,12 @@ const routes = [
         children: [
             {
                 path: 'popup',
-                name: 'popupDemo',
+                name: 'Popup',
                 component: popupDemo
             },
             {
                 path: 'button',
-                name: 'buttonDemo',
+                name: 'Button',
                 component: buttonDemo
             }
         ]

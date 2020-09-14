@@ -2,7 +2,7 @@
 
 
 
-   ### 引入
+   ### 按需引入
 
    ```js
        import Vue from 'vue';
@@ -70,3 +70,26 @@
        <cs-button type="primary" text="小型按钮" size="small"></cs-button>
        <cs-button type="primary" text="迷你按钮" size="mini"></cs-button>
    ```
+
+## API
+
+### Props
+| Prop | Type | Default | Note |
+| :-: | :-: | :-: | :-: |
+| <div style="width: 100pt">v-model(isShow) | <div style="width: 80pt">Boolean | <div style="width: 80pt">false | <div style="width: 300pt">控制Popup的显示隐藏。
+| isOverlay | Boolean | true | 是否显示背景蒙层。
+| closeOnClickOverlay | Boolean | true | 是否点击背景蒙层后关闭。
+| position | String | 'bottom' | 弹出层的位置(top、right、bottom、left、center)。
+| isRound | Boolean | true | 是否展示圆角。
+| duration | Number | 300(ms) | 动画时长。
+| lockScroll | Boolean | true | 是否锁定背景滚动。
+
+## Events
+| Event Name | Returns | Notes |
+|---|---|---|
+| open |  | popup打开时触发。
+| opened |  | popup打开且动画结束时触发。
+| close |  | popup关闭时触发。
+| closed |  | popup关闭且动画结束时触发。
+| click-overlay |  | p点击遮罩层时触发。
+
