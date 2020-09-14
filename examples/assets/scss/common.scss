@@ -11,21 +11,11 @@ body .hljs {
   padding: 18px 24px;
   background-color: #fafafa;
   border: 1px solid #eaeefb;
-  margin-bottom: 25px;
   border-radius: 4px;
   -webkit-font-smoothing: auto
 }
 h2, h3, h4, h5{
-  font-weight: normal;
-  color: #333;
-}
-h3{
-  font-size: 22px;
-  margin: 50px 0 20px;
-}
-h4{
-  margin: 20px 0;
-  font-size: 18px;
+
 }
 p{
   line-height: 1.5;
@@ -70,3 +60,18 @@ table {
   border-left: 5px solid #50bfff;
   margin: 20px 0;
 }
+.cs-doc-demo-block {
+  padding: 0 0.32rem;
+  .cs-doc-demo-block__title {
+    margin: 0;
+    padding: 32px 16px 16px;
+    color: rgba(69, 90, 100, 0.6);
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+.content /deep/ .el-card__header {
+  border-bottom: none;
+}
+

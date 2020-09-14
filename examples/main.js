@@ -7,11 +7,15 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI)
 
+import csUI from '../src/components/index.js'
+//import '../lib/theme/index.css';
+Vue.use(csUI)
+
 // 引入demo-block
 import DemoBlock from './components/demoBlock'
 Vue.component('demo-block', DemoBlock)
 // 引入项目样式入口
-import './assets/less/index.less'
+import './assets/scss/index.scss'
 
 // 引入路由
 import routes from './route'

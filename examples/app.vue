@@ -1,19 +1,18 @@
-<template>
-    <div class="hello">
+<template lang="html">
+    <div id="app">
+        <router-view/>
 
     </div>
 </template>
 
 <script>
     export default {
-        name: '',
-        data() {
-            return {}
-        }
+        name: 'App'
     }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style scoped lang="scss">
+    #app {
+        height: 100%;
+    }
 </style>

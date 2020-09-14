@@ -6,7 +6,7 @@ const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-///const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
@@ -19,7 +19,7 @@ if (process.argv[2] === 'examples') {
 const env = require('../config/prod.env')
 
 const webpackConfig = merge(baseWebpackConfig, {
-    entry: './example/main.js',
+    entry: './examples/main.js',
     module: {
         rules: utils.styleLoaders({
             sourceMap: config.build.productionSourceMap,
@@ -71,7 +71,7 @@ const webpackConfig = merge(baseWebpackConfig, {
 
         new HtmlWebpackPlugin({
             filename: config.build.index,
-            template: './example/index.html',
+            template: './examples/index.html',
             inject: true,
             minify: {
                 removeComments: true,

@@ -25,6 +25,106 @@
     </div>
 </template>
 
+<script type="text/babel">
+    export default {
+        data() {
+            return {
+                hovering: false,
+                isExpanded: false,
+                fixedControl: false,
+                scrollParent: null,
+                langConfig: {
+                    "hide-text": "隐藏代码",
+                    "show-text": "显示代码",
+                    "button-text": "在线运行",
+                    "tooltip-text": "前往 jsfiddle.net 运行此示例"
+                }
+            };
+        },
+
+        props: {
+            jsfiddle: Object,
+            default() {
+                return {};
+            }
+        },
+
+        methods: {
+            scrollHandler() {
+                const { top, bottom, left } = this.$refs.meta.getBoundingClientRect();
+                this.fixedControl = bottom > document.documentElement.clientHeight &&
+                    top + 44 <= document.documentElement.clientHeight;
+            },
+
+            removeScrollHandler() {
+                this.scrollParent && this.scrollParent.removeEventListener('scroll', this.scrollHandler);
+            }
+        },
+
+        computed: {
+            lang() {
+                return this.$route.path.split('/')[1];
+            },
+
+            blockClass() {
+                return `demo-${ this.lang } demo-${ this.$router.currentRoute.path.split('/').pop() }`;
+            },
+
+            iconClass() {
+                return this.isExpanded ? 'el-icon-caret-top' : 'el-icon-caret-bottom';
+            },
+
+            controlText() {
+                return this.isExpanded ? this.langConfig['hide-text'] : this.langConfig['show-text'];
+            },
+
+            codeArea() {
+                return this.$el.getElementsByClassName('meta')[0];
+            },
+
+            codeAreaHeight() {
+                if (this.$el.getElementsByClassName('description').length > 0) {
+                    return this.$el.getElementsByClassName('description')[0].clientHeight +
+                        this.$el.getElementsByClassName('highlight')[0].clientHeight + 20;
+                }
+                return this.$el.getElementsByClassName('highlight')[0].clientHeight;
+            }
+        },
+
+        watch: {
+            isExpanded(val) {
+                this.codeArea.style.height = val ? `${ this.codeAreaHeight + 1 }px` : '0';
+                if (!val) {
+                    this.fixedControl = false;
+                    this.$refs.control.style.left = '0';
+                    this.removeScrollHandler();
+                    return;
+                }
+                setTimeout(() => {
+                    this.scrollParent = document.querySelector('.page-component__scroll > .el-scrollbar__wrap');
+                    this.scrollParent && this.scrollParent.addEventListener('scroll', this.scrollHandler);
+                    this.scrollHandler();
+                }, 200);
+            }
+        },
+
+        mounted() {
+            this.$nextTick(() => {
+                let highlight = this.$el.getElementsByClassName('highlight')[0];
+                if (this.$el.getElementsByClassName('description').length === 0) {
+                    highlight.style.width = '100%';
+                    highlight.borderRight = 'none';
+                }
+            });
+        },
+
+        beforeDestroy() {
+            this.removeScrollHandler();
+        }
+    };
+</script>
+
+
 <style lang="scss">
     .demo-block {
         border: solid 1px #ebebeb;
@@ -162,102 +262,3 @@
         }
     }
 </style>
-
-<script type="text/babel">
-    export default {
-        data() {
-            return {
-                hovering: false,
-                isExpanded: false,
-                fixedControl: false,
-                scrollParent: null,
-                langConfig: {
-                    "hide-text": "隐藏代码",
-                    "show-text": "显示代码",
-                    "button-text": "在线运行",
-                    "tooltip-text": "前往 jsfiddle.net 运行此示例"
-                }
-            };
-        },
-
-        props: {
-            jsfiddle: Object,
-            default() {
-                return {};
-            }
-        },
-
-        methods: {
-            scrollHandler() {
-                const { top, bottom, left } = this.$refs.meta.getBoundingClientRect();
-                this.fixedControl = bottom > document.documentElement.clientHeight &&
-                    top + 44 <= document.documentElement.clientHeight;
-            },
-
-            removeScrollHandler() {
-                this.scrollParent && this.scrollParent.removeEventListener('scroll', this.scrollHandler);
-            }
-        },
-
-        computed: {
-            lang() {
-                return this.$route.path.split('/')[1];
-            },
-
-            blockClass() {
-                return `demo-${ this.lang } demo-${ this.$router.currentRoute.path.split('/').pop() }`;
-            },
-
-            iconClass() {
-                return this.isExpanded ? 'el-icon-caret-top' : 'el-icon-caret-bottom';
-            },
-
-            controlText() {
-                return this.isExpanded ? this.langConfig['hide-text'] : this.langConfig['show-text'];
-            },
-
-            codeArea() {
-                return this.$el.getElementsByClassName('meta')[0];
-            },
-
-            codeAreaHeight() {
-                if (this.$el.getElementsByClassName('description').length > 0) {
-                    return this.$el.getElementsByClassName('description')[0].clientHeight +
-                        this.$el.getElementsByClassName('highlight')[0].clientHeight + 20;
-                }
-                return this.$el.getElementsByClassName('highlight')[0].clientHeight;
-            }
-        },
-
-        watch: {
-            isExpanded(val) {
-                this.codeArea.style.height = val ? `${ this.codeAreaHeight + 1 }px` : '0';
-                if (!val) {
-                    this.fixedControl = false;
-                    this.$refs.control.style.left = '0';
-                    this.removeScrollHandler();
-                    return;
-                }
-                setTimeout(() => {
-                    this.scrollParent = document.querySelector('.page-component__scroll > .el-scrollbar__wrap');
-                    this.scrollParent && this.scrollParent.addEventListener('scroll', this.scrollHandler);
-                    this.scrollHandler();
-                }, 200);
-            }
-        },
-
-        mounted() {
-            this.$nextTick(() => {
-                let highlight = this.$el.getElementsByClassName('highlight')[0];
-                if (this.$el.getElementsByClassName('description').length === 0) {
-                    highlight.style.width = '100%';
-                    highlight.borderRight = 'none';
-                }
-            });
-        },
-
-        beforeDestroy() {
-            this.removeScrollHandler();
-        }
-    };
-</script>
