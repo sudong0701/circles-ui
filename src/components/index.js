@@ -17,6 +17,7 @@ import csSwiperItem from './swiperItem/index.js'   //轮播图组件
 import csPullRefresh from './pullRefresh/index.js'   //下拉刷新or上拉加载组件
 import csSwipeCell from './swipeCell/index.js'   //滑动单元格组件
 import chartRadar from './chartRadar/index'   //绘制雷达图组件
+import csIcon from './icon/index'
 import csImagePreview from './imagePreview/index'   //图片预览组件(有待优化)
 import imagePreview from './$imagePreview/index'   //图片预览组件(函数式)(有待优化)
 import csNumberKeyboard from  './numberKeyboard/index'   //数字键盘组件
@@ -53,6 +54,7 @@ const components = [
     csSwiperItem,
     csPullRefresh,
     csSwipeCell,
+    csIcon,
     csImagePreview,
     csNumberKeyboard,
     csPasswordInput,
@@ -81,10 +83,10 @@ const components = [
 const install = function(Vue, options) {
     if (install.installed) return
     components.map((component) => {Vue.component(component.name, component)})
-    Vue.prototype.$dialog = dialog
-    Vue.prototype.$toast = toast
-    Vue.prototype.$chartRadar = chartRadar
-    Vue.prototype.$imagePreview = imagePreview
+    Vue.prototype.Dialog = dialog
+    Vue.prototype.Toast = toast
+    Vue.prototype.ChartRadar = chartRadar
+    Vue.prototype.ImagePreview = imagePreview
     Vue.prototype.$windowInfo = {
         width: document.documentElement.clientWidth || window.innerWidth,
         height: document.documentElement.clientHeight || window.innerHeight
@@ -156,6 +158,7 @@ export default {
     csSwiperItem,
     csPullRefresh,
     csSwipeCell,
+    csIcon,
     csImagePreview,
     csNumberKeyboard,
     csPasswordInput,

@@ -1,5 +1,5 @@
 <template>
-    <div :class="`csCheckbox ${type === 'cell' ? 'csCheckbox-cell' : ''}`" ref="csCheckbox" :style="`padding-left: ${isGroup ? '' : '0.32rem'}; padding-bottom: ${type === 'cell' ? '' : '0.16rem'}`">
+    <div :class="`csCheckbox ${type === 'cell' ? 'csCheckbox-cell' : ''}`" ref="csCheckbox" :style="`padding-left: ${isGroup ? '' : '0.32rem'}; padding-bottom: ${type === 'cell' ? '' : '0.16rem'};padding-top: ${type === 'cell' ? '' : '0.16rem'}`">
         <span class="csCheckbox-iconBox" @click="selectCheckBox('icon')">
             <div v-show="isGroup ? !checkedGroup : !checked">
                 <slot name="unActiveIcon">
@@ -16,7 +16,7 @@
             </div>
         </transition>
         </span>
-        <div class="csCheckbox-content" @click="selectCheckBox">
+        <div :class="`csCheckbox-content ${labelDisabled ? '' : 'csCheckbox-content-pointer'}`" @click="selectCheckBox" :style="labelDisabled ? '' : ''">
             <slot></slot>
         </div>
 
@@ -96,7 +96,7 @@
             position: relative;
             min-height: 0.4rem;
             min-width: 0.4rem;
-            .csCheckbox-icon {
+            /deep/ .csCheckbox-icon {
                 position: absolute;
                 font-size: 0.4rem;
                 color: #c8c9cc;
@@ -105,14 +105,14 @@
                 color: #ebedf0;
             }
             .csCheckbox-active {
-                .csCheckbox-icon {
+                /deep/ .csCheckbox-icon {
                     color: var(--color);
                 }
                 .csCheckbox-icon-disabled {
                     color: #ebedf0;
                 }
             }
-            img {
+            /deep/ img {
                 position: absolute;
                 width: 0.4rem;
                 height: 0.4rem;
@@ -123,6 +123,9 @@
             margin-left: 0.16rem;
             color: #323233;
             line-height: 0.46rem;
+        }
+        .csCheckbox-content-pointer {
+            cursor: pointer;
         }
         .csCheckbox-line {
             position: absolute;

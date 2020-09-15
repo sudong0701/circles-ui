@@ -11,6 +11,7 @@
   "cs-pull-refresh": "./src/components/pullRefresh",
   "cs-swipe-cell": "./src/components/swipeCell",
   "Chart-radar": "./src/components/chartRadar",
+  "cs-icon": "./src/components/icon",
   "cs-image-preview": "./src/components/imagePreview",
   "Image-preview": "./src/components/$imagePreview",
   "cs-number-keyboard": "./src/components/numberKeyboard",

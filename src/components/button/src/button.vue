@@ -1,5 +1,5 @@
 <template>
-    <div :class="`csButton ${plain ? 'csButton-plain csButton-plain-' + type : 'csButton-' + type} csButton-${size} ${round ? 'csButton-round' : ''} ${disabled ? 'csButton-disabled' : ''}`" @click="clickButton">
+    <div :class="`csButton ${plain ? 'csButton-plain csButton-plain-' + type : 'csButton-' + type} csButton-${size} ${round ? 'csButton-round' : ''} ${disabled ? 'csButton-disabled' : ''}`" @click="clickButton" :style="`color: ${color}`">
         <div class="csButton-content">
             <i v-if="iconType === 'icon'" :class="`iconfont icon${icon}`"></i>
             <img v-if="iconType === 'img'" :src="icon" alt="">
