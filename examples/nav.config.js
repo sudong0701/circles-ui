@@ -25,15 +25,32 @@ const nav = [
         children: [
             {
                 name: 'Popup',
-                path: '/docs/basis/popup'
+                path: '/docs/components/popup'
             },
             {
                 name: 'Button',
-                path: '/docs/basis/button'
+                path: '/docs/components/button'
             },
             {
                 name: 'Toast',
-                path: '/docs/basis/toast'
+                path: '/docs/components/toast'
+            },
+            {
+                name: 'Icon',
+                path: '/docs/components/icon'
+            }
+        ]
+    },
+    {
+        name: '表单组件',
+        children: [
+            {
+                name: 'Checkbox',
+                path: '/docs/components/checkbox'
+            },
+            {
+                name: 'DateTimePicker',
+                path: '/docs/components/dateTimePicker'
             }
         ]
     }

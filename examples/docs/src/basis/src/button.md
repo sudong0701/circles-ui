@@ -1,5 +1,5 @@
 # Button 按钮
-
+<br/>
 
 
    ### 按需引入
@@ -53,7 +53,7 @@
    ```
 
    ### 图标按钮
-   > 通过`icon`属性设置圆形按钮，支持 Icon 组件里的所有图标，也可以传入图标 URL。
+   > 通过`icon`属性设置圆标按钮，支持 Icon 组件里的所有图标，也可以传入图标 URL。
 
    ```html
        <cs-button type="primary" icon="redpacket"></cs-button>
@@ -74,22 +74,128 @@
 ## API
 
 ### Props
-| Prop | Type | Default | Note |
-| :-: | :-: | :-: | :-: |
-| <div style="width: 100pt">v-model(isShow) | <div style="width: 80pt">Boolean | <div style="width: 80pt">false | <div style="width: 300pt">控制Popup的显示隐藏。
-| isOverlay | Boolean | true | 是否显示背景蒙层。
-| closeOnClickOverlay | Boolean | true | 是否点击背景蒙层后关闭。
-| position | String | 'bottom' | 弹出层的位置(top、right、bottom、left、center)。
-| isRound | Boolean | true | 是否展示圆角。
-| duration | Number | 300(ms) | 动画时长。
-| lockScroll | Boolean | true | 是否锁定背景滚动。
 
-## Events
-| Event Name | Returns | Notes |
-|---|---|---|
-| open |  | popup打开时触发。
-| opened |  | popup打开且动画结束时触发。
-| close |  | popup关闭时触发。
-| closed |  | popup关闭且动画结束时触发。
-| click-overlay |  | p点击遮罩层时触发。
+
+<template>
+   <el-table
+        :data="apiData"
+        stripe
+        border
+        style="width: 100%">
+        <el-table-column
+          prop="name"
+          label="参数"
+          width="150">
+        </el-table-column>
+        <el-table-column
+          prop="remake"
+          label="说明"
+          >
+        </el-table-column>
+        <el-table-column
+          prop="type"
+          label="类型"
+          width="120">
+        </el-table-column>
+        <el-table-column
+             prop="default"
+             label="默认值"
+             width="150">
+        </el-table-column>
+      </el-table>
+    </template>
+</template>
+<script>
+export default {
+  data () {
+    return {
+      apiData: [{
+                  name: 'type',
+                  remake: '按钮类型，可选值primary、info、warning、danger、success',
+                  type: 'String',
+                  default: 'default'
+                },
+                {
+                  name: 'size',
+                  remake: '按钮尺寸，可选值large、small、mini',
+                  type: 'String',
+                  default: 'normal'
+                },
+                {
+                  name: 'text',
+                  remake: '按钮文字',
+                  type: 'String',
+                  default: "''"
+                },
+                {
+                  name: 'color',
+                  remake: '按钮颜色',
+                  type: 'String',
+                  default: "''"
+                },
+                {
+                  name: 'icon',
+                  remake: '左侧图标名称或图片链接',
+                  type: 'String',
+                  default: "''"
+                },
+                {
+                  name: 'plain',
+                  remake: '是否为朴素按钮',
+                  type: 'Boolean',
+                  default: 'false'
+                },
+                {
+                  name: 'round',
+                  remake: '是否为圆形按钮',
+                  type: 'Boolean',
+                  default: 'false'
+                }, 
+                {
+                  name: 'disabled',
+                  remake: '是否禁用按钮',
+                  type: 'Boolean',
+                  default: 'false'
+                },
+                ],
+                eventData: [{
+                  name: 'click',
+                  remake: '点击按钮时触发，禁用状态不会触发该事件',
+                  param: 'event: Event(点击事件参数)'
+                }
+                ]
+    }
+  }
+}
+</script>
+
+
+### Events
+
+<template>
+   <el-table
+        :data="eventData"
+        stripe
+        border
+        style="width: 100%">
+        <el-table-column
+          prop="name"
+          label="事件名"
+          width="180">
+        </el-table-column>
+        <el-table-column
+          prop="remake"
+          label="说明"
+          >
+        </el-table-column>
+        <el-table-column
+          prop="param"
+          label="回调参数"
+          width="320">
+        </el-table-column>
+      </el-table>
+      <div class="pageBottom"></div>
+    </template>
+
+
 

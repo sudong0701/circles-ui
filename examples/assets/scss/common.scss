@@ -73,4 +73,33 @@ table {
 .content /deep/ .el-card__header {
   border-bottom: none;
 }
+.container /deep/ table {
+  margin-bottom: 0;
+}
+.container /deep/ .el-table {
+  margin-bottom: 80px;
+}
+.pageBottom {
+  height: 120px;
+}
+.iconBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .iconItem {
+    width: 130px;
+    padding: 0 0 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    >i {
+      font-size: 40px;
+      color: #666;
+    }
+    >span {
+      margin-top: 8px;
+      font-size: 12px;
+    }
+  }
+}
 

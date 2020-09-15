@@ -1,7 +1,7 @@
 <template>
     <div id="basis">
         <router-view class="component"></router-view>
-        <div class="cs-doc-simulator">
+        <div class="cs-doc-simulator" ref="simulator">
             <iframe :src="`${origin}${path}`" frameborder="0">
 
             </iframe>
@@ -60,6 +60,7 @@
             background: #fafafa;
             border-radius: 12px;
             box-shadow: #ebedf0 0 4px 12px;
+            cursor: grab;
             >iframe {
                 width: 100%;
                 height: 100%;

@@ -33,6 +33,7 @@
     "element-ui": "^2.13.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.4",
+    "focus-outside": "^1.0.0",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "highlight": "^0.2.4",
     "html-webpack-plugin": "^2.30.1",
