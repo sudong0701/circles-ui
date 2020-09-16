@@ -247,6 +247,8 @@
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
+            cursor: pointer;
+            user-select: none;
             .cs-numberKeyboard-default {
                 flex: 1;
                 display: flex;
@@ -309,6 +311,29 @@
                     opacity: 0.8;
                 }
             }
+        }
+    }
+    //bottom动画效果
+    .ani-popup-bottom-enter-active {
+        animation-name: popup-bottom-in;
+    }
+    .ani-popup-bottom-leave-active {
+        animation-name: popup-bottom-out;
+    }
+    @keyframes popup-bottom-in {
+        0% {
+            transform: translate(0, 100%);
+        }
+        100% {
+            transform: translate(0, 0);
+        }
+    }
+    @keyframes popup-bottom-out {
+        0% {
+            transform: translate(0, 0);
+        }
+        100% {
+            transform: translate(0, 100%);
         }
     }
 </style>

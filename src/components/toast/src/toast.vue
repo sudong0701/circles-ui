@@ -88,6 +88,7 @@
         position: fixed;
         top: 50%; left: 50%;
         transform: translate(-50%, -50%);
+        z-index: 100;
         .csToast-box-default{
             padding: 0.18rem 0.3rem;
             min-width: 1.5rem;

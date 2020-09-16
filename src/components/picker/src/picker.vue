@@ -367,6 +367,8 @@
                     .cs_picker-column-list {
                         width: 100%;
                         transform: translate(0, 88px);
+                        cursor: pointer;
+                        user-select: none;
                         .cs_picker-column-item {
                             width: 100%;  height: 44px;
                             line-height: 44px;

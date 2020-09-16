@@ -9,7 +9,7 @@
         <div class="cs_picker-box">
             <div :class="`cs_picker-column`" v-for="(list, key) in columns" :key="key">
                 <div class="cs_picker-column-inner">
-                    <div class="cs_picker-column-list" :ref="`cs_pickerList${key}`" @touchstart.stop="touchStart($event)" @touchmove.stop="touchMove($event, key)" @touchend.stop="touchEnd($event, key)" :style="`transform: translate(0, ${(2 - (selectArr[key] - list.num)) * 44}px)`">
+                    <div class="cs_picker-column-list" :ref="`cs_pickerList${key}`" @mousedown="touchStart($event, 'mouse')" @touchstart.stop="touchStart($event)"  @touchmove.stop="touchMove($event, key)" @touchend.stop="touchEnd($event, key)" :style="`transform: translate(0, ${(2 - (selectArr[key] - list.num)) * 44}px)`">
                         <div @click="selectItem(key, item, list.type)" v-for="(item, index) in list.values" :key="index" :class="`cs_picker-column-item ${item == selectArr[key] ? 'cs_picker-column-currItem' : ''}`">{{item}}{{list.name}}</div>
                     </div>
                 </div>
@@ -1033,8 +1033,12 @@
              @param {dom} e 触摸开始事件参数
              @return
              */
-            touchStart(e) {
-                startPageY = e.targetTouches[0].pageY
+            touchStart(e, type) {
+                if(type === 'mouse') {
+                    startPageY = e.pageY
+                } else {
+                    startPageY = e.targetTouches[0].pageY
+                }
                 e.stopPropagation()
             },
             /**
@@ -1178,6 +1182,8 @@
             flex-direction: row;
             align-items: center;
             justify-content: center;
+            cursor: grab;
+            user-select: none;
             .cs_picker-column {
                 flex: 1;
                 position: relative;
