@@ -7,10 +7,35 @@
             </div>
         </div>
 
+        <div class="cs-doc-demo-block">
+            <div class="cs-doc-demo-block__title">选择完整时间</div>
+            <div class="button-demo-content">
+                <cs-button type="primary" text="选择完整时间" @click="showDateTime"></cs-button>
+            </div>
+        </div>
+
+        <div class="cs-doc-demo-block">
+            <div class="cs-doc-demo-block__title">选择年月</div>
+            <div class="button-demo-content">
+                <cs-button type="primary" text="选择年月" @click="showYearMonth"></cs-button>
+            </div>
+        </div>
+
+
         <cs-popup v-model="isShowDate">
-            <csDateTimePicker ref="picker" v-model="currDate" :minDate="minDate" :maxDate="maxDate">
+            <csDateTimePicker v-model="currDate" :minDate="minDate" :maxDate="maxDate">
 
             </csDateTimePicker>
+        </cs-popup>
+
+        <cs-popup v-model="isShowDateTime">
+            <csDateTimePicker type="datetime" v-model="currDate" :minDate="minDateTime" :maxDate="maxDateTime">
+
+            </csDateTimePicker>
+        </cs-popup>
+
+        <cs-popup v-model="isShowYearMonth">
+            <csDateTimePicker type="year-month" v-model="currDate" :minDate="minDate" :maxDate="maxDate"></csDateTimePicker>
         </cs-popup>
     </div>
 </template>
@@ -21,14 +46,24 @@
         data() {
             return {
                 isShowDate: false,
+                isShowDateTime: false,
+                isShowYearMonth: false,
                 currDate: new Date(),
-                minDate: new Date('2019-01-01'),
-                maxDate: new Date('2021-01-01')
+                minDate: new Date('2018-07-27'),
+                maxDate: new Date('2021-07-27'),
+                minDateTime: new Date('2018-07-27 19:22:33'),
+                maxDateTime: new Date('2021-07-27 19:22:33'),
             }
         },
         methods: {
             showDate() {
                 this.isShowDate = true
+            },
+            showDateTime() {
+                this.isShowDateTime = true
+            },
+            showYearMonth() {
+                this.isShowYearMonth = true
             }
         }
     }

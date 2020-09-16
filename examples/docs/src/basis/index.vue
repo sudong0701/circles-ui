@@ -26,6 +26,8 @@
                 vm.path = `#/demo/${to.name}`
             })
         },
+        methods: {
+        },
         watch: {
             $route: {
                 handler: function(val, oldVal){
@@ -46,7 +48,7 @@
         display: flex;
         flex-direction: row;
         .component {
-            width: calc(100% - 500px);
+            width: calc(100% - 420px);
         }
         .cs-doc-simulator {
             position: fixed;
@@ -62,8 +64,9 @@
             box-shadow: #ebedf0 0 4px 12px;
             cursor: grab;
             >iframe {
+                display: block;
                 width: 100%;
-                height: 100%;
+                height: 667px;
             }
         }
     }

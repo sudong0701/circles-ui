@@ -1,7 +1,7 @@
 # Popup 弹出层
 <br/>
 
-:::card
+
    ### 按需引入
 
    ```js
@@ -10,11 +10,9 @@
 
        Vue.use(csPopup);
    ```
-:::
 
 ## 代码演示
 
-:::card
 ### 基础用法
 > 通过 `v-model` 控制弹出层是否展示。
    ```html
@@ -38,9 +36,7 @@
         }
       }
    ```    
-:::
 
-:::card
 ### 弹出位置
 > 通过 `position` 属性控制弹出层弹出位置，可选值：`top`、`right`、`bottom`、`left`、`center`，默认值为`bottom`。
 
@@ -90,9 +86,7 @@
         }
       }
    ``` 
-:::
 
-:::card
    ### 点击遮罩层关闭
 > 通过 `closeOnClickOverlay` 控制是否点击遮罩层后关闭。
    ```html
@@ -133,11 +127,8 @@
         }
       }
    ```
-:::
-
 ## API
 
-:::card
 ### Props
 
    <template>
@@ -251,9 +242,7 @@ export default {
   }
 }
 </script>
-:::
 
-:::card
 ### Events
 
 <template>
@@ -278,7 +267,7 @@ export default {
           width="180">
         </el-table-column>
       </el-table>
+      <div class="pageBottom"></div>
     </template>
-:::
 
 

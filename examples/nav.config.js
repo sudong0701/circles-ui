@@ -24,8 +24,8 @@ const nav = [
         name: '基础组件',
         children: [
             {
-                name: 'Popup',
-                path: '/docs/components/popup'
+                name: 'Icon',
+                path: '/docs/components/icon'
             },
             {
                 name: 'Button',
@@ -36,9 +36,9 @@ const nav = [
                 path: '/docs/components/toast'
             },
             {
-                name: 'Icon',
-                path: '/docs/components/icon'
-            }
+                name: 'Popup',
+                path: '/docs/components/popup'
+            },
         ]
     },
     {
@@ -51,6 +51,18 @@ const nav = [
             {
                 name: 'DateTimePicker',
                 path: '/docs/components/dateTimePicker'
+            },
+            {
+                name: 'NumberKeyboard',
+                path: '/docs/components/numberKeyboard'
+            },
+            {
+                name: 'PasswordInput',
+                path: '/docs/components/passwordInput'
+            },
+            {
+                name: 'Picker',
+                path: '/docs/components/picker'
             }
         ]
     }

@@ -1,7 +1,7 @@
 # Checkbox 复选框
 <br/>
 
-
+:::card
    ### 按需引入
 
    ```js
@@ -11,9 +11,12 @@
        Vue.use(csPopup);
        Vue.use(csCheckboxGroup);
    ```
+:::
+
 
 ## 代码演示
 
+:::card
 ### 基础用法
 > 通过 `v-model` 绑定复选框的勾选状态
 
@@ -30,7 +33,9 @@
         }
     }
    ```
+:::
 
+:::card
 ### 禁用状态
 > 通过 `disabled` 设置checkbox为禁用状态
 
@@ -47,7 +52,9 @@
         }
     }
    ```
+:::
 
+:::card
 ### 自定义形状
 > 通过 `shape` 设置checkbox的形状，可选值 `square`(方形)，默认round(圆形)
 
@@ -64,7 +71,9 @@
         }
     }
    ```
+:::
 
+:::card
 ### 自定义颜色
 > 通过 `color` 设置checkbox选中框的颜色。
 
@@ -81,7 +90,9 @@
         }
     }
    ```
+:::
 
+:::card
 ### 自定义图标
 > 通过 `slot` 自定义选中/未选中的图标
 
@@ -106,7 +117,9 @@
         }
     }
    ```
+:::
 
+:::card
 ### 禁用文本点击
 > 通过 `labelDisabled` 设置checkbox是否禁用文本点击。
 
@@ -123,7 +136,9 @@
         }
     }
    ```
+:::
 
+:::card
 ### 复选框组
 > 复选框可以与复选框组一起使用，复选框组通过 `v-model` 数组绑定复选框的勾选状态。
 
@@ -145,7 +160,9 @@
         }
     }
    ```
+:::
 
+:::card
 ### 限制最大可选数
 > 通过 在复选框组上声明 `max` 属性控制复选框的最大可选个数。
 
@@ -167,7 +184,9 @@
         }
     }
    ```
+:::
 
+:::card
 ### 单元格样式
 > 通过在复选框组上声明 `type='cell'`声明单元格样式的复选框 。
 
@@ -190,9 +209,11 @@
         }
     }
    ```
+:::
 
 ## API
 
+:::card
 ### Checkbox Props
 
 <template>
@@ -223,7 +244,9 @@
         </el-table-column>
       </el-table>
 </template>
+:::
 
+:::card
 ### CheckboxGroup Props
 
 <template>
@@ -350,7 +373,9 @@ export default {
 }
 </script>
 
+:::
 
+:::card
 ### Checkbox  Events
 
 <template>
@@ -376,7 +401,9 @@ export default {
         </el-table-column>
       </el-table>
 </template>
+:::
 
+:::card
 ### CheckboxGroup  Events
 
 <template>
@@ -402,7 +429,9 @@ export default {
         </el-table-column>
       </el-table>
 </template>
+:::
 
+:::card
 ### Checkbox  Slots
 
 <template>
@@ -427,5 +456,5 @@ export default {
           width="320">
         </el-table-column>
       </el-table>
-      <div class="pageBottom"></div>
 </template>
+:::

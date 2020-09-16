@@ -1,6 +1,7 @@
 # Icon 图标
 <br/>
 
+:::card
 ### 按需引入
 
    ```js
@@ -9,9 +10,11 @@
 
        Vue.use(csIcon);
    ```
+:::
 
 ## 代码演示
 
+:::card
 ### 基础用法
 > 通过 `name`属性展示相应Icon图标，所有图标名称见下方表格。
 
@@ -20,7 +23,9 @@
     <cs-icon name="notification"></cs-icon>
     <cs-icon name="notice1"></cs-icon>
    ```
+:::
 
+:::card
 ### 图标颜色
    > 通过 `color`属性展示控制图标颜色。
 
@@ -29,7 +34,9 @@
     <cs-icon name="present" color="#9266f9"></cs-icon>
     <cs-icon name="present" color="red"></cs-icon>
    ```
+:::
 
+:::card
 ### 图标颜色
    > 通过 `size`属性展示控制图标大小，传入Number类型时默认单位为px。
 
@@ -38,9 +45,11 @@
     <cs-icon name="questionfill" size="0.64rem"></cs-icon>
     <cs-icon name="questionfill" size="0.72rem"></cs-icon>
    ```
+:::
 
    ## API
 
+:::card
 ### Props
 
    <template>
@@ -105,7 +114,9 @@ export default {
   }
 }
 </script>
+:::
 
+:::card
 ### Events
 
 <template>
@@ -131,7 +142,9 @@ export default {
         </el-table-column>
       </el-table>
     </template>
+:::
 
+:::card
 ## 图标库
 
 <div>
@@ -1453,6 +1466,4 @@ export default {
          <span>fenxiang</span>
       </div>
    </div>   
-
-<div class="pageBottom"></div>
-</div>
+:::

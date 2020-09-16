@@ -21,6 +21,9 @@ import icon from './docs/src/basis/src/icon.md'
 //表单组件
 import checkbox from './docs/src/basis/src/checkbox.md'
 import dateTimePicker from './docs/src/basis/src/dateTimePicker.md'
+import numberKeyboard from './docs/src/basis/src/numberKeyboard.md'
+import passwordInput from './docs/src/basis/src/passwordInput.md'
+import picker from './docs/src/basis/src/picker.md'
 
 import dialog from './docs/src/basis/src/dialog.md'
 
@@ -33,6 +36,9 @@ import toastDemo from './demo/src/toast.vue'
 import iconDemo from './demo/src/icon.vue'
 import checkboxDemo from './demo/src/checkbox.vue'
 import dateTimePickerDemo from './demo/src/dateTimePicker.vue'
+import numberKeyboardDemo from './demo/src/numberKeyboard.vue'
+import passwordInputDemo from './demo/src/passwordInput.vue'
+import pickerDemo from './demo/src/picker.vue'
 
 const routes = [
     {
@@ -112,6 +118,21 @@ const routes = [
                       path: 'dateTimePicker',
                       name: 'dateTimePicker',
                       component: dateTimePicker
+                  },
+                  {
+                      path: 'numberKeyboard',
+                      name: 'numberKeyboard',
+                      component: numberKeyboard
+                  },
+                  {
+                      path: 'passwordInput',
+                      name: 'passwordInput',
+                      component: passwordInput
+                  },
+                  {
+                      path: 'picker',
+                      name: 'picker',
+                      component: picker
                   }
               ]
           }
@@ -152,6 +173,21 @@ const routes = [
                 path: 'dateTimePicker',
                 name: 'DateTimePicker',
                 component: dateTimePickerDemo
+            },
+            {
+                path: 'numberKeyboard',
+                name: 'NumberKeyboard',
+                component: numberKeyboardDemo
+            },
+            {
+                path: 'passwordInput',
+                name: 'PasswordInput',
+                component: passwordInputDemo
+            },
+            {
+                path: 'picker',
+                name: 'Picker',
+                component: pickerDemo
             }
         ]
     }

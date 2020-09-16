@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="header-model">
-    <h1 class="info" @click="goDocs">
-      文档
+    <h1 class="info">
+      主页还未设计，点击 <span @click="goDocs" style="color: #5a96ec; cursor: pointer;">这里</span>查看文档
     </h1>
   </div>
 </template>
@@ -22,5 +22,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>

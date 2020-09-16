@@ -59,6 +59,13 @@ table {
   border-left: 5px solid #50bfff;
   margin: 20px 0;
 }
+.card {
+  margin-bottom: 24px;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 12px #ebedf0;
+}
 .cs-doc-demo-block {
   padding: 0 0.32rem;
   .cs-doc-demo-block__title {
@@ -77,7 +84,7 @@ table {
   margin-bottom: 0;
 }
 .container /deep/ .el-table {
-  margin-bottom: 80px;
+  margin-bottom: 15px;
 }
 .pageBottom {
   height: 120px;

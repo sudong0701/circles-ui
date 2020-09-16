@@ -1,16 +1,18 @@
 # Toast 弱提示
 <br/>
 
-
+:::card
    ### 按需引入
    > `按需引入使用Toast时不需要在前面加this.`
 
    ```js
        import { Toast } from 'circles-ui';
    ```
+:::
 
 ## 代码演示
 
+:::card
 ### 基础用法
 
    ```html
@@ -32,7 +34,9 @@
         }
       }
    ``` 
+:::
 
+:::card
    ### 提示类型
    >提示类型可选值有 `loading`、`success`、`error`、`warning`4种类型。
 
@@ -73,7 +77,9 @@
         }
       }
    ``` 
+:::
 
+:::card
    ### 自定义图标/图片
    >通过 `icon` 和 `img` 属性设置自定义图标/图片
 
@@ -104,7 +110,9 @@
         }
       }
    ``` 
+:::
 
+:::card
    ### 自主关闭Toast
    >通过 `close` 方法主动关闭Toast
 
@@ -132,7 +140,9 @@
         }
       }
    ``` 
+:::
 
+:::card
 ### 关闭Toast后的回调
 >Toast关闭后会返回一个 `Promise` 对象,通过 `then` 方法执行回调
 
@@ -161,9 +171,11 @@
       }
    ``` 
 
-   
+:::
+
 ## API
 
+:::card
 ### 方法
 
 <template>
@@ -194,7 +206,9 @@
         </el-table-column>
       </el-table>
     </template>
+:::
 
+:::card
 ### Options
 
 
@@ -225,7 +239,6 @@
              width="150">
         </el-table-column>
       </el-table>
-      <div class="pageBottom"></div>
 </template>
 <script>
 export default {

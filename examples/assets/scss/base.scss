@@ -1,8 +1,12 @@
 body{
   padding: 0;
   height: 100%;
-  color: #333;
-  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+  color: #323233;
+  margin: 0;
+  overflow-x: auto;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Segoe UI, Arial, Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+  background-color: #f7f8fa;
   -webkit-font-smoothing: antialiased;
 }
 p, body, h1, h2, h3, h4, h5{

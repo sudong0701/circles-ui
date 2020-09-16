@@ -13,6 +13,9 @@
                 title: ''
             }
         },
+        mounted() {
+            console.log(window)
+        },
         beforeRouteEnter(to, from, next) {
             next( vm => {
                 vm.title = to.name

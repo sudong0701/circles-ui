@@ -86,6 +86,7 @@ module.exports = {
                         }
                     }],
                     [require('markdown-it-container'), 'tip'],
+                    [require('markdown-it-container'), 'card'],
                     [require('markdown-it-container'), 'warning']
                 ],
                 preprocess: function(MarkdownIt, source) {
