@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="header-model">
-    <h1 class="info">
+    <h1 class="home">
       主页还未设计，点击 <span @click="goDocs" style="color: #5a96ec; cursor: pointer;">这里</span>查看文档
     </h1>
   </div>

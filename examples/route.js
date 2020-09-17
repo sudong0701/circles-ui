@@ -24,9 +24,17 @@ import dateTimePicker from './docs/src/basis/src/dateTimePicker.md'
 import numberKeyboard from './docs/src/basis/src/numberKeyboard.md'
 import passwordInput from './docs/src/basis/src/passwordInput.md'
 import picker from './docs/src/basis/src/picker.md'
+import radio from './docs/src/basis/src/radio.md'
+import stepper from './docs/src/basis/src/stepper.md'
+import csSwitch from './docs/src/basis/src/switch.md'
 
+//反馈组件
+import actionSheet from './docs/src/basis/src/actionSheet.md'
 import dialog from './docs/src/basis/src/dialog.md'
+import swipeCell from './docs/src/basis/src/swipeCell.md'
 
+//展示组件
+import circle from './docs/src/basis/src/circle.md'
 
 //演示页面
 import demo from './demo/index.vue'
@@ -39,6 +47,14 @@ import dateTimePickerDemo from './demo/src/dateTimePicker.vue'
 import numberKeyboardDemo from './demo/src/numberKeyboard.vue'
 import passwordInputDemo from './demo/src/passwordInput.vue'
 import pickerDemo from './demo/src/picker.vue'
+import radioDemo from './demo/src/radio.vue'
+import stepperDemo from './demo/src/stepper.vue'
+import csSwitchDemo from './demo/src/switch.vue'
+import actionSheetDemo from './demo/src/actionSheet.vue'
+import dialogDemo from './demo/src/dialog.vue'
+import swipeCellDemo from './demo/src/swipeCell.vue'
+import circleDemo from './demo/src/circle.vue'
+
 
 const routes = [
     {
@@ -133,6 +149,41 @@ const routes = [
                       path: 'picker',
                       name: 'picker',
                       component: picker
+                  },
+                  {
+                      path: 'radio',
+                      name: 'radio',
+                      component: radio
+                  },
+                  {
+                      path: 'stepper',
+                      name: 'stepper',
+                      component: stepper
+                  },
+                  {
+                      path: 'switch',
+                      name: 'switch',
+                      component: csSwitch
+                  },
+                  {
+                      path: 'actionSheet',
+                      name: 'actionSheet',
+                      component: actionSheet
+                  },
+                  {
+                      path: 'dialog',
+                      name: 'dialog',
+                      component: dialog
+                  },
+                  {
+                      path: 'swipeCell',
+                      name: 'swipeCell',
+                      component: swipeCell
+                  },
+                  {
+                      path: 'circle',
+                      name: 'circle',
+                      component: circle
                   }
               ]
           }
@@ -188,6 +239,41 @@ const routes = [
                 path: 'picker',
                 name: 'Picker',
                 component: pickerDemo
+            },
+            {
+                path: 'radio',
+                name: 'Radio',
+                component: radioDemo
+            },
+            {
+                path: 'stepper',
+                name: 'Stepper',
+                component: stepperDemo
+            },
+            {
+                path: 'switch',
+                name: 'Switch',
+                component: csSwitchDemo
+            },
+            {
+                path: 'actionSheet',
+                name: 'ActionSheet',
+                component: actionSheetDemo
+            },
+            {
+                path: 'dialog',
+                name: 'Dialog',
+                component: dialogDemo
+            },
+            {
+                path: 'swipeCell',
+                name: 'SwipeCell',
+                component: swipeCellDemo
+            },
+            {
+                path: 'circle',
+                name: 'circle',
+                component: circleDemo
             }
         ]
     }

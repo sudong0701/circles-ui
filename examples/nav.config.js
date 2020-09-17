@@ -63,6 +63,44 @@ const nav = [
             {
                 name: 'Picker',
                 path: '/docs/components/picker'
+            },
+            {
+                name: 'Radio',
+                path: '/docs/components/radio'
+            },
+            {
+                name: 'Stepper',
+                path: '/docs/components/stepper'
+            },
+            {
+                name: 'Switch',
+                path: '/docs/components/switch'
+            }
+        ]
+    },
+    {
+        name: '反馈组件',
+        children: [
+            {
+                name: 'ActionSheet',
+                path: '/docs/components/actionSheet'
+            },
+            {
+                name: 'Dialog',
+                path: '/docs/components/dialog'
+            },
+            {
+                name: 'SwipeCell',
+                path: '/docs/components/swipeCell'
+            }
+        ]
+    },
+    {
+        name: '展示组件',
+        children: [
+            {
+                name: 'Circle',
+                path: '/docs/components/circle'
             }
         ]
     }

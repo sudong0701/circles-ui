@@ -8,7 +8,7 @@
        import Vue from 'vue';
        import { csCheckbox, csCheckboxGroup } from 'circles-ui';
 
-       Vue.use(csPopup);
+       Vue.use(csCheckbox);
        Vue.use(csCheckboxGroup);
    ```
 :::
