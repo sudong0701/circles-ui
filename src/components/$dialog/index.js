@@ -26,4 +26,4 @@ let dialog = (options = {}) => {
         }
     }
 })
-export default $dialog
+export default dialog

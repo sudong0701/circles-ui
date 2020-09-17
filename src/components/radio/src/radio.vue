@@ -1,18 +1,18 @@
 <template>
     <div :class="`csRadio ${type === 'cell' ? 'csRadio-cell' : ''}`" ref="csRadio">
         <span :class="`csRadio-iconBox`" @click="changeRadio('icon')">
-            <slot name="unActiveIcon">
-                <i v-if="shape === 'round'" :class="`iconfont icon_unSelect_round csRadio-icon ${disabled || disabledForGroup ? 'csRadio-icon-disabled' : ''}`" :style="`color: ${isActive ? '#fff' : ''}`"></i>
-                <i v-if="shape === 'square'" :class="`iconfont icon_unSelect_square csRadio-icon ${disabled || disabledForGroup ? 'csRadio-icon-disabled' : ''}`" :style="`color: ${isActive ? '#fff' : ''}`"></i>
-            </slot>
-            <transition name="animation-fade-imagePreview" >
-                <div v-show="isActive" class="csRadio-selected">
+             <span v-show="!isActive">
+                    <slot name="unActiveIcon">
+                        <i v-if="shape === 'round'" :class="`iconfont icon_unSelect_round csRadio-icon ${disabled || disabledForGroup ? 'csRadio-icon-disabled' : ''}`" :style="`color: ${isActive ? '#fff' : ''}`"></i>
+                        <i v-if="shape === 'square'" :class="`iconfont icon_unSelect_square csRadio-icon ${disabled || disabledForGroup ? 'csRadio-icon-disabled' : ''}`" :style="`color: ${isActive ? '#fff' : ''}`"></i>
+                    </slot>
+                </span>
+            <div v-show="isActive" class="csRadio-selected">
                     <slot name="activeIcon">
                         <i v-if="shape === 'round'"  :class="`iconfont icon_select_round csRadio-icon ${disabled || disabledForGroup ? 'csRadio-icon-disabled' : 'csRadio-icon-active'}`" :style="`color: ${disabled || disabledForGroup ? '#c8c9cc' : color}; z-index: 10`"></i>
                         <i v-if="shape === 'square'" :class="`iconfont icon_select_square csRadio-icon ${disabled || disabledForGroup ? 'csRadio-icon-disabled' : 'csRadio-icon-active'}`" :style="`color: ${disabled || disabledForGroup ? '#c8c9cc' : color}; z-index: 10`"></i>
                     </slot>
                 </div>
-            </transition>
         </span>
         <span :class="`csRadio-content ${disabled || disabledForGroup ? 'csRadio-content-disabled' : ''} ${type === 'cell' ? 'csRadio-content-cell' : ''}`" @click="changeRadio">
             <slot></slot>
@@ -28,27 +28,18 @@
             return {
                 type: '',
                 isActive: false,
-                disabledForGroup: false
+                disabledForGroup: false,
+                shape: 'round',
+                color: '',
+                labelDisabled: false
             }
         },
         props: {
-            color: {
-                type: String,
-                default: ''
-            },
             name: {
                 type: String | Number,
                 default: ''
             },
             disabled: {
-                type: Boolean,
-                default: false
-            },
-            shape: {   //形状
-                type: String,
-                default: 'round'
-            },
-            labelDisabled: {   //是否禁用文本的点击
                 type: Boolean,
                 default: false
             }
@@ -90,12 +81,15 @@
             position: relative;
             min-height: 0.4rem;
             min-width: 0.4rem;
-            img {
+            /deep/ img {
                 height: 0.4rem;
                 width: 0.4rem;
             }
             .csRadio-selected {
-
+                /deep/ img {
+                    height: 0.4rem;
+                    width: 0.4rem;
+                }
             }
         }
         .csRadio-icon {
@@ -112,6 +106,8 @@
             margin-left: 0.16rem;
             font-size: 0.3rem;
             color: #323233;
+            cursor: pointer;
+            user-select: none;
         }
         .csRadio-content-disabled, .csRadio-icon-disabled {
             color: #c8c9cc;

@@ -10,4 +10,5 @@ import csDialog from './src/csDialog.vue';
 csDialog.install = function (Vue) {
     Vue.component(csDialog.name, csDialog);
 };
+
 export default csDialog;

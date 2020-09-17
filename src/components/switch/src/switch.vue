@@ -1,5 +1,5 @@
 <template>
-    <div :class="`csSwitch ${disabled ? 'van-switch--disabled': (isActive ? 'csSwitch-active' : '')} `" :style="`font-size: ${circleSize}; background-color: ${isActive ? activeParentsNodeColor : unActiveParentsNodeColor}; `" @click="changeActive">
+    <div :class="`csSwitch ${disabled ? 'csSwitch--disabled': ''} ${isActive ? 'csSwitch-active' : ''}`" :style="`font-size: ${circleSize}; background-color: ${isActive ? activeParentsNodeColor : unActiveParentsNodeColor}; `" @click="changeActive">
         <div :class="`csSwitch-circle ${isActive ? 'csSwitch-active' : ''}`" :style="`width: ${circleSize}; height: ${circleSize}; background-color: ${isActive ? activeNodeColor : unActiveNodeColor}; transform: translateX(${isActive ? '100%' : '0%'})`" @webkitTransitionEnd="animationEnd($event)" @transitionend="animationEnd($event)">
 
         </div>
@@ -65,9 +65,8 @@
                 if(!this.disabled) {
                     if(!this.asyncChange) {
                         this.$emit('change', !this.isActive)
-                    } else {
-                        this.$emit('click')
                     }
+                    this.$emit('click')
                 }
             },
             /**

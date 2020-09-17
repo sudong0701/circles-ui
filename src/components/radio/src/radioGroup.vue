@@ -24,6 +24,18 @@
             disabled: {
                 type: Boolean,
                 default: false
+            },
+            shape: {   //形状
+                type: String,
+                default: 'round'
+            },
+            color: {
+                type: String,
+                default: '#1989fa'
+            },
+            labelDisabled: {   //是否禁用文本的点击
+                type: Boolean,
+                default: false
             }
         },
         model: {
@@ -39,6 +51,9 @@
                     if(this.disabled) {
                         this.$refs.csRadioGroup.children[i].__vue__.disabledForGroup = true
                     }
+                    this.$refs.csRadioGroup.children[i].__vue__.shape = this.shape
+                    this.$refs.csRadioGroup.children[i].__vue__.color = this.color
+                    this.$refs.csRadioGroup.children[i].__vue__.labelDisabled = this.labelDisabled
                 }
             }
         },
@@ -55,6 +70,40 @@
                     this.$emit('change', name)
                 } else {
                     this.$emit('change', '')
+                }
+            }
+        },
+        watch: {
+            disabled(val) {
+                if(this.$refs.csRadioGroup.children) {
+                    for(let i=0; i<this.$refs.csRadioGroup.children.length; i++) {
+                        if(val) {
+                            this.$refs.csRadioGroup.children[i].__vue__.disabledForGroup = true
+                        } else {
+                            this.$refs.csRadioGroup.children[i].__vue__.disabledForGroup = false
+                        }
+                    }
+                }
+            },
+            shape(val) {
+                if(this.$refs.csRadioGroup.children) {
+                    for(let i=0; i<this.$refs.csRadioGroup.children.length; i++) {
+                        this.$refs.csRadioGroup.children[i].__vue__.shape = val
+                    }
+                }
+            },
+            color(val) {
+                if(this.$refs.csRadioGroup.children) {
+                    for(let i=0; i<this.$refs.csRadioGroup.children.length; i++) {
+                        this.$refs.csRadioGroup.children[i].__vue__.color = val
+                    }
+                }
+            },
+            labelDisabled(val) {
+                if(this.$refs.csRadioGroup.children) {
+                    for(let i=0; i<this.$refs.csRadioGroup.children.length; i++) {
+                        this.$refs.csRadioGroup.children[i].__vue__.labelDisabled = val
+                    }
                 }
             }
         }

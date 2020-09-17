@@ -4,9 +4,8 @@
         <svg style="transform: rotate(-90deg)" :width="width" :height="width" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <!--使用渐变色-->
-                <linearGradient  id="csCircleGrad" :x1="x1" :y1="y1" :x2="x2" :y2="y2">
-                    <stop v-if="!Array.isArray(barColor)" offset="1" :stop-color="barColor" />
-                    <stop v-if="Array.isArray(barColor)" v-for="(item, key) in barColor" :key="key" :offset="item.offset" :stop-color="item.color"></stop>
+                <linearGradient v-if="isGradient"  id="csCircleGrad" :x1="x1" :y1="y1" :x2="x2" :y2="y2">
+                    <stop v-for="(item, key) in barColor" :key="key" :offset="item.offset" :stop-color="item.color"></stop>
                 </linearGradient >
 
             </defs>
@@ -17,7 +16,23 @@
                     :stroke="backgroundColor"
                     fill="none"
             />
-            <circle class="csCircle-progress"
+            <circle v-if="!isGradient"
+                    class="csCircle-progress 111"
+                    :style="`transition: all ${isAnimation ? duration : 0}ms; -webkit-transition: all ${isAnimation ? duration : 0}ms`"
+                    :r="(width-radius)/2"
+                    :cy="width/2"
+                    :cx="width/2"
+                    :stroke="barColor"
+                    :stroke-width="radius"
+                    :stroke-linecap="isRound ? 'round' : 'square'"
+                    :stroke-dasharray="(width - radius) * 3.14"
+                    :stroke-dashoffset="(width - radius) * 3.14 * (100 - currProgress) / 100"
+                    fill="none"
+            >
+            </circle>
+
+            <circle v-if="isGradient"
+                    class="csCircle-progress"
                     :style="`transition: all ${isAnimation ? duration : 0}ms; -webkit-transition: all ${isAnimation ? duration : 0}ms`"
                     :r="(width-radius)/2"
                     :cy="width/2"
@@ -30,6 +45,7 @@
                     fill="none"
             >
             </circle>
+            <text transform="rotate(90 0,0)" :x="width/2" :y="-width/2" style='dominant-baseline:middle; text-anchor:middle;font-size: 0.32rem;color: #323233'>{{ text ? text : progress + '%'}}</text>
         </svg>
     </div>
 </template>
@@ -58,6 +74,10 @@
             progress: {   // 进度条百分比
                 type: Number | String,
                 default: 0
+            },
+            text: {
+                type: String,
+                default: ''
             },
             barColor: {   // 进度条颜色
                 type: String | Array,
@@ -93,6 +113,13 @@
           event: 'change'
         },
         computed: {
+            isGradient() {
+              if(Array.isArray(this.barColor)) {
+                  return true
+              } else {
+                  return false
+              }
+            },
             x1() {
                 if(this.gradDire === 'bottom' || this.gradDire === 'bottom-right' || this.gradDire === 'bottom-left') {
                     return 1
@@ -134,3 +161,7 @@
         }
     }
 </script>
+
+<style scoped lang="scss">
+
+</style>

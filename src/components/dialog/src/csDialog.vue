@@ -37,7 +37,7 @@
         name: 'csDialog',
         data() {
             return {
-                isShowOverlay: false,
+                isShowOverlay: false
             }
         },
         props: {
@@ -210,7 +210,7 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .csDialog{
     .csDialog-bg{
         position: fixed;
@@ -244,6 +244,8 @@
         text-align: center;
         font-size: 0.36rem;
         color: var(--color);
+        cursor: pointer;
+        user-select: none;
     }
     .csDialog-btn:active{
         background-color: #eee;
@@ -277,6 +279,8 @@
         padding: 0.26rem 0;
         text-align: center;
         font-size: 0.36rem;
+        cursor: pointer;
+        user-select: none;
     }
     div:nth-of-type(1){
         border-right: 0.01rem solid #f4f4f4;

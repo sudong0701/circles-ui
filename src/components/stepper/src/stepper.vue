@@ -35,7 +35,7 @@
             },
             integer: {   //是否限制输入整数
                 type: Boolean,
-                default: false
+                default: true
             },
             decimalLength: {   //保留的小数位
                 type: Number,
@@ -110,7 +110,11 @@
                     if(!inputValue) {
                         this.$emit('change', extraValue)
                     } else {
-                        this.$emit('change', Number(extraValue + inputValue[0]) > this.max ? this.getAccordValue(extraValue + inputValue[0], 'max') : (Number(extraValue + inputValue[0]) < this.min ? this.getAccordValue(extraValue + inputValue[0], 'min') : extraValue + inputValue[0]))
+                        let currValue = Number(extraValue + inputValue[0]) > this.max ? this.getAccordValue(extraValue + inputValue[0], 'max') : (Number(extraValue + inputValue[0]) < this.min ? this.getAccordValue(extraValue + inputValue[0], 'min') : extraValue + inputValue[0])
+                        this.$emit('change', currValue)
+                        if(!this.asyncChange) {
+                            this.inputValue = currValue
+                        }
                     }
                 } else {
                     let stepperReg = eval(`/\\d+(\\.\\d{0,${this.componentDecimalLength}})?/`)
@@ -122,7 +126,11 @@
                         this.$emit('change', extraValue)
                         return
                     }
-                    this.$emit('change', Number(extraValue + inputValue[0]) > this.max ? this.getAccordValue(inputValue[0], 'max') : Number(extraValue + inputValue[0])< this.min ? this.getAccordValue(inputValue[0], 'min') : extraValue + inputValue[0])
+                    let currValue =  Number(extraValue + inputValue[0]) > this.max ? this.getAccordValue(inputValue[0], 'max') : Number(extraValue + inputValue[0])< this.min ? this.getAccordValue(inputValue[0], 'min') : extraValue + inputValue[0]
+                    this.$emit('change', currValue)
+                    if(!this.asyncChange) {
+                        this.inputValue = currValue
+                    }
                 }
             },
             /**

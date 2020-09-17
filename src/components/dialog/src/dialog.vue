@@ -48,7 +48,7 @@
                 confirmBthBgColor: '',   //确认按钮的背景颜色
                 cancelBtnText: ' 取消',  //取消按钮文案
                 cancelBthColor: '#333',   //取消按钮文字颜色,默认#333
-                cancelBthBgColor: '',   //取消按钮的背景颜色
+                cancelBthBgColor: ''   //取消按钮的背景颜色
             }
         },
         mounted() {
@@ -122,6 +122,8 @@
                     text-align: center;
                     font-size: 0.36rem;
                     color: var(--color);
+                    cursor: pointer;
+                    user-select: none;
                 }
                 .csDialog-btn:active{
                     background-color: #eee;
@@ -155,6 +157,8 @@
                     padding: 0.26rem 0;
                     text-align: center;
                     font-size: 0.36rem;
+                    cursor: pointer;
+                    user-select: none;
                 }
                 div:nth-of-type(1){
                     border-right: 0.01rem solid #f4f4f4;
@@ -181,7 +185,7 @@
         }
         @keyframes fade-in {
             0% {
-                -webkit-transform: scale3d(0, 0, 0);
+                -webkit-transform: scale3d(0.5, 0.5, 0.5);
                 transform: scale3d(0.5, 0.5, 0.5);
                 opacity: 0;
             }

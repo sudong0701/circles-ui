@@ -41,7 +41,7 @@
             },
             description: {
                 type: String,
-                default: ''
+                default: '标题'
             },
             isBorder: {   //选项是否展示分割线
                 type: Boolean,
@@ -153,6 +153,8 @@
                 width: 100%;
                 height: 1rem;
                 padding: 0;
+                cursor: pointer;
+                user-select: none;
                 font-size: 0.32rem;
                 text-align: center;
                 background-color: #fff;
@@ -175,6 +177,8 @@
         .csActionSheet-bottom {
             padding-top: 0.12rem;
             background-color: #f7f7f7;
+            cursor: pointer;
+            user-select: none;
             >p {
                 height: 1rem;
                 font-size: 0.32rem;
