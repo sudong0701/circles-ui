@@ -4,7 +4,7 @@
         <svg style="transform: rotate(-90deg)" :width="width" :height="width" xmlns="http://www.w3.org/2000/svg">
             <defs>
                 <!--使用渐变色-->
-                <linearGradient v-if="isGradient"  id="csCircleGrad" :x1="x1" :y1="y1" :x2="x2" :y2="y2">
+                <linearGradient v-if="isGradient"  :id="id" :x1="x1" :y1="y1" :x2="x2" :y2="y2">
                     <stop v-for="(item, key) in barColor" :key="key" :offset="item.offset" :stop-color="item.color"></stop>
                 </linearGradient >
 
@@ -17,8 +17,8 @@
                     fill="none"
             />
             <circle v-if="!isGradient"
-                    class="csCircle-progress 111"
-                    :style="`transition: all ${isAnimation ? duration : 0}ms; -webkit-transition: all ${isAnimation ? duration : 0}ms`"
+                    class="csCircle-progress"
+                    :style="`transition: all ${isAnimation ? duration : 0}ms; -webkit-transition: all ${isAnimation ? duration : 0}ms; ${clockwise ? '' : 'transform:rotateX(180deg); transform-origin: -50% 50%'}`"
                     :r="(width-radius)/2"
                     :cy="width/2"
                     :cx="width/2"
@@ -26,7 +26,7 @@
                     :stroke-width="radius"
                     :stroke-linecap="isRound ? 'round' : 'square'"
                     :stroke-dasharray="(width - radius) * 3.14"
-                    :stroke-dashoffset="(width - radius) * 3.14 * (100 - currProgress) / 100"
+                    :stroke-dashoffset="(width - radius) * 3.14 * (100 - computedProgress) / 100"
                     fill="none"
             >
             </circle>
@@ -37,15 +37,15 @@
                     :r="(width-radius)/2"
                     :cy="width/2"
                     :cx="width/2"
-                    stroke="url(#csCircleGrad)"
+                    :stroke="`url(#${id})`"
                     :stroke-width="radius"
                     :stroke-linecap="isRound ? 'round' : 'square'"
                     :stroke-dasharray="(width - radius) * 3.14"
-                    :stroke-dashoffset="(width - radius) * 3.14 * (100 - currProgress) / 100"
+                    :stroke-dashoffset="(width - radius) * 3.14 * (100 - computedProgress) / 100"
                     fill="none"
             >
             </circle>
-            <text transform="rotate(90 0,0)" :x="width/2" :y="-width/2" style='dominant-baseline:middle; text-anchor:middle;font-size: 0.32rem;color: #323233'>{{ text ? text : progress + '%'}}</text>
+            <text transform="rotate(90 0 0)" :x="width/2" :y="-width/2" class="csCircle-text">{{ text ? text : (progress < 0 ? 0 : (progress > 100 ? 100 : progress) + '%')}}</text>
         </svg>
     </div>
 </template>
@@ -55,17 +55,18 @@
         name: 'csCircle',
         data() {
             return {
-                currProgress: 0
+                currProgress: 0,
+                id: 0
             }
         },
         props: {
             width: {   // 圆的大小
                 type: Number | String,
-                default: 120
+                default: 100
             },
             radius: {   // 进度条厚度
                 type: Number | String,
-                default: 6
+                default: 4
             },
             gradDire: {   //渐变方向
                 type: String,
@@ -74,6 +75,10 @@
             progress: {   // 进度条百分比
                 type: Number | String,
                 default: 0
+            },
+            clockwise: {
+                type: Boolean,
+                default: true
             },
             text: {
                 type: String,
@@ -120,6 +125,15 @@
                   return false
               }
             },
+            computedProgress() {
+                if(this.currProgress < 0) {
+                    return 0
+                } else if(this.currProgress > 100) {
+                    return 100
+                } else {
+                    return this.currProgress
+                }
+            },
             x1() {
                 if(this.gradDire === 'bottom' || this.gradDire === 'bottom-right' || this.gradDire === 'bottom-left') {
                     return 1
@@ -151,6 +165,7 @@
         },
         mounted() {
             setTimeout(()=> {
+                this.id = 'csCircleGrad' + parseInt(Math.random() * 10000000)
                 this.currProgress = this.progress
             },0)
         },
@@ -163,5 +178,12 @@
 </script>
 
 <style scoped lang="scss">
-
+    .csCircle {
+        .csCircle-text {
+            dominant-baseline:middle;
+            text-anchor:middle;
+            font-size: 0.28rem;
+            color: #323233;
+        }
+    }
 </style>

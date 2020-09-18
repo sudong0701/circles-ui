@@ -1,24 +1,23 @@
 <template>
     <div>
-        <div class="cs-header" :style="`height: ${height}`">
+        <div class="cs-header" :style="`height: ${realHeight}`">
             <div class="cs-header-left">
                 <slot name="left" clas="slot">
                     <div class="cs-header-leftBox" @click="goBack()">
-                        <i class="cs-header-leftImg iconfont iconfanhui" v-if="isBack"></i>
+                        <i :class="`cs-header-leftImg iconfont icon${leftIcon}`" :style="`color: ${leftIconColor}`"></i>
                     </div>
                 </slot>
             </div>
-            <div :style="`line-height: ${height}`" class="cs-header-title">{{title}}</div>
+            <div :style="`line-height: ${realHeight}`" class="cs-header-title">{{title}}</div>
             <div class="cs-header-right">
                 <slot name="right">
-                    <div class="cs-header-rightBox" @click="clickRight()">
-                        <i :style="`line-height: ${height}`" v-if="type === 'share'" class="iconfont iconfenxiang cs-header-rightImg"></i>
-                        <i :style="`line-height: ${height}`" v-if="type === 'point'" class="iconfont icontishi cs-header-rightImg"></i>
+                    <div class="cs-header-rightBox" @click="clickRight">
+                        <i :class="`iconfont icon${computedIcon} cs-header-rightImg`" :style="`line-height: ${realHeight}; color: ${rightIconColor}`"></i>
                     </div>
                 </slot>
             </div>
         </div>
-        <div :style="`height: ${height}`"></div>
+        <div :style="`height: ${realHeight}`"></div>
     </div>
 </template>
 
@@ -32,12 +31,42 @@
             title: String,   //header中部title
             type: String,   //右侧类型 share分享
             height: {
-                type: String,
-                default: '1rem'
+                type: String | Number,
+                default: '0.92rem'
             },
-            isBack: {
-                type: Boolean,
-                default: true
+            leftIcon: {
+                type: String,
+                default: 'fanhui'
+            },
+            leftIconColor: {
+                type: String,
+                default: '#1989FA'
+            },
+            rightIcon: {
+                type: String,
+                default: ''
+            },
+            rightIconColor: {
+                type: String,
+                default: '#1989FA'
+            },
+        },
+        computed: {
+            computedIcon() {
+                if(this.type === 'share') {
+                    return 'fenxiang'
+                } else if(this.type === 'point') {
+                    return 'tishi'
+                } else {
+                    return this.rightIcon
+                }
+            },
+            realHeight() {
+                if(typeof this.height === 'number') {
+                    return `${this.height}px`
+                } else {
+                    return this.height
+                }
             }
         },
         methods: {
@@ -48,7 +77,7 @@
              */
             goBack(){
 
-                this.$emit('click-left')
+                this.$emit('left')
             },
             /**
              * 点击header右侧按钮事件
@@ -56,7 +85,7 @@
              * @return
              */
             clickRight(){
-                this.$emit('click-right')
+                this.$emit('right')
             }
         }
     }
@@ -81,10 +110,14 @@
                 align-items: center;
                 height: 100%;
                 padding: 0 0.3rem 0 0.1rem;
+                cursor: pointer;
                 .cs-header-leftImg{
                     font-size: 0.5rem;
                 }
             }
+        }
+        .cs-header-left:active {
+            background-color: #fafafa;
         }
         .cs-header-title{
             font-size: 0.32rem;
@@ -92,11 +125,15 @@
         }
         .cs-header-right{
             position: absolute;
-            right: 0.3rem; top: 0;
+            padding: 0 0.3rem;
+            right: 0; top: 0;
             height: 100%;
             .cs-header-rightImg{
                 font-size: 0.44rem;
             }
+        }
+        .cs-header-right:active {
+            background-color: #fafafa;
         }
     }
 

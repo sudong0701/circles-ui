@@ -43,6 +43,7 @@
              @return
              */
             startDraw() {
+                this.polygon = this.dataArr.length
                 try {
                     //绘制外边形
                     const canvas = document.createElement('canvas')

@@ -133,7 +133,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
+            right: 0;
             height: 0.64rem;
             padding: 0 0.32rem;
             line-height: 0.64rem;
@@ -144,6 +144,12 @@
         .csIndexBar_content {
             flex: 1;
             overflow-y: auto;
+            scrollbar-width: none; /* firefox */
+            -ms-overflow-style: none; /* IE 10+ */
+            overflow-x: hidden;
+        }
+        .csIndexBar_content::-webkit-scrollbar {
+            display: none; /* Chrome Safari */
         }
         .csIndexBar_sort {
             display: flex;
@@ -154,6 +160,8 @@
             transform: translateY(-50%);
             font-size: 0.24rem;
             text-align: center;
+            cursor: pointer;
+            user-select: none;
             >span {
                 font-size: 0.24rem;
             }

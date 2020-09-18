@@ -3,7 +3,7 @@
         <div class="csCollapseItem-cell"  @click="clickCollapseItem" ref="collapseItemCell">
             <div class="csCollapseItem-left" v-if="icon">
                 <img v-if="icon.indexOf('http') > -1 || icon.indexOf('https') > -1" :src="icon" alt="">
-                <i v-if="icon.indexOf('http') === -1 && icon.indexOf('https') === -1" :class="`iconfont icon${icon}`"></i>
+                <i v-if="icon.indexOf('http') === -1 && icon.indexOf('https') === -1" :class="`iconfont icon${icon}`" :style="`color: ${iconColor}`"></i>
             </div>
 
             <div class="csCollapseItem-title">
@@ -60,6 +60,10 @@
             icon: {
                 type: String,
                 default: ''
+            },
+            iconColor: {
+              type: String,
+              default: ''
             },
             name: {
                 type: String,

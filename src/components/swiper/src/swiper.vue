@@ -13,15 +13,16 @@
 </template>
 
 <script>
-    let startPageY, startPageX, swipeTimer, prePageNum, touchDirection = ''
+    let startPageY, startPageX, prePageNum, touchDirection = ''
     export default {
-        name: 'csSwipe',
+        name: 'csSwiper',
         data() {
             return {
                 currentIndex: 0,   //当前轮播的下标
                 csSwipeNum: 0,   //总长度
                 clientNum: 0,
-                indicatorArr: []
+                indicatorArr: [],
+                swipeTimer: null
             }
         },
         props: {
@@ -70,7 +71,7 @@
             this.currentIndex = this.swipeIndex
             const csSwipe_box = this.$refs.csSwipe_box
             const csSwipe = this.$refs.csSwipe
-            const csSwipeArr = document.getElementsByClassName('csSwipeItem')
+            const csSwipeArr = csSwipe_box.children
             this.autoPlay()
             if (!csSwipeArr.length) {
                 return
@@ -79,11 +80,12 @@
                 this.indicatorArr.push(i)
             }
             if (this.isLoop) {
+                let csSwipeItemArr = [...csSwipe_box.children]
                 this.csSwipeNum = csSwipeArr.length + 2
-                const csSwipeEnd = document.getElementsByClassName('csSwipeItem')[csSwipeArr.length - 1].cloneNode(true)
-                const csSwipeStart = document.getElementsByClassName('csSwipeItem')[0].cloneNode(true)
+                const csSwipeEnd = csSwipeItemArr[csSwipeItemArr.length - 1].cloneNode(true)
+                const csSwipeStart = csSwipeItemArr[0].cloneNode(true)
                 csSwipe_box.appendChild(csSwipeStart)
-                csSwipe_box.insertBefore(csSwipeEnd, document.getElementsByClassName('csSwipeItem')[0])
+                csSwipe_box.insertBefore(csSwipeEnd, csSwipeItemArr[0])
             } else {
                 this.csSwipeNum = csSwipeArr.length
             }
@@ -141,8 +143,8 @@
              @return
              */
             touchStart(e) {
-                if (swipeTimer) {
-                    clearInterval(swipeTimer)
+                if (this.swipeTimer) {
+                    clearInterval(this.swipeTimer)
                 }
                 if (!this.vertical) {
                     startPageX = e.targetTouches[0].pageX
@@ -389,8 +391,8 @@
              @return
              */
             autoPlay() {
-                if (swipeTimer) {
-                    clearInterval(swipeTimer)
+                if (this.swipeTimer) {
+                    clearInterval(this.swipeTimer)
                 }
                 if (!this.isAuto) {
                     return
@@ -398,7 +400,7 @@
                 if (!this.isLoop && this.currentIndex == this.csSwipeNum - 1) {
                     return
                 }
-                swipeTimer = setInterval(() => {
+                this.swipeTimer = setInterval(() => {
                     const csSwipe_box = this.$refs[`csSwipe_box`]
                     csSwipe_box.style.transition = `-webkit-transform ${this.duration}ms ease-out`;
                     const currentIndex = this.currentIndex + 1
@@ -416,7 +418,7 @@
                         this.$emit('change', currentIndex)
                         setTimeout(() => {
                             if (this.currentIndex == (this.csSwipeNum - 1)) {
-                                clearInterval(swipeTimer)
+                                clearInterval(this.swipeTimer)
                             }
                         }, this.duration)
                     }

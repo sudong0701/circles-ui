@@ -100,7 +100,7 @@
                         this.createAnimation(0.001, 0, `${csNoticeBarContent.clientWidth}px, 0`)
                     } else if(this.type === '1') {
                         this.type = '0'
-                        this.$emit('replay ')
+                        this.$emit('replay')
                         this.createAnimation((csNoticeBarNotice.clientWidth + csNoticeBarContent.clientWidth) / Number(this.speed), 0, '-100%, 0')
                     }
                 }
