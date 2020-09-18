@@ -35,6 +35,15 @@ import swipeCell from './docs/src/basis/src/swipeCell.md'
 
 //展示组件
 import circle from './docs/src/basis/src/circle.md'
+import chartRadar from './docs/src/basis/src/chartRadar.md'
+import collapse from './docs/src/basis/src/collapse.md'
+import noticeBar from './docs/src/basis/src/noticeBar.md'
+import skeleton from './docs/src/basis/src/skeleton.md'
+import swiper from './docs/src/basis/src/swiper.md'
+
+//导航组件
+import indexBar from './docs/src/basis/src/indexBar.md'
+import header from './docs/src/basis/src/header.md'
 
 //演示页面
 import demo from './demo/index.vue'
@@ -54,6 +63,13 @@ import actionSheetDemo from './demo/src/actionSheet.vue'
 import dialogDemo from './demo/src/dialog.vue'
 import swipeCellDemo from './demo/src/swipeCell.vue'
 import circleDemo from './demo/src/circle.vue'
+import chartRadarDemo from './demo/src/chartRadar.vue'
+import collapseDemo from './demo/src/collapse.vue'
+import noticeBarDemo from './demo/src/noticeBar.vue'
+import skeletonDemo from './demo/src/skeleton.vue'
+import swiperDemo from './demo/src/swiper.vue'
+import indexBarDemo from './demo/src/indexBar.vue'
+import headerDemo from './demo/src/header.vue'
 
 
 const routes = [
@@ -184,6 +200,41 @@ const routes = [
                       path: 'circle',
                       name: 'circle',
                       component: circle
+                  },
+                  {
+                      path: 'chartRadar',
+                      name: 'chartRadar',
+                      component: chartRadar
+                  },
+                  {
+                      path: 'collapse',
+                      name: 'collapse',
+                      component: collapse
+                  },
+                  {
+                      path: 'noticeBar',
+                      name: 'noticeBar',
+                      component: noticeBar
+                  },
+                  {
+                      path: 'skeleton',
+                      name: 'skeleton',
+                      component: skeleton
+                  },
+                  {
+                      path: 'swiper',
+                      name: 'swiper',
+                      component: swiper
+                  },
+                  {
+                      path: 'indexBar',
+                      name: 'indexBar',
+                      component: indexBar
+                  },
+                  {
+                      path: 'header',
+                      name: 'header',
+                      component: header
                   }
               ]
           }
@@ -274,6 +325,41 @@ const routes = [
                 path: 'circle',
                 name: 'circle',
                 component: circleDemo
+            },
+            {
+                path: 'chartRadar',
+                name: 'ChartRadar',
+                component: chartRadarDemo
+            },
+            {
+                path: 'collapse',
+                name: 'Collapse',
+                component: collapseDemo
+            },
+            {
+                path: 'noticeBar',
+                name: 'NoticeBar',
+                component: noticeBarDemo
+            },
+            {
+                path: 'skeleton',
+                name: 'Skeleton',
+                component: skeletonDemo
+            },
+            {
+                path: 'swiper',
+                name: 'Swiper',
+                component: swiperDemo
+            },
+            {
+                path: 'indexBar',
+                name: 'IndexBar',
+                component: indexBarDemo
+            },
+            {
+                path: 'header',
+                name: 'Header',
+                component: headerDemo
             }
         ]
     }

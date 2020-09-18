@@ -101,9 +101,42 @@ const nav = [
             {
                 name: 'Circle',
                 path: '/docs/components/circle'
+            },
+            {
+                name: 'ChartRadar',
+                path: '/docs/components/chartRadar'
+            },
+            {
+                name: 'Collapse',
+                path: '/docs/components/collapse'
+            },
+            {
+                name: 'NoticeBar',
+                path: '/docs/components/noticeBar'
+            },
+            {
+                name: 'Skeleton',
+                path: '/docs/components/skeleton'
+            },
+            {
+                name: 'Swiper',
+                path: '/docs/components/swiper'
             }
         ]
-    }
+    },
+    {
+        name: '导航组件',
+        children: [
+            {
+                name: 'IndexBar',
+                path: '/docs/components/indexBar'
+            },
+            {
+                name: 'Header',
+                path: '/docs/components/header'
+            }
+        ]
+    },
 ]
 
 export default nav
