@@ -1,6 +1,6 @@
 <template>
     <div id="guide">
-        <router-view></router-view>
+        <router-view class="component"></router-view>
         <div :class="`cs-doc-simulator ${platform === 'phone' ? 'cs-doc-phone' : 'cs-doc-pc'}`" ref="simulator">
             <iframe :src="`${origin}#/demo/all`" frameborder="0">
 
@@ -26,6 +26,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
     #guide {
+        width: 100%;
         height: 100%;
         overflow-y: auto;
         display: flex;
