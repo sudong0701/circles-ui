@@ -338,7 +338,7 @@ export default {
                   name: 'fontSize',
                   remake: '字体大小',
                   type: 'Number',
-                  default: "11"
+                  default: "22"
                 },
                 {
                   name: 'isSaveImage',
