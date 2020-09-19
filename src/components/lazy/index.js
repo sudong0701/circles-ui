@@ -15,7 +15,7 @@ csLazy.install = function (Vue) {
                                 observer.unobserve(el)
                             } else {
                                 if(vnode.tag === 'img') {   //图片懒加载
-                                    el.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+                                    el.src = 'data:images/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
                                 }
                             }
                         })
@@ -36,7 +36,7 @@ csLazy.install = function (Vue) {
                                 el.style.backgroundImage = `url(${binding.value})`
                                 observer.unobserve(el)
                             } else {
-                                el.style.backgroundImage = 'url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)'
+                                el.style.backgroundImage = 'url(data:images/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)'
                             }
                         })
                     }

@@ -125,7 +125,6 @@
             line-height: 0.46rem;
         }
         .csCheckbox-content-pointer {
-            cursor: pointer;
         }
         .csCheckbox-line {
             position: absolute;

@@ -8,8 +8,10 @@
         </transition>
         <transition name="animation-fade">
             <div v-if="(type === 'loading' || icon || image) && isShow" class="csToast-box-loading" :style="`background: ${bgColor ? bgColor : ''}`">
-                <div v-if="!icon && !image" class="csToast-icon aniRotate">
-                    <i class="iconfont iconloading"></i>
+                <div v-if="!icon && !image" class="csToast-icon ">
+                    <svg class="load" viewBox="25 25 50 50">
+                        <circle class="loading" cx="50" cy="50" r="20" fill="none" />
+                    </svg>
                 </div>
                 <div v-if="icon" class="csToast-icon">
                     <i :class="`iconfont icon${icon}`"></i>
@@ -118,7 +120,19 @@
             .csToast-icon {
                 margin-top: 0.2rem;
                 text-align: center;
+                .load {
+                    width: 0.9rem;
+                    height: 0.9rem;
+                    animation: rotate 2s linear infinite;
+                }
+                .loading {
+                    stroke: #fff;
+                    stroke-width: 3;
+                    fill: none;
+                    animation: dash 1.5s linear infinite;
+                }
                 i {
+                    display: block;
                     font-size: 0.7rem;
                     color: #fff;
                 }
@@ -151,8 +165,8 @@
         }
         @keyframes fade-in {
             0% {
-                -webkit-transform: scale3d(0, 0, 0);
-                transform: scale3d(0.5, 0.5, 0.5);
+                /*-webkit-transform: scale3d(0, 0, 0);*/
+                /*transform: scale3d(0.5, 0.5, 0.5);*/
                 opacity: 0;
             }
             50% {
@@ -160,8 +174,8 @@
                 animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
             }
             100% {
-                -webkit-transform: scale3d(1, 1, 1);
-                transform: scale3d(1, 1, 1);
+                /*-webkit-transform: scale3d(1, 1, 1);*/
+                /*transform: scale3d(1, 1, 1);*/
                 -webkit-animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
                 animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
                 opacity: 1;
@@ -178,26 +192,26 @@
             }
         }
         //旋转动画
-        .aniRotate {
-            animation-name: aniRotate; /*动画的名称 */
-            animation-duration: 800ms; /*动画从开始到结束的时间*/
-            animation-timing-function: linear; /*动画执行快慢的参数*/
-            animation-iteration-count: infinite; /*动画执行多少次的参数*//*以下是兼容ios所需，参数意义与上相同*/
-            -webkit-animation-name: aniRotate;
-            -webkit-animation-duration: 800ms;
-            -webkit-animation-timing-function: linear;
-            -webkit-animation-iteration-count: infinite;
-        }
-        @keyframes aniRotate {
-            /*开始转的角度*/
-            from {
-                transform: rotate(0deg);
-                -webkit-transform:rotate(0deg);
+        @keyframes dash {
+            0% {
+                stroke-dasharray: 1, 200;
+                stroke-dashoffset: 0;
             }
-            /*结束的角度*/
-            to {
-                transform: rotate(359deg);
-                -webkit-transform:rotate(359deg);
+            50% {
+                stroke-dasharray: 130, 200;
+                stroke-dashoffset: -50;
+            }
+            100% {
+                stroke-dasharray: 130, 200;
+                stroke-dashoffset: -188;
+            }
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
             }
         }
     }

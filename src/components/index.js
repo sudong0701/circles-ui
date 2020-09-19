@@ -4,6 +4,7 @@
  */
 import './global.css'
 import './main.js'
+import Vue from 'vue'
 import csHeader from './header/index.js';   //头部组件
 import csDialog from './dialog/index.js';   //弹出框组件
 import csButton from './button/index.js'
@@ -95,51 +96,51 @@ const install = function(Vue, options) {
         document.documentElement.dataset.theme = options
     }
 
-    Vue.directive('lazy', {    //图片懒加载
-        inserted: function (el, binding, vnode ) {
-            if(typeof IntersectionObserver !== 'undefined') {   //支持IntersectionObserver
-                var observer  = new IntersectionObserver(
-                    function (entries) {
-                        entries.map((item)=> {
-                            if(item.isIntersecting) {
-                                if(vnode.tag === 'img') {   //图片懒加载
-                                    el.src = binding.value
-                                }
-                                observer.unobserve(el)
-                            } else {
-                                if(vnode.tag === 'img') {   //图片懒加载
-                                    el.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
-                                }
-                            }
-                        })
-                    }
-                )
-                observer.observe(el)
-            }
-        }
-    })
-
-    Vue.directive('lazyBGImg', {    //背景图片懒加载
-        inserted: function (el, binding, vnode ) {
-            if(typeof IntersectionObserver !== 'undefined') {   //支持IntersectionObserver
-                var observer  = new IntersectionObserver(
-                    function (entries) {
-                        entries.map((item)=> {
-                            if(item.isIntersecting) {
-                                el.style.backgroundImage = `url(${binding.value})`
-                                observer.unobserve(el)
-                            } else {
-                                el.style.backgroundImage = 'url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)'
-                            }
-                        })
-                    }
-                )
-                observer.observe(el)
-            }
-        }
-    })
-
 }
+
+Vue.directive('lazy', {    //图片懒加载
+    inserted: function (el, binding, vnode ) {
+        if(typeof IntersectionObserver !== 'undefined') {   //支持IntersectionObserver
+            var observer  = new IntersectionObserver(
+                function (entries) {
+                    entries.map((item)=> {
+                        if(item.isIntersecting) {
+                            if(vnode.tag === 'img') {   //图片懒加载
+                                el.src = binding.value
+                            }
+                            observer.unobserve(el)
+                        } else {
+                            if(vnode.tag === 'img') {   //图片懒加载
+                                el.src = 'data:images/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
+                            }
+                        }
+                    })
+                }
+            )
+            observer.observe(el)
+        }
+    }
+})
+
+Vue.directive('lazyBGImg', {    //背景图片懒加载
+    inserted: function (el, binding, vnode ) {
+        if(typeof IntersectionObserver !== 'undefined') {   //支持IntersectionObserver
+            var observer  = new IntersectionObserver(
+                function (entries) {
+                    entries.map((item)=> {
+                        if(item.isIntersecting) {
+                            el.style.backgroundImage = `url(${binding.value})`
+                            observer.unobserve(el)
+                        } else {
+                            el.style.backgroundImage = 'url(data:images/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)'
+                        }
+                    })
+                }
+            )
+            observer.observe(el)
+        }
+    }
+})
 
 if (typeof window !== 'undefined' && window.Vue) {
     install(window.Vue)

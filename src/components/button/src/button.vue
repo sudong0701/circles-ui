@@ -87,7 +87,6 @@
         line-height: 0.88rem;
         text-align: center;
         border-radius: 2px;
-        cursor: pointer;
         -webkit-transition: opacity 0.2s;
         transition: opacity 0.2s;
         -webkit-appearance: none;

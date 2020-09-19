@@ -8,9 +8,9 @@
         data() {
             return {
                 polygon: 3,   //绘制几边形
-                canvasHeight: 300,  //canvas的高度
-                canvasWidth: 300,   //canvas的宽度
-                canvasRadius: 100,   //canvas的半径
+                canvasHeight: 600,  //canvas的高度
+                canvasWidth: 600,   //canvas的宽度
+                canvasRadius: 200,   //canvas的半径
                 xCenter: 0,   //中心点X轴坐标
                 lineWidth: 1,   //连接线的宽度
                 yCenter: 0,   //中心点Y轴坐标
@@ -28,7 +28,7 @@
                 cableColor: '#E8E8E8',   //连接线的颜色
                 fillColor: 'rgba(0, 185, 239, 0.14)',   //闭合区域的颜色
                 fontColor: '#999',   //字体颜色
-                fontSize: 11,   //字体大小
+                fontSize: 22,   //字体大小
                 isSaveImage: true,   //是否保存为图片
                 imageType: 'png'   //保存图片的格式
             }

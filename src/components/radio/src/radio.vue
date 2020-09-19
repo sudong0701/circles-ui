@@ -106,7 +106,6 @@
             margin-left: 0.16rem;
             font-size: 0.3rem;
             color: #323233;
-            cursor: pointer;
             user-select: none;
         }
         .csRadio-content-disabled, .csRadio-icon-disabled {

@@ -4,14 +4,14 @@
             <div class="csTabs-list" ref="csTabsList">
                 <slot :titleActiveColor="titleActiveColor" :titleInactiveColor="titleInactiveColor"></slot>
             </div>
-            <div class="csTabs-list-line" ref="csTabsListLine" :style="`transform: translate(${totalNum_line + rightWidth}px, 0); color: ${active ? titleActiveColor : titleInactiveColor}`"></div>
+            <div class="csTabs-list-line" ref="csTabsListLine" :style="`transform: translate(${totalNum_line + rightWidth}px, 0); background-color: ${titleActiveColor}`"></div>
         </div>
         <div class="csTabs-sticky" ref="csTabs-sticky" v-if="isSticky"></div>
     </div>
 </template>
 
 <script>
-    let startPageX = 0, totalWidth = 0, tabWidthArr = [], moveNum = 0, itemWidth = 0
+    let startPageX = 0, totalWidth = 0, moveNum = 0, itemWidth = 0
     export default {
         name: 'csTabs',
         data() {
@@ -19,7 +19,8 @@
                 transformWidth: 0,
                 isFixed: false,
                 rightWidth: 0,
-                totalNum_line: 0
+                totalNum_line: 0,
+                tabWidthArr: []
             }
         },
         props: {
@@ -41,7 +42,7 @@
             },
             isSticky: {   //是否吸顶
                 type: Boolean,
-                default: true
+                default: false
             },
             type: {
                 type: String,
@@ -68,7 +69,7 @@
              */
             initData() {
                 const line = this.$refs.csTabsListLine, tabs = this.$refs.csTabsList.children, tabsLength = tabs.length > Number(this.swipeThreshold) ? Number(this.swipeThreshold) + 0.5 : tabs.length
-                let totalNum = 0
+                let totalNum = 0, tabWidthArr = []
                 for(let i = 0; i < tabs.length; i++) {
                     tabs[i].__vue__.index = i
                     if(tabs.length > Number(this.swipeThreshold)) {
@@ -86,7 +87,9 @@
                         tabs[i].__vue__.active = true
                     }
                 }
+                this.tabWidthArr = tabWidthArr
                 this.rightWidth = ( itemWidth - 120 / tabsLength) * 0.5
+                this.totalNum_line = this.computedTran(this.active)
                 totalWidth = totalNum - this.$windowInfo.width
                 moveNum = totalWidth / (tabs.length - Number(this.swipeThreshold) - 1)
                 line.style.width = 120 / tabsLength + 'px'
@@ -174,7 +177,7 @@
             computedTran(index) {
                 let totalNum = 0
                 for(let i = 0; i < Number(index); i++) {
-                    totalNum += tabWidthArr[i]
+                    totalNum += this.tabWidthArr[i]
                 }
                 return totalNum
             }
@@ -228,6 +231,7 @@
             position: fixed;
             top: 0;
             left: 0;
+            width: 100%;
         }
     }
 </style>
