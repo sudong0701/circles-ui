@@ -22,6 +22,12 @@ npm i circles-ui --save-dev
  ```
 
 ## 按需引入
+- 首先，安装 babel-plugin-component：
+
+```shell
+cnpm i babel-plugin-component --save-dev
+```
+
 * 更改根目录的.babelrc文件为下面的代码
 ```
 {
