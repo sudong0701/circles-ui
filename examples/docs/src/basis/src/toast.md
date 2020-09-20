@@ -3,7 +3,7 @@
 
 :::card
    ### 按需引入
-   > `按需引入使用Toast时不需要在前面加this.`
+   > 按需引入使用 `Toast` 时不需要在前面加 `this.`
 
    ```js
        import { Toast } from 'circles-ui';

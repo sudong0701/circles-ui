@@ -4,14 +4,16 @@
             <header class="page-header" style="box-shadow: none;">
                 <div class="header-container">
                     <a href="#/" class="router-link-exact-active router-link-active">
-                        <img src="" width="100">
+                        <span>C S</span>
                     </a>
-                    <a href="#/docs/guide/introduce" class="">组件</a>
+                    <a href="#/docs/components/icon" class="">组件</a>
                 </div>
             </header>
             <div class="pg-index page">
                 <div class="index-container">
-                    <img src="">
+                    <div class="avatar">
+                        <span>CircleS</span>
+                    </div>
                     <p>一款仿 Vant-ui 移动端 Vue UI组件库</p>
                 </div>
                 <div class="separate-panel">
@@ -30,13 +32,6 @@
         name: '',
         data() {
             return {
-                isShow: false,
-                isShowCancel: false,
-                isShowRemake: false,
-                isShowDisabled: false,
-                actions: [{ name: '选项一'}, { name: '选项二'}, { name: '选项三'}],
-                actionsRemake: [{ name: '选项一'}, { name: '选项二', remake: '描述信息' }, { name: '选项三'}],
-                actionsDisabled: [{ name: '选项一'}, { name: '选项二', disabled: true }, { name: '选项三'}]
             }
         },
         mounted() {
@@ -85,6 +80,12 @@
                     img {
                         height: 100px;
                     }
+                    span {
+                        font-size: 20px;
+                        background-image:-webkit-linear-gradient(91deg,#f1eefc,#9dc6ff 70%,#a5bcff);
+                        -webkit-background-clip:text;
+                        -webkit-text-fill-color:transparent;
+                    }
                 }
             }
         }
@@ -94,6 +95,19 @@
                 margin: 0 auto;
                 text-align: center;
                 padding: 100px 0;
+                .avatar {
+                    height: 300px;
+                    width: 600px;
+                    margin: 0 auto;
+                    span {
+                        font-family: 'Tangerine', serif;
+                        font-size: 150px;
+                        background-image:-webkit-linear-gradient(91deg,#f1eefc,#9dc6ff 70%,#a5bcff);
+                        -webkit-background-clip:text;
+                        -webkit-text-fill-color:transparent;
+                        line-height: 300px;
+                    }
+                }
                 img {
                     height: 300px;
                     width: 300px;

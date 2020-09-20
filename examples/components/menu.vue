@@ -5,6 +5,7 @@
                 :unique-opened="true"
                 :default-active="defaultActive"
                 :router="true"
+                text-color="#666"
         >
             <el-submenu :index="`${index}`" v-for="(list, index) in nav" :key="index">
                 <template slot="title">
@@ -14,14 +15,6 @@
                     <el-menu-item v-for="(item, key) in list.children" :key="key" :index="item.path">{{item.name}}</el-menu-item>
                 </el-menu-item-group>
             </el-submenu>
-            <!--<el-submenu index="2">-->
-                <!--<template slot="title">-->
-                    <!--<span>通用模块</span>-->
-                <!--</template>-->
-                <!--<el-menu-item-group>-->
-                    <!--<el-menu-item index="/docs/popup">Popup</el-menu-item>-->
-                <!--</el-menu-item-group>-->
-            <!--</el-submenu>-->
         </el-menu>
     </div>
 </template>

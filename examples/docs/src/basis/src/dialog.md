@@ -3,6 +3,7 @@
 
 :::card
    ### 按需引入(函数调用)
+   > 此时使用 `Dialog` 时不需要在前面加 `this.`
 
    ```js
        import { Dialog } from 'circles-ui';
