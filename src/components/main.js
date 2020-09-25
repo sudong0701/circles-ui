@@ -95,9 +95,9 @@
                   --disabledColor: #ebedf0;
                 }
             `
-            script.src = '//at.alicdn.com/t/font_1665721_rljtpy8bxgg.js'
+            script.src = '//at.alicdn.com/t/font_1665721_c349zj9aaqh.js'
             script.type = 'text/javascript'
-            css.href = '//at.alicdn.com/t/font_1665721_rljtpy8bxgg.css'
+            css.href = '//at.alicdn.com/t/font_1665721_c349zj9aaqh.css'
             css.rel = 'stylesheet'
             html.appendChild(css)
             html.appendChild(style)
