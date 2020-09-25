@@ -71,7 +71,6 @@
                 if(this.maxlength) {
                     if(this.selfValue.length > this.maxlength) {
                         this.selfValue = this.selfValue.slice(0, this.maxlength)
-                        console.log(this.selfValue)
                     }
                 }
                 this.$nextTick(()=> {
