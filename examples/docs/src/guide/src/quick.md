@@ -18,13 +18,20 @@ npm i circles-ui --save-dev
 - 在main.js里新增以下代码
 ```js
 import csUI from 'circles-ui'
-import 'circles-ui/packages/theme-default/lib/index.min.css'
+import 'circles-ui/lib/theme/index.css'
+
 Vue.use(csUI)
 ```
 :::
 
 :::card
 ## 按需引入
+- 首先，安装 babel-plugin-component：
+
+```shell
+cnpm i babel-plugin-component --save-dev
+```
+
 - 更改根目录的.babelrc文件为下面的代码
 ```js
 {

@@ -1,7 +1,7 @@
 
 # circles-ui
 
-> 仿Vant-ui移动端Vue UI组件库(circle star)。新版绚丽的文档制作中，敬请期待ing....，[传送门](https://sudong0701.github.io/circles-UI-docs/#/)
+> 仿Vant-ui移动端Vue UI组件库(circle star)。新版绚丽的文档制作中，敬请期待ing....，[传送门](https://sudong0701.github.io/circles-ui/#/)
 
 # 快速上手
 
@@ -22,6 +22,12 @@ npm i circles-ui --save-dev
  ```
 
 ## 按需引入
+- 首先，安装 babel-plugin-component：
+
+```shell
+cnpm i babel-plugin-component --save-dev
+```
+
 * 更改根目录的.babelrc文件为下面的代码
 ```
 {

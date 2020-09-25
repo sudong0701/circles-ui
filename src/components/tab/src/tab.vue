@@ -51,6 +51,7 @@
         flex: 1;
         padding: 0 0.1rem;
         border-bottom: 0.02rem solid #f4f4f4;
+        user-select: none;
         >p {
             transition: color 0.3s;
             -webkit-transition: color 0.3s;

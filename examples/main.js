@@ -11,6 +11,13 @@ import csUI from '../src/components/index.js'
 //import '../lib/theme/index.css';
 Vue.use(csUI)
 
+
+if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+    Vue.prototype.platform = 'phone'
+}else {
+    Vue.prototype.platform = 'PC'
+}
+
 // 引入demo-block
 import DemoBlock from './components/demoBlock'
 Vue.component('demo-block', DemoBlock)

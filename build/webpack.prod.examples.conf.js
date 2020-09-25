@@ -13,7 +13,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 // 判断参数是打包examples,设置output出口为dist
 if (process.argv[2] === 'examples') {
-    config.build.assetsRoot = path.resolve(__dirname, '../dist')
+    config.build.assetsRoot = path.resolve(__dirname, '../docs')
 }
 
 const env = require('../config/prod.env')

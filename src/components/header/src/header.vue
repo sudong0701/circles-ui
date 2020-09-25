@@ -103,6 +103,7 @@
             position: absolute;
             left: 0; top: 0;
             height: 100%;
+            cursor: pointer;
             .cs-header-leftBox{
                 margin-left: 0.2rem;
                 display: flex;
@@ -110,7 +111,6 @@
                 align-items: center;
                 height: 100%;
                 padding: 0 0.3rem 0 0.1rem;
-                cursor: pointer;
                 .cs-header-leftImg{
                     font-size: 0.5rem;
                 }
@@ -128,6 +128,7 @@
             padding: 0 0.3rem;
             right: 0; top: 0;
             height: 100%;
+            cursor: pointer;
             .cs-header-rightImg{
                 font-size: 0.44rem;
             }

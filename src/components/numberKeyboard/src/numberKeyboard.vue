@@ -262,8 +262,6 @@
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            cursor: pointer;
-            user-select: none;
             .cs-numberKeyboard-default {
                 flex: 1;
                 display: flex;
@@ -281,6 +279,8 @@
                         justify-content: center;
                         border-radius: 0.16rem;
                         background-color: #fff;
+                        overflow: hidden;
+                        user-select: none;
                         >span {
                             font-size: 0.56rem;
                         }

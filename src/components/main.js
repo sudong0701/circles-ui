@@ -48,6 +48,7 @@
                 docEl.removeChild(fakeBody)
             }
         }
+
         flexible(window, document)
 
         //使用阿里巴巴矢量库

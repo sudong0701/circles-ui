@@ -1,6 +1,6 @@
 <template>
     <div id="demo">
-        <cs-header :title="title" leftIcon></cs-header>
+        <cs-header :title="title | filterTitle" @left="left"></cs-header>
         <router-view></router-view>
     </div>
 </template>
@@ -17,8 +17,26 @@
         },
         beforeRouteEnter(to, from, next) {
             next( vm => {
-                vm.title = to.name
+                if(to.name === 'all') {
+                    vm.title = 'CircleS-UI'
+                } else {
+                    vm.title = to.name
+                }
             })
+        },
+        methods: {
+            left() {
+                this.$router.go(-1)
+            }
+        },
+        filters: {
+          filterTitle (val) {
+              if(val === 'all') {
+                  return 'CircleS-UI'
+              } else {
+                  return val
+              }
+          }
         },
         watch: {
             $route: {

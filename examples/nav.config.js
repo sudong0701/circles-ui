@@ -121,6 +121,10 @@ const nav = [
             {
                 name: 'Swiper',
                 path: '/docs/components/swiper'
+            },
+            {
+                name: 'Lazy',
+                path: '/docs/components/lazy'
             }
         ]
     },
@@ -134,6 +138,14 @@ const nav = [
             {
                 name: 'Header',
                 path: '/docs/components/header'
+            },
+            {
+                name: 'Tab',
+                path: '/docs/components/tab'
+            },
+            {
+                name: 'Tabbar',
+                path: '/docs/components/tabbar'
             }
         ]
     },

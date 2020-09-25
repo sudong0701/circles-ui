@@ -40,13 +40,17 @@ import collapse from './docs/src/basis/src/collapse.md'
 import noticeBar from './docs/src/basis/src/noticeBar.md'
 import skeleton from './docs/src/basis/src/skeleton.md'
 import swiper from './docs/src/basis/src/swiper.md'
+import lazy from './docs/src/basis/src/lazy.md'
 
 //导航组件
 import indexBar from './docs/src/basis/src/indexBar.md'
 import header from './docs/src/basis/src/header.md'
+import tab from './docs/src/basis/src/tab.md'
+import tabbar from './docs/src/basis/src/tabbar.md'
 
 //演示页面
 import demo from './demo/index.vue'
+import all from './demo/src/all.vue'
 import popupDemo from './demo/src/popup.vue'
 import buttonDemo from './demo/src/button.vue'
 import toastDemo from './demo/src/toast.vue'
@@ -70,6 +74,9 @@ import skeletonDemo from './demo/src/skeleton.vue'
 import swiperDemo from './demo/src/swiper.vue'
 import indexBarDemo from './demo/src/indexBar.vue'
 import headerDemo from './demo/src/header.vue'
+import tabDemo from './demo/src/tab.vue'
+import tabbarDemo from './demo/src/tabbar.vue'
+import lazyDemo from './demo/src/lazy.vue'
 
 
 const routes = [
@@ -235,6 +242,21 @@ const routes = [
                       path: 'header',
                       name: 'header',
                       component: header
+                  },
+                  {
+                      path: 'tab',
+                      name: 'tab',
+                      component: tab
+                  },
+                  {
+                      path: 'tabbar',
+                      name: 'tabbar',
+                      component: tabbar
+                  },
+                  {
+                      path: 'lazy',
+                      name: 'lazy',
+                      component: lazy
                   }
               ]
           }
@@ -246,6 +268,11 @@ const routes = [
         name: 'demo',
         component: demo,
         children: [
+            {
+                path: 'all',
+                name: 'all',
+                component: all
+            },
             {
                 path: 'popup',
                 name: 'Popup',
@@ -323,7 +350,7 @@ const routes = [
             },
             {
                 path: 'circle',
-                name: 'circle',
+                name: 'Circle',
                 component: circleDemo
             },
             {
@@ -360,6 +387,21 @@ const routes = [
                 path: 'header',
                 name: 'Header',
                 component: headerDemo
+            },
+            {
+                path: 'tab',
+                name: 'Tab',
+                component: tabDemo
+            },
+            {
+                path: 'tabbar',
+                name: 'Tabbar',
+                component: tabbarDemo
+            },
+            {
+                path: 'lazy',
+                name: 'Lazy',
+                component: lazyDemo
             }
         ]
     }

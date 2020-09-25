@@ -57,6 +57,7 @@
         font-size: 0.24rem;
         color: #646566;
         transition: color .2s;
+        user-select: none;
         .csTabbarItem_icon {
             position: relative;
             min-width: 0.38rem;

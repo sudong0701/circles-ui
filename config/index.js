@@ -6,15 +6,15 @@ const path = require('path')
 
 module.exports = {
     dev: {
-        env: require('./dev_env'),
+        env: require('./dev.env'),
         // Paths
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
         proxyTable: {},
 
         // Various Dev Server settings
-        host: 'localhost', // can be overwritten by process.env.HOST
-        port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+        host: '192.168.0.108', // can be overwritten by process.env.HOST
+        port: 9215, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
         autoOpenBrowser: false,
         errorOverlay: true,
         notifyOnErrors: true,
@@ -41,7 +41,7 @@ module.exports = {
         index: path.resolve(__dirname, '../dist/index.html'),
 
         // Paths
-        assetsRoot: path.resolve(__dirname, '../dist'),
+        assetsRoot: path.resolve(__dirname, '../lib'),
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
 

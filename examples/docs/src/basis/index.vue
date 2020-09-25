@@ -1,7 +1,7 @@
 <template>
     <div id="basis">
         <router-view class="component"></router-view>
-        <div class="cs-doc-simulator" ref="simulator">
+        <div :class="`cs-doc-simulator ${platform === 'phone' ? 'cs-doc-phone' : ''}`" ref="simulator">
             <iframe :src="`${origin}${path}`" frameborder="0">
 
             </iframe>
@@ -57,7 +57,6 @@
             box-sizing: border-box;
             width: 375px;
             height: 667px;
-            min-width: 360px;
             overflow: hidden;
             background: #fafafa;
             border-radius: 12px;
@@ -66,8 +65,16 @@
             >iframe {
                 display: block;
                 width: 100%;
-                height: 667px;
+                height: 100%;
             }
+        }
+        .cs-doc-phone {
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            z-index: 99;
         }
     }
 </style>

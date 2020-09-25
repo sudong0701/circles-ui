@@ -160,13 +160,13 @@
             transform: translateY(-50%);
             font-size: 0.24rem;
             text-align: center;
-            cursor: pointer;
             user-select: none;
             >span {
                 font-size: 0.24rem;
             }
             .csIndexBarActive {
                 color: var(--color);
+                cursor: pointer;
             }
         }
         .csIndexBar_tip {
