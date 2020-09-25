@@ -156,7 +156,44 @@
         }
     }
    ```
-:::   
+:::
+
+:::card
+### 配置安全键盘
+> 将 `isShuffle` 设置为 `true` 即可配置安全键盘，适用于输入密码情况。
+
+```html
+     <cs-button type="primary" text="配置安全键盘" @click="showKeyboardUpset"></cs-button>
+
+    <csNumberKeyboard title="配置安全键盘" :show="isShowKeyboardUpset" isShuffle v-model="keyboardValue"
+    @blur="keyboardBlurUpset" @input="keyboardInput"></csNumberKeyboard>
+   ```
+   ```js
+    export default {
+        name: '',
+        data() {
+            return {
+                isShowKeyboardUpset: false,
+                keyboardValue: ''
+            }
+        },
+        methods: {
+            showKeyboardUpset() {
+                this.isShowKeyboardUpset = true
+            },
+            keyboardBlurUpset() {
+                this.isShowKeyboardUpset = false
+            },
+            keyboardInput(e) {
+                this.Toast({
+                    content: `当前输入值${e}`
+                })
+            }
+        }
+    }
+   ```
+:::
+
 ## API
 
 :::card

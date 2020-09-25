@@ -84,57 +84,9 @@
         },
         mounted() {
             this.maxlengthComponent = parseInt(this.maxlength)
-            let defaultKeyboardData = this.isShuffle ? [1,2,3,4,5,6,7,8,9,0].shuffle() : [1,2,3,4,5,6,7,8,9,0], keyboardData = []
-            if(this.extraKey === '') {   //普通键盘
-                defaultKeyboardData.map((item, key)=> {
-                    keyboardData.push({
-                        isShow: true,
-                        value: item
-                    })
-                    if(key === 8) {
-                        keyboardData.push({isShow: false, value: 'collapse'})
-                    } else if(key === 9) {
-                        keyboardData.push({isShow: false, value: 'delete'})
-                    }
-                })
-                this.keyboardData = keyboardData
-            } else if(this.extraKey === '.') {   //带有右侧栏的键盘
-                defaultKeyboardData.map((item, key)=> {
-                    keyboardData.push({
-                        isShow: true,
-                        value: item
-                    })
-                    if(key === 9) {
-                        keyboardData.push({isShow: true, value: '.'})
-                    }
-                })
-                this.keyboardData = keyboardData
-            } else if(this.extraKey === 'X') {   //配置带有身份证号的键盘
-                defaultKeyboardData.map((item, key)=> {
-                    keyboardData.push({
-                        isShow: true,
-                        value: item
-                    })
-                    if(key === 8) {
-                        keyboardData.push({isShow: true, value: 'X'})
-                    } else if(key === 9) {
-                        keyboardData.push({isShow: false, value: 'delete'})
-                    }
-                })
-                this.keyboardData = keyboardData
-            } else if(this.extraKey instanceof Array) {
-                defaultKeyboardData.map((item, key)=> {
-                    keyboardData.push({
-                        isShow: true,
-                        value: item
-                    })
-                    if(key === 8) {
-                        keyboardData.push({isShow: true, value: this.extraKey[0]})
-                    } else if(key === 9 && this.extraKey.length === 2) {
-                        keyboardData.push({isShow: true, value: this.extraKey[1]})
-                    }
-                })
-                this.keyboardData = keyboardData
+            let defaultKeyboardData = [1,2,3,4,5,6,7,8,9,0]
+            if(!this.isShuffle) {
+                this.producedKeyboardData(defaultKeyboardData)
             }
             this.isKeyArray = this.extraKey instanceof Array
         },
@@ -159,6 +111,65 @@
              */
             blur() {
                 this.$emit('blur')    //点击隐藏密码时触发
+            },
+            /**
+             生成键盘的数据
+             @param {Array} defaultKeyboardData 1-9的数组数据
+             @return
+             */
+            producedKeyboardData(defaultKeyboardData) {
+                let keyboardData = []
+                if(this.extraKey === '') {   //普通键盘
+                    defaultKeyboardData.map((item, key)=> {
+                        keyboardData.push({
+                            isShow: true,
+                            value: item
+                        })
+                        if(key === 8) {
+                            keyboardData.push({isShow: false, value: 'collapse'})
+                        } else if(key === 9) {
+                            keyboardData.push({isShow: false, value: 'delete'})
+                        }
+                    })
+                    this.keyboardData = keyboardData
+                } else if(this.extraKey === '.') {   //带有右侧栏的键盘
+                    defaultKeyboardData.map((item, key)=> {
+                        keyboardData.push({
+                            isShow: true,
+                            value: item
+                        })
+                        if(key === 9) {
+                            keyboardData.push({isShow: true, value: '.'})
+                        }
+                    })
+                    this.keyboardData = keyboardData
+                } else if(this.extraKey === 'X') {   //配置带有身份证号的键盘
+                    defaultKeyboardData.map((item, key)=> {
+                        keyboardData.push({
+                            isShow: true,
+                            value: item
+                        })
+                        if(key === 8) {
+                            keyboardData.push({isShow: true, value: 'X'})
+                        } else if(key === 9) {
+                            keyboardData.push({isShow: false, value: 'delete'})
+                        }
+                    })
+                    this.keyboardData = keyboardData
+                } else if(this.extraKey instanceof Array) {
+                    defaultKeyboardData.map((item, key)=> {
+                        keyboardData.push({
+                            isShow: true,
+                            value: item
+                        })
+                        if(key === 8) {
+                            keyboardData.push({isShow: true, value: this.extraKey[0]})
+                        } else if(key === 9 && this.extraKey.length === 2) {
+                            keyboardData.push({isShow: true, value: this.extraKey[1]})
+                        }
+                    })
+                    this.keyboardData = keyboardData
+                }
             },
             /**
              点击删除按钮触发的事件
@@ -194,6 +205,10 @@
         watch: {
             show(show) {
                 if(show) {
+                    if(this.isShuffle) {
+                        let defaultKeyboardData = [1,2,3,4,5,6,7,8,9,0].shuffle()
+                        this.producedKeyboardData(defaultKeyboardData)
+                    }
                     setTimeout(()=> {
                         let vm = this
                         if(this.hideOnclickOutside) {
