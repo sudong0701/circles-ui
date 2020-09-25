@@ -82,9 +82,16 @@
              */
             clickCollapseItem() {
                 this.$refs.collapseItem.style.transitionDuration = '0.3s'
-                this.isUnfold = !this.isUnfold
-                this.$emit('change', this.isUnfold)   //面板显隐改变时触发
-                this.$refs.collapseItem.parentNode.__vue__.changeActive(this.name, this.isUnfold)
+                this.cellHeight = this.$refs.collapseItemCell.clientHeight
+                this.contentHeight = this.$refs.collapseItemContent.clientHeight
+                if(this.isUnfold) {
+                    this.$refs.collapseItem.style.height = `${this.$refs.collapseItemCell.clientHeight + this.$refs.collapseItemContent.clientHeight}px`
+                }
+                setTimeout(()=> {
+                    this.isUnfold = !this.isUnfold
+                    this.$emit('change', this.isUnfold)   //面板显隐改变时触发
+                    this.$refs.collapseItem.parentNode.__vue__.changeActive(this.name, this.isUnfold)
+                })
             },
             /**
              动画结束时触发
@@ -94,8 +101,10 @@
             animationEnd(e) {
                 if(this.isUnfold) {
                     this.$emit('showed')   //面板完全显示时触发
+                    this.$refs.collapseItem.style.height = ''
                 } else {
                     this.$emit('hided')   //面板完全隐藏时触发
+                    this.$refs.collapseItem.style.height = `${this.cellHeight}px`
                 }
                 e.preventDefault()
                 e.stopPropagation()
@@ -110,6 +119,7 @@
         transition-property: height;
         transition-duration: 0s;
         overflow-y: hidden;
+        will-change: height;
         .csCollapseItem-cell {
             position: relative;
             display: flex;
