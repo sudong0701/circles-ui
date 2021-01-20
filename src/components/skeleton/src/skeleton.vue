@@ -103,7 +103,7 @@
                 background-color: #f2f3f5;
             }
         }
-        //旋转动画
+        //闪烁动画
         .csSkeleton-flashing {
             animation-name: flashing; /*动画的名称 */
             animation-duration: 1400ms; /*动画从开始到结束的时间*/

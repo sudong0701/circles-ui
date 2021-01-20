@@ -104,7 +104,7 @@
              @param
              @return
              */
-            initData() {
+            initData() {   //FIXME
                 const minYear = new Date(this.minDate).getFullYear()
                 const maxYear = new Date(this.maxDate).getFullYear()
                 const minMonth = new Date(this.minDate).getMonth() + 1
