@@ -110,6 +110,10 @@
                 }
             }
         },
+        beforeDestroy() {
+            clearInterval(this.swipeTimer)
+            this.swipeTimer = null
+        },
         methods: {
             /**
              设置当前的下标
