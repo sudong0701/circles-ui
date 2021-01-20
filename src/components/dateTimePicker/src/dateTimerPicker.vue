@@ -403,39 +403,39 @@
                                             secondObj.num = minSecond
                                             secondObj.values = this.getValues(minSecond, 59)
                                         } else {
-                                            secondObj.num = 1
+                                            secondObj.num = 0
                                             secondObj.values = this.getValues(0, 59)
                                         }
                                     } else {
-                                        minuteObj.num = 1
+                                        minuteObj.num = 0
                                         minuteObj.values = this.getValues(0, 59)
-                                        secondObj.num = 1
+                                        secondObj.num = 0
                                         secondObj.values = this.getValues(0, 59)
                                     }
                                 } else {
-                                    hourObj.num = 1
+                                    hourObj.num = 0
                                     hourObj.values = this.getValues(0, 23)
-                                    minuteObj.num = 1
+                                    minuteObj.num = 0
                                     minuteObj.values = this.getValues(0, 59)
-                                    secondObj.num = 1
+                                    secondObj.num = 0
                                     secondObj.values = this.getValues(0, 59)
                                 }
                             } else {
                                 dayObj.num = 1
                                 dayObj.values = this.getValues(1,this.getCountDays(yearValue, monthValue))
-                                hourObj.num = 1
+                                hourObj.num = 0
                                 hourObj.values = this.getValues(0, 23)
-                                minuteObj.num = 1
+                                minuteObj.num = 0
                                 minuteObj.values = this.getValues(0, 59)
-                                secondObj.num = 1
+                                secondObj.num = 0
                                 secondObj.values = this.getValues(0, 59)
                             }
                         } else if(yearValue == maxYear) {
                             monthObj.num = 1
                             dayObj.num = 1
-                            hourObj.num = 1
-                            minuteObj.num = 1
-                            secondObj.num = 1
+                            hourObj.num = 0
+                            minuteObj.num = 0
+                            secondObj.num = 0
                             monthObj.values = this.getValues(1, maxMonth)
                             if(monthValue == maxMonth) {
                                 dayObj.values = this.getValues(1, maxDay)
@@ -501,6 +501,8 @@
                         this.selectArr = [yearValue, monthValue, dayValue, hourValue, minuteValue, secondValue]
                     }
                 }
+                console.log(this.columns)
+                console.log(this.selectArr)
             },
             /**
              根据选择变化选项
