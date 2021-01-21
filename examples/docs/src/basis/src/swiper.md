@@ -19,7 +19,7 @@
 
 :::card
 ### 基础用法
-> 每个 SwipeItem 代表一张轮播卡片，可以通过 `interval` 属性设置自动轮播的间隔。
+> 每个 SwiperItem 代表一张轮播卡片，可以通过 `interval` 属性设置自动轮播的间隔，csSwiper的父类容器需要声明宽度。
 
    ```html
     <csSwiper :interval="3000">
