@@ -92,7 +92,7 @@
             //横向
             if (!this.vertical) {
                 this.clientNum = csSwipe.clientWidth
-                this.$refs.csSwipe.style.width = `${csSwipe_box.clientWidth}px`
+                //this.$refs.csSwipe.style.width = `${csSwipe_box.clientWidth}px`
                 csSwipe_box.style['flex-direction'] = 'row'
                 csSwipe_box.style.width = `${this.clientNum * this.csSwipeNum}px`
                 csSwipe_box.style.height = `${100}%`
