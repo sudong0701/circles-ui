@@ -113,9 +113,10 @@
             >img {
                 height: 0.4rem;
                 width: 0.4rem;
+                margin-right: 0.08rem;
             }
             >span {
-                margin-left: 0.1rem;
+                //margin-left: 0.1rem;
             }
         }
     }

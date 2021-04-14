@@ -106,6 +106,7 @@
                         -webkit-background-clip:text;
                         -webkit-text-fill-color:transparent;
                         line-height: 300px;
+                        font-weight: bold;
                     }
                 }
                 img {
