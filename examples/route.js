@@ -27,6 +27,7 @@ import picker from './docs/src/basis/src/picker.md'
 import radio from './docs/src/basis/src/radio.md'
 import stepper from './docs/src/basis/src/stepper.md'
 import csSwitch from './docs/src/basis/src/switch.md'
+import field from './docs/src/basis/src/field.md'
 
 //反馈组件
 import actionSheet from './docs/src/basis/src/actionSheet.md'
@@ -63,6 +64,7 @@ import pickerDemo from './demo/src/picker.vue'
 import radioDemo from './demo/src/radio.vue'
 import stepperDemo from './demo/src/stepper.vue'
 import csSwitchDemo from './demo/src/switch.vue'
+import fieldDemo from './demo/src/field.vue'
 import actionSheetDemo from './demo/src/actionSheet.vue'
 import dialogDemo from './demo/src/dialog.vue'
 import swipeCellDemo from './demo/src/swipeCell.vue'
@@ -188,6 +190,11 @@ const routes = [
                       name: 'switch',
                       component: csSwitch
                   },
+                  {
+                    path: 'field',
+                    name: 'field',
+                    component: field
+                },
                   {
                       path: 'actionSheet',
                       name: 'actionSheet',
@@ -332,6 +339,11 @@ const routes = [
                 path: 'switch',
                 name: 'Switch',
                 component: csSwitchDemo
+            },
+            {
+                path: 'field',
+                name: 'Field',
+                component: fieldDemo
             },
             {
                 path: 'actionSheet',

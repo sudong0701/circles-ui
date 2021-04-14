@@ -75,6 +75,10 @@ const nav = [
             {
                 name: 'Switch',
                 path: '/docs/components/switch'
+            },
+            {
+                name: 'Field',
+                path: '/docs/components/field'
             }
         ]
     },
