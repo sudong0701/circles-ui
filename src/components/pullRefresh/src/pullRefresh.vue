@@ -94,7 +94,7 @@
                     t.$emit('bindscroll', arguments[0])
                     if(!isScroll) {
                         isScroll = true
-                        fnc(t, arguments, ()=> {
+                        fnc.call(this, arguments, ()=> {
                             isScroll = false
                         })
                     }
@@ -107,20 +107,21 @@
              @param {function} fnc 回调函数
              @return
              */
-            scroll(t, e, fnc) {
+            scroll(e, fnc) {
                 const csPullRefreshParent = this.$refs.csPullRefresh.parentNode
+
                 let scrollHeight = csPullRefreshParent.scrollHeight
                 let clientHeight = csPullRefreshParent.clientHeight
                 let scrollTop = csPullRefreshParent.scrollTop
                 if(scrollTop === 0) {
 
                 }
-                if(scrollTop + clientHeight + t.lower >= scrollHeight) {
+                if(scrollTop + clientHeight + this.lower >= scrollHeight) {
                     //是否节流
-                    if(t.isThrottling) {
-                        t.$emit('scrolltolower', fnc)
+                    if(this.isThrottling) {
+                        this.$emit('scrolltolower', fnc)
                     } else {
-                        t.$emit('scrolltolower')
+                        this.$emit('scrolltolower')
                         fnc()
                     }
                 } else {
@@ -134,7 +135,12 @@
              @return
              */
             touchStart(e) {
-                startPageY = e.targetTouches[0].pageY
+                console.log(e)
+                const csPullRefresh = this.$refs.csPullRefresh
+                console.log(csPullRefresh.parentNode.scrollTop)
+                if(csPullRefresh.parentNode.scrollTop === 0) {
+                    startPageY = e.targetTouches[0].pageY
+                }
                 e.stopPropagation()
             },
             /**
@@ -143,24 +149,27 @@
              @return
              */
             touchMove(e) {
-                if(this.isPullRefresh) {
+                if(this.isPullRefresh && startPageY !== null) {
                     const csPullRefresh = this.$refs.csPullRefresh
                     //只有在元素到达顶部时下拉才会有效果
                     if(csPullRefresh.parentNode.scrollTop === 0) {
+                        let  pageNum = this.springFnc(e.targetTouches[0].pageY - startPageY, this.maxMoveDistance)
                         //禁止上拉事件
-                        if(e.targetTouches[0].pageY - startPageY < 0) {
+                        if(pageNum < 0) {
                             return
                         }
                         e.preventDefault()
                         if(this.pullRefreshStatus === 'pull' || this.pullRefreshStatus === 'loos') {
-                            if(e.targetTouches[0].pageY - startPageY > this.headHeight) {
+                            if(pageNum > this.headHeight) {
                                 this.pullRefreshStatus = 'loos'
                             } else {
                                 this.pullRefreshStatus = 'pull'
                             }
                             const csPullRefreshTrack = this.$refs['cs-pullRefresh-track']
                             csPullRefreshTrack.style.transition = "-webkit-transform 0 ease-out";
-                            const moveDistance = (e.targetTouches[0].pageY - startPageY) > this.maxMoveDistance ? this.maxMoveDistance : e.targetTouches[0].pageY - startPageY
+                            
+                            const moveDistance = (pageNum) > this.maxMoveDistance ? this.maxMoveDistance : pageNum
+                            console.log(moveDistance)
                             csPullRefreshTrack.style.webkitTransform = `translate(0, ${moveDistance}px)`;
                         }
                     }
@@ -189,6 +198,28 @@
                         }
                     }
                 }
+                startPageY = null
+            },
+            /**
+             下拉的弹框效果算法
+             @param {Number} val 当前的值
+             @param {Number} max 范围
+             @return {Number} 弹框算法计算的数值
+             */
+            springFnc(val, max) {
+                let num = 0
+                for(let i = 1; i < 10; i++) {
+                    if(val > max * i / 10) {
+                        num+=max * (11 - i) / 100
+                    } else {
+                        num+=(val - max * (i - 1) / 10) * (11 - i) / 10
+                        break
+                    }
+                }
+                if(val > max) {
+                    num+=(val-max)/10
+                }
+                return num
             }
         },
         watch: {
