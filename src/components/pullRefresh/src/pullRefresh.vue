@@ -109,13 +109,9 @@
              */
             scroll(e, fnc) {
                 const csPullRefreshParent = this.$refs.csPullRefresh.parentNode
-
                 let scrollHeight = csPullRefreshParent.scrollHeight
                 let clientHeight = csPullRefreshParent.clientHeight
                 let scrollTop = csPullRefreshParent.scrollTop
-                if(scrollTop === 0) {
-
-                }
                 if(scrollTop + clientHeight + this.lower >= scrollHeight) {
                     //是否节流
                     if(this.isThrottling) {
@@ -135,9 +131,7 @@
              @return
              */
             touchStart(e) {
-                console.log(e)
                 const csPullRefresh = this.$refs.csPullRefresh
-                console.log(csPullRefresh.parentNode.scrollTop)
                 if(csPullRefresh.parentNode.scrollTop === 0) {
                     startPageY = e.targetTouches[0].pageY
                 }
@@ -152,7 +146,7 @@
                 if(this.isPullRefresh && startPageY !== null) {
                     const csPullRefresh = this.$refs.csPullRefresh
                     //只有在元素到达顶部时下拉才会有效果
-                    if(csPullRefresh.parentNode.scrollTop === 0) {
+                    if(csPullRefresh && csPullRefresh.parentNode.scrollTop === 0) {
                         let  pageNum = this.springFnc(e.targetTouches[0].pageY - startPageY, this.maxMoveDistance)
                         //禁止上拉事件
                         if(pageNum < 0) {
@@ -169,7 +163,6 @@
                             csPullRefreshTrack.style.transition = "-webkit-transform 0 ease-out";
                             
                             const moveDistance = (pageNum) > this.maxMoveDistance ? this.maxMoveDistance : pageNum
-                            console.log(moveDistance)
                             csPullRefreshTrack.style.webkitTransform = `translate(0, ${moveDistance}px)`;
                         }
                     }
