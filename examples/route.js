@@ -33,6 +33,7 @@ import field from './docs/src/basis/src/field.md'
 import actionSheet from './docs/src/basis/src/actionSheet.md'
 import dialog from './docs/src/basis/src/dialog.md'
 import swipeCell from './docs/src/basis/src/swipeCell.md'
+import pullRefresh from './docs/src/basis/src/pullRefresh.md'
 
 //展示组件
 import circle from './docs/src/basis/src/circle.md'
@@ -79,6 +80,7 @@ import headerDemo from './demo/src/header.vue'
 import tabDemo from './demo/src/tab.vue'
 import tabbarDemo from './demo/src/tabbar.vue'
 import lazyDemo from './demo/src/lazy.vue'
+import pullRefreshDemo from './demo/src/pullRefresh.vue'
 
 
 const routes = [
@@ -264,6 +266,11 @@ const routes = [
                       path: 'lazy',
                       name: 'lazy',
                       component: lazy
+                  },
+                  {
+                    path: 'pullRefresh',
+                    name: 'pullRefresh',
+                    component: pullRefresh
                   }
               ]
           }
@@ -414,6 +421,11 @@ const routes = [
                 path: 'lazy',
                 name: 'Lazy',
                 component: lazyDemo
+            },
+            {
+                path: 'pullRefresh',
+                name: 'PullRefresh',
+                component: pullRefreshDemo
             }
         ]
     }

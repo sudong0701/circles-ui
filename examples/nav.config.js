@@ -96,6 +96,10 @@ const nav = [
             {
                 name: 'SwipeCell',
                 path: '/docs/components/swipeCell'
+            },
+            {
+                name: 'PullRefresh',
+                path: '/docs/components/pullRefresh'
             }
         ]
     },
