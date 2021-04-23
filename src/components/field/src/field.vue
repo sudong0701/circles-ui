@@ -47,7 +47,7 @@ export default {
         },
         type: {   //输入框类型
             type: String,
-            default: 'text'   //text、decimal、number
+            default: 'text'   //text、positive、number
         },
         maxlength: {   //最大长度
             type: Number | String,
@@ -117,7 +117,7 @@ export default {
          * @return {Boolean} 是否显示报错信息
          */
         isShowError() {
-            if(this.isShowEmptyErrMessage) {
+            if (this.isShowEmptyErrMessage) {
                 return this.isError
             } else {
                 return this.isError && Boolean(this.selfValue)
@@ -163,14 +163,12 @@ export default {
          */
         oninput(e) {
             this.$emit('input', e)
+            let selfValue
             switch (this.type) {
-                //数字 支持小数
-                case 'decimal':
-                    //如果保留位数为0 则为整数
-                    let selfValue
-                    if (this.toFixed == 0) {
+                case 'positive':   //正数(不允许负数)
+                    if (this.toFixed == 0) {   //正整数(不支持小数)
                         selfValue = this.selfValue.replace(/[^\d]/g, '')   //过滤非数字
-                    } else if (this.toFixed >= 0) {
+                    } else if(this.toFixed > 0) {   //正数(支持小数)
                         selfValue = this.selfValue.replace(/[^\d\.]/g, '')   //过滤非数字和.
                         selfValue = selfValue.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".")   //去除多余的.
                         let regStr = '^(\\-)*(\\d+)\\.('
@@ -179,19 +177,38 @@ export default {
                         }
                         regStr += ').*$'
                         const decimalReg = new RegExp(regStr)
-                        selfValue = selfValue.replace(decimalReg, '$1$2.$3')  //小数点后最多 this.decimalLength 位
-                    } else {
+                        selfValue = selfValue.replace(decimalReg, '$1$2.$3')
+                    } else {   //不限制小数位
                         selfValue = this.selfValue.replace(/[^\d\.]/g, '')   //过滤非数字和.
                         selfValue = selfValue.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".")   //去除多余的.
                     }
                     this.selfValue = selfValue
                     this.$emit('change', selfValue)
                     break
-                //整数
-                case 'number':
-                    const numberValue = this.selfValue.replace(/[^\d]/g, '')   //过滤非数字
-                    this.selfValue = numberValue
-                    this.$emit('change', numberValue)
+                case 'number':   //整数(允许负数)
+                    if (this.toFixed == 0) {    //(不允许小数位)
+                        const value = `${this.selfValue}`.match(/^-?[1-9]*\d*|0/g, '')
+                        selfValue = value === null ? '' : value[0] === '-' ? '-' : value[0] === '' ? '' : Number(value[0])
+                    } else if (this.toFixed > 0) {   //允许小数位
+                        selfValue = this.selfValue.replace(/[^\d\.\-]/g, '')   //过滤非数字和.-
+                        selfValue = selfValue.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".")   //去除多余的.
+                        const result = selfValue.match(/^-?[1-9]*\d*\.*\d*|0/g, '')    //去除多余的-
+                        selfValue = result === null ? '' : result[0] === '-' ? '-' : result[0] === '' ? '' : result[0]
+                        let regStr = '^(\\-)*(\\d+)\\.('
+                        for (let i = 0; i < this.toFixed; i++) {
+                            regStr += '\\d'
+                        }
+                        regStr += ').*$'
+                        const decimalReg = new RegExp(regStr)
+                        selfValue = selfValue.replace(decimalReg, '$1$2.$3')    //去除多余小数位
+                    } else {    //不限制小数位
+                        selfValue = this.selfValue.replace(/[^\d\.\-]/g, '')   //过滤非数字和.-
+                        selfValue = selfValue.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".")   //去除多余的.
+                        const result = selfValue.match(/^-?[1-9]*\d*\.*\d*|0/g, '')    //去除多余的-
+                        selfValue = result === null ? '' : result[0] === '-' ? '-' : result[0] === '' ? '' : result[0]
+                    }
+                    this.selfValue = selfValue
+                    this.$emit('change', selfValue)
                     break
                 //文本
                 case 'text':
@@ -271,7 +288,6 @@ export default {
         .csField_input-error::-webkit-input-placeholder {
             /* WebKit browsers */
             color: crimson;
-            
         }
         .csField_input-error::-moz-placeholder {
             /* Mozilla Firefox 19+ */
