@@ -45,17 +45,29 @@
 > Field输入框有 `text(文本)`、`number(整数)`、`decimal(数字)`3种类型，默认为`text`。当Field类型为`decimal`时，可以通过`toFixed`字段指定保留的小数位。
 
    ```html
-    <cs-field label="整数：" placeholder="请输入整数" type="number" v-model="fieldNumber"></cs-field>
+    <cs-field label="整数：" placeholder="请输入整数(支持负数)" type="number" v-model="fieldInteger" toFixed="0"></cs-field>
 
-    <cs-field label="数字：" placeholder="请输入数字(支持4位小数)" type="decimal" toFixed="4" v-model="fieldDecimal"></cs-field>
+    <cs-field label="自然数：" placeholder="请输入自然数(最多四位小数)" type="number" v-model="fieldNatural4" toFixed="4"></cs-field>
+
+    <cs-field label="自然数：" placeholder="请输入自然数(不限制小数位)" type="number" v-model="fieldNatural"></cs-field>
+
+    <cs-field label="正整数：" placeholder="请输入正整数(不支持负数)" type="positive" toFixed="0" v-model="fieldPositiveInteger"></cs-field>
+
+    <cs-field label="正数：" placeholder="请输入正数(最多4位小数)" type="positive" toFixed="4" v-model="fieldPositive4"></cs-field>
+
+    <cs-field label="正数：" placeholder="请输入正数(不限制小数位)" type="positive" v-model="fieldPositive"></cs-field>
    ```
    ```js
     export default {
         name: '',
         data() {
             return {
-                fieldNumber: '',
-                fieldDecimal: ''
+              fieldInteger: '',
+              fieldNatural4: '',
+              fieldNatural: '',
+              fieldPositiveInteger: '', 
+              fieldPositive4: '',
+              fieldPositive: ''
             }
         }
     }
@@ -242,7 +254,7 @@ export default {
                   name: 'type',
                   remake: '输入框的类型',
                   type: 'String',
-                  default: "text(可选值：text、decimal、number)"
+                  default: "text(可选值：text、positive、number)"
                 },
                 {
                   name: 'maxlength',
@@ -270,7 +282,7 @@ export default {
                 },
                 {
                   name: 'toFixed',
-                  remake: '保留的小数位 -1为不限制 仅在type为decimal时有效',
+                  remake: '保留的小数位 -1为不限制',
                   type: 'Number | String',
                   default: "-1"
                 },
@@ -300,7 +312,7 @@ export default {
                 },
                 {
                   name: 'vaildFnc',
-                  remake: '是否展示清除按钮',
+                  remake: '校验函数',
                   type: 'Function',
                   default: "()=> { return true }"
                 },
