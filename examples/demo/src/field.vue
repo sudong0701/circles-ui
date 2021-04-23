@@ -10,10 +10,22 @@
         <div class="cs-doc-demo-block">
             <div class="cs-doc-demo-block__title">自定义类型</div>
             <div class="button-demo-content">
-                <cs-field label="整数：" placeholder="请输入整数" type="number" v-model="fieldNumber"></cs-field>
+                <cs-field label="整数：" placeholder="请输入整数(支持负数)" type="number" v-model="fieldInteger" toFixed="0"></cs-field>
             </div>
             <div class="button-demo-content" style="margin-top: 0.3rem">
-                <cs-field label="数字：" placeholder="请输入数字(支持4位小数)" type="decimal" toFixed="4" v-model="fieldDecimal"></cs-field>
+                <cs-field label="自然数：" placeholder="请输入自然数(最多四位小数)" type="number" v-model="fieldNatural4" toFixed="4"></cs-field>
+            </div>
+            <div class="button-demo-content" style="margin-top: 0.3rem">
+                <cs-field label="自然数：" placeholder="请输入自然数(不限制小数位)" type="number" v-model="fieldNatural"></cs-field>
+            </div>
+            <div class="button-demo-content" style="margin-top: 0.3rem">
+                <cs-field label="正整数：" placeholder="请输入正整数(不支持负数)" type="positive" toFixed="0" v-model="fieldPositiveInteger"></cs-field>
+            </div>
+            <div class="button-demo-content" style="margin-top: 0.3rem">
+                <cs-field label="正数：" placeholder="请输入正数(最多4位小数)" type="positive" toFixed="4" v-model="fieldPositive4"></cs-field>
+            </div>
+            <div class="button-demo-content" style="margin-top: 0.3rem">
+                <cs-field label="正数：" placeholder="请输入正数(不限制小数位)" type="positive" v-model="fieldPositive"></cs-field>
             </div>
         </div>
 
@@ -83,6 +95,12 @@ export default {
         return {
             fieldBasis: '',
             fieldVal: '',
+            fieldInteger: '',
+            fieldNatural4: '',
+            fieldNatural: '',
+            fieldPositiveInteger: '', 
+            fieldPositive4: '',
+            fieldPositive: '',
             fieldNumber: '',
             fieldDecimal: '',
             fieldDisabled: '',
